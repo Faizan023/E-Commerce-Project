@@ -44,6 +44,8 @@ Constraint Pk_PId Primary Key (Id),
 Constraint Fk_Cid Foreign Key (CategoryId) References ProductCategories(Id),
 Constraint Fk_BId Foreign Key (BrandId) References Brands(Id)
 );
+insert into Products (Img,Name,CategoryId,Description,Price,Discount,Quantity,Color,Measurment,MesurmentValue,BrandId,CreatedDateTime,UpdatedDateTime,CreatedBy,UpdatedBy)
+values((select * from Openrowset (BULK 'D:\Image\Black_Hair_Dry.jpg', Single_blob)),'Hair Dry',1,'This Product Is Amazing',200,5,10,'Purple','watt','15w',1,'2023-08-09',null,1,null);
 
 Create Table Orders(
 Id Int Identity(1,1) Not Null,
@@ -94,6 +96,9 @@ UpdatedBy Int Null,
 Constraint Pk_CategoryId Primary Key (Id)
 );
 
+insert into ProductCategories (Name, CreateDateTime, UpdateDateTime,CreatedBy,UpdatedBy) values('Electronic','2023-09-09',null,1,null);
+
+select * from ProductCategories;
 Create Table Users(
 Id Int Identity(1,1) Not Null,
 FirstName Varchar(15) Not Null,
@@ -156,3 +161,8 @@ Constraint Pk_MapId Primary Key (Id),
 Constraint Fk_SaleId Foreign Key (SaleId) References Sales (Id),
 Constraint Fk_ProductsId Foreign Key (ProductId) References Products (Id)
 );
+
+select * from Brands;
+
+insert into Brands(Name, CreateDateTime, UpdateDateTime, CreatedBy,UpdatedBy) values('Adidas',null, 1, null);
+

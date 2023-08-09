@@ -6,6 +6,7 @@ builder.Services.AddDbContext<DbContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default"))
 );
 builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
+builder.Services.AddTransient<IProductRepository, ProductRepository>();
 
 // Add services to the container.
 

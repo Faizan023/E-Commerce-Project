@@ -56,8 +56,18 @@ namespace Controllers
         [Route("UpdateCustomer")]
         public async Task<IActionResult> Put(Customer customer)
         {
-            await _customerRepository.UpdateCustomer(customer);
-            return Ok("Updated Successfully");
+            var errors = _customerRepository.AddValidation(customer);
+            {
+                if (errors.Count > 0)
+                {
+                    return BadRequest(errors.FirstOrDefault());
+                }
+                else
+                {
+                    await _customerRepository.UpdateCustomer(customer);
+                    return Ok("Updated Successfully");
+                }
+            }
         }
 
         [HttpDelete]

@@ -103,7 +103,8 @@ namespace Repository
                 var find = context.Customers.Find(Id);
                 if (find != null)
                 {
-                    context.Remove(Id).State = EntityState.Deleted;
+                    context.Remove(find).State = EntityState.Deleted;
+                    context.SaveChangesAsync();
                     result = true;
                 }
                 else
