@@ -45,7 +45,14 @@ Constraint Fk_Cid Foreign Key (CategoryId) References ProductCategories(Id),
 Constraint Fk_BId Foreign Key (BrandId) References Brands(Id)
 );
 insert into Products (Img,Name,CategoryId,Description,Price,Discount,Quantity,Color,Measurment,MesurmentValue,BrandId,CreatedDateTime,UpdatedDateTime,CreatedBy,UpdatedBy)
-values((select * from Openrowset (BULK 'D:\Image\Black_Hair_Dry.jpg', Single_blob)),'Hair Dry',1,'This Product Is Amazing',200,5,10,'Purple','watt','15w',1,'2023-08-09',null,1,null);
+values((select * from Openrowset (BULK 'D:\Image\Black_Hair_Dry.jpg', Single_blob)as image),'Hair Dry',1,'This Product Is Amazing',200,5,10,'Purple','watt','15w',1,'2023-08-09',null,1,null);
+
+
+insert into Products (Img,Name,CategoryId,Description,Price,Discount,Quantity,Color,Measurment,MesurmentValue,BrandId,CreatedDateTime,UpdatedDateTime,CreatedBy,UpdatedBy)
+values((select * from Openrowset (BULK 'D:\Image\Black_Hair_Dry.jpg', Single_blob)as image ),'Hair Dry',1,'This Product Is Amazing',200,5,10,'Purple','watt','15w',1,'2023-08-09','2023-08-10',1,1);
+
+ 
+delete from Products where Id=2;
 
 Create Table Orders(
 Id Int Identity(1,1) Not Null,
@@ -69,6 +76,9 @@ Constraint Pk_OId Primary Key (Id),
 Constraint Fk_CustomerId Foreign Key (CustomerId) References Customers(Id),
 Constraint Fk_PId Foreign Key (ProductId) References Products(Id)
 );
+insert into Orders(CustomerId,Quantity,Amount,ProductId,PaymentMethod,OrderDate,DeliveryAddress,BillingAddress,DeliveryDate,DeliveryCharge,Status,CreatedDateTime,UpdatedDateTime,CreatedBy,UpdatedBy)
+values(1,2,200,4,'Cash','2023-08-10','Ajit Mill','Naroda','2023-08-20',20,'Active','2023-08-05',null,1,null);
+select * from Orders;
 
 Create Table Cart(
 Id Int Identity(1,1) Not Null,
@@ -99,6 +109,7 @@ Constraint Pk_CategoryId Primary Key (Id)
 insert into ProductCategories (Name, CreateDateTime, UpdateDateTime,CreatedBy,UpdatedBy) values('Electronic','2023-09-09',null,1,null);
 
 select * from ProductCategories;
+
 Create Table Users(
 Id Int Identity(1,1) Not Null,
 FirstName Varchar(15) Not Null,

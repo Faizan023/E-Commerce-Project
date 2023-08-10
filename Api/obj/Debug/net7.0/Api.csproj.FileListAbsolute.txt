@@ -1,8 +1,8 @@
 D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\appsettings.Development.json
 D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\appsettings.json
 D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Api.exe
-d:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Api.deps.json
-d:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Api.runtimeconfig.json
+D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Api.deps.json
+D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Api.runtimeconfig.json
 D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Api.dll
 D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Api.pdb
 D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Azure.Core.dll
@@ -63,9 +63,9 @@ D:\E-Commerce\E-Commerce-Project\Api\obj\Debug\net7.0\staticwebassets.pack.json
 D:\E-Commerce\E-Commerce-Project\Api\obj\Debug\net7.0\staticwebassets.build.json
 D:\E-Commerce\E-Commerce-Project\Api\obj\Debug\net7.0\staticwebassets.development.json
 D:\E-Commerce\E-Commerce-Project\Api\obj\Debug\net7.0\scopedcss\bundle\Api.styles.css
-d:\E-Commerce\E-Commerce-Project\Api\obj\Debug\net7.0\Api.csproj.CopyComplete
+D:\E-Commerce\E-Commerce-Project\Api\obj\Debug\net7.0\Api.csproj.CopyComplete
 D:\E-Commerce\E-Commerce-Project\Api\obj\Debug\net7.0\Api.dll
 D:\E-Commerce\E-Commerce-Project\Api\obj\Debug\net7.0\refint\Api.dll
 D:\E-Commerce\E-Commerce-Project\Api\obj\Debug\net7.0\Api.pdb
-d:\E-Commerce\E-Commerce-Project\Api\obj\Debug\net7.0\Api.genruntimeconfig.cache
-d:\E-Commerce\E-Commerce-Project\Api\obj\Debug\net7.0\ref\Api.dll
+D:\E-Commerce\E-Commerce-Project\Api\obj\Debug\net7.0\Api.genruntimeconfig.cache
+D:\E-Commerce\E-Commerce-Project\Api\obj\Debug\net7.0\ref\Api.dll

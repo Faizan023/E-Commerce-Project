@@ -7,6 +7,8 @@ builder.Services.AddDbContext<DbContext>(
 );
 builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
+builder.Services.AddTransient<IOrderRepository, OrderRepository>();
+builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 
 // Add services to the container.
 

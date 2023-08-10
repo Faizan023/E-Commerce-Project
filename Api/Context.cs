@@ -8,5 +8,7 @@ public class DbContext : Microsoft.EntityFrameworkCore.DbContext
 
     public DbSet<Customer> Customers { get; set; }
     public object Customer { get; internal set; }
+    public DbSet<Order> Orders { get; set; }
     public DbSet<Product> Products { get; set; }
+    public DbSet<ProductCategory> Categories { get; set; }
 }
