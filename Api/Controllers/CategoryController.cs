@@ -23,10 +23,10 @@ namespace Controllers
         }
 
         [HttpGet]
-        [Route("GetById")]
+        [Route("GetCategoryById")]
         public async Task<IActionResult> GetById(int Id)
         {
-            return Ok(await _CategoryRepository.GetById(Id));
+            return Ok(await _CategoryRepository.GetCategoryById(Id));
         }
 
         [HttpPost]

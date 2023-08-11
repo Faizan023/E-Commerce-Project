@@ -5,10 +5,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DbContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default"))
 );
-builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
+builder.Services.AddTransient<IManageCustomerRepository, ManageCustomerRepository>();
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+builder.Services.AddTransient<ISaleRepository, SaleRepository>();
+builder.Services.AddTransient<IBrandRepository, BrandRepository>();
 
 // Add services to the container.
 

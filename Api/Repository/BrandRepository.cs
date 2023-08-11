@@ -3,29 +3,29 @@ using Models;
 
 namespace Repository
 {
-    public interface ICategoryRepository
+    public interface IBrandRepository
     {
-        Task<IEnumerable<ProductCategory>> GetCategories();
-        Task<ProductCategory> GetCategoryById(int Id);
-        Task<ProductCategory> InsertCategory(ProductCategory category);
-        Task<ProductCategory> UpdateCategory(ProductCategory category);
-        bool DeleteCategory(int Id);
+        Task<IEnumerable<Brand>> GetBrands();
+        Task<Brand> GetBrandById(int Id);
+        Task<Brand> InsertBrand(Brand brand);
+        Task<Brand> UpdateBrand(Brand brand);
+        bool DeleteBrand(int Id);
     }
 
-    public class CategoryRepository : ICategoryRepository
+    public class BrandRepository : IBrandRepository
     {
         private readonly DbContext context;
 
-        public CategoryRepository(DbContext _context)
+        public BrandRepository(DbContext _context)
         {
             context = _context;
         }
 
-        public async Task<IEnumerable<ProductCategory>> GetCategories()
+        public async Task<IEnumerable<Brand>> GetBrands()
         {
             try
             {
-                return await context.Categories.ToListAsync();
+                return await context.Brands.ToListAsync();
             }
             catch
             {
@@ -33,11 +33,11 @@ namespace Repository
             }
         }
 
-        public async Task<ProductCategory> GetCategoryById(int Id)
+        public async Task<Brand> GetBrandById(int Id)
         {
             try
             {
-                var find = await context.Categories.FindAsync(Id);
+                var find = await context.Brands.FindAsync(Id);
                 if (find != null)
                 {
                     return find;
@@ -53,40 +53,40 @@ namespace Repository
             }
         }
 
-        public async Task<ProductCategory> InsertCategory(ProductCategory category)
+        public async Task<Brand> InsertBrand(Brand brand)
         {
             try
             {
-                context.Categories.Add(category);
+                context.Brands.Add(brand);
                 await context.SaveChangesAsync();
             }
             catch
             {
                 throw;
             }
-            return category;
+            return brand;
         }
 
-        public async Task<ProductCategory> UpdateCategory(ProductCategory category)
+        public async Task<Brand> UpdateBrand(Brand brand)
         {
             try
             {
-                context.Entry(category).State = EntityState.Modified;
+                context.Entry(brand).State = EntityState.Modified;
                 await context.SaveChangesAsync();
             }
             catch
             {
                 throw;
             }
-            return category;
+            return brand;
         }
 
-        public bool DeleteCategory(int Id)
+        public bool DeleteBrand(int Id)
         {
             var result = false;
             try
             {
-                var find = context.Categories.Find(Id);
+                var find = context.Brands.Find(Id);
                 if (find != null)
                 {
                     context.Remove(find).State = EntityState.Deleted;

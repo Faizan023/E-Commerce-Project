@@ -104,7 +104,7 @@ CreatedBy Int Not Null,
 UpdatedBy Int Null,
 
 Constraint Pk_CategoryId Primary Key (Id)
-);
+);select * from ProductCategories;
 
 insert into ProductCategories (Name, CreateDateTime, UpdateDateTime,CreatedBy,UpdatedBy) values('Electronic','2023-09-09',null,1,null);
 

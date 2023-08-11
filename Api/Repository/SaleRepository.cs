@@ -3,29 +3,29 @@ using Models;
 
 namespace Repository
 {
-    public interface ICategoryRepository
+    public interface ISaleRepository
     {
-        Task<IEnumerable<ProductCategory>> GetCategories();
-        Task<ProductCategory> GetCategoryById(int Id);
-        Task<ProductCategory> InsertCategory(ProductCategory category);
-        Task<ProductCategory> UpdateCategory(ProductCategory category);
-        bool DeleteCategory(int Id);
+        Task<IEnumerable<Sale>> GetSales();
+        Task<Sale> GetSaleById(int Id);
+        Task<Sale> InsertSale(Sale sale);
+        Task<Sale> UpdateSale(Sale sale);
+        bool DeleteSale(int Id);
     }
 
-    public class CategoryRepository : ICategoryRepository
+    public class SaleRepository : ISaleRepository
     {
         private readonly DbContext context;
 
-        public CategoryRepository(DbContext _context)
+        public SaleRepository(DbContext _context)
         {
             context = _context;
         }
 
-        public async Task<IEnumerable<ProductCategory>> GetCategories()
+        public async Task<IEnumerable<Sale>> GetSales()
         {
             try
             {
-                return await context.Categories.ToListAsync();
+                return await context.Sales.ToListAsync();
             }
             catch
             {
@@ -33,11 +33,11 @@ namespace Repository
             }
         }
 
-        public async Task<ProductCategory> GetCategoryById(int Id)
+        public async Task<Sale> GetSaleById(int Id)
         {
             try
             {
-                var find = await context.Categories.FindAsync(Id);
+                var find = await context.Sales.FindAsync(Id);
                 if (find != null)
                 {
                     return find;
@@ -53,49 +53,49 @@ namespace Repository
             }
         }
 
-        public async Task<ProductCategory> InsertCategory(ProductCategory category)
+        public async Task<Sale> InsertSale(Sale sale)
         {
             try
             {
-                context.Categories.Add(category);
+                context.Sales.Add(sale);
                 await context.SaveChangesAsync();
             }
             catch
             {
                 throw;
             }
-            return category;
+            return sale;
         }
 
-        public async Task<ProductCategory> UpdateCategory(ProductCategory category)
+        public async Task<Sale> UpdateSale(Sale sale)
         {
             try
             {
-                context.Entry(category).State = EntityState.Modified;
+                context.Entry(sale).State = EntityState.Modified;
                 await context.SaveChangesAsync();
             }
             catch
             {
                 throw;
             }
-            return category;
+            return sale;
         }
 
-        public bool DeleteCategory(int Id)
+        public bool DeleteSale(int Id)
         {
             var result = false;
             try
             {
-                var find = context.Categories.Find(Id);
+                var find = context.Sales.Find(Id);
                 if (find != null)
                 {
                     context.Remove(find).State = EntityState.Deleted;
                     context.SaveChangesAsync();
-                    result = true;
+                    return true;
                 }
                 else
                 {
-                    result = false;
+                    return false;
                 }
             }
             catch
