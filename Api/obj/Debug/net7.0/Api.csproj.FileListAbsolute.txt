@@ -1,0 +1,14 @@
+D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Api.exe
+D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Api.dll
+D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Microsoft.OpenApi.dll
+D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\E-Commerce\E-Commerce-Project\Api\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll

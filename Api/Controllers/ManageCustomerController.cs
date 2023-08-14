@@ -6,34 +6,34 @@ namespace Controllers
 {
     [Route("api/Controller")]
     [ApiController]
-    public class ManageCustomerController : ControllerBase
+    public class CustomerController : ControllerBase
     {
-        private readonly IManageCustomerRepository _ManageRepository;
+        private readonly ICustomerRepository _CustomerRepository;
 
-        public ManageCustomerController(IManageCustomerRepository ManageRepository)
+        public CustomerController(ICustomerRepository ManageRepository)
         {
-            _ManageRepository = ManageRepository;
+            _CustomerRepository = ManageRepository;
         }
 
         [HttpGet]
         [Route("GetCustomer")]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _ManageRepository.GetCustomer());
+            return Ok(await _CustomerRepository.GetCustomer());
         }
 
         [HttpGet]
         [Route("GetCustomerById")]
         public async Task<IActionResult> GetById(int Id)
         {
-            return Ok(await _ManageRepository.GetCustomerById(Id));
+            return Ok(await _CustomerRepository.GetCustomerById(Id));
         }
 
         [HttpPut]
         [Route("UpdateCustomer")]
-        public async Task<IActionResult> Put(ManageCustomer customer)
+        public async Task<IActionResult> Put(Customer customer)
         {
-            var errors = _ManageRepository.AddValidation(customer);
+            var errors = _CustomerRepository.AddValidation(customer);
             {
                 if (errors.Count > 0)
                 {
@@ -41,7 +41,7 @@ namespace Controllers
                 }
                 else
                 {
-                    await _ManageRepository.UpdateCustomer(customer);
+                    await _CustomerRepository.UpdateCustomer(customer);
                     return Ok("Updated Successfully");
                 }
             }

@@ -25,7 +25,7 @@ namespace Repository
         {
             try
             {
-                return context.Products.ToList();
+                return await context.Products.ToListAsync();
             }
             catch
             {

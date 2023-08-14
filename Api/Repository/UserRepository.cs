@@ -3,29 +3,29 @@ using Models;
 
 namespace Repository
 {
-    public interface ISaleRepository
+    public interface IUserRepository
     {
-        Task<IEnumerable<Sale>> GetSales();
-        Task<Sale> GetSaleById(int Id);
-        Task<Sale> InsertSale(Sale sale);
-        Task<Sale> UpdateSale(Sale sale);
-        bool DeleteSale(int Id);
+        Task<IEnumerable<User>> GetUsers();
+        Task<User> GetUserById(int Id);
+        Task<User> InsertUser(User user);
+        Task<User> UpdateUser(User user);
+        bool DeleteUser(int Id);
     }
 
-    public class SaleRepository : ISaleRepository
+    public class UserRepository : IUserRepository
     {
-        private readonly DbContext context;
+        private readonly DbContext _context;
 
-        public SaleRepository(DbContext _context)
+        public UserRepository(DbContext context)
         {
-            context = _context;
+            _context = context;
         }
 
-        public async Task<IEnumerable<Sale>> GetSales()
+        public async Task<IEnumerable<User>> GetUsers()
         {
             try
             {
-                return await context.Sales.ToListAsync();
+                return await _context.Users.ToListAsync();
             }
             catch
             {
@@ -33,11 +33,11 @@ namespace Repository
             }
         }
 
-        public async Task<Sale> GetSaleById(int Id)
+        public async Task<User> GetUserById(int Id)
         {
             try
             {
-                var find = await context.Sales.FindAsync(Id);
+                var find = await _context.Users.FindAsync(Id);
                 if (find != null)
                 {
                     return find;
@@ -53,44 +53,44 @@ namespace Repository
             }
         }
 
-        public async Task<Sale> InsertSale(Sale sale)
+        public async Task<User> InsertUser(User user)
         {
             try
             {
-                context.Sales.Add(sale);
-                await context.SaveChangesAsync();
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
             }
             catch
             {
                 throw;
             }
-            return sale;
+            return user;
         }
 
-        public async Task<Sale> UpdateSale(Sale sale)
+        public async Task<User> UpdateUser(User user)
         {
             try
             {
-                context.Entry(sale).State = EntityState.Modified;
-                await context.SaveChangesAsync();
+                _context.Entry(user).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
             }
             catch
             {
                 throw;
             }
-            return sale;
+            return user;
         }
 
-        public bool DeleteSale(int Id)
+        public bool DeleteUser(int Id)
         {
             var result = false;
             try
             {
-                var find = context.Sales.Find(Id);
+                var find = _context.Users.Find(Id);
                 if (find != null)
                 {
-                    context.Remove(find).State = EntityState.Deleted;
-                    context.SaveChangesAsync();
+                    _context.Remove(find).State = EntityState.Deleted;
+                    _context.SaveChanges();
                     result = true;
                 }
                 else

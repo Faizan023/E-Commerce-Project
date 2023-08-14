@@ -3,24 +3,24 @@ using Models;
 
 namespace Repository
 {
-    public interface IManageCustomerRepository
+    public interface ICustomerRepository
     {
-        Task<IEnumerable<ManageCustomer>> GetCustomer();
-        Task<ManageCustomer> GetCustomerById(int Id);
-        List<string> AddValidation(ManageCustomer manage);
-        Task<ManageCustomer> UpdateCustomer(ManageCustomer customer);
+        Task<IEnumerable<Customer>> GetCustomer();
+        Task<Customer> GetCustomerById(int Id);
+        List<string> AddValidation(Customer manage);
+        Task<Customer> UpdateCustomer(Customer customer);
     }
 
-    public class ManageCustomerRepository : IManageCustomerRepository
+    public class CustomerRepository : ICustomerRepository
     {
         private readonly DbContext context;
 
-        public ManageCustomerRepository(DbContext _Context)
+        public CustomerRepository(DbContext _Context)
         {
             context = _Context;
         }
 
-        public async Task<IEnumerable<ManageCustomer>> GetCustomer()
+        public async Task<IEnumerable<Customer>> GetCustomer()
         {
             try
             {
@@ -32,7 +32,7 @@ namespace Repository
             }
         }
 
-        public async Task<ManageCustomer> GetCustomerById(int Id)
+        public async Task<Customer> GetCustomerById(int Id)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace Repository
             }
         }
 
-        public List<string> AddValidation(ManageCustomer Manage)
+        public List<string> AddValidation(Customer Manage)
         {
             List<string> errors = new List<string>();
             var existing = context.Manages.FirstOrDefault(
@@ -65,7 +65,7 @@ namespace Repository
             return errors;
         }
 
-        public async Task<ManageCustomer> UpdateCustomer(ManageCustomer manage)
+        public async Task<Customer> UpdateCustomer(Customer manage)
         {
             try
             {
