@@ -7,6 +7,7 @@ namespace Repository
     {
         Task<IEnumerable<Customer>> GetCustomer();
         Task<Customer> GetCustomerById(int Id);
+        Task<Customer> InsertCustomer(Customer customer);
         List<string> AddValidation(Customer manage);
         Task<Customer> UpdateCustomer(Customer customer);
     }
@@ -24,7 +25,7 @@ namespace Repository
         {
             try
             {
-                return await context.Manages.ToListAsync();
+                return await context.Customers.ToListAsync();
             }
             catch
             {
@@ -36,7 +37,7 @@ namespace Repository
         {
             try
             {
-                var find = await context.Manages.FindAsync(Id);
+                var find = await context.Customers.FindAsync(Id);
                 if (find != null)
                 {
                     return find;
@@ -52,10 +53,24 @@ namespace Repository
             }
         }
 
+        public async Task<Customer> InsertCustomer(Customer customer)
+        {
+            try
+            {
+                context.Customers.Add(customer);
+                await context.SaveChangesAsync();
+            }
+            catch
+            {
+                throw;
+            }
+            return customer;
+        }
+
         public List<string> AddValidation(Customer Manage)
         {
             List<string> errors = new List<string>();
-            var existing = context.Manages.FirstOrDefault(
+            var existing = context.Customers.FirstOrDefault(
                 t => t.Email.ToLower() == Manage.Email.ToLower()
             );
             if (existing != null)

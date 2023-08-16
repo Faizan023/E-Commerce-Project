@@ -3,29 +3,28 @@ using Models;
 
 namespace Repository
 {
-    public interface IOrderRepository
+    public interface ICartRepository
     {
-        Task<IEnumerable<Order>> GetOrders();
-        Task<Order> GetOrderById(int Id);
-        Task<Order> UpdateOrder(Order order);
-        Task<Order> AddOrder(Order order);
-        bool DeleteOrder(int Id);
+        Task<IEnumerable<Cart>> GetCarts();
+        Task<Cart> GetCartById(int Id);
+        Task<Cart> AddToCart(Cart cart);
+        bool RemoveCart(int id);
     }
 
-    public class OrderRepository : IOrderRepository
+    public class CartRepository : ICartRepository
     {
         private readonly DbContext context;
 
-        public OrderRepository(DbContext _context)
+        public CartRepository(DbContext _context)
         {
             context = _context;
         }
 
-        public async Task<IEnumerable<Order>> GetOrders()
+        public async Task<IEnumerable<Cart>> GetCarts()
         {
             try
             {
-                return await context.Orders.ToListAsync();
+                return await context.Carts.ToListAsync();
             }
             catch
             {
@@ -33,11 +32,11 @@ namespace Repository
             }
         }
 
-        public async Task<Order> GetOrderById(int Id)
+        public async Task<Cart> GetCartById(int Id)
         {
             try
             {
-                var find = await context.Orders.FindAsync(Id);
+                var find = await context.Carts.FindAsync(Id);
                 if (find != null)
                 {
                     return find;
@@ -53,40 +52,26 @@ namespace Repository
             }
         }
 
-        public async Task<Order> UpdateOrder(Order order)
+        public async Task<Cart> AddToCart(Cart cart)
         {
             try
             {
-                context.Entry(order).State = EntityState.Modified;
+                context.Carts.Add(cart);
                 await context.SaveChangesAsync();
             }
             catch
             {
                 throw;
             }
-            return order;
+            return cart;
         }
 
-        public async Task<Order> AddOrder(Order order)
-        {
-            try
-            {
-                context.Orders.Add(order);
-                await context.SaveChangesAsync();
-            }
-            catch
-            {
-                throw;
-            }
-            return order;
-        }
-
-        public bool DeleteOrder(int Id)
+        public bool RemoveCart(int Id)
         {
             var result = false;
             try
             {
-                var find = context.Orders.Find(Id);
+                var find = context.Carts.Find(Id);
                 if (find != null)
                 {
                     context.Remove(find).State = EntityState.Deleted;
@@ -95,7 +80,7 @@ namespace Repository
                 }
                 else
                 {
-                    return false;
+                    result = false;
                 }
             }
             catch

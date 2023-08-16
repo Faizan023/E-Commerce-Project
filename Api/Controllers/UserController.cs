@@ -33,16 +33,32 @@ namespace Controllers
         [Route("InsertUser")]
         public async Task<IActionResult> Post(User user)
         {
-            await _userRepository.InsertUser(user);
-            return Ok("Added Successfully");
+            var errors = _userRepository.UserValidation(user);
+            if (errors.Count > 0)
+            {
+                return BadRequest(errors.FirstOrDefault());
+            }
+            else
+            {
+                await _userRepository.InsertUser(user);
+                return Ok("Added Successfully");
+            }
         }
 
         [HttpPut]
         [Route("UpdateUser")]
         public async Task<IActionResult> Put(User user)
         {
-            await _userRepository.UpdateUser(user);
-            return Ok("Updated Successfully");
+            var errors = _userRepository.UserValidation(user);
+            if (errors.Count > 0)
+            {
+                return BadRequest(errors.FirstOrDefault());
+            }
+            else
+            {
+                await _userRepository.UpdateUser(user);
+                return Ok("Updated Successfully");
+            }
         }
 
         [HttpDelete]

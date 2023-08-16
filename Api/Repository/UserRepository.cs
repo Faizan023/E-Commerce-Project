@@ -10,6 +10,7 @@ namespace Repository
         Task<User> InsertUser(User user);
         Task<User> UpdateUser(User user);
         bool DeleteUser(int Id);
+        List<string> UserValidation(User user);
     }
 
     public class UserRepository : IUserRepository
@@ -101,6 +102,19 @@ namespace Repository
             catch
             {
                 throw;
+            }
+            return result;
+        }
+
+        public List<string> UserValidation(User user)
+        {
+            List<string> result = new List<string>();
+            var existing = _context.Users.FirstOrDefault(
+                t => t.Email.ToLower() == user.Email.ToLower()
+            );
+            if (existing != null)
+            {
+                result.Add("This Email Already Exist, Use Another Email");
             }
             return result;
         }

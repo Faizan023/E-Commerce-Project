@@ -1,47 +1,48 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Models;
+using Repository;
 
 namespace Controllers
 {
-    [Route("api/Controller")]
+    [Route("api/[Controller]")]
     [ApiController]
-    public class LoginController : ControllerBase
+    public class SignInController : ControllerBase
     {
-        private readonly DbContext _context;
+        private readonly DbContext context;
         public IConfiguration _configuration;
 
-        public LoginController(DbContext context, IConfiguration configuration)
+        public SignInController(DbContext _Context, IConfiguration configuration)
         {
             _configuration = configuration;
-            _context = context;
+            context = _Context;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(Login login)
+        [Route("LoginToken")]
+        public async Task<IActionResult> LoginToken(Login _login)
         {
-            var user = await GetUser(login);
-            if (user != null)
+            var result = await GetToken(_login);
+            if (result != null)
             {
-                var token = GenerateToken(user);
+                var token = Tokens(result);
                 return Ok(token);
             }
-            return Ok("Check Email or Password ");
+            return Ok("Check Email or Password");
         }
 
-        private string GenerateToken(User user)
+        private string Tokens(Customer customer)
         {
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                new Claim("Email", user.Email)
+                new Claim("Email", customer.Email)
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -55,10 +56,10 @@ namespace Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        private async Task<User> GetUser(Login login)
+        private async Task<Customer> GetToken(Login login)
         {
-            var result = await _context.Users.FirstOrDefaultAsync(
-                u => u.Email.ToLower() == login.Email.ToLower() && u.Password == login.Password
+            var result = await context.Customers.FirstOrDefaultAsync(
+                t => t.Email.ToLower() == login.Email.ToLower() && t.Password == login.Password
             );
             if (result != null)
             {
