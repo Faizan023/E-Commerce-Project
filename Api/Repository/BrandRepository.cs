@@ -10,6 +10,7 @@ namespace Repository
         Task<Brand> InsertBrand(Brand brand);
         Task<Brand> UpdateBrand(Brand brand);
         bool DeleteBrand(int Id);
+        List<string> BrandValidation(Brand brand);
     }
 
     public class BrandRepository : IBrandRepository
@@ -103,6 +104,19 @@ namespace Repository
                 throw;
             }
             return result;
+        }
+
+        public List<string> BrandValidation(Brand brand)
+        {
+            List<string> errors = new List<string>();
+            var result = context.Brands.FirstOrDefault(
+                t => t.Name.ToLower() == brand.Name.ToLower()
+            );
+            if (result != null)
+            {
+                errors.Add("This Brand Already Exist");
+            }
+            return errors;
         }
     }
 }

@@ -33,16 +33,32 @@ namespace Controllers
         [Route("InsertBrand")]
         public async Task<IActionResult> Post(Brand brand)
         {
-            await brandRepository.InsertBrand(brand);
-            return Ok("Added Successfully");
+            var existing = brandRepository.BrandValidation(brand);
+            if (existing.Count > 0)
+            {
+                return BadRequest(existing.FirstOrDefault());
+            }
+            else
+            {
+                await brandRepository.InsertBrand(brand);
+                return Ok("Added Successfully");
+            }
         }
 
         [HttpPut]
         [Route("UpdateBrand")]
         public async Task<IActionResult> Put(Brand brand)
         {
-            await brandRepository.UpdateBrand(brand);
-            return Ok("Updated Successfully");
+            var existing = brandRepository.BrandValidation(brand);
+            if (existing.Count > 0)
+            {
+                return BadRequest(existing.FirstOrDefault());
+            }
+            else
+            {
+                await brandRepository.UpdateBrand(brand);
+                return Ok("Updated Successfully");
+            }
         }
 
         [HttpDelete]
