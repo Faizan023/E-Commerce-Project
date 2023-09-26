@@ -1,6 +1,7 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Repository;
 
@@ -19,6 +20,19 @@ builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<ICartRepository, CartRepository>();
 
 // Add services to the container.
+
+
+    builder.Services.AddCors(options =>
+    {
+        options.AddPolicy(
+            name: "AllowOrigin",
+            builder =>
+            {
+                builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+            }
+        );
+    });
+
 
 builder.Services.AddControllers();
 
@@ -55,6 +69,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors("AllowOrigin");
 app.UseAuthorization();
 
 app.MapControllers();

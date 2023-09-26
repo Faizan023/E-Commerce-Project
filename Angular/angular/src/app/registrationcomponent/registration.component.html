@@ -1,0 +1,111 @@
+<section class="vh-100 bg-image">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+              <p>{{displaymsg}}</p>
+              <form [formGroup]="registration" #formDir="ngForm">
+                <div class="form-outline mb-4">
+                  <div class="row">
+                    <div class="col">
+                      <input type="text" class="form-control" name="firstName" formControlName="firstName">
+                      <label class="form-label" for="firstName">First Name</label>
+                      <!-- <small *ngIf="registration.controls['firstName'].errors?.['required'] "> firstName is required -->
+                      <!-- </small> -->
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control" name="lastName" formControlName="lastName">
+                      <label class="form-label" for="lastName">Last Name</label>
+                      <!-- <small *ngIf="registration.controls['lastName'].errors?.['required']"> lastName is required
+                      </small> -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <div class="row">
+                    <div class="col">
+                      <input type="text" class="form-control" name="Phone" formControlName="phoneNumber">
+                      <label class="form-label" for="Phone">Phone</label>
+                      <!-- <small *ngIf="registration.controls['phone'].errors?.['required'] "> number is required </small> -->
+                      <!-- <small *ngIf="registration.controls['phone'].errors?.['pattern']"> number must be 10 character
+                      </small> -->
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control" name="email" formControlName="email">
+                      <label class="form-label" for="email">Email</label>
+                      <!-- <small *ngIf="registration.controls['email'].errors?.['required']"> email is required </small> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="form-outline mb-4">
+                  <input type="text" class="form-control form-control-lg" name="password" formControlName="password">
+                  <label class="form-label" for="password">Password</label>
+                  <!-- <small class="error" *ngIf="registration.controls['password'].errors?.['pattern']">
+                    <li> Use Special Characters </li>
+                    <li>Use Numbers</li>
+                    <li>Use Loweecase & UpperCase Letter</li>
+                    <li> PassWord Must Be 8-15 Character </li>
+                  </small> -->
+                </div>
+
+                <!-- gender & birthdate -->
+                <div class="form-outline mb-4">
+                  <div class="row">
+                    <div class="col">
+                      <input type="text" class="form-control" name="dateofbirth" formControlName="dateofbirth"
+                        placeholder="yyyy-mm-dd">
+                      <label class="form-label" for="form3Example1cg">Your BirthDate</label>
+                      <!-- <small *ngIf="registration.controls['birthDate' ].errors?.['required']"> birthDate is required
+                      </small> -->
+                    </div>
+                    <div class="col">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" value="male"
+                          formControlName="gender">
+                        <label class="form-check-label" for="male">male</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" value="female"
+                          formControlName="gender">
+                        <label class="form-check-label" for="female">female</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" value="other"
+                          formControlName="gender">
+                        <label class="form-check-label" for="other">other</label>
+                        <small></small>
+                      </div>
+                      <!-- <small *ngIf="registration.controls['gender'].errors?.['required']"> gender is required</small> -->
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="" class="form-control form-control-lg" formControlName="address">
+                  <label class="form-label" for="form3Example4cg">Your Current Address</label>
+                  <!-- <small *ngIf="registration.controls['address'].errors?.['required']"> address is required </small>
+                  <small *ngIf="registration.controls['address'].errors?.['minLength']">minimum 40 character </small> -->
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <button type="button" (click)="Register()"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                </div>
+
+                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
+                    class="fw-bold text-body"><u>Login here</u></a></p>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
