@@ -23,11 +23,11 @@ namespace Controllers
         {
             // customer.CreatedDateTime = DateTime.Now;
             // customer.CreatedBy = 1;
-            // customer.UpdatedDateTime = DateTime.Now;
-            // customer.UpdatedBy = 1;
+            // customer.UpdatedDateTime = null;
+            // customer.UpdatedBy = null;
             // customer.Active = false;
             // customer.ActivationDate = DateTime.Now;
-            // customer.ActivationKey = "Yes";
+            // customer.ActivationKey = "yes";
             var errors = _customerRepository.AddValidation(customer);
             if (errors.Count > 0)
             {

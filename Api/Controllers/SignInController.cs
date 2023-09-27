@@ -42,7 +42,8 @@ namespace Controllers
                 new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                new Claim("Email", customer.Email)
+                new Claim("Email", customer.Email),
+                new Claim("password", customer.Password)
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -56,7 +57,7 @@ namespace Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        private async Task<Customer> GetToken(Login login)
+        private async Task<Customer?> GetToken(Login login)
         {
             var result = await context.Customers.FirstOrDefaultAsync(
                 t => t.Email.ToLower() == login.Email.ToLower() && t.Password == login.Password

@@ -5,11 +5,11 @@ namespace Controllers
 {
     [Route("api/Controller")]
     [ApiController]
-    public class DisplaController : ControllerBase
+    public class DisplayController : ControllerBase
     {
         private readonly IProductRepository _productRepository;
 
-        public DisplaController(IProductRepository productRepository)
+        public DisplayController(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }

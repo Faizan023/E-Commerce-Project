@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using Repository;
@@ -6,6 +7,7 @@ namespace Controllers
 {
     [Route("api/Controller")]
     [ApiController]
+    [Authorize]
     public class BrandController : ControllerBase
     {
         private readonly IBrandRepository brandRepository;

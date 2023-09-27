@@ -6,8 +6,8 @@
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Create an account</h2>
-              <p>{{displaymsg}}</p>
-              <form [formGroup]="registration" #formDir="ngForm">
+              
+              <form [formGroup]="registration">
                 <div class="form-outline mb-4">
                   <div class="row">
                     <div class="col">
@@ -97,9 +97,9 @@
                     class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
                 </div>
 
-                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
+                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a routerLink="/login"
                     class="fw-bold text-body"><u>Login here</u></a></p>
-
+                    <!-- <p>{{displaymsg}}</p> -->
               </form>
 
             </div>

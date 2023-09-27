@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RegisterComponent implements OnInit {
     registration!: FormGroup
-    displaymsg = '';
+    displaymsg = 'hey';
     constructor(private user: FormBuilder, private auth: AuthService) { }
     ngOnInit(): void {
         this.registration = this.user.group({
@@ -53,6 +53,8 @@ export class RegisterComponent implements OnInit {
             ]).subscribe(t => {
                 if (t == "Added Successfully") {
                     this.displaymsg = "Account Created"
+                } else {
+                    this.displaymsg = "use Another Email Account"
                 }
             }
             );
