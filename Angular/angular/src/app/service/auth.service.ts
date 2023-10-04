@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { createInjectableType } from "@angular/compiler";
 import { Injectable } from "@angular/core";
-import { CanActivate, CanActivateFn, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
@@ -28,19 +28,6 @@ export class AuthService {
             active: true,
             activationDate: '2024-09-19',
             activationKey: 'yes',
-            // id: 0
-
-            // createdDateTime:user[8],
-            //     createdBy:user[9],
-
-            //     updatedDateTime:user[10],
-
-            //     updatedBy:user[11],
-            //     active:user[12],
-
-            //     activationDate:user[13],
-
-            //     activationKey:user[14]
         }, { responseType: 'text' })
     }
 
@@ -48,7 +35,7 @@ export class AuthService {
         return this.http.post("http://localhost:5209/api/SignIn/LoginToken", {
             email,
             password
-        }, { responseType: 'text' })
+        }, { responseType: 'text' });
     }
 
 }

@@ -7,16 +7,18 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Models;
 
+// for admin side login
+
 namespace Controllers
 {
     [Route("api/Controller")]
     [ApiController]
     public class LoginController : ControllerBase
     {
-        private readonly DbContext _context;
+        private readonly Context _context;
         public IConfiguration _configuration;
 
-        public LoginController(DbContext context, IConfiguration configuration)
+        public LoginController(Context context, IConfiguration configuration)
         {
             _configuration = configuration;
             _context = context;
@@ -31,7 +33,7 @@ namespace Controllers
                 var token = GenerateToken(user);
                 return Ok(token);
             }
-            return Ok("Check Email or Password ");
+            return Ok("Check Email or Password");
         }
 
         private string GenerateToken(User user)
@@ -55,7 +57,7 @@ namespace Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        private async Task<User> GetUser(Login login)
+        private async Task<User?> GetUser(Login login)
         {
             var result = await _context.Users.FirstOrDefaultAsync(
                 u => u.Email.ToLower() == login.Email.ToLower() && u.Password == login.Password

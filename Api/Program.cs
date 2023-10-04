@@ -8,7 +8,7 @@ using Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<DbContext>(
+builder.Services.AddDbContext<Context>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default"))
 );
 builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();

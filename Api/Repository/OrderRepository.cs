@@ -14,9 +14,9 @@ namespace Repository
 
     public class OrderRepository : IOrderRepository
     {
-        private readonly DbContext context;
+        private readonly Context context;
 
-        public OrderRepository(DbContext _context)
+        public OrderRepository(Context _context)
         {
             context = _context;
         }

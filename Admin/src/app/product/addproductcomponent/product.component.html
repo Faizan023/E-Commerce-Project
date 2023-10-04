@@ -1,0 +1,108 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<form class="form-horizontal" [formGroup]="ProductForm">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>PRODUCTS</legend>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="filebutton">main_image</label>
+            <div class="col-md-4">
+                <input name="filebutton" class="input-file" type="file" formControlName="img">
+            </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>
+            <div class="col-md-4">
+                <input name="product_name" placeholder="PRODUCT NAME" class="form-control input-md" type="text"
+                    formControlName="name">
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="CategoryId"> Category ID </label>
+            <div class="col-md-4">
+                <input name="CategoryId" placeholder=" Category ID " class="form-control input-md" type="text"
+                    formControlName="categoryId">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="product_description">PRODUCT DESCRIPTION</label>
+            <div class="col-md-4">
+                <input class="form-control" name="description" formControlName="description">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="price">Price</label>
+            <div class="col-md-4">
+                <input name="price" placeholder="price" class="form-control input-md" type="text"
+                    formControlName="price">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="percentage_discount">PERCENTAGE DISCOUNT</label>
+            <div class="col-md-4">
+                <input name="percentage_discount" placeholder="PERCENTAGE DISCOUNT" class="form-control input-md"
+                    type="text" formControlName="discount">
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="available_quantity">AVAILABLE QUANTITY</label>
+            <div class="col-md-4">
+                <input name="available_quantity" placeholder="AVAILABLE QUANTITY" class="form-control input-md"
+                    type="text" formControlName="quantity">
+            </div>
+        </div>
+
+        <!-- Search input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="color">Color</label>
+            <div class="col-md-4">
+                <input name="color" placeholder="color" class="form-control input-md" type="search"
+                    formControlName="color">
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="online_date">Measurment</label>
+            <div class="col-md-4">
+                <input name="Measurment" placeholder="Measurment" class="form-control input-md" type="text"
+                    formControlName="measurment">
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="M_value">Measurment Value</label>
+            <div class="col-md-4">
+                <input name="author" placeholder="Measurment Value" class="form-control input-md" type="text"
+                    formControlName="mesurmentValue">
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="brandId">Brand Id</label>
+            <div class="col-md-4">
+                <input name="brandId" placeholder="Brand Id" class="form-control input-md" type="text"
+                    formControlName="brandId"> <br>
+
+                <!-- Button -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="singlebutton">Add Product</label>
+                    <div class="col-md-4">
+                        <button name="singlebutton" class="btn btn-primary" (click)="AddProduct()">Add +</button>
+                    </div>
+                </div>
+                <a routerLink="/product/listproduct">List</a>

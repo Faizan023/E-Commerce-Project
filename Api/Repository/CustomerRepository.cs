@@ -14,9 +14,9 @@ namespace Repository
 
     public class CustomerRepository : ICustomerRepository
     {
-        private readonly DbContext context;
+        private readonly Context context;
 
-        public CustomerRepository(DbContext _Context)
+        public CustomerRepository(Context _Context)
         {
             context = _Context;
         }

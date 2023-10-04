@@ -15,9 +15,9 @@ namespace Repository
 
     public class UserRepository : IUserRepository
     {
-        private readonly DbContext _context;
+        private readonly Context _context;
 
-        public UserRepository(DbContext context)
+        public UserRepository(Context context)
         {
             _context = context;
         }
@@ -84,24 +84,17 @@ namespace Repository
 
         public bool DeleteUser(int Id)
         {
-            var result = false;
-            try
+            bool result = false;
+            var find = _context.Users.Find(Id);
+            if (find != null)
             {
-                var find = _context.Users.Find(Id);
-                if (find != null)
-                {
-                    _context.Remove(find).State = EntityState.Deleted;
-                    _context.SaveChanges();
-                    result = true;
-                }
-                else
-                {
-                    result = false;
-                }
+                _context.Remove(find).State = EntityState.Deleted;
+                _context.SaveChanges();
+                result = true;
             }
-            catch
+            else
             {
-                throw;
+                result = false;
             }
             return result;
         }

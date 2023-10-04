@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Models;
-using Repository;
+
+// For Customer Login and Get Jwt Tokens
 
 namespace Controllers
 {
@@ -13,10 +14,10 @@ namespace Controllers
     [ApiController]
     public class SignInController : ControllerBase
     {
-        private readonly DbContext context;
+        private readonly Context context;
         public IConfiguration _configuration;
 
-        public SignInController(DbContext _Context, IConfiguration configuration)
+        public SignInController(Context _Context, IConfiguration configuration)
         {
             _configuration = configuration;
             context = _Context;

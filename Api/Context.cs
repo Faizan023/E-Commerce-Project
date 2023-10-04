@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Models;
 
-public class DbContext : Microsoft.EntityFrameworkCore.DbContext
+public class Context : DbContext
 {
-    public DbContext(DbContextOptions<DbContext> options)
+    public Context(DbContextOptions<Context> options)
         : base(options) { }
 
     public DbSet<Customer> Customers { get; set; }
@@ -13,5 +13,5 @@ public class DbContext : Microsoft.EntityFrameworkCore.DbContext
     public DbSet<Sale> Sales { get; set; }
     public DbSet<Brand> Brands { get; set; }
     public DbSet<User> Users { get; set; }
-    public DbSet<Cart> Carts{get; set;}
+    public DbSet<Cart> Carts { get; set; }
 }

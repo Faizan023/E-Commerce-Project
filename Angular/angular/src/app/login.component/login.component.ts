@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../service/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'login-component',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
 
     Login!: FormGroup
     Loginmsg = '';
-    constructor(private validation: FormBuilder, private Auth: AuthService) { }
+    constructor(private validation: FormBuilder, private Auth: AuthService, private route: Router) { }
 
     ngOnInit(): void {
         this.Login = this.validation.group({
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
                 console.log(res);
             } else {
                 localStorage.setItem('token', res);
-                this
+                this.Login.reset();
+                this.route.navigateByUrl('/home');
             }
         });
     }

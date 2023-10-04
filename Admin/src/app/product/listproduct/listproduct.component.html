@@ -1,0 +1,37 @@
+<p>listproduct works!</p>
+<table border="1">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Img</td>
+            <td>Name</td>
+            <td>category</td>
+            <td>Description</td>
+            <td>Price</td>
+            <td>Discount</td>
+            <td>Quantity</td>
+            <td>Color</td>
+            <td>Measurment</td>
+            <td>Measurment Value</td>
+            <td>brandId</td>
+            <td>Update</td>
+            <td>Delete</td>
+        </tr>
+        <tr *ngFor="let pro of product">
+            <td>{{pro.id}}</td>
+            <td> <img src="{{pro.img}}"></td>
+            <td> {{pro.name}} </td>
+            <td> {{pro.categoryId}}</td>
+            <td> {{pro.description}}</td>
+            <td> {{ "$"+pro.price}}</td>
+            <td> {{pro.discount + "%"}}</td>
+            <td> {{pro.quantity}}</td>
+            <td> {{pro.color}}</td>
+            <td> {{pro.measurment}}</td>
+            <td> {{pro.mesurmentValue}}</td>
+            <td> {{pro.brandId}}</td>
+            <td><button type="button">Update</button></td>
+            <td><button type="button" (click)="Delete(pro.id)">Remove</button></td>
+        </tr>
+    </thead>
+</table>

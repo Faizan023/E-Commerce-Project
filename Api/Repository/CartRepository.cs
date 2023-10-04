@@ -13,9 +13,9 @@ namespace Repository
 
     public class CartRepository : ICartRepository
     {
-        private readonly DbContext context;
+        private readonly Context context;
 
-        public CartRepository(DbContext _context)
+        public CartRepository(Context _context)
         {
             context = _context;
         }

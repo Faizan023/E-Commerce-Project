@@ -44,6 +44,8 @@ Constraint Pk_PId Primary Key (Id),
 Constraint Fk_Cid Foreign Key (CategoryId) References ProductCategories(Id),
 Constraint Fk_BId Foreign Key (BrandId) References Brands(Id)
 );
+
+select * from Products
 insert into Products (Img,Name,CategoryId,Description,Price,Discount,Quantity,Color,Measurment,MesurmentValue,BrandId,CreatedDateTime,UpdatedDateTime,CreatedBy,UpdatedBy)
 values((select * from Openrowset (BULK 'D:\Image\Black_Hair_Dry.jpg', Single_blob)as image),'Hair Dry',1,'This Product Is Amazing',200,5,10,'Purple','watt','15w',1,'2023-08-09',null,1,null);
 
@@ -78,7 +80,6 @@ Constraint Fk_PId Foreign Key (ProductId) References Products(Id)
 );
 insert into Orders(CustomerId,Quantity,Amount,ProductId,PaymentMethod,OrderDate,DeliveryAddress,BillingAddress,DeliveryDate,DeliveryCharge,Status,CreatedDateTime,UpdatedDateTime,CreatedBy,UpdatedBy)
 values(1,2,200,4,'Cash','2023-08-10','Ajit Mill','Naroda','2023-08-20',20,'Active','2023-08-05',null,1,null);
-select * from Orders;
 
 Create Table Cart(
 Id Int Identity(1,1) Not Null,
@@ -106,9 +107,9 @@ UpdatedBy Int Null,
 Constraint Pk_CategoryId Primary Key (Id)
 );select * from ProductCategories;
 
+select * from ProductCategories
+select * from Brands
 insert into ProductCategories (Name, CreateDateTime, UpdateDateTime,CreatedBy,UpdatedBy) values('Electronic','2023-09-09',null,1,null);
-
-select * from ProductCategories;
 
 Create Table Users(
 Id Int Identity(1,1) Not Null,
@@ -125,6 +126,11 @@ UpdatedBy Int Null,
 Constraint Pk_UserId Primary Key (Id),
 Constraint Fk_RoleId Foreign Key (RoleId) References Roles (Id)
 );
+
+delete Users where id>2;
+select * from Users
+select Users.Id,Users.FirstName, Roles.Name  from Users  inner join Roles  on Users.RoleId = Roles.Id 
+
 Create Table Roles(
 Id Int Identity(1,1) Not Null,
 Name Varchar(20) Not Null,
@@ -134,6 +140,7 @@ UpdatedBy Int Null,
 Constraint Pk_RoleId Primary Key (Id)
 );
 
+select * from Users
 
 Create Table Sales(
 Id Int Identity(1,1) Not Null,
@@ -142,7 +149,7 @@ StartDate Date Not Null,
 EndDate Date Not Null,
 CreateDateTime DateTimeOffset Not Null,
 UpdateDateTime DateTimeOffset Null,
-CreatedBy Int Not Null,
+CreatedBy Int Not Null,x	z
 UpdatedBy Int Null,
 
 Constraint PK_SalesId Primary Key (Id)
@@ -158,7 +165,7 @@ UpdatedBy Int Null,
 
 Constraint Pk_BrandId Primary Key (Id)
 );
-
+	select * from Brands
 Create Table ProductMappings(
 Id Int Identity(1,1) Not Null,
 SaleId Int Not Null,
@@ -172,8 +179,6 @@ Constraint Pk_MapId Primary Key (Id),
 Constraint Fk_SaleId Foreign Key (SaleId) References Sales (Id),
 Constraint Fk_ProductsId Foreign Key (ProductId) References Products (Id)
 );
-
-select * from Brands;
 
 insert into Brands(Name, CreateDateTime, UpdateDateTime, CreatedBy,UpdatedBy) values('Adidas',null, 1, null);
 

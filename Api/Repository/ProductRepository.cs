@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using Models;
 
@@ -14,9 +15,9 @@ namespace Repository
 
     public class ProductRepository : IProductRepository
     {
-        private readonly DbContext context;
+        private readonly Context context;
 
-        public ProductRepository(DbContext _context)
+        public ProductRepository(Context _context)
         {
             context = _context;
         }
@@ -90,7 +91,7 @@ namespace Repository
                 if (find != null)
                 {
                     context.Remove(find).State = EntityState.Deleted;
-                    context.SaveChangesAsync();
+                    context.SaveChanges();
                     result = true;
                 }
                 else

@@ -7,7 +7,7 @@ namespace Controllers
 {
     [Route("api/Controller")]
     [ApiController]
-    [Authorize]
+    // [Authorize]
     public class BrandController : ControllerBase
     {
         private readonly IBrandRepository brandRepository;

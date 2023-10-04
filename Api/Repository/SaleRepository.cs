@@ -14,9 +14,9 @@ namespace Repository
 
     public class SaleRepository : ISaleRepository
     {
-        private readonly DbContext context;
+        private readonly Context context;
 
-        public SaleRepository(DbContext _context)
+        public SaleRepository(Context _context)
         {
             context = _context;
         }
@@ -90,7 +90,7 @@ namespace Repository
                 if (find != null)
                 {
                     context.Remove(find).State = EntityState.Deleted;
-                    context.SaveChangesAsync();
+                    context.SaveChanges();
                     result = true;
                 }
                 else

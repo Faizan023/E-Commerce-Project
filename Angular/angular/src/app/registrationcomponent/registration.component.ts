@@ -1,7 +1,6 @@
 import { AuthService } from './../service/auth.service';
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'register',
@@ -22,13 +21,6 @@ export class RegisterComponent implements OnInit {
             dateofbirth: ['', [Validators.required, Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)]],
             gender: ['', Validators.required],
             address: ['', [Validators.required, Validators.minLength(4)]],
-            // createdDateTime: [''],
-            // createdBy: [''],
-            // updatedDateTime: [''],
-            // updatedBy: [''],
-            // active: [''],
-            // activationDate: [''],
-            // activationKey: ['']
         })
     }
 
@@ -43,13 +35,6 @@ export class RegisterComponent implements OnInit {
                 this.registration.value.dateofbirth,
                 this.registration.value.gender,
                 this.registration.value.address,
-                // this.registration.value.createdDateTime,
-                // this.registration.value.createdBy,
-                // this.registration.value.updatedDateTime,
-                // this.registration.value.updatedBy,
-                // this.registration.value.active,
-                // this.registration.value.activationDate,
-                // this.registration.value.activationKey
             ]).subscribe(t => {
                 if (t == "Added Successfully") {
                     this.displaymsg = "Account Created"

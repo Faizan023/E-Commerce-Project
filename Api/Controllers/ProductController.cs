@@ -38,6 +38,7 @@ namespace Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Something Went Wrong");
             }
+
             return Ok("Added Successfully");
         }
 
@@ -50,11 +51,26 @@ namespace Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteProduct")]
+        [Route("DeleteProduct/{Id}")]
         public JsonResult Delete(int Id)
         {
             _ProductRepository.DeleteProduct(Id);
             return new JsonResult("Deleted Successfully");
         }
+
+        //     public async Task<IActionResult> Uploadimage(IFormFile file, Product product){
+        //         if(file == null || file.Length == 0){
+        //             return BadRequest("Invalid Image");
+        //         }
+        //           using (var memoryStream = new MemoryStream())
+        //     {
+        //         await file.CopyToAsync(memoryStream);
+        //         var image = new Image
+        //         {
+        //             product.Name = file.Name
+        //         };
+        //         return Ok(" ");
+        //     }
+        // }
     }
 }
