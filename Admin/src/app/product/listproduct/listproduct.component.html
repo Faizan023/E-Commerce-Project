@@ -1,4 +1,5 @@
-<p>listproduct works!</p>
+<p>List Prooduct works</p>
+
 <table border="1">
     <thead>
         <tr>
@@ -12,7 +13,7 @@
             <td>Quantity</td>
             <td>Color</td>
             <td>Measurment</td>
-            <td>Measurment Value</td>
+            <!-- <td>Measurment Value</td> -->
             <td>brandId</td>
             <td>Update</td>
             <td>Delete</td>
@@ -27,10 +28,10 @@
             <td> {{pro.discount + "%"}}</td>
             <td> {{pro.quantity}}</td>
             <td> {{pro.color}}</td>
-            <td> {{pro.measurment}}</td>
-            <td> {{pro.mesurmentValue}}</td>
+            <td> {{ pro.mesurmentValue +pro.measurment }}</td>
+            <!-- <td> </td> -->
             <td> {{pro.brandId}}</td>
-            <td><button type="button">Update</button></td>
+            <td><button type="button" (click)="update(pro.id)">Update</button></td>
             <td><button type="button" (click)="Delete(pro.id)">Remove</button></td>
         </tr>
     </thead>

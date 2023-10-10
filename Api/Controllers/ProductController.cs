@@ -23,7 +23,7 @@ namespace Controllers
         }
 
         [HttpGet]
-        [Route("GetProductById")]
+        [Route("GetProductBy/{Id}")]
         public async Task<IActionResult> GetById(int Id)
         {
             return Ok(await _ProductRepository.GetProductById(Id));
@@ -48,7 +48,7 @@ namespace Controllers
         {
             await _ProductRepository.UpdateProduct(product);
             return Ok("Updated Successfully");
-        }
+        }   
 
         [HttpDelete]
         [Route("DeleteProduct/{Id}")]

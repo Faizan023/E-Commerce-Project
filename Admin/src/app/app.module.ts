@@ -7,10 +7,8 @@ import { RegisterComponent } from './registercomponent/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from "@angular/common/http";
-import { ProductComponent } from './product/addproductcomponent/product.component';
-import { ListproductComponent } from './product/listproduct/listproduct.component';
-import { ProductModule } from './product/product.module';
-
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -23,7 +21,8 @@ import { ProductModule } from './product/product.module';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

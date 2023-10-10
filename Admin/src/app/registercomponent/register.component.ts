@@ -36,9 +36,8 @@ export class RegisterComponent implements OnInit {
 
         if (res == "This Email Already Exist, Use Another Email") {
           console.log('This Email Already Exist, Use Another Email');
-        } 
-        else 
-        {
+        }
+        else {
           console.log("Added Successfully");
         }
       })

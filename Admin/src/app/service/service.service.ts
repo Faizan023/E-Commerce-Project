@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  msg: File | undefined ;
   constructor(private http: HttpClient) { }
 
   register(user: Array<string>) {
@@ -31,7 +30,7 @@ export class AuthService {
 
   insertproduct(product: any) {
     return this.http.post("http://localhost:5209/api/Controller/InsertProduct", {
-      img : product[0],
+      img: product[0],
       name: product[1],
       categoryId: product[2],
       description: product[3],
@@ -49,7 +48,25 @@ export class AuthService {
     }, { responseType: 'text' })
   }
 
-  DeleteProduct(){
-    this.http.delete('http://localhost:5209/api/Controller/DeleteProduct');
+  UpdateProduct(product: any) {
+    return this.http.put('http://localhost:5209/api/Controller/UpdateProduct', {
+      id: product[0],
+      img: product[1],
+      name: product[2],
+      categoryId: product[3],
+      description: product[4],
+      price: product[5],
+      discount: product[6],
+      quantity: product[7],
+      color: product[8],
+      measurment: product[9],
+      mesurmentValue: product[10],
+      brandId: product[11],
+      createdDateTime: '2023-10-19',
+      updatedDateTime: null,
+      createdBy: 1,
+      updatedBy: null
+    }, { responseType: 'text' })
+
   }
 }
