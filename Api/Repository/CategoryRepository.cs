@@ -10,6 +10,7 @@ namespace Repository
         Task<ProductCategory> InsertCategory(ProductCategory category);
         Task<ProductCategory> UpdateCategory(ProductCategory category);
         bool DeleteCategory(int Id);
+         List<string> validdation(ProductCategory category);
     }
 
     public class CategoryRepository : ICategoryRepository
@@ -103,6 +104,19 @@ namespace Repository
                 throw;
             }
             return result;
+        }
+
+        public List<string> validdation(ProductCategory category)
+        {
+            List<string> errors = new List<string>();
+            var find = context.Categories.FirstOrDefault(
+                c => c.Name.ToLower() == category.Name.ToLower()
+            );
+            if (find != null)
+            {
+                errors.Add("This Category Is Already Exist");
+            }
+            return errors;
         }
     }
 }

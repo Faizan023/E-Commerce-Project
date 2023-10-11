@@ -23,7 +23,7 @@ namespace Controllers
         }
 
         [HttpGet]
-        [Route("GetCategoryById")]
+        [Route("GetCategoryBy/{Id}")]
         public async Task<IActionResult> GetById(int Id)
         {
             return Ok(await _CategoryRepository.GetCategoryById(Id));
@@ -33,20 +33,36 @@ namespace Controllers
         [Route("InsertCategory")]
         public async Task<IActionResult> post(ProductCategory category)
         {
-            await _CategoryRepository.InsertCategory(category);
-            return Ok("Added Successfully");
+            var existing = _CategoryRepository.validdation(category);
+            if (existing.Count() > 0)
+            {
+                return BadRequest(existing.FirstOrDefault());
+            }
+            else
+            {
+                await _CategoryRepository.InsertCategory(category);
+                return Ok("Added Successfully");
+            }
         }
 
         [HttpPut]
-        [Route("UpdateCategory")]
+        [Route("UpdateCategory/{Id}")]
         public async Task<IActionResult> Put(ProductCategory category)
         {
-            await _CategoryRepository.UpdateCategory(category);
-            return Ok("Updated Successfully");
+            var existing = _CategoryRepository.validdation(category);
+            if (existing.Count() > 0)
+            {
+                return BadRequest(existing.FirstOrDefault());
+            }
+            else
+            {
+                await _CategoryRepository.UpdateCategory(category);
+                return Ok("Updated Successfully");
+            }
         }
 
         [HttpDelete]
-        [Route("DeleteCategory")]
+        [Route("DeleteCategory/{Id}")]
         public JsonResult Delete(int Id)
         {
             _CategoryRepository.DeleteCategory(Id);

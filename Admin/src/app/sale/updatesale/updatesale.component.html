@@ -1,0 +1,39 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<form class="form-horizontal" [formGroup]="saleupdateform">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Sale</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="sale_name">SALE NAME</label>
+            <div class="col-md-4">
+                <input name="sale_name" placeholder="SALE NAME" class="form-control input-md" type="text"
+                    formControlName="name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="sale_startDate">Start Date</label>
+            <div class="col-md-4">
+                <input name="sale_startDate" class="form-control input-md" type="date" formControlName="startDate">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="sale_endDate">End Date</label>
+            <div class="col-md-4">
+                <input name="sale_endDate" class="form-control input-md" type="date" formControlName="endDate">
+            </div>
+        </div>
+
+        <!-- <Button> -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="singlebutton">UPDATE SALE</label>
+            <div class="col-md-4">
+                <button name="singlebutton" class="btn btn-primary" (click)="updatesale()">Update</button>
+            </div>
+        </div>

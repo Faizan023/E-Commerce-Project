@@ -1,0 +1,17 @@
+<p>listcategory works!</p>
+<table border="1">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Update</td>
+            <td>Delete</td>
+        </tr>
+        <tr *ngFor="let category of  CategoryList">
+            <td>{{category.id}}</td>
+            <td>{{category.name}} </td>
+            <td><button type="button" (click)="updatecategory(category.id)">Update</button></td>
+            <td><button type="button" (click)="removecategory(category.id)">Remove</button></td>
+        </tr>
+    </thead>
+</table>    

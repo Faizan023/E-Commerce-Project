@@ -1,0 +1,26 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<form class="form-horizontal" [formGroup]="addcategoryform">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Category</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="category_name">CATEGORY NAME</label>
+            <div class="col-md-4">
+                <input name="category_name" placeholder="CATEGORY NAME" class="form-control input-md" type="text"
+                    formControlName="name">
+            </div>
+        </div>
+
+        <!-- <Button> -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="singlebutton">Add CATEGORY</label>
+            <div class="col-md-4">
+                <button name="singlebutton" class="btn btn-primary" (click)="addcategory()">Add +</button>
+            </div>
+        </div>

@@ -23,7 +23,7 @@ namespace Controllers
         }
 
         [HttpGet]
-        [Route("GetSaleById")]
+        [Route("GetSaleById/{Id}")]
         public async Task<IActionResult> GetById(int Id)
         {
             return Ok(await _saleRepository.GetSaleById(Id));
@@ -38,7 +38,7 @@ namespace Controllers
         }
 
         [HttpPut]
-        [Route("UpdateSale")]
+        [Route("UpdateSale/{Id}")]
         public async Task<IActionResult> Put(Sale sale)
         {
             await _saleRepository.UpdateSale(sale);
@@ -46,7 +46,7 @@ namespace Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteSale")]
+        [Route("DeleteSale/{Id}")]
         public JsonResult Delete(int Id)
         {
             _saleRepository.DeleteSale(Id);

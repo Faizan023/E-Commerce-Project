@@ -1,0 +1,16 @@
+<table border="1">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Update</td>
+            <td>Delete</td>
+        </tr>
+        <tr *ngFor="let brand of BrandList">
+            <td>{{brand.id}}</td>
+            <td>{{brand.name}} </td>
+            <td><button type="button" (click)="updatebrand(brand.id)">Update</button></td>
+            <td><button type="button" (click)="removebrand(brand.id)">Remove</button></td>
+        </tr>
+    </thead>
+</table>

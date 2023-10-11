@@ -1,0 +1,21 @@
+<p>listcategory works!</p>
+<table border="1">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>startDate</td>
+            <td>endDate</td>
+            <td>Update</td>
+            <td>Delete</td>
+        </tr>
+        <tr *ngFor="let sale of  SaleList">
+            <td>{{sale.id}}</td>
+            <td>{{sale.name}} </td>
+            <td>{{sale.startDate | date:'dd-MM-yy'}}</td>
+            <td>{{sale.endDate | date:'dd-MM-yy'}}</td>
+            <td><button type="button" (click)="updatesale(sale.id)">Update</button></td>
+            <td><button type="button" (click)="removesale(sale.id)">Remove</button></td>
+        </tr>
+    </thead>
+</table>

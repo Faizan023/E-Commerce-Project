@@ -25,7 +25,7 @@ namespace Controllers
         }
 
         [HttpGet]
-        [Route("GetBrandById")]
+        [Route("GetBrandBy/{Id}")]
         public async Task<IActionResult> GetById(int Id)
         {
             return Ok(await brandRepository.GetBrandById(Id));
@@ -48,7 +48,7 @@ namespace Controllers
         }
 
         [HttpPut]
-        [Route("UpdateBrand")]
+        [Route("UpdateBrand/{Id}")]
         public async Task<IActionResult> Put(Brand brand)
         {
             var existing = brandRepository.BrandValidation(brand);
@@ -64,7 +64,7 @@ namespace Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteBrand")]
+        [Route("DeleteBrand/{Id}")]
         public JsonResult Delete(int Id)
         {
             brandRepository.DeleteBrand(Id);

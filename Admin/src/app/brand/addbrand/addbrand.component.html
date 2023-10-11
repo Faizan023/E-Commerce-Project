@@ -1,0 +1,26 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<form class="form-horizontal" [formGroup]="addbrandform">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Brand</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="product_name">BRAND NAME</label>
+            <div class="col-md-4">
+                <input name="product_name" placeholder="BRAND NAME" class="form-control input-md" type="text"
+                    formControlName="name">
+            </div>
+        </div>
+
+        <!-- <Button> -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="singlebutton">Add Brand</label>
+            <div class="col-md-4">
+                <button name="singlebutton" class="btn btn-primary" (click)="addBrand()">Add +</button>
+            </div>
+        </div>

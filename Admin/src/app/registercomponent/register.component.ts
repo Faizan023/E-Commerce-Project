@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../service/service.service';
 import { Subscriber } from 'rxjs';
+import { NotificationService } from '../notification.service';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   AdminRegister!: FormGroup
 
-  constructor(private form: FormBuilder, private auth: AuthService) { }
+  constructor(private form: FormBuilder, private auth: AuthService, private toastr: NotificationService) { }
   ngOnInit(): void {
     this.AdminRegister = this.form.group({
       firstName: ['', Validators.required],
@@ -36,9 +37,11 @@ export class RegisterComponent implements OnInit {
 
         if (res == "This Email Already Exist, Use Another Email") {
           console.log('This Email Already Exist, Use Another Email');
+          this.toastr.showError('Error', 'Try Another Email');
         }
         else {
           console.log("Added Successfully");
+          this.toastr.showSuccess('Success', 'Youre Registered');
         }
       })
 
