@@ -46,5 +46,13 @@ namespace Controllers
                 }
             }
         }
+
+        [HttpDelete]
+        [Route("DeleteCustomer/{Id}")]
+        public JsonResult Delete(int Id)
+        {
+            _CustomerRepository.DeleteCustomer(Id);
+            return new JsonResult("Deleted Successfully");
+        }
     }
 }

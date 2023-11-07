@@ -1,3 +1,5 @@
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,11 +19,21 @@ import { ListcategoryComponent } from './category/listcategory/listcategory.comp
 import { AddsaleComponent } from './sale/addsale/addsale.component';
 import { UpdatesaleComponent } from './sale/updatesale/updatesale.component';
 import { ListsaleComponent } from './sale/listsale/listsale.component';
+import { CustomerlistComponent } from './customer/customerlist/customerlist.component';
+import { OrderlistComponent } from './order/orderlist/orderlist.component';
+import { NavbarComponent } from './navbar/navbar.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent, RegisterComponent, AddbrandComponent, ListbrandComponent, UpdatebrandComponent, AddcategoryComponent, UpdatecategoryComponent, ListcategoryComponent, AddsaleComponent, UpdatesaleComponent, ListsaleComponent
+    LoginComponent, RegisterComponent,
+    AddbrandComponent, ListbrandComponent,
+    UpdatebrandComponent, AddcategoryComponent,
+    UpdatecategoryComponent, ListcategoryComponent,
+    AddsaleComponent, UpdatesaleComponent,
+    ListsaleComponent, CustomerlistComponent,
+    OrderlistComponent,NavbarComponent
 
   ],
   imports: [
@@ -30,7 +42,10 @@ import { ListsaleComponent } from './sale/listsale/listsale.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatSidenavModule,
+    MatToolbarModule,
     ToastrModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

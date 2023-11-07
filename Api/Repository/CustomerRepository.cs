@@ -10,6 +10,7 @@ namespace Repository
         Task<Customer> InsertCustomer(Customer customer);
         List<string> AddValidation(Customer manage);
         Task<Customer> UpdateCustomer(Customer customer);
+        bool DeleteCustomer(int Id);
     }
 
     public class CustomerRepository : ICustomerRepository
@@ -92,6 +93,30 @@ namespace Repository
                 throw;
             }
             return manage;
+        }
+
+        public bool DeleteCustomer(int Id)
+        {
+            var result = false;
+            try
+            {
+                var find = context.Customers.Find(Id);
+                if (find != null)
+                {
+                    context.Remove(find).State = EntityState.Deleted;
+                    context.SaveChanges();
+                    result = true;
+                }
+                else
+                {
+                    result = false;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            return result;
         }
     }
 }

@@ -1,0 +1,24 @@
+    <table class="table table-striped">
+    <thead style="background-color: black;">
+        <tr>
+            <th scope="col">Joined</th>
+            <th scope="col">CustomerId</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th>Contact</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let customer of customerList ">
+            <!-- <th scope="row">1</th> -->
+            <td>{{customer.dateOfBirth | date}}</td>
+            <td>{{customer.id}}</td>
+            <td>{{customer.firstName + customer.lastName}}</td>
+            <td>{{customer.email}}</td>
+            <td>{{customer.phoneNumber}}</td>
+            <!-- <td>{{customer.address}}</td> -->
+            <td><button type="button" (click)="remove(customer.id)">Remove</button></td>
+        </tr>
+    </tbody>
+</table>

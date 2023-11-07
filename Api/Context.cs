@@ -14,4 +14,9 @@ public class Context : DbContext
     public DbSet<Brand> Brands { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Cart> Carts { get; set; }
+
+    internal object Find(int id)
+    {
+        throw new NotImplementedException();
+    }
 }
