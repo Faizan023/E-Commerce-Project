@@ -1,38 +1,52 @@
-<p>List Prooduct works</p>
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Order Table</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="">Home</a></li>
+                <li class="breadcrumb-item">Tables</li>
+                <li class="breadcrumb-item active">Data</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
 
-<table border="1">
-    <thead>
-        <tr>
-            <td>Id</td>
-            <td>Img</td>
-            <td>Name</td>
-            <td>category</td>
-            <td>Description</td>
-            <td>Price</td>
-            <td>Discount</td>
-            <td>Quantity</td>
-            <td>Color</td>
-            <td>Measurment</td>
-            <!-- <td>Measurment Value</td> -->
-            <td>brandId</td>
-            <td>Update</td>
-            <td>Delete</td>
-        </tr>
-        <tr *ngFor="let pro of product">
-            <td>{{pro.id}}</td>
-            <td> <img src="{{pro.img}}"></td>
-            <td> {{pro.name}} </td>
-            <td> {{pro.categoryId}}</td>
-            <td> {{pro.description}}</td>
-            <td> {{ "$"+pro.price}}</td>
-            <td> {{pro.discount + "%"}}</td>
-            <td> {{pro.quantity}}</td>
-            <td> {{pro.color}}</td>
-            <td> {{ pro.mesurmentValue +pro.measurment }}</td>
-            <!-- <td> </td> -->
-            <td> {{pro.brandId}}</td>
-            <td><button type="button" (click)="update(pro.id)">Update</button></td>
-            <td><button type="button" (click)="Delete(pro.id)">Remove</button></td>
-        </tr>
-    </thead>
-</table>
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Orders</h5>
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Available</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let pro of product">
+                                    <td scope="row">{{pro.id}}</td>
+                                    <td scope="row"> <img src="{{pro.img}}"></td>
+                                    <td scope="row">{{pro.quantity}}</td>
+                                    <td scope="row"> {{ "$"+pro.price}}</td>
+                                    <td scope="row"> <button type="button" class="btn btn-outline-warning"
+                                            (click)="update(pro.id)">Update</button></td>
+                                    <td scope="row"> <button type="button" class="btn btn-outline-danger"
+                                            (click)="update(pro.id)">Delete</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>

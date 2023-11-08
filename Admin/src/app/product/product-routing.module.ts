@@ -5,10 +5,10 @@ import { ListproductComponent } from './listproduct/listproduct.component';
 import { UpdateComponent } from './update/update.component';
 
 const routes: Routes = [
-  { path: '', component: ProductComponent },
-  { path: 'listproduct', component: ListproductComponent },
-  { path: 'addproduct', component: ProductComponent },
-  { path: 'updateproduct/:id', component: UpdateComponent }
+  { path: '', component: ListproductComponent },
+  { path: 'list', component: ListproductComponent },
+  { path: 'add', component: ProductComponent },
+  { path: 'update/:id', component: UpdateComponent }
 ];
 
 @NgModule({

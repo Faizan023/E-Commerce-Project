@@ -1,16 +1,53 @@
-<table border="1">
-    <thead>
-        <tr>
-            <td>Id</td>
-            <td>Name</td>
-            <td>Update</td>
-            <td>Delete</td>
-        </tr>
-        <tr *ngFor="let brand of BrandList">
-            <td>{{brand.id}}</td>
-            <td>{{brand.name}} </td>
-            <td><button type="button" (click)="updatebrand(brand.id)">Update</button></td>
-            <td><button type="button" (click)="removebrand(brand.id)">Remove</button></td>
-        </tr>
-    </thead>
-</table>
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Customer Data</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="">Home</a></li>
+                <li class="breadcrumb-item">Tables</li>
+                <li class="breadcrumb-item active">Data</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Customerdata</h5>
+
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable">
+                            <thead>
+                                <tr>
+                                    <td scope="col">Id</td>
+                                    <td scope="col">Name</td>
+                                    <td scope="col">Action</td>
+                                    <td scope="col">Action</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let brand of BrandList">
+                                    <td>{{brand.id}}</td>
+                                    <td>{{brand.name}} </td>
+                                    <!-- <td><button type="button">Update</button></td> -->
+                                    <td><button type="button" class="btn btn-outline-warning"
+                                            (click)="updatebrand(brand.id)">Update</button></td>
+                                    <!-- <td><button type="button" (click)="removebrand(brand.id)">Remove</button></td> -->
+                                    <td> <button type="button" class="btn btn-outline-danger"
+                                            (click)="removebrand(brand.id)">Delete</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        End Table with stripped rows
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>

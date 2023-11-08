@@ -6,9 +6,9 @@ import { UpdatecategoryComponent } from './updatecategory/updatecategory.compone
 
 const routes: Routes = [
   { path: '', component: ListcategoryComponent },
-  { path: 'listcategory', component: ListcategoryComponent },
-  { path: 'addcategory', component: AddcategoryComponent },
-  { path: 'updatecategory/:id', component: UpdatecategoryComponent }
+  { path: 'list', component: ListcategoryComponent },
+  { path: 'add', component: AddcategoryComponent },
+  { path: 'update/:id', component: UpdatecategoryComponent }
 ];
 
 @NgModule({

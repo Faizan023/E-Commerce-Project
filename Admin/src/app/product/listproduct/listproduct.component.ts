@@ -44,6 +44,6 @@ export class ListproductComponent implements OnInit {
   }
 
   update(id: number): void {
-    this.route.navigate(['product/updateproduct', id]);
+    this.route.navigate(['product/update', id]);
   }
 }

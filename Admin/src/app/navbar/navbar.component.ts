@@ -1,3 +1,4 @@
+import { Route, Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+
+  constructor(private Route: Router){}
+logout(){
+  localStorage.clear();
+  this.Route.navigateByUrl('/login');
+}
 
 }

@@ -25,6 +25,6 @@ export class ListcategoryComponent implements OnInit {
     });
   }
   updatecategory(id: number) {
-    this.router.navigate(['category/updatecategory/' + id]);
+    this.router.navigate(['category/update/' + id]);
   }
 }

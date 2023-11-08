@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/service.service';
 import { NotificationService } from '../notification.service';
+import { StorageKey } from '../helper/comman-constant';
 
 @Component({
   selector: 'app-login',
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
           console.log("Check Email or Password");
           this.toastr.showError('Error', 'Check Email or Password');
         } else {
+          localStorage.setItem(StorageKey.IsLoggedIn,"true");
           localStorage.setItem('token', res);
           console.log("Login Successfully");
           this.route.navigateByUrl('/product');

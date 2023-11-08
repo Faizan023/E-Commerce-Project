@@ -29,6 +29,6 @@ export class ListbrandComponent implements OnInit {
   }
 
   updatebrand(id: number) {
-    this.router.navigate(['brand/updatebrand/' + id]);
+    this.router.navigate(['brand/update/' + id]);
   }
 }

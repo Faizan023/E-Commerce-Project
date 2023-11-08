@@ -4,18 +4,58 @@ import { RegisterComponent } from './registercomponent/register.component';
 import { LoginComponent } from './login/login.component';
 import { CustomerlistComponent } from './customer/customerlist/customerlist.component';
 import { OrderlistComponent } from './order/orderlist/orderlist.component';
+import { AuthGuardFunction } from './guard/login-guard';
 
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'customers', component: CustomerlistComponent },
-  { path: 'orders', component: OrderlistComponent },
-  { path: 'product', loadChildren: () => import('./product/product.module').then(m => m.ProductModule) },
-  { path: 'brand', loadChildren: () => import('./brand/brand.module').then(b => b.BrandModule) },
-  { path: 'category', loadChildren: () => import('./category/category.module').then(c => c.CategoryModule) },
-  { path: 'sale', loadChildren: () => import('./sale/sale-routing.module').then(s => s.SaleRoutingModule) },
-  { path: '', component: RegisterComponent, pathMatch: 'full' }
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'customer',
+    component: CustomerlistComponent,
+    canActivate: [AuthGuardFunction]
+  },
+  {
+    path: 'order',
+    component: OrderlistComponent,
+    canActivate: [AuthGuardFunction]
+  },
+  {
+    path: 'product',
+    loadChildren: () => import('./product/product.module').then(m => m.ProductModule),
+    canActivate: [AuthGuardFunction]
+  },
+  {
+    path: 'brand',
+    loadChildren: () => import('./brand/brand.module').then(b => b.BrandModule),
+    canActivate: [AuthGuardFunction]
+  },
+  {
+    path: 'category',
+    loadChildren: () => import('./category/category.module').then(c => c.CategoryModule),
+    canActivate: [AuthGuardFunction]
+  },
+  {
+    path: 'sale',
+    loadChildren: () => import('./sale/sale-routing.module').then(s => s.SaleRoutingModule),
+    canActivate: [AuthGuardFunction]
+  },
+  {
+    path: '',
+    component: LoginComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    component: LoginComponent,
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

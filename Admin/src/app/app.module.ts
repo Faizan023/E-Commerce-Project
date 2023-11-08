@@ -22,7 +22,12 @@ import { ListsaleComponent } from './sale/listsale/listsale.component';
 import { CustomerlistComponent } from './customer/customerlist/customerlist.component';
 import { OrderlistComponent } from './order/orderlist/orderlist.component';
 import { NavbarComponent } from './navbar/navbar.component';
-
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ProductModule } from './product/product.module';
+import { CategoryRoutingModule } from './category/category-routing.module';
+import { ProductComponent } from './product/addproductcomponent/product.component';
+import { ListproductComponent } from './product/listproduct/listproduct.component';
+import { UpdateComponent } from './product/update/update.component';
 
 @NgModule({
   declarations: [
@@ -33,8 +38,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     UpdatecategoryComponent, ListcategoryComponent,
     AddsaleComponent, UpdatesaleComponent,
     ListsaleComponent, CustomerlistComponent,
-    OrderlistComponent,NavbarComponent
-
+    OrderlistComponent,NavbarComponent, SidebarComponent, ProductComponent, ListproductComponent, UpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,6 @@ import { NavbarComponent } from './navbar/navbar.component';
     MatSidenavModule,
     MatToolbarModule,
     ToastrModule.forRoot(),
-
   ],
   providers: [],
   bootstrap: [AppComponent]

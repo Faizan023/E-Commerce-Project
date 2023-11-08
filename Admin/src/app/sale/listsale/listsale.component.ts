@@ -27,7 +27,7 @@ export class ListsaleComponent implements OnInit {
     });
   }
   updatesale(id: number) {
-    this.router.navigateByUrl('/sale/updatesale/' + id);
+    this.router.navigateByUrl('/sale/update/' + id);
   }
 }
 

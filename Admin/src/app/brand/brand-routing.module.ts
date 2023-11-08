@@ -6,9 +6,9 @@ import { AddbrandComponent } from './addbrand/addbrand.component';
 
 const routes: Routes = [
   { path: '', component: ListbrandComponent },
-  { path: 'listbrand', component: ListbrandComponent },
-  { path: 'addbrand', component: AddbrandComponent },
-  { path: 'updatebrand/:id', component: UpdatebrandComponent },
+  { path: 'list', component: ListbrandComponent },
+  { path: 'add', component: AddbrandComponent },
+  { path: 'update/:id', component: UpdatebrandComponent },
 ];
 
 @NgModule({

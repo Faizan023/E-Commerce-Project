@@ -1,3 +1,40 @@
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<header id="header" class="header fixed-top d-flex align-items-center">
 
-  
- 
+  <div class="d-flex align-items-center justify-content-between">
+    <div class="logo d-flex align-items-center">
+      <!-- <i class='bx bxs-shopping-bags '></i> -->
+      <span class="d-none d-lg-block">Admin</span>
+    </div>
+    <i class=' toggle-sidebar-btn  bx bx-menu'></i>
+  </div> <!-- End Logo -->
+
+  <nav class="header-nav ms-auto">
+    <ul class="d-flex align-items-center">
+
+      <li class="nav-item dropdown">
+
+      <li class="nav-item dropdown pe-3">
+        <button type="button" (click)="logout()">Lgout</button>
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="">
+          <!-- <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
+          <span class="d-none d-md-block  ps-2">Home</span>
+        </a><!-- End Profile Iamge Icon -->
+
+      </li><!-- End Profile Nav -->
+      <li class="nav-item dropdown pe-3">
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="">
+          <span class="d-none d-md-block  ps-2">About</span>
+        </a>
+      </li>
+
+      <li class="nav-item dropdown pe-3">
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="">
+          <span class="d-none d-md-block  ps-2">Section3</span>
+        </a>
+      </li>
+
+    </ul>
+  </nav><!-- End Icons Navigation -->
+
+</header><!-- End Header -->

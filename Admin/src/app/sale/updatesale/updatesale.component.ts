@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -47,9 +47,11 @@ export class UpdatesaleComponent implements OnInit {
         createdBy: 1,
         updatedBy: 1
       }).subscribe(res => {
-        console.log(res);
-        this.toastr.showSuccess('Success', 'updated Successfully');
-        // this.router.navigateByUrl('/sale/listsale');
+        if(res == "Updated Successfully"){
+          this.toastr.showSuccess('Success', 'updated Successfully');
+          this.router.navigateByUrl('/sale/list');
+        }
+          
 
       });
     }

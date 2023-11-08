@@ -1,3 +1,4 @@
+import { HelperService } from './helper/helper.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Admin';
+
+
+  constructor(private helperService: HelperService) {
+
+  }
+  
+
 }
