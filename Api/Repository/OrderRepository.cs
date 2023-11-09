@@ -10,6 +10,7 @@ namespace Repository
         Task<Order> UpdateOrder(Order order);
         Task<Order> AddOrder(Order order);
         bool DeleteOrder(int Id);
+        Task<int> GetOrderCount();
     }
 
     public class OrderRepository : IOrderRepository
@@ -103,6 +104,11 @@ namespace Repository
                 throw;
             }
             return result;
+        }
+
+        public async Task<int> GetOrderCount()
+        {
+            return context.Orders.Count();
         }
     }
 }

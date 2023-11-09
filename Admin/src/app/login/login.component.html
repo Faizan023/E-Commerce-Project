@@ -1,46 +1,72 @@
-<!-- <h1>This is Login Component</h1> -->
-<form [formGroup]="AdminLogin">
-    <section class="vh-100">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                        <div class="card-body p-5 text-center">
+<main>
+    <div class="container">
 
-                            <h3 class="mb-5">Sign in</h3>
+        <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-                            <div class="form-outline mb-4">
-                                <input type="email" class="form-control form-control-lg" name="email"
-                                    formControlName="email" />
-                                <label class="form-label" for="email">Email</label>
+                        <div class="d-flex justify-content-center py-4">
+                            <!-- <a href="index.html" class="logo d-flex align-items-center w-auto"> -->
+                            <!-- <img src="assets/img/logo.png" alt=""> -->
+                            <span class="d-none d-lg-block">NiceAdmin</span>
+                            <!-- </a> -->
+                        </div><!-- End Logo -->
+
+                        <div class="card mb-3">
+
+                            <div class="card-body">
+
+                                <div class="pt-4 pb-2">
+                                    <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
+                                    <p class="text-center small">Enter your username & password </p>
+                                </div>
+
+                                <form class="row g-3 needs-validation" [formGroup]="AdminLogin">
+
+                                    <div class="col-12">
+                                        <label for="yourUsername" class="form-label">Username</label>
+                                        <div class="input-group has-validation">
+
+                                            <input type="text" name="username" class="form-control"
+                                                formControlName="email">
+                                            <div class="invalid-feedback">Please enter your username.</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="yourPassword" class="form-label">Password</label>
+                                        <input type="password" name="password" class="form-control"
+                                            formControlName="password">
+                                        <div class="invalid-feedback">Please enter your password!</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="remember" value="true"
+                                                id="rememberMe">
+                                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary w-100" type="submit"
+                                            (click)="OnLogin()">Login</button>
+                                    </div>
+                                    <!-- <div class="col-12" style="text-align: center;">
+                                        <p class="small mb-0">Don't have account? <a href="pages-register.html">Create
+                                                an account</a></p>
+                                    </div> -->
+                                </form>
+
                             </div>
-
-                            <div class="form-outline mb-4">
-                                <input type="password" class="form-control form-control-lg" name="password"
-                                    formControlName="password" />
-                                <label class="form-label" for="password">Password</label>
-                            </div>
-                            <!-- <button type="button" (click)="Show()" > Show</button> -->
-                            <!-- Checkbox -->
-                            <div class="form-check d-flex justify-content-start mb-4">
-                                <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
-                                <label class="form-check-label" for="form1Example3"> Remember password </label>
-                            </div>
-
-                            <div class="d-flex justify-content-center">
-                                <button type="button" (click)="OnLogin()"
-                                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
-                            </div>
-
-                            <hr class="my-4">
-
-
-                            <p class="text-center text-muted mt-5 mb-0">Don't have an account? <a routerLink="/register"
-                                    class="fw-bold text-body"><u>Register here</u></a></p>
                         </div>
+
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-</form>
+
+        </section>
+
+    </div>
+</main><!-- End #main -->

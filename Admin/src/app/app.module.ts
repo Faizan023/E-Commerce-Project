@@ -28,6 +28,7 @@ import { CategoryRoutingModule } from './category/category-routing.module';
 import { ProductComponent } from './product/addproductcomponent/product.component';
 import { ListproductComponent } from './product/listproduct/listproduct.component';
 import { UpdateComponent } from './product/update/update.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { UpdateComponent } from './product/update/update.component';
     UpdatecategoryComponent, ListcategoryComponent,
     AddsaleComponent, UpdatesaleComponent,
     ListsaleComponent, CustomerlistComponent,
-    OrderlistComponent,NavbarComponent, SidebarComponent, ProductComponent, ListproductComponent, UpdateComponent,
+    OrderlistComponent,NavbarComponent, SidebarComponent, ProductComponent, ListproductComponent, UpdateComponent, DashboardComponent,
   ],
   imports: [
     BrowserModule,

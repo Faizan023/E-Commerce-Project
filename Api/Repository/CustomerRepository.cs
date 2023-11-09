@@ -11,6 +11,7 @@ namespace Repository
         List<string> AddValidation(Customer manage);
         Task<Customer> UpdateCustomer(Customer customer);
         bool DeleteCustomer(int Id);
+        Task<int> CustomerCount();
     }
 
     public class CustomerRepository : ICustomerRepository
@@ -117,6 +118,11 @@ namespace Repository
                 throw;
             }
             return result;
+        }
+
+        public async Task<int> CustomerCount()
+        {
+            return context.Customers.Count();
         }
     }
 }
