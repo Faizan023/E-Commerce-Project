@@ -1,3 +1,6 @@
+using System.Security.Cryptography;
+using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using Models;
 
@@ -11,6 +14,11 @@ namespace Repository
         Task<Order> AddOrder(Order order);
         bool DeleteOrder(int Id);
         Task<int> GetOrderCount();
+        Task<int> GetOrderCountMonth();
+        Task<int> GetOrderCountyear();
+        Task<int> Revenue();
+        Task<int> RevenueYear();
+        Task<int> RevenueMonth();
     }
 
     public class OrderRepository : IOrderRepository
@@ -108,7 +116,62 @@ namespace Repository
 
         public async Task<int> GetOrderCount()
         {
-            return context.Orders.Count();
+            var datetime = DateTime.Now.Date;
+            return context.Orders.Where(t => t.CreatedDateTime.Date == datetime).Count();
+        }
+
+        public async Task<int> GetOrderCountMonth()
+        {
+            var datetime = DateTime.Now.Month;
+            return context.Orders.Where(t => t.CreatedDateTime.Month == datetime).Count();
+        }
+
+        public async Task<int> GetOrderCountyear()
+        {
+            var datetime = DateTime.Now.Year;
+            return context.Orders.Where(t => t.CreatedDateTime.Year == datetime).Count();
+        }
+
+        public async Task<int> Revenue()
+        {
+            return context.Orders
+                .Where(
+                    t =>
+                        t.Status == "Completed"
+                        && (
+                            t.StatusDateTime.HasValue
+                            && t.StatusDateTime.Value.Date == DateTime.Now.Date
+                        )
+                )
+                .Sum(t => t.Amount * t.Quantity);
+        }
+
+        public async Task<int> RevenueMonth()
+        {
+            return context.Orders
+                .Where(
+                    t =>
+                        t.Status == "Completed"
+                        && (
+                            t.StatusDateTime.HasValue
+                            && t.StatusDateTime.Value.Month == DateTime.Now.Month
+                        )
+                )
+                .Sum(t => t.Amount * t.Quantity);
+        }
+
+        public async Task<int> RevenueYear()
+        {
+            return context.Orders
+                .Where(
+                    t =>
+                        t.Status == "Completed"
+                        && (
+                            t.StatusDateTime.HasValue
+                            && t.StatusDateTime.Value.Year == DateTime.Now.Year
+                        )
+                )
+                .Sum(t => t.Amount * t.Quantity);
         }
     }
 }

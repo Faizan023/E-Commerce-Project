@@ -26,21 +26,15 @@ namespace Controllers
         public async Task<IActionResult> Get()
         {
             dashboard.CustomerCount = await _CustomerRepository.CustomerCount();
-            return Ok(dashboard);
-        }
-
-        [HttpGet]
-        [Route("OrderCount")]
-        public async Task<IActionResult> GetOrderCount()
-        {
+            dashboard.RevenueCount = await _OrderRepository.Revenue();
             dashboard.SalesCount = await _OrderRepository.GetOrderCount();
+            dashboard.CustomerCountMonth = await _CustomerRepository.CustomerCountMonth();
+            dashboard.CustomerCountYear = await _CustomerRepository.CustomerCountYear();
+            dashboard.SalesCountMonth = await _OrderRepository.GetOrderCountMonth();
+            dashboard.RevenueCountMonth = await _OrderRepository.RevenueMonth();
+            dashboard.SalesCountYear = await _OrderRepository.GetOrderCountyear();
+            dashboard.RevenueCountYear = await _OrderRepository.RevenueYear();
             return Ok(dashboard);
         }
-
-        // [HttpGet]
-        // [Route("Revenue")]
-        // public async Task<IActionResult> GetRevenue(){
-        //     dashboard.
-        // }
     }
 }

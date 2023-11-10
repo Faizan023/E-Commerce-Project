@@ -12,6 +12,8 @@ namespace Repository
         Task<Customer> UpdateCustomer(Customer customer);
         bool DeleteCustomer(int Id);
         Task<int> CustomerCount();
+        Task<int> CustomerCountMonth();
+        Task<int> CustomerCountYear();
     }
 
     public class CustomerRepository : ICustomerRepository
@@ -122,7 +124,20 @@ namespace Repository
 
         public async Task<int> CustomerCount()
         {
-            return context.Customers.Count();
+            var date = DateTime.Now.Date;
+            return context.Customers.Where(t => t.CreatedDateTime.Date == date).Count();
+        }
+
+        public async Task<int> CustomerCountMonth()
+        {
+            var date = DateTime.Now.Month;
+            return context.Customers.Where(t => t.CreatedDateTime.Month == date).Count();
+        }
+
+        public async Task<int> CustomerCountYear()
+        {
+            var date = DateTime.Now.Year;
+            return context.Customers.Where(t => t.CreatedDateTime.Year == date).Count();
         }
     }
 }
