@@ -35,7 +35,7 @@
                 <tr *ngFor="let order of orderList ">
                   <td scope="row">{{order.orderDate | date}}</td>
                   <td scope="row">{{order.id}}</td>
-                  <td scope="row">{{order.customerId}}</td>
+                  <td scope="row">{{order.customerName}}</td>
                   <td scope="row">₹ {{order.amount}} </td>
                   <td scope="row">{{order.quantity}}</td>
                   <td scope="row"> ₹ {{order.amount * order.quantity}}</td>

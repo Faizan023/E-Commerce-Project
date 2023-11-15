@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -34,7 +35,7 @@ namespace Repository
         {
             try
             {
-                return await context.Orders.ToListAsync();
+                return await context.vOrders.ToListAsync();
             }
             catch
             {
@@ -173,5 +174,13 @@ namespace Repository
                 )
                 .Sum(t => t.Amount * t.Quantity);
         }
+
+        // public  Task<IEnumerable<Order>> TopSelling()
+        // {
+        //     return  context.Orders
+        //         .OrderByDescending(t => t.ProductId)
+        //         .GroupBy(y => y.ProductId)
+        //         .Sum();
+        // }
     }
 }

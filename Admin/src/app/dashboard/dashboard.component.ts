@@ -9,7 +9,7 @@ import { filter } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
   recentselling: any = [];
-  totalcustomer: any = [];
+  recentCustomer: any = [];
   customer: number = 0;
   orders: number = 0;
   revenue: number = 0;
@@ -44,6 +44,9 @@ export class DashboardComponent implements OnInit {
       this.FilterCustomer('Today');
       this.FilterRevenue('Today');
     });
+    this.http.get('http://localhost:5209/api/Controller/RecentCustomer').subscribe(res => {
+      this.recentCustomer = res;
+    })
   }
 
   FilterOrder(filter: string) {

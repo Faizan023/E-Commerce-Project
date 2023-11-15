@@ -14,6 +14,7 @@ namespace Repository
         Task<int> CustomerCount();
         Task<int> CustomerCountMonth();
         Task<int> CustomerCountYear();
+        Task<IEnumerable<Customer>> RecentCustomer();
     }
 
     public class CustomerRepository : ICustomerRepository
@@ -138,6 +139,18 @@ namespace Repository
         {
             var date = DateTime.Now.Year;
             return context.Customers.Where(t => t.CreatedDateTime.Year == date).Count();
+        }
+    // Recently joined 5 customer 
+        public async Task<IEnumerable<Customer>> RecentCustomer()
+        {
+            try
+            {
+                return await context.Customers.OrderByDescending(t => t.Id).Take(5).ToListAsync();
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

@@ -11,5 +11,6 @@ namespace Models
         public int RevenueCountYear { get; set; }
         public int SalesCountMonth { get; set; }
         public int SalesCountYear { get; set; }
+        public int TopSellingProduct{get; set;}
     }
 }

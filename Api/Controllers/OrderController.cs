@@ -14,7 +14,7 @@ namespace Controllers
         {
             _orderRepository = orderRepository;
         }
-
+    
         [HttpGet]
         [Route("GetOrders")]
         public async Task<IActionResult> Get()
@@ -44,5 +44,13 @@ namespace Controllers
             _orderRepository.DeleteOrder(Id);
             return new JsonResult("Deleted Successfully");
         }
+
+        // [HttpGet]
+        // [Route("GetTopProduct")]
+        // public async Task<IActionResult> Top()
+        // {
+        //     await _orderRepository.TopSelling();
+        //     return Ok("Top Product");
+        // }
     }
 }

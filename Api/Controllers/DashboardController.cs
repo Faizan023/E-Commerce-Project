@@ -36,5 +36,12 @@ namespace Controllers
             dashboard.RevenueCountYear = await _OrderRepository.RevenueYear();
             return Ok(dashboard);
         }
+// recently joied last 5 customer
+        [HttpGet]
+        [Route("RecentCustomer")]
+        public async Task<IActionResult> RecentCustomer()
+        {
+            return Ok(await _CustomerRepository.RecentCustomer());
+        }
     }
 }
