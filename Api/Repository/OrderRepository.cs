@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
@@ -9,10 +10,10 @@ namespace Repository
 {
     public interface IOrderRepository
     {
-        Task<IEnumerable<Order>> GetOrders();
-        Task<Order> GetOrderById(int Id);
-        Task<Order> UpdateOrder(Order order);
-        Task<Order> AddOrder(Order order);
+        Task<IEnumerable<vOrder>> GetOrders();
+        Task<vOrder> GetOrderById(int Id);
+        Task<vOrder> UpdateOrder(vOrder order);
+        Task<vOrder> AddOrder(vOrder order);
         bool DeleteOrder(int Id);
         Task<int> GetOrderCount();
         Task<int> GetOrderCountMonth();
@@ -20,6 +21,9 @@ namespace Repository
         Task<int> Revenue();
         Task<int> RevenueYear();
         Task<int> RevenueMonth();
+        Task<IEnumerable<vOrder>> TodayOrderList();
+        Task<IEnumerable<vOrder>> MonthOrderList();
+        Task<IEnumerable<vOrder>> YearOrderList();
     }
 
     public class OrderRepository : IOrderRepository
@@ -31,7 +35,7 @@ namespace Repository
             context = _context;
         }
 
-        public async Task<IEnumerable<Order>> GetOrders()
+        public async Task<IEnumerable<vOrder>> GetOrders()
         {
             try
             {
@@ -43,7 +47,7 @@ namespace Repository
             }
         }
 
-        public async Task<Order> GetOrderById(int Id)
+        public async Task<vOrder> GetOrderById(int Id)
         {
             try
             {
@@ -63,7 +67,7 @@ namespace Repository
             }
         }
 
-        public async Task<Order> UpdateOrder(Order order)
+        public async Task<vOrder> UpdateOrder(vOrder order)
         {
             try
             {
@@ -77,7 +81,7 @@ namespace Repository
             return order;
         }
 
-        public async Task<Order> AddOrder(Order order)
+        public async Task<vOrder> AddOrder(vOrder order)
         {
             try
             {
@@ -175,12 +179,57 @@ namespace Repository
                 .Sum(t => t.Amount * t.Quantity);
         }
 
-        // public  Task<IEnumerable<Order>> TopSelling()
+        // public Task<IEnumerable<Product>> TopSelling()
         // {
-        //     return  context.Orders
-        //         .OrderByDescending(t => t.ProductId)
-        //         .GroupBy(y => y.ProductId)
-        //         .Sum();
+        //     var topSelling = context.Orders
+        //         .GroupBy(t => t.ProductId)
+        //         .Select(g => new { Id = g.Key, TotalQuantitySold = g.Sum(p => p.Quantity) })
+        //         .OrderByDescending(o => o.TotalQuantitySold)
+        //         .Take(5)
+        //         .Join(
+        //             context.Products,
+        //             p => p.Id,
+        //             pr => pr.Id,
+        //             (p, pr) => new { product = pr, QuantitySold = p.TotalQuantitySold, }
+        //         );
+        //     return topSelling.ToList();
         // }
+        public async Task<IEnumerable<vOrder>> TodayOrderList()
+        {
+            try
+            {
+                return context.Orders.Where(t => t.OrderDate.Date == DateTime.Now.Date).ToList();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<vOrder>> MonthOrderList()
+        {
+            try
+            {
+                var datetime = DateTime.Now.Month;
+                return context.Orders.Where(t => t.CreatedDateTime.Month == datetime).ToList();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<vOrder>> YearOrderList()
+        {
+            try
+            {
+                var datetime = DateTime.Now.Year;
+                return context.Orders.Where(t => t.CreatedDateTime.Year == datetime).ToList();
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

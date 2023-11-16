@@ -7,7 +7,7 @@ public class Context : DbContext
         : base(options) { }
 
     public DbSet<Customer> Customers { get; set; }
-    public DbSet<Order> Orders { get; set; }
+    public DbSet<vOrder> Orders { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<ProductCategory> Categories { get; set; }
     public DbSet<Sale> Sales { get; set; }

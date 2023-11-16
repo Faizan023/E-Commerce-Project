@@ -14,7 +14,7 @@ namespace Controllers
         {
             _orderRepository = orderRepository;
         }
-    
+
         [HttpGet]
         [Route("GetOrders")]
         public async Task<IActionResult> Get()
@@ -31,7 +31,7 @@ namespace Controllers
 
         [HttpPut]
         [Route("UpdateOrder")]
-        public async Task<IActionResult> Put(Order order)
+        public async Task<IActionResult> Put(vOrder order)
         {
             await _orderRepository.UpdateOrder(order);
             return Ok("Added Successfully");
@@ -51,6 +51,13 @@ namespace Controllers
         // {
         //     await _orderRepository.TopSelling();
         //     return Ok("Top Product");
+        // }
+
+        // [HttpGet]
+        // [Route("TodayOrder")]
+        // public async Task<IActionResult> Today() 
+        // {
+
         // }
     }
 }

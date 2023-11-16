@@ -26,6 +26,9 @@ export class DashboardComponent implements OnInit {
   displayCustomerText = 'Today';
   displayRevenueCount = 0;
   displayRevenueText = 'Today';
+  displayOrderListtext = 'Today';
+  displayOrderListToday: any = [];
+  // displayOrderListToday: any = [];
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -43,10 +46,12 @@ export class DashboardComponent implements OnInit {
       this.FilterOrder('Today');
       this.FilterCustomer('Today');
       this.FilterRevenue('Today');
+      this.FilterOrderList('Today');
     });
     this.http.get('http://localhost:5209/api/Controller/RecentCustomer').subscribe(res => {
       this.recentCustomer = res;
-    })
+    });
+
   }
 
   FilterOrder(filter: string) {
@@ -84,6 +89,25 @@ export class DashboardComponent implements OnInit {
     } else if (filter == "This Year") {
       this.displayRevenueCount = this.revenueYear;
       this.displayRevenueText = filter;
+    }
+  }
+
+  FilterOrderList(filter: string) {
+    if (filter == "Today") {
+      this.http.get('http://localhost:5209/api/Controller/RecentSelling').subscribe(res => {
+        this.displayOrderListToday = res;
+      });
+      this.displayOrderListtext = filter;
+    } else if (filter == "This Month") {
+      this.http.get('http://localhost:5209/api/Controller/MonthSelling').subscribe(res => {
+        this.displayOrderListToday = res
+      });
+      this.displayOrderListtext = filter;
+    } else if (filter == "This Year") {
+      this.http.get('http://localhost:5209/api/Controller/YearSelling').subscribe(res => {
+        this.displayOrderListToday = res;
+      });
+      this.displayOrderListtext = filter;
     }
   }
 

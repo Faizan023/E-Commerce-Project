@@ -996,3 +996,42 @@ h6 {
         max-width: 50%;
     }
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+    
+}
+::-webkit-scrollbar-thumb {
+    background: #d4d4d4;
+    border-radius: 5px;
+}
+
+.card-default > .card-heading {
+    color: #ffffff;
+    padding: 10px 15px;
+    background-color: #5247bd;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom: 1px solid #ffffff;
+}
+
+
+/* 
+.tm-bg-primary-dark {
+    background-color: #435c70;
+}
+.tm-block-h-auto {
+    min-height: 1px;
+    max-height: none;
+    height: auto;
+}
+.tm-     {
+    padding: 40px;
+    -webkit-box-shadow: 1px 1px 5px 0 #455c71;
+    -moz-box-shadow: 1px 1px 5px 0 #455c71;
+    box-shadow: 1px 1px 5px 0 #455c71;
+    min-height: 350px;
+    height: 100%;
+    max-height: 450px;
+} */

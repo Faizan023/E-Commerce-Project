@@ -36,12 +36,34 @@ namespace Controllers
             dashboard.RevenueCountYear = await _OrderRepository.RevenueYear();
             return Ok(dashboard);
         }
-// recently joied last 5 customer
+
+        // recently joined last 5 customer
         [HttpGet]
         [Route("RecentCustomer")]
         public async Task<IActionResult> RecentCustomer()
         {
             return Ok(await _CustomerRepository.RecentCustomer());
+        }
+
+        [HttpGet]
+        [Route("RecentSelling")]
+        public async Task<IActionResult> RecentTodaySelling()
+        {
+            return Ok(await _OrderRepository.TodayOrderList());
+        }
+
+        [HttpGet]
+        [Route("MonthSelling")]
+        public async Task<IActionResult> RecentMonthSelling()
+        {
+            return Ok(await _OrderRepository.MonthOrderList());
+        }
+
+        [HttpGet]
+        [Route("YearSelling")]
+        public async Task<IActionResult> RecentYearSelling()
+        {
+            return Ok(await _OrderRepository.YearOrderList());
         }
     }
 }
