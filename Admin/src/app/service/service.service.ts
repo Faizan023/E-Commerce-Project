@@ -67,6 +67,11 @@ export class AuthService {
       createdBy: 1,
       updatedBy: null
     }, { responseType: 'text' })
-
   }
+
+BrandList(){
+ return this.http.get('http://localhost:5209/api/Controller/GetBrands',{
+  });
+}
+
 }

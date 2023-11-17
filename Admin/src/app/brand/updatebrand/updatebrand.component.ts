@@ -8,15 +8,17 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
   templateUrl: './updatebrand.component.html',
   styleUrls: ['./updatebrand.component.css']
 })
+
 export class UpdatebrandComponent implements OnInit {
   updatebrandform!: FormGroup;
   brandId: number = 0;
   branddetail: any = [];
+
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(res => {
-      this.brandId = +res['id']; console.log(res['id']);
+      this.brandId = +res['id']; // convert int to number
     });
 
     this.http.get('http://localhost:5209/api/Controller/GetBrandBy/' + this.brandId).subscribe(res => {
@@ -29,7 +31,6 @@ export class UpdatebrandComponent implements OnInit {
     this.updatebrandform = this.fb.group({
       name: ['', Validators.required]
     });
-
   }
 
   updatebrand() {
@@ -42,7 +43,7 @@ export class UpdatebrandComponent implements OnInit {
         createdby: 1,
         updatedBy: 1
       }).subscribe(res => {
-        console.log(res);
+        
       });
     }
   }

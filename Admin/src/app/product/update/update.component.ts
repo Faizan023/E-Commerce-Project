@@ -8,19 +8,18 @@ import { AuthService } from 'src/app/service/service.service';
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
-  // styleUrls: ['./update.component.css']
 })
 export class UpdateComponent implements OnInit {
   UpdateForm !: FormGroup;
   productId: number = 0;
-  update: any = []
+  update: any = [];
   // update: Array<{ id: number, img: any, name: string, categoryId: number, description: string, price: number, discount: number, quantity: number, color: string, measurment: string, mesurmentValue: string, brandId: number }> = [];
   constructor(private UpdateDetails: FormBuilder, private http: HttpClient, private mid: ActivatedRoute, private route: Router, private service: AuthService, private toaster: NotificationService) { }
 
   ngOnInit(): void {
 
     this.mid.params.subscribe(res => {
-      this.productId = +res['id']; console.log(res['id']);
+      this.productId = +res['id'];
     });
 
     this.UpdateForm = this.UpdateDetails.group({
@@ -36,12 +35,11 @@ export class UpdateComponent implements OnInit {
       mesurmentValue: ['', Validators.required],
       brandId: ['', Validators.required],
     })
-    this.loadproduct()
+    this.loadproduct();
   }
 
   loadproduct() {
-    this.http.get<any>('http://localhost:5209/api/Controller/GetProductBy' + '/' + this.productId).subscribe(res => {
-
+    this.http.get<any>('http://localhost:5209/api/Controller/GetProductBy/' + this.productId).subscribe(res => {
       this.update = res;
 
       this.UpdateForm.patchValue({
@@ -56,13 +54,11 @@ export class UpdateComponent implements OnInit {
         measurment: this.update.measurment,
         mesurmentValue: this.update.mesurmentValue,
         brandId: this.update.brandId
-      })
-    })
-
+      });
+    });
   }
 
   UpdatePropduct() {
-    this.toaster.showSuccess('Success', 'Updated Successfully');
     this.service.UpdateProduct([
       this.productId,
       this.UpdateForm.value.img,
@@ -77,14 +73,12 @@ export class UpdateComponent implements OnInit {
       this.UpdateForm.value.mesurmentValue,
       this.UpdateForm.value.brandId,
     ]).subscribe(res => {
-      console.log(res);
       if (res == "Updated Successfully") {
-        this.route.navigateByUrl('/product/listproduct');
-
+        this.route.navigateByUrl('/product');
       }
-    })
+    });
+    this.toaster.showSuccess('Success', 'Updated Successfully');
   }
-
 }
 
 

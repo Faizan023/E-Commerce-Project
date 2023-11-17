@@ -1,11 +1,11 @@
-<form class="form-horizontal" [formGroup]="saleupdateform">
-    <fieldset>
+<!-- <form class="form-horizontal" [formGroup]="saleupdateform">
+    <fieldset> -->
 
-        <!-- Form Name -->
-        <legend>Sale</legend>
+<!-- Form Name -->
+<!-- <legend>Sale</legend> -->
 
-        <!-- Text input-->
-        <div class="form-group">
+<!-- Text input-->
+<!-- <div class="form-group">
             <label class="col-md-4 control-label" for="sale_name">SALE NAME</label>
             <div class="col-md-4">
                 <input name="sale_name" placeholder="SALE NAME" class="form-control input-md" type="text"
@@ -24,12 +24,77 @@
             <div class="col-md-4">
                 <input name="sale_endDate" class="form-control input-md" type="date" formControlName="endDate">
             </div>
-        </div>
+        </div> -->
 
-        <!-- <Button> -->
-        <div class="form-group">
+<!-- <Button> -->
+<!-- <div class="form-group">
             <label class="col-md-4 control-label" for="singlebutton">UPDATE SALE</label>
             <div class="col-md-4">
                 <button name="singlebutton" class="btn btn-primary" (click)="updatesale()">Update</button>
             </div>
+        </div> -->
+
+<main id="main" class="main">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+            <div class="pagetitle">
+                <h1>Sale</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+                        <li class="breadcrumb-item"><a routerLink="/sale"> Sale </a></li>
+                        <li class="breadcrumb-item active">Update</li>
+                    </ol>
+                </nav>
+            </div>
+            <form [formGroup]="saleupdateform">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                    <div class="statbox widget box box-shadow">
+                        <div class="col-xl-5 col-md-12">
+                            <div class="card card-default">
+                                <div class="card-heading">
+                                    <h2 class="card-title"><span>Sale</span></h2>
+                                </div>
+                                <div class="card-body">
+                                    <form class="form-horizontal">
+                                        <div class="form-group mb-4">
+                                            <div class="row">
+                                                <label class="col-md-4">Sale Name :</label>
+                                                <div class="col-md-8">
+                                                    <input class="form-control" name="price" type="text"
+                                                        formControlName="name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <div class="row">
+                                                <label class="col-md-4">Sale Name :</label>
+                                                <div class="col-md-8">
+                                                    <input class="form-control" name="price" type="date"
+                                                        formControlName="startDate">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <div class="row">
+                                                <label class="col-md-4">Sale Name :</label>
+                                                <div class="col-md-8">
+                                                    <input class="form-control" name="price" type="date"
+                                                        formControlName="endDate">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="align-center">
+                                <button name="singlebutton" class="btn btn-primary" (click)="updatesale()">Save
+                                    Changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
+    </div>
+</main>

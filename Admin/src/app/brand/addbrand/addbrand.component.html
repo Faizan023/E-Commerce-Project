@@ -1,22 +1,73 @@
-<form class="form-horizontal" [formGroup]="addbrandform">
-    <fieldset>
+<!-- <form class="form-horizontal" [formGroup]="addbrandform">
+    <fieldset> -->
 
-        <!-- Form Name -->
-        <legend>Brand</legend>
+<!-- Form Name -->
+<!-- <legend>Brand</legend> -->
 
-        <!-- Text input-->
-        <div class="form-group">
+<!-- Text input-->
+<!-- <div class="form-group">
             <label class="col-md-4 control-label" for="product_name">BRAND NAME</label>
             <div class="col-md-4">
                 <input name="product_name" placeholder="BRAND NAME" class="form-control input-md" type="text"
                     formControlName="name">
             </div>
-        </div>
+        </div> -->
 
-        <!-- <Button> -->
-        <div class="form-group">
+<!-- <Button> -->
+<!-- <div class="form-group">
             <label class="col-md-4 control-label" for="singlebutton">Add Brand</label>
             <div class="col-md-4">
                 <button name="singlebutton" class="btn btn-primary" (click)="addBrand()">Add +</button>
             </div>
+        </div> -->
+
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Brand</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+                <li class="breadcrumb-item"><a routerLink="/brand"> Brand </a></li>
+                <li class="breadcrumb-item active">Add</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+
+            <form [formGroup]="addbrandform">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                    <div class="statbox widget box box-shadow">
+                        <div class="col-xl-5 col-md-12">
+                            <div class="card card-default">
+                                <div class="card-heading">
+                                    <h2 class="card-title"><span>Brand</span></h2>
+                                </div>
+                                <div class="card-body">
+                                    <form class="form-horizontal">
+                                        <div class="form-group mb-4">
+                                            <div class="row">
+                                                <label class="col-md-4">Brand Name :</label>
+                                                <div class="col-md-8">
+                                                    <input class="form-control" name="price" type="text"
+                                                        formControlName="name">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="align-center">
+                                <button name="singlebutton" class="btn btn-primary" (click)="addBrand()">Add +
+                                   
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
+    </div>
+</main>

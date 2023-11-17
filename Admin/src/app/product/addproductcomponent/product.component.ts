@@ -8,6 +8,7 @@ import { AuthService } from '../../service/service.service';
 })
 export class ProductComponent implements OnInit {
   ProductForm!: FormGroup
+  brandList: any = [];
   constructor(private product: FormBuilder, private Auth: AuthService) { }
   file: File | undefined;
   ngOnInit(): void {
@@ -23,7 +24,8 @@ export class ProductComponent implements OnInit {
       measurment: ['', Validators.required],
       mesurmentValue: ['', Validators.required],
       brandId: ['', Validators.required],
-    })
+    });
+    // this.BrandList();
 
   }
 
@@ -52,8 +54,14 @@ export class ProductComponent implements OnInit {
         } else {
           console.log("Something Went Wrong");
         }
-      })
+      });
     }
+  }
+
+  BrandList() {
+    this.Auth.BrandList().subscribe(res => {
+      this.brandList = res;
+    })
   }
 
 }

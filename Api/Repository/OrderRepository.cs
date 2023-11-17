@@ -39,7 +39,7 @@ namespace Repository
         {
             try
             {
-                return await context.vOrders.ToListAsync();
+                return await context.vOrders.OrderByDescending(t => t.OrderDate.Date).ToListAsync();
             }
             catch
             {
@@ -122,19 +122,19 @@ namespace Repository
         public async Task<int> GetOrderCount()
         {
             var datetime = DateTime.Now.Date;
-            return context.Orders.Where(t => t.CreatedDateTime.Date == datetime).Count();
+            return context.Orders.Where(t => t.OrderDate.Date == datetime).Count();
         }
 
         public async Task<int> GetOrderCountMonth()
         {
             var datetime = DateTime.Now.Month;
-            return context.Orders.Where(t => t.CreatedDateTime.Month == datetime).Count();
+            return context.Orders.Where(t => t.OrderDate.Month == datetime).Count();
         }
 
         public async Task<int> GetOrderCountyear()
         {
             var datetime = DateTime.Now.Year;
-            return context.Orders.Where(t => t.CreatedDateTime.Year == datetime).Count();
+            return context.Orders.Where(t => t.OrderDate.Year == datetime).Count();
         }
 
         public async Task<int> Revenue()
@@ -211,7 +211,7 @@ namespace Repository
             try
             {
                 var datetime = DateTime.Now.Month;
-                return context.Orders.Where(t => t.CreatedDateTime.Month == datetime).ToList();
+                return context.Orders.Where(t => t.OrderDate.Month == datetime).ToList();
             }
             catch
             {
@@ -224,7 +224,7 @@ namespace Repository
             try
             {
                 var datetime = DateTime.Now.Year;
-                return context.Orders.Where(t => t.CreatedDateTime.Year == datetime).ToList();
+                return context.Orders.Where(t => t.OrderDate.Year == datetime).ToList();
             }
             catch
             {

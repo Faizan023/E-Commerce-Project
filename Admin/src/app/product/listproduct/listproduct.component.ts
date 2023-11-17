@@ -19,7 +19,7 @@ export class ListproductComponent implements OnInit {
     this.http.get<any>('http://localhost:5209/api/Controller/GetProduct').subscribe(res => {
       this.product = res
     }
-    )
+    );
     this.UpdateForm = this.form.group({
       img: ['',],
       name: ['', Validators.required],
@@ -32,7 +32,7 @@ export class ListproductComponent implements OnInit {
       measurment: ['', Validators.required],
       mesurmentValue: ['', Validators.required],
       brandId: ['', Validators.required],
-    })
+    });
 
   }
 
@@ -40,7 +40,7 @@ export class ListproductComponent implements OnInit {
     // alert("Are you sure want to delete" + id + "product");
     this.http.delete('http://localhost:5209/api/Controller/DeleteProduct' + '/' + id).subscribe(res => {
       console.log(res);
-    })
+    });
   }
 
   update(id: number): void {

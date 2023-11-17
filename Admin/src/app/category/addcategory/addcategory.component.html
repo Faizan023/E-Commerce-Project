@@ -1,22 +1,69 @@
-<form class="form-horizontal" [formGroup]="addcategoryform">
-    <fieldset>
+<!-- <form class="form-horizontal" [formGroup]="addcategoryform">
+    <fieldset> -->
 
-        <!-- Form Name -->
-        <legend>Category</legend>
+<!-- Form Name -->
+<!-- <legend>Category</legend> -->
 
-        <!-- Text input-->
-        <div class="form-group">
+<!-- Text input-->
+<!-- <div class="form-group">
             <label class="col-md-4 control-label" for="category_name">CATEGORY NAME</label>
             <div class="col-md-4">
                 <input name="category_name" placeholder="CATEGORY NAME" class="form-control input-md" type="text"
                     formControlName="name">
             </div>
-        </div>
+        </div> -->
 
-        <!-- <Button> -->
-        <div class="form-group">
+<!-- <Button> -->
+<!-- <div class="form-group">
             <label class="col-md-4 control-label" for="singlebutton">Add CATEGORY</label>
             <div class="col-md-4">
                 <button name="singlebutton" class="btn btn-primary" (click)="addcategory()">Add +</button>
             </div>
+        </div> -->
+<main id="main" class="main">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+            <div class="pagetitle">
+                <h1>Category</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+                        <li class="breadcrumb-item"><a routerLink="/category"> category </a></li>
+                        <li class="breadcrumb-item active">Add</li>
+                    </ol>
+                </nav>
+            </div>
+            <form [formGroup]="addcategoryform">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                    <div class="statbox widget box box-shadow">
+                        <div class="col-xl-5 col-md-12">
+                            <div class="card card-default">
+                                <div class="card-heading">
+                                    <h2 class="card-title"><span>Category</span></h2>
+                                </div>
+                                <div class="card-body">
+                                    <form class="form-horizontal">
+                                        <div class="form-group mb-4">
+                                            <div class="row">
+                                                <label class="col-md-4">Category Name :</label>
+                                                <div class="col-md-8">
+                                                    <input class="form-control" name="price" type="text"
+                                                        formControlName="name">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="align-center">
+                                <button name="singlebutton" class="btn btn-primary" (click)="addcategory()">Add
+                                    +</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
+    </div>
+</main>

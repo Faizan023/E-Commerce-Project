@@ -1,6 +1,6 @@
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>Order Table</h1>
+    <h1>Order</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
@@ -30,6 +30,7 @@
                   <th scope="col">Price</th>
                   <th scope="col">Quantity</th>
                   <th scope="col">Total</th>
+                  <th scope="col">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -41,6 +42,7 @@
                   <td scope="row">₹ {{order.amount}} </td>
                   <td scope="row">{{order.quantity}}</td>
                   <td scope="row"> ₹ {{order.amount * order.quantity}}</td>
+                  <td scope="row">{{order.status}}</td>
                   <!-- <td><button type="button" (click)="remove(order.id)">Remove</button></td> -->
               </tbody>
             </table>

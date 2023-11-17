@@ -1,26 +1,26 @@
-<form class="form-horizontal" [formGroup]="UpdateForm">
-    <fieldset>
+<!-- <form class="form-horizontal" [formGroup]="UpdateForm">
+    <fieldset> -->
 
-        <!-- Form Name -->
-        <legend> UPDATE PRODUCTS</legend>
+<!-- Form Name -->
+<!-- <legend> UPDATE PRODUCTS</legend>
 
         <div class="form-group">
             <label class="col-md-4 control-label" for="filebutton">main_image</label>
             <div class="col-md-4">
                 <input name="filebutton" class="input-file" type="file" formControlName="img">
             </div>
-        </div>
-        <!-- Text input-->
-        <div class="form-group">
+        </div> -->
+<!-- Text input-->
+<!-- <div class="form-group">
             <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>
             <div class="col-md-4">
                 <input name="product_name" placeholder="PRODUCT NAME" class="form-control input-md" type="text"
                     formControlName="name">
             </div>
-        </div>
+        </div> -->
 
-        <!-- Text input-->
-        <div class="form-group">
+<!-- Text input-->
+<!-- <div class="form-group">
             <label class="col-md-4 control-label" for="CategoryId"> Category ID </label>
             <div class="col-md-4">
                 <input name="CategoryId" placeholder=" Category ID " class="form-control input-md" type="text"
@@ -49,55 +49,251 @@
                 <input name="percentage_discount" placeholder="PERCENTAGE DISCOUNT" class="form-control input-md"
                     type="text" formControlName="discount">
             </div>
-        </div>
+        </div> -->
 
-        <!-- Text input-->
-        <div class="form-group">
+<!-- Text input-->
+<!-- <div class="form-group">
             <label class="col-md-4 control-label" for="available_quantity">AVAILABLE QUANTITY</label>
             <div class="col-md-4">
                 <input name="available_quantity" placeholder="AVAILABLE QUANTITY" class="form-control input-md"
                     type="text" formControlName="quantity">
             </div>
-        </div>
+        </div> -->
 
-        <!-- Search input-->
-        <div class="form-group">
+<!-- Search input-->
+<!-- <div class="form-group">
             <label class="col-md-4 control-label" for="color">Color</label>
             <div class="col-md-4">
                 <input name="color" placeholder="color" class="form-control input-md" type="search"
                     formControlName="color">
             </div>
-        </div>
+        </div> -->
 
-        <!-- Text input-->
-        <div class="form-group">
+<!-- Text input-->
+<!-- <div class="form-group">
             <label class="col-md-4 control-label" for="online_date">Measurment</label>
             <div class="col-md-4">
                 <input name="Measurment" placeholder="Measurment" class="form-control input-md" type="text"
                     formControlName="measurment">
             </div>
-        </div>
+        </div> -->
 
-        <!-- Text input-->
-        <div class="form-group">
+<!-- Text input-->
+<!-- <div class="form-group">
             <label class="col-md-4 control-label" for="M_value">Measurment Value</label>
             <div class="col-md-4">
                 <input name="author" placeholder="Measurment Value" class="form-control input-md" type="text"
                     formControlName="mesurmentValue">
             </div>
-        </div>
+        </div> -->
 
-        <!-- Text input-->
-        <div class="form-group">
+<!-- Text input-->
+<!-- <div class="form-group">
             <label class="col-md-4 control-label" for="brandId">Brand Id</label>
             <div class="col-md-4">
                 <input name="brandId" placeholder="Brand Id" class="form-control input-md" type="text"
-                    formControlName="brandId"> <br>
+                    formControlName="brandId"> <br> -->
 
-                <!-- Button -->
-                <div class="form-group">
+<!-- Button -->
+<!-- <div class="form-group">
                     <label class="col-md-4 control-label" for="singlebutton">Update Product</label>
                     <div class="col-md-4">
                         <button name="singlebutton" class="btn btn-primary" (click)="UpdatePropduct()">Update</button>
                     </div>
+                </div> -->
+
+<main id="main" class="main">
+    <!-- <form class="form-horizontal" [formGroup]="UpdateForm"> -->
+
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+        <div class="statbox widget box box-shadow">
+            <div class="pagetitle">
+                <h1>Product</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+                        <li class="breadcrumb-item"><a routerLink="/product"> Product </a></li>
+                        <li class="breadcrumb-item active">Update</li>
+                    </ol>
+                </nav>
+            </div>
+            <form [formGroup]="UpdateForm">
+                <div class="widget-content widget-content-area add-manage-product-2">
+                    <div class="row">
+                        <div class="col-xl-7 col-md-12">
+                            <div class="card card-default">
+                                <div class="card-heading">
+                                    <h2 class="card-title"><span>GENERAL</span></h2>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-body">
+                                        <form class="form-horizontal">
+                                            <div class="form-group mb-4">
+                                                <div class="row">
+                                                    <label class="col-md-4">Name :</label>
+                                                    <div class="col-md-8">
+                                                        <input class="form-control" name="name" type="text"
+                                                            formControlName="name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <div class="row">
+                                                    <label class="col-md-4">Description :</label>
+                                                    <div class="col-md-8">
+                                                        <textarea rows="4" cols="5" name="description"
+                                                            class="form-control"
+                                                            formControlName="description"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mb-4">
+                                                <div class="row">
+                                                    <label class="col-md-4">Category :</label>
+                                                    <div class="col-md-8">
+                                                        <select class="form-control form-custom mb-4" name="category"
+                                                            formControlName="categoryId">
+                                                            <option value="">Select Category</option>
+                                                            <option value="1">Electronics</option>
+                                                            <option value="category2">Apparel</option>
+                                                            <option value="category3">Clothing</option>
+                                                            <option value="category4">Furniture</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <div class="row">
+                                                    <label class="col-md-4">Brand :</label>
+                                                    <div class="col-md-8">
+                                                        <select class="form-control form-custom" name="brand"
+                                                            formControlName="brandId">
+                                                            <option value="">Select a Brand</option>
+                                                            <option value="1002">Microsoft</option>
+                                                            <option value="brand2">Samsung</option>
+                                                            <option value="brand3">HP</option>
+                                                            <option value="brand4">Ford</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <div class="row">
+                                                    <label class="col-md-4">Color :</label>
+                                                    <div class="col-md-8">
+                                                        <select class="form-control form-custom" name="color"
+                                                            formControlName="color">
+                                                            <option value="">Select a Color</option>
+                                                            <option value="color1">Black</option>
+                                                            <option value="color2">White</option>
+                                                            <option value="color3">Blue</option>
+                                                            <option value="color4">Red</option>
+                                                            <option value="color5">Green</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <div class="row">
+                                                    <label class="col-md-4">Measurment :</label>
+                                                    <div class="col-md-8">
+                                                        <select class="form-control form-custom" name="size"
+                                                            formControlName="measurment">
+                                                            <option value="">Select Size</option>
+                                                            <option value="size1">Size 1</option>
+                                                            <option value="size2">Size 2</option>
+                                                            <option value="size3">Size 3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <div class="row">
+                                                    <label class="col-md-4">Mesurment Value :</label>
+                                                    <div class="col-md-8">
+                                                        <input class="form-control" name="sku" type="text"
+                                                            formControlName="mesurmentValue">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-5 col-md-12">
+                            <div class="card card-default">
+                                <div class="card-heading">
+                                    <h2 class="card-title"><span>PRICING</span></h2>
+                                </div>
+                                <div class="card-body">
+                                    <form class="form-horizontal">
+                                        <div class="form-group mb-4">
+                                            <div class="row">
+                                                <label class="col-md-4">Price :</label>
+                                                <div class="col-md-8">
+                                                    <input class="form-control" name="price" type="text"
+                                                        formControlName="price">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group mb-4">
+                                            <div class="row">
+                                                <label class="col-md-4">Discount :</label>
+                                                <div class="col-md-8">
+                                                    <input class="form-control" name="discount" type="text"
+                                                        formControlName="discount">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-md-12"><span>Image</span></label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-md-4">Image :</label>
+                                                <div class="col-md-8">
+                                                    <div class="mb-3">
+                                                        <div class="custom-file">
+                                                            <input type="file" class="form-control-file"
+                                                                formControlName="img">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-md-4">QTY :</label>
+                                                <div class="col-md-8">
+                                                    <input class="form-control" name="qty" type="text"
+                                                        formControlName="quantity">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="align-center">
+                                <button name="singlebutton" class="btn btn-primary" (click)="UpdatePropduct()">Save
+                                    Changes
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- </form> -->
+</main>

@@ -27,7 +27,7 @@ Id Int Identity(1,1) Not Null,
 Img VarBinary(max) Not Null,
 Name Varchar(30) Not Null,
 CategoryId Int Not Null,
-Description Varchar(100) Not Null,
+Description Varchar(1000) Not Null,
 Price Int Not Null,
 Discount Int Not Null,
 Quantity Int Not Null,
@@ -183,16 +183,17 @@ Constraint Fk_ProductsId Foreign Key (ProductId) References Products (Id)
 
 insert into Brands(Name, CreateDateTime, UpdateDateTime, CreatedBy,UpdatedBy) values('Adidas',null, 1, null);
 
-select top(1) ProductId from Orders as Topselling group By ProductId order By SUM(Quantity) desc;
+select top(2) ProductId from Orders as Topselling group By ProductId order By SUM(Quantity) desc;
 
 select top 5 * from Customers order By Customers.Id asc
 
 
-create view vOrders as 
+create view vOrder as 
 select 
 o.*, 
-c.FirstName +' '+C.LastName as CustomerName
+c.FirstName +' '+C.LastName as CustomerName,
+p.Name as ProductName
 from Orders as o 
-join Customers as c on c.Id = o.CustomerId;
+join Customers as c  on c.Id = o.CustomerId join Products as p on p.Id = o.ProductId
 
-select * from vOrders
+select * from vOrder
