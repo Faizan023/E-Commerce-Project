@@ -78,9 +78,13 @@ Constraint Pk_OId Primary Key (Id),
 Constraint Fk_CustomerId Foreign Key (CustomerId) References Customers(Id),
 Constraint Fk_PId Foreign Key (ProductId) References Products(Id)
 ); 
+
+update  Orders 
+set PaymentMethod= 'Online',
+where Id =1;
 SELECT * FROM Orders
 insert into Orders(CustomerId,Quantity,Amount,ProductId,PaymentMethod,OrderDate,DeliveryAddress,BillingAddress,DeliveryDate,DeliveryCharge,Status,CreatedDateTime,UpdatedDateTime,CreatedBy,UpdatedBy)
-values(1,2,200,1015,'Cash','2023-08-10','Ajit Mill','Naroda','2023-08-20',20,'Active','2023-11-15',null,1,null);
+values(1,2,200,1015,'Cash','2023-07-15','Ajit Mill','Naroda','2023-08-20',20,'Active','2023-11-15',null,1,null);
 
 Create Table Cart(
 Id Int Identity(1,1) Not Null,

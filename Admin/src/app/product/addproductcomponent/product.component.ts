@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../service/service.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-product',
@@ -9,7 +10,8 @@ import { AuthService } from '../../service/service.service';
 export class ProductComponent implements OnInit {
   ProductForm!: FormGroup
   brandList: any = [];
-  constructor(private product: FormBuilder, private Auth: AuthService) { }
+  categoryList: any = [];
+  constructor(private product: FormBuilder, private Auth: AuthService, private http: HttpClient) { }
   file: File | undefined;
   ngOnInit(): void {
     this.ProductForm = this.product.group({
@@ -25,13 +27,12 @@ export class ProductComponent implements OnInit {
       mesurmentValue: ['', Validators.required],
       brandId: ['', Validators.required],
     });
-    // this.BrandList();
-
+    this.BrandList();
+    this.categoryList();
   }
 
   AddProduct() {
-    console.log(this.ProductForm.valid);
-    console.log(this.ProductForm.value);
+
     if (this.ProductForm.valid) {
 
       this.Auth.insertproduct([
@@ -61,7 +62,13 @@ export class ProductComponent implements OnInit {
   BrandList() {
     this.Auth.BrandList().subscribe(res => {
       this.brandList = res;
-    })
+    });
+  }
+
+  CategoryList() {
+    this.http.get('http://localhost:5209/api/Controller/GetCategories').subscribe(res => {
+      this.categoryList = res;
+    });
   }
 
 }

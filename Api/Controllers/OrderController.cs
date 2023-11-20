@@ -1,3 +1,4 @@
+using Azure;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using Repository;
@@ -29,12 +30,14 @@ namespace Controllers
             return Ok(await _orderRepository.GetOrderById(Id));
         }
 
+        // [HttpPost]
+
         [HttpPut]
         [Route("UpdateOrder")]
-        public async Task<IActionResult> Put(vOrder order)
+        public async Task<IActionResult> Put(Order order)
         {
             await _orderRepository.UpdateOrder(order);
-            return Ok("Added Successfully");
+            return Ok("Updated Successfully");
         }
 
         [HttpDelete]
@@ -55,9 +58,15 @@ namespace Controllers
 
         // [HttpGet]
         // [Route("TodayOrder")]
-        // public async Task<IActionResult> Today() 
+        // public async Task<IActionResult> Today()
         // {
 
+        // }
+
+        // [HttpPatch]
+        // [Route("PatchOrder/{Id}")]
+        // public async Task<IActionResult> Patch(int id, JsonPatchDocument order){
+        //     await _orderRepository
         // }
     }
 }

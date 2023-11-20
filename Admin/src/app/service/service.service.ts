@@ -70,8 +70,7 @@ export class AuthService {
   }
 
 BrandList(){
- return this.http.get('http://localhost:5209/api/Controller/GetBrands',{
-  });
+ return this.http.get('http://localhost:5209/api/Controller/GetBrands');
 }
 
 }

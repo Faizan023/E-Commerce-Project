@@ -6,6 +6,7 @@ import { CustomerlistComponent } from './customer/customerlist/customerlist.comp
 import { OrderlistComponent } from './order/orderlist/orderlist.component';
 import { AuthGuardFunction } from './guard/login-guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { UpdateorderComponent } from './order/updateorder/updateorder.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,11 @@ const routes: Routes = [
   {
     path: 'order',
     component: OrderlistComponent,
+    canActivate: [AuthGuardFunction]
+  },
+  {
+    path: 'updateorder/:id',
+    component: UpdateorderComponent,
     canActivate: [AuthGuardFunction]
   },
   {

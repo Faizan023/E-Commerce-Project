@@ -3,6 +3,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.EntityFrameworkCore;
 using Models;
 
@@ -12,8 +13,8 @@ namespace Repository
     {
         Task<IEnumerable<vOrder>> GetOrders();
         Task<vOrder> GetOrderById(int Id);
-        Task<vOrder> UpdateOrder(vOrder order);
-        Task<vOrder> AddOrder(vOrder order);
+        Task<Order> UpdateOrder(Order order);
+        Task<Order> AddOrder(Order order);
         bool DeleteOrder(int Id);
         Task<int> GetOrderCount();
         Task<int> GetOrderCountMonth();
@@ -24,6 +25,7 @@ namespace Repository
         Task<IEnumerable<vOrder>> TodayOrderList();
         Task<IEnumerable<vOrder>> MonthOrderList();
         Task<IEnumerable<vOrder>> YearOrderList();
+        
     }
 
     public class OrderRepository : IOrderRepository
@@ -51,7 +53,7 @@ namespace Repository
         {
             try
             {
-                var find = await context.Orders.FindAsync(Id);
+                var find = await context.vOrders.FindAsync(Id);
                 if (find != null)
                 {
                     return find;
@@ -67,7 +69,7 @@ namespace Repository
             }
         }
 
-        public async Task<vOrder> UpdateOrder(vOrder order)
+        public async Task<Order> UpdateOrder(Order order)
         {
             try
             {
@@ -81,7 +83,7 @@ namespace Repository
             return order;
         }
 
-        public async Task<vOrder> AddOrder(vOrder order)
+        public async Task<Order> AddOrder(Order order)
         {
             try
             {
@@ -198,7 +200,7 @@ namespace Repository
         {
             try
             {
-                return context.Orders.Where(t => t.OrderDate.Date == DateTime.Now.Date).ToList();
+                return context.vOrders.Where(t => t.OrderDate.Date == DateTime.Now.Date).ToList();
             }
             catch
             {
@@ -211,7 +213,7 @@ namespace Repository
             try
             {
                 var datetime = DateTime.Now.Month;
-                return context.Orders.Where(t => t.OrderDate.Month == datetime).ToList();
+                return context.vOrders.Where(t => t.OrderDate.Month == datetime).ToList();
             }
             catch
             {
@@ -224,7 +226,7 @@ namespace Repository
             try
             {
                 var datetime = DateTime.Now.Year;
-                return context.Orders.Where(t => t.OrderDate.Year == datetime).ToList();
+                return context.vOrders.Where(t => t.OrderDate.Year == datetime).ToList();
             }
             catch
             {

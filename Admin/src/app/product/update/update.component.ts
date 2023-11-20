@@ -14,7 +14,8 @@ export class UpdateComponent implements OnInit {
   productId: number = 0;
   update: any = [];
   // update: Array<{ id: number, img: any, name: string, categoryId: number, description: string, price: number, discount: number, quantity: number, color: string, measurment: string, mesurmentValue: string, brandId: number }> = [];
-  constructor(private UpdateDetails: FormBuilder, private http: HttpClient, private mid: ActivatedRoute, private route: Router, private service: AuthService, private toaster: NotificationService) { }
+  constructor(private UpdateDetails: FormBuilder, private http: HttpClient, private mid: ActivatedRoute, private route: Router, private service:
+    AuthService, private toaster: NotificationService) { }
 
   ngOnInit(): void {
 
@@ -34,7 +35,7 @@ export class UpdateComponent implements OnInit {
       measurment: ['', Validators.required],
       mesurmentValue: ['', Validators.required],
       brandId: ['', Validators.required],
-    })
+    });
     this.loadproduct();
   }
 

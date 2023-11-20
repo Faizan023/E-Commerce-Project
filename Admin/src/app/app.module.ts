@@ -29,6 +29,7 @@ import { ProductComponent } from './product/addproductcomponent/product.componen
 import { ListproductComponent } from './product/listproduct/listproduct.component';
 import { UpdateComponent } from './product/update/update.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { UpdateorderComponent } from './order/updateorder/updateorder.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     UpdatecategoryComponent, ListcategoryComponent,
     AddsaleComponent, UpdatesaleComponent,
     ListsaleComponent, CustomerlistComponent,
-    OrderlistComponent,NavbarComponent, SidebarComponent, ProductComponent, ListproductComponent, UpdateComponent, DashboardComponent,
+    OrderlistComponent,NavbarComponent, SidebarComponent, ProductComponent, ListproductComponent, UpdateComponent, DashboardComponent, UpdateorderComponent,
   ],
   imports: [
     BrowserModule,

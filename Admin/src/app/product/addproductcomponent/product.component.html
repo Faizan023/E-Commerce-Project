@@ -273,10 +273,10 @@
                           <div class="col-md-8">
                             <select class="form-control form-custom mb-4" name="category" formControlName="categoryId">
                               <option value="">Select Category</option>
-                              <option value="1">Electronics</option>
-                              <option value="category2">Apparel</option>
+                              <option *ngFor="let category of categoryList" value="{{category.id}}">{{category.name}}</option>
+                              <!-- <option value="category2">Apparel</option>
                               <option value="category3">Clothing</option>
-                              <option value="category4">Furniture</option>
+                              <option value="category4">Furniture</option> -->
                             </select>
                           </div>
                         </div>
@@ -285,12 +285,13 @@
                         <div class="row">
                           <label class="col-md-4">Brand :</label>
                           <div class="col-md-8">
-                            <select class="form-control form-custom" name="brand" formControlName="brandId">
-                              <option value="">Select a Brand</option>
-                              <option value="1002">Microsoft</option>
-                              <option value="brand2">Samsung</option>
+                            <select class="form-control form-custom" name="brand" formControlName="brandId" >
+                              <option value="">Select Brand</option>
+                              <option *ngFor="let brand of brandList" value="{{brand.id}}">{{brand.name }}</option>
+                              <!-- <option value="1002">{{brand.name}}</option> -->
+                              <!-- <option value="brand2">Samsung</option>
                               <option value="brand3">HP</option>
-                              <option value="brand4">Ford</option>
+                              <option value="brand4">Ford</option> -->
                             </select>
                           </div>
                         </div>
