@@ -23,7 +23,7 @@ namespace Controllers
         }
 
         [HttpGet]
-        [Route("GetCustomerById")]
+        [Route("GetCustomerBy/{Id}")]
         public async Task<IActionResult> GetById(int Id)
         {
             return Ok(await _CustomerRepository.GetCustomerById(Id));

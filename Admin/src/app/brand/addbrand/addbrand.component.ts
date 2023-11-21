@@ -33,7 +33,7 @@ export class AddbrandComponent implements OnInit {
         } else {
           console.log('Something Went Wrong');
         }
-      })
+      });
     }
   }
 }

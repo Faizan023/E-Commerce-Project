@@ -28,7 +28,7 @@ export class ProductComponent implements OnInit {
       brandId: ['', Validators.required],
     });
     this.BrandList();
-    this.categoryList();
+    this.CategoryList();
   }
 
   AddProduct() {
@@ -68,6 +68,7 @@ export class ProductComponent implements OnInit {
   CategoryList() {
     this.http.get('http://localhost:5209/api/Controller/GetCategories').subscribe(res => {
       this.categoryList = res;
+      console.log(res);
     });
   }
 

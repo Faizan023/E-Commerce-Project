@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
             dateofbirth: ['', [Validators.required, Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)]],
             gender: ['', Validators.required],
             address: ['', [Validators.required, Validators.minLength(4)]],
-        })
+        });
     }
 
     Register() {

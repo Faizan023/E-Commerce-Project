@@ -69,8 +69,27 @@ export class AuthService {
     }, { responseType: 'text' })
   }
 
-BrandList(){
- return this.http.get('http://localhost:5209/api/Controller/GetBrands');
-}
+  BrandList() {
+    return this.http.get('http://localhost:5209/api/Controller/GetBrands');
+  }
 
+  AddCustomer(customer: any) {
+    return this.http.post("http://localhost:5209/api/Controller/InsertCustomer", {
+      firstName: customer[0],
+      lastName: customer[1],
+      email: customer[2],
+      phoneNumber: customer[3],
+      password: customer[4],
+      dateofbirth: customer[5],
+      gender: customer[6],
+      address: customer[7],
+      createdDateTime: "2023-11-21",
+      createdBy: null,
+      updatedDateTime: "2023-11-21",
+      updatedBy: null,
+      active: true,
+      activationDate: "2023-11-21",
+      activationKey: "Yes"
+    }, { responseType: 'text' })
+  }
 }

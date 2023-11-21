@@ -1,6 +1,7 @@
 import { Subscriber } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customerlist',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customerlist.component.css']
 })
 export class CustomerlistComponent implements OnInit {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private route: Router) { }
   customerList: any = [];
   ngOnInit(): void {
     this.http.get('http://localhost:5209/api/Controller/GetCustomer').subscribe(res => {
@@ -23,4 +24,8 @@ export class CustomerlistComponent implements OnInit {
       }
     });
   }
+Update(id:number){
+  this.route.navigateByUrl('/customer/update/' + id)
+}
+
 }

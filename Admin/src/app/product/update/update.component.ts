@@ -13,6 +13,8 @@ export class UpdateComponent implements OnInit {
   UpdateForm !: FormGroup;
   productId: number = 0;
   update: any = [];
+  categoryList: any = [];
+  brandList: any = [];
   // update: Array<{ id: number, img: any, name: string, categoryId: number, description: string, price: number, discount: number, quantity: number, color: string, measurment: string, mesurmentValue: string, brandId: number }> = [];
   constructor(private UpdateDetails: FormBuilder, private http: HttpClient, private mid: ActivatedRoute, private route: Router, private service:
     AuthService, private toaster: NotificationService) { }
@@ -37,6 +39,8 @@ export class UpdateComponent implements OnInit {
       brandId: ['', Validators.required],
     });
     this.loadproduct();
+    this.LoadCategory();
+    this.LoadBrand();
   }
 
   loadproduct() {
@@ -79,6 +83,18 @@ export class UpdateComponent implements OnInit {
       }
     });
     this.toaster.showSuccess('Success', 'Updated Successfully');
+  }
+
+  LoadCategory() {
+    this.http.get('http://localhost:5209/api/Controller/GetCategories').subscribe(res => {
+      this.categoryList = res;
+    });
+  }
+
+  LoadBrand() {
+    this.http.get('http://localhost:5209/api/Controller/GetBrands').subscribe(res => {
+      this.brandList = res;
+    });
   }
 }
 

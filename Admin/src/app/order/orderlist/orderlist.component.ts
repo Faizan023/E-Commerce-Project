@@ -16,7 +16,7 @@ export class OrderlistComponent implements OnInit {
     });
   }
 
-  UpdateOrder(id:number){
+  UpdateOrder(id: number) {
     this.route.navigate(['/updateorder', id])
   }
 }

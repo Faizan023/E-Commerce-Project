@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'customer',
-    component: CustomerlistComponent,
+    loadChildren: () => import('./customer/customer-routing.module').then(m => m.CustomerRoutingModule),
     canActivate: [AuthGuardFunction]
   },
   {
