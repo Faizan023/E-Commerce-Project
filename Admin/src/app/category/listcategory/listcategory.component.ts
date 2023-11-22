@@ -10,6 +10,7 @@ import { NotificationService } from 'src/app/notification.service';
 })
 export class ListcategoryComponent implements OnInit {
   CategoryList: any = [];
+  p:number = 1;
   constructor(private http: HttpClient, private toastr: NotificationService, private router: Router) { }
   ngOnInit(): void {
     this.http.get('http://localhost:5209/api/Controller/GetCategories').subscribe(res => {

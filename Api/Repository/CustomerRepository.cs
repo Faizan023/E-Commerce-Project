@@ -1,3 +1,8 @@
+using System.Security.AccessControl;
+using Azure;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models;
 
@@ -15,6 +20,8 @@ namespace Repository
         Task<int> CustomerCountMonth();
         Task<int> CustomerCountYear();
         Task<IEnumerable<Customer>> RecentCustomer();
+
+        // void PatchCustomer(Customer customer);
     }
 
     public class CustomerRepository : ICustomerRepository
@@ -140,7 +147,8 @@ namespace Repository
             var date = DateTime.Now.Year;
             return context.Customers.Where(t => t.CreatedDateTime.Year == date).Count();
         }
-    // Recently joined 5 customer 
+
+        // Recently joined 5 customer
         public async Task<IEnumerable<Customer>> RecentCustomer()
         {
             try

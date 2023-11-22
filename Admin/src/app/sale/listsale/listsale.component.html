@@ -32,7 +32,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let sale of  SaleList">
+                                <tr *ngFor="let sale of  SaleList | paginate:{itemsPerPage:10, currentPage:p}">
                                     <td scope="row">{{sale.id}}</td>
                                     <td scope="row">{{sale.name}} </td>
                                     <td scope="row">{{sale.startDate | date:'dd-MM-yy'}}</td>
@@ -75,5 +75,7 @@
             </div>
         </div>
     </section>
-
+    <div style="float: inline-end;">
+        <pagination-controls (pageChange)="p=$event"></pagination-controls>
+    </div>
 </main>

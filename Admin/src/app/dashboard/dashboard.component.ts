@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
   orderYear: number = 0;
   revenueMonth: number = 0;
   revenueYear: number = 0;
+  p: number = 1;
   // orderday:string ='Today';
   displayOrderText = "Today";
   displayOrderCount = 0;

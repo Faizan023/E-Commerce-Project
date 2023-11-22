@@ -12,7 +12,7 @@ export class ListsaleComponent implements OnInit {
   // SaleList: Array<{ id: number, name: string, startDate: Date, endDate: Date }> =[];
   SaleList: any = [];
   constructor(private http: HttpClient, private toastr: NotificationService, private router: Router) { }
-
+  p: number = 1;
   ngOnInit(): void {
     this.http.get('http://localhost:5209/api/Controller/GetSales').subscribe(res => {
       this.SaleList = res;

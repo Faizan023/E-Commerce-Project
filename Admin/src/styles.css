@@ -1,11 +1,3 @@
-/**
-* Template Name: NiceAdmin
-* Updated: Sep 18 2023 with Bootstrap v5.3.2
-* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -24,10 +16,16 @@ a {
     color: #4154f1;
 }
 
-a:hover {
+a:active {
     color: #717ff5;
     text-decoration: none;
 }
+
+/* li .nav-item a .nav-link.collapsed:active {
+    color: red;
+    text-decoration: none;
+
+} */
 
 h1,
 h2,
@@ -238,6 +236,8 @@ h6 {
     font-weight: 500;
     color: #012970;
     font-family: "Poppins", sans-serif;
+    /* background-color: #717ff5; */
+    border-radius: 20px;
 }
 
 .card-title span {
@@ -248,6 +248,9 @@ h6 {
 
 .card-body {
     padding: 0 20px 20px 20px;
+    /* background-color: #717ff5; */
+    /* box-shadow:5px 5px 3px #717ff5; */
+    /* border: 5px; */
 }
 
 .card-img-overlay {
@@ -958,7 +961,6 @@ h6 {
     max-width: 60px;
 }
 
-
 /*--------------------------------------------------------------
   # Error 404
   --------------------------------------------------------------*/
@@ -1000,14 +1002,15 @@ h6 {
 ::-webkit-scrollbar {
     width: 10px;
     height: 8px;
-    
+
 }
+
 ::-webkit-scrollbar-thumb {
     background: #d4d4d4;
     border-radius: 5px;
 }
 
-.card-default > .card-heading {
+.card-default>.card-heading {
     color: #ffffff;
     padding: 10px 15px;
     background-color: #5247bd;
@@ -1015,23 +1018,3 @@ h6 {
     border-top-right-radius: 4px;
     border-bottom: 1px solid #ffffff;
 }
-
-
-/* 
-.tm-bg-primary-dark {
-    background-color: #435c70;
-}
-.tm-block-h-auto {
-    min-height: 1px;
-    max-height: none;
-    height: auto;
-}
-.tm-     {
-    padding: 40px;
-    -webkit-box-shadow: 1px 1px 5px 0 #455c71;
-    -moz-box-shadow: 1px 1px 5px 0 #455c71;
-    box-shadow: 1px 1px 5px 0 #455c71;
-    min-height: 350px;
-    height: 100%;
-    max-height: 450px;
-} */

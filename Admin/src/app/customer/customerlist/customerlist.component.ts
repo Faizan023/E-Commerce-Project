@@ -1,7 +1,8 @@
-import { Subscriber } from 'rxjs';
+import { Subscriber, filter } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-customerlist',
@@ -9,8 +10,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./customerlist.component.css']
 })
 export class CustomerlistComponent implements OnInit {
+  customerData!: FormGroup;
   constructor(private http: HttpClient, private route: Router) { }
   customerList: any = [];
+  p: number = 1;
   ngOnInit(): void {
     this.http.get('http://localhost:5209/api/Controller/GetCustomer').subscribe(res => {
       this.customerList = res;
@@ -24,8 +27,23 @@ export class CustomerlistComponent implements OnInit {
       }
     });
   }
-Update(id:number){
-  this.route.navigateByUrl('/customer/update/' + id)
-}
+  Update(id: number) {
+    this.route.navigateByUrl('/customer/update/' + id)
+  }
+
+  // get FindUser() {
+  //   let serachValue = this.customerData.controls['search'].value as string
+  //   if (serachValue == "" || serachValue == null) {
+  //     return this.customerList;
+  //   } else {
+  //     return this.customerList.filter((find: any) => {
+  //       return (
+  //         find.email.toLowerCase().includes(serachValue.toLowerCase()) ||
+  //         find.firstName.toLowerCase().includes(serachValue.toLowerCase()) ||
+  //         find.lastName.Tolowercase().includes(serachValue.toLowerCase())
+  //       );
+  //     });
+  //   }
+  // }
 
 }

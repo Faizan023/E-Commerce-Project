@@ -32,6 +32,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UpdateorderComponent } from './order/updateorder/updateorder.component';
 import { UpdatecustomerComponent } from './customer/updatecustomer/updatecustomer.component';
 import { AddcustomerComponent } from './customer/addcustomer/addcustomer.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { AddcustomerComponent } from './customer/addcustomer/addcustomer.compone
     MatSidenavModule,
     MatToolbarModule,
     ToastrModule.forRoot(),
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Models;
 using Repository;
 
@@ -9,10 +12,12 @@ namespace Controllers
     public class CustomerController : ControllerBase
     {
         private readonly ICustomerRepository _CustomerRepository;
+        private readonly Context context;
 
-        public CustomerController(ICustomerRepository ManageRepository)
+        public CustomerController(ICustomerRepository ManageRepository, Context _context)
         {
             _CustomerRepository = ManageRepository;
+            context = _context;
         }
 
         [HttpGet]

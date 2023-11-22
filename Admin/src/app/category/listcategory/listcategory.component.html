@@ -30,7 +30,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let category of  CategoryList">
+                                <tr *ngFor="let category of  CategoryList | paginate:{itemsPerPage:10, currentPage:p}">
                                     <td scope="row">{{category.id}}</td>
                                     <td scope="row">{{category.name}} </td>
 
@@ -72,4 +72,7 @@
             </div>
         </div>
     </section>
+    <div style="float: inline-end;">
+        <pagination-controls (pageChange)="p=$event"></pagination-controls>
+    </div>
 </main>

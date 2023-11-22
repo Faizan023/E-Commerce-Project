@@ -14,7 +14,7 @@ export class ListproductComponent implements OnInit {
   product: Array<{ id: number, img: any, name: string, categoryId: number, description: string, price: number, discount: number, quantity: number, color: string, measurment: string, mesurmentValue: string, brandId: number }> = [];
   constructor(private http: HttpClient, private route: Router, private form: FormBuilder, private toastr: NotificationService) { }
   UpdateForm!: FormGroup
-
+  p: number = 1;
   ngOnInit(): void {
     this.http.get<any>('http://localhost:5209/api/Controller/GetProduct').subscribe(res => {
       this.product = res

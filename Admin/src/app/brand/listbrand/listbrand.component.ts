@@ -11,6 +11,7 @@ import { NotificationService } from 'src/app/notification.service';
 export class ListbrandComponent implements OnInit {
 
   BrandList: Array<{ id: number, name: string }> = [];
+  p: number = 1;
 
   constructor(private http: HttpClient, private toastr: NotificationService, private router: Router) { }
 

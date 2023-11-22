@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderlistComponent implements OnInit {
   orderList: any = [];
+  p: number = 1;
   constructor(private http: HttpClient, private route: Router) { }
   ngOnInit(): void {
     this.http.get('http://localhost:5209/api/Controller/GetOrders').subscribe(res => {

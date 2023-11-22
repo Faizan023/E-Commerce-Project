@@ -178,7 +178,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let order of displayOrderListToday">
+                            <tr *ngFor="let order of displayOrderListToday | paginate:{itemsPerPage:5, currentPage:p}">
                                 <!-- <th scope="row"><a href="#"><img src="assets/img/product-1.jpg" alt=""></a></th> -->
                                 <td>{{order.id}}</td>
                                 <td>{{order.customerName}}</td>
@@ -187,40 +187,11 @@
                                 <td>{{order.amount}}</td>
                                 <td>{{order.status}}</td>
                             </tr>
-                            <!-- 
-                             <tr>
-                                <th scope="row"><a href="#"><img src="assets/img/product-2.jpg" alt=""></a></th>
-                                <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a>
-                                </td>
-                                <td>$46</td>
-                                <td class="fw-bold">98</td>
-                                <td>$4,508</td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><a href="#"><img src="assets/img/product-3.jpg" alt=""></a></th>
-                                <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                                <td>$59</td>
-                                <td class="fw-bold">74</td>
-                                <td>$4,366</td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><a href="#"><img src="assets/img/product-4.jpg" alt=""></a></th>
-                                <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                                <td>$32</td>
-                                <td class="fw-bold">63</td>
-                                <td>$2,016</td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><a href="#"><img src="assets/img/product-5.jpg" alt=""></a></th>
-                                <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a>
-                                </td>
-                                <td>$79</td>
-                                <td class="fw-bold">41</td>
-                                <td>$3,239</td>
-                            </tr>  -->
                         </tbody>
                     </table>
-
+                    <div *ngIf="displayOrderListToday.length >= 5" style="float: inline-end;">
+                        <pagination-controls (pageChange)="p=$event"></pagination-controls>
+                    </div>
                 </div>
 
             </div>

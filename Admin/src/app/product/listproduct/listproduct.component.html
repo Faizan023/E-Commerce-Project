@@ -30,7 +30,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let pro of product">
+                                <tr *ngFor="let pro of product | paginate: {itemsPerPage:10, currentPage:p}">
                                     <td scope="row">{{pro.id}}</td>
                                     <td scope="row"> <img src="{{pro.img}}"></td>
                                     <td scope="row">{{pro.quantity}}</td>
@@ -71,5 +71,7 @@
             </div>
         </div>
     </section>
-
+    <div style="float: inline-end;">
+        <pagination-controls (pageChange)="p=$event"></pagination-controls>
+    </div>
 </main>

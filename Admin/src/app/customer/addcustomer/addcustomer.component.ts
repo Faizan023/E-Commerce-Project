@@ -58,6 +58,5 @@ export class AddcustomerComponent {
       });
     }
   }
-
 }
 // Customer already exists
