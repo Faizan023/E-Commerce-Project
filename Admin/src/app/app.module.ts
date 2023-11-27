@@ -23,8 +23,6 @@ import { CustomerlistComponent } from './customer/customerlist/customerlist.comp
 import { OrderlistComponent } from './order/orderlist/orderlist.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { ProductModule } from './product/product.module';
-import { CategoryRoutingModule } from './category/category-routing.module';
 import { ProductComponent } from './product/addproductcomponent/product.component';
 import { ListproductComponent } from './product/listproduct/listproduct.component';
 import { UpdateComponent } from './product/update/update.component';
@@ -33,6 +31,7 @@ import { UpdateorderComponent } from './order/updateorder/updateorder.component'
 import { UpdatecustomerComponent } from './customer/updatecustomer/updatecustomer.component';
 import { AddcustomerComponent } from './customer/addcustomer/addcustomer.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +46,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SidebarComponent, ProductComponent,
     ListproductComponent, UpdateComponent,
     DashboardComponent, UpdateorderComponent,
-    UpdatecustomerComponent, AddcustomerComponent
+    UpdatecustomerComponent, AddcustomerComponent, FooterComponent
   ],
   imports: [
     BrowserModule,

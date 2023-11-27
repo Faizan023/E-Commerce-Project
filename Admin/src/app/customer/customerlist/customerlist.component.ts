@@ -1,8 +1,9 @@
+import { SaleModule } from './../../sale/sale.module';
 import { Subscriber, filter } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-customerlist',
@@ -11,12 +12,15 @@ import { FormGroup } from '@angular/forms';
 })
 export class CustomerlistComponent implements OnInit {
   customerData!: FormGroup;
-  constructor(private http: HttpClient, private route: Router) { }
+  constructor(private http: HttpClient, private route: Router, private form: FormBuilder) { }
   customerList: any = [];
   p: number = 1;
   ngOnInit(): void {
     this.http.get('http://localhost:5209/api/Controller/GetCustomer').subscribe(res => {
       this.customerList = res;
+    });
+    this.customerData = this.form.group({
+      search: ['', Validators.required],
     });
   }
 
@@ -31,19 +35,23 @@ export class CustomerlistComponent implements OnInit {
     this.route.navigateByUrl('/customer/update/' + id)
   }
 
-  // get FindUser() {
-  //   let serachValue = this.customerData.controls['search'].value as string
-  //   if (serachValue == "" || serachValue == null) {
-  //     return this.customerList;
-  //   } else {
-  //     return this.customerList.filter((find: any) => {
-  //       return (
-  //         find.email.toLowerCase().includes(serachValue.toLowerCase()) ||
-  //         find.firstName.toLowerCase().includes(serachValue.toLowerCase()) ||
-  //         find.lastName.Tolowercase().includes(serachValue.toLowerCase())
-  //       );
-  //     });
-  //   }
-  // }
+  Search() {
+    this.FindUser();
+  }
 
+  get FindUser() {
+    let serachValue = this.customerData.controls['search'].value as string
+    if (serachValue == "" || serachValue == null) {
+      return this.customerList;
+    } else {
+      return this.customerList.filter((find: any) => {
+        return (
+          find.email.toLowerCase().includes(serachValue.toLowerCase()) ||
+          find.firstName.toLowerCase().includes(serachValue.toLowerCase()) ||
+          find.lastName.toLowerCase().includes(serachValue.toLowerCase()) ||
+          find.id.toString().includes(serachValue)
+        );
+      });
+    }
+  }
 }

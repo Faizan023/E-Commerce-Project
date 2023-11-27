@@ -9,15 +9,23 @@
             </ol>
         </nav>
     </div><!-- End Page Title -->
-
+<form [formGroup]="ListBrand">
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">BrandList</h5>
-
+                        <!-- <h5 class="card-title">BrandList</h5> -->
+                        <div class="input-group card-title" style="float: inline-end;">
+                            <div class="form-outline"  >
+                              <input type="search" id="form1" class="form-control" placeholder="Search.." formControlName="search" />
+                              <!-- <label class="form-label" for="form1">Search</label> -->
+                            </div>
+                            <button type="button" class="btn btn-primary" (change)="Search()">
+                                <i class='bx bx-search'></i>
+                            </button>
+                          </div> 
                         <!-- Table with stripped rows -->
                         <table class="table datatable">
                             <thead>
@@ -29,7 +37,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let brand of BrandList | paginate:{itemsPerPage:10, currentPage: p}">
+                                <tr *ngFor="let brand of FindBrand | paginate:{itemsPerPage:10, currentPage: p}">
                                     <td>{{brand.id}}</td>
                                     <td>{{brand.name}} </td>
                                     <!-- <td><button type="button">Update</button></td> -->
@@ -72,11 +80,11 @@
                         End Table with stripped rows
                     </div>
                 </div>
-
+                <div style="float: inline-end; text-decoration: none;">
+                    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+                </div>
             </div>
         </div>
     </section>
-    <div style="float: inline-end;">
-        <pagination-controls (pageChange)="p=$event"></pagination-controls>
-    </div>
+</form>
 </main>

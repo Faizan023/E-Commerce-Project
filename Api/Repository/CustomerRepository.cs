@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using Models;
 
 namespace Repository
@@ -20,6 +21,7 @@ namespace Repository
         Task<int> CustomerCountMonth();
         Task<int> CustomerCountYear();
         Task<IEnumerable<Customer>> RecentCustomer();
+        // Task<IEnumerable<Customer>> Search(string customer);
 
         // void PatchCustomer(Customer customer);
     }

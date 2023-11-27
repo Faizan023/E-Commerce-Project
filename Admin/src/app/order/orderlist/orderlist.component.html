@@ -9,64 +9,73 @@
       </ol>
     </nav>
   </div><!-- End Page Title -->
+  <form [formGroup]="ListOrder">
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
 
-  <section class="section">
-    <div class="row">
-      <div class="col-lg-12">
-
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Orders</h5>
-
-
-            <!-- Table with stripped rows -->
-            <table class="table datatable">
-              <thead>
-                <tr>
-                  <th scope="col">Date</th>
-                  <th scope="col">OrderId</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Product</th>
-                  <th scope="col">Price</th>
-                  <th scope="col">Quantity</th>
-                  <th scope="col">Total</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let order of orderList | paginate:{itemsPerPage:10, currentPage:p}">
-                  <td scope="row">{{order.orderDate | date}}</td>
-                  <td scope="row">{{order.id}}</td>
-                  <td scope="row">{{order.customerName}}</td>
-                  <td scope="row">{{order.name}}</td>
-                  <td scope="row">₹ {{order.amount}} </td>
-                  <td scope="row">{{order.quantity}}</td>
-                  <td scope="row"> ₹ {{order.amount * order.quantity}}</td>
-                  <td scope="row">{{order.status}}</td>
-                  <td scope="row"><button type="button" class="btn btn-outline-secondary"
-                      (click)="UpdateOrder(order.id)">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-pencil-square" viewBox="0 0 16 16">
-                        <path
-                          d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z">
-                        </path>
-                        <path fill-rule="evenodd"
-                          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z">
-                        </path>
-                      </svg>
-                      <span class="visually-hidden">Button</span>
-                    </button></td>
-                  <!-- <td><button type="button" (click)="remove(order.id)">Remove</button></td> -->
-              </tbody>
-            </table>
-            <!-- End Table with stripped rows -->
+          <div class="card">
+            <div class="card-body">
+              <!-- <h5 class="card-title">Orders</h5> -->
+              <div class="input-group card-title" style="float: inline-end;">
+                <div class="form-outline">
+                  <input type="search" id="form1" class="form-control" placeholder="Search.."
+                    formControlName="search" />
+                  <!-- <label class="form-label" for="form1">Search</label> -->
+                </div>
+                <button type="button" class="btn btn-primary" (change)="Search()">
+                  <i class='bx bx-search'></i>
+                </button>
+              </div>
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">OrderId</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let order of FindOrder | paginate:{itemsPerPage:10, currentPage:p}">
+                    <td scope="row">{{order.orderDate | date}}</td>
+                    <td scope="row">{{order.id}}</td>
+                    <td scope="row">{{order.customerName}}</td>
+                    <td scope="row">{{order.name}}</td>
+                    <td scope="row">₹ {{order.amount}} </td>
+                    <td scope="row">{{order.quantity}}</td>
+                    <td scope="row"> ₹ {{order.amount * order.quantity}}</td>
+                    <td scope="row">{{order.status}}</td>
+                    <td scope="row"><button type="button" class="btn btn-outline-secondary"
+                        (click)="UpdateOrder(order.id)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-pencil-square" viewBox="0 0 16 16">
+                          <path
+                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z">
+                          </path>
+                          <path fill-rule="evenodd"
+                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z">
+                          </path>
+                        </svg>
+                        <span class="visually-hidden">Button</span>
+                      </button></td>
+                    <!-- <td><button type="button" (click)="remove(order.id)">Remove</button></td> -->
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+            </div>
+          </div>
+          <div style="float: inline-end; text-decoration: none;">
+            <pagination-controls (pageChange)="p=$event"></pagination-controls>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <div style="float: inline-end;">
-    <pagination-controls (pageChange)="p=$event"></pagination-controls>
-  </div>
+    </section>
+  </form>
 </main>

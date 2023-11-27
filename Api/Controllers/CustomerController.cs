@@ -59,5 +59,13 @@ namespace Controllers
             _CustomerRepository.DeleteCustomer(Id);
             return new JsonResult("Deleted Successfully");
         }
+
+        //     [HttpGet]
+        //     [Route("search")]
+        //     public async Task<IActionResult> GetSearch(string customer)
+        //     {
+        //         var result = await _CustomerRepository.Search(customer);
+        //        return Ok(result);
+        //     }
     }
 }

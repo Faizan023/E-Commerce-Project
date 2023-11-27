@@ -1,5 +1,7 @@
+import { SidebarComponent } from './../sidebar/sidebar.component';
 import { Route, Router } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+// import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-navbar',
@@ -7,11 +9,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-
-  constructor(private Route: Router){}
-logout(){
-  localStorage.clear();
-  this.Route.navigateByUrl('/login');
-}
+  // @Output() toggle = new EventEmitter<void>();
+  // isopen: boolean = true;
+  constructor(private Route: Router) { }
+  logout() {
+    localStorage.clear();
+    this.Route.navigateByUrl('/login');
+  }
 
 }

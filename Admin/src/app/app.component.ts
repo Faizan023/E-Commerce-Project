@@ -1,5 +1,6 @@
 import { HelperService } from './helper/helper.service';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,8 @@ export class AppComponent {
 
 
   constructor(private helperService: HelperService) {
-
   }
-  
+  // @ViewChild('sidebar') sidebar !: SidebarComponent;
+
 
 }

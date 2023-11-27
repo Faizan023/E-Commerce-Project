@@ -13,27 +13,17 @@ import { NotificationService } from 'src/app/notification.service';
 export class ListproductComponent implements OnInit {
   product: Array<{ id: number, img: any, name: string, categoryId: number, description: string, price: number, discount: number, quantity: number, color: string, measurment: string, mesurmentValue: string, brandId: number }> = [];
   constructor(private http: HttpClient, private route: Router, private form: FormBuilder, private toastr: NotificationService) { }
-  UpdateForm!: FormGroup
+  ListProduct!: FormGroup
   p: number = 1;
+
   ngOnInit(): void {
     this.http.get<any>('http://localhost:5209/api/Controller/GetProduct').subscribe(res => {
       this.product = res
     }
     );
-    this.UpdateForm = this.form.group({
-      img: ['',],
-      name: ['', Validators.required],
-      categoryId: ['', Validators.required],
-      description: ['', Validators.required],
-      price: ['', Validators.required],
-      discount: ['', Validators.required],
-      quantity: ['', Validators.required],
-      color: ['', Validators.required],
-      measurment: ['', Validators.required],
-      mesurmentValue: ['', Validators.required],
-      brandId: ['', Validators.required],
+    this.ListProduct = this.form.group({
+      search: [''],
     });
-
   }
 
   Delete(id: number) {
@@ -45,5 +35,24 @@ export class ListproductComponent implements OnInit {
 
   update(id: number): void {
     this.route.navigate(['product/update', id]);
+  }
+
+  Search() {
+    this.FindProduct;
+  }
+
+  get FindProduct() {
+    let serachValue = this.ListProduct.controls['search'].value as string
+    if (serachValue == "" || serachValue == null) {
+      return this.product;
+    } else {
+      return this.product.filter((find: any) => {
+        return (
+          find.name.toLowerCase().includes(serachValue.toLowerCase()) ||
+          find.price.toString().includes(serachValue.toLowerCase()) ||
+          find.id.toString().includes(serachValue)
+        );
+      });
+    }
   }
 }
