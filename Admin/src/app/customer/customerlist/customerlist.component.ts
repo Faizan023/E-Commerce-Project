@@ -16,18 +16,14 @@ export class CustomerlistComponent implements OnInit {
   customerList: any = [];
   p: number = 1;
   ngOnInit(): void {
-    this.http.get('http://localhost:5209/api/Controller/GetCustomer').subscribe(res => {
-      this.customerList = res;
-    });
-    this.customerData = this.form.group({
-      search: ['', Validators.required],
-    });
+    this.InitDetails();
   }
 
   remove(id: number) {
     this.http.delete('http://localhost:5209/api/Controller/DeleteCustomer/' + id).subscribe(res => {
       if (res == "Deleted Successfully") {
         console.log("Customer Remove Successfully");
+        this.InitDetails();
       }
     });
   }
@@ -54,4 +50,14 @@ export class CustomerlistComponent implements OnInit {
       });
     }
   }
+
+  InitDetails(){
+    this.http.get('http://localhost:5209/api/Controller/GetCustomer').subscribe(res => {
+      this.customerList = res;
+    });
+    this.customerData = this.form.group({
+      search: ['', Validators.required],
+    });
+  }
+
 }

@@ -35,7 +35,7 @@ export class AddcategoryComponent implements OnInit {
         if (res == "Added Successfully") {
           console.log("Added Successfully");
           this.tostr.showSuccess('Added Successfully', "Success");
-          this.router.navigateByUrl('/category/listcategory');
+          this.router.navigateByUrl('/category/list');
         }
       });
     }

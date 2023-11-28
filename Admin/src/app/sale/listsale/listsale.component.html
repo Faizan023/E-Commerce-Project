@@ -1,34 +1,29 @@
 <main id="main" class="main">
-
     <div class="pagetitle">
         <h1>Sale</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
-                <!-- <li class="breadcrumb-item">Tables</li> -->
                 <li class="breadcrumb-item active">Sale</li>
             </ol>
         </nav>
-    </div><!-- End Page Title -->
+    </div>
+    <button type="button" class="addbtn" routerLink="add"><i class='bx bxs-offer'></i> Add Sale</button>
     <form [formGroup]="ListSale">
         <section class="section">
             <div class="row">
                 <div class="col-lg-12">
-
                     <div class="card">
                         <div class="card-body">
-                            <!-- <h5 class="card-title">SaleList</h5> -->
                             <div class="input-group card-title" style="float: inline-end;">
                                 <div class="form-outline">
                                     <input type="search" id="form1" class="form-control" placeholder="Search.."
-                                        formControlName="search" />
-                                    <!-- <label class="form-label" for="form1">Search</label> -->
+                                        formControlName="search" autocomplete="off" />
                                 </div>
                                 <button type="button" class="btn btn-primary" (change)="Search()">
                                     <i class='bx bx-search'></i>
                                 </button>
                             </div>
-                            <!-- Table with stripped rows -->
                             <table class="table datatable">
                                 <thead>
                                     <tr>
@@ -37,7 +32,6 @@
                                         <td scope="col">StartDate</td>
                                         <td scope="col">EndDate</td>
                                         <td scope="col">Action</td>
-                                        <!-- <td scope="col">Action</td> -->
                                     </tr>
                                 </thead>
                                 <tbody>

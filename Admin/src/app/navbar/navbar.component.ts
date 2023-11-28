@@ -17,4 +17,7 @@ export class NavbarComponent {
     this.Route.navigateByUrl('/login');
   }
 
+  toggleSidebar() {
+    document.body.classList.toggle('toggle-sidebar');
+  }
 }

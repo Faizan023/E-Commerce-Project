@@ -25,7 +25,7 @@ namespace Repository
         {
             try
             {
-                return await context.Sales.ToListAsync();
+                return await context.Sales.OrderByDescending(t => t.Id).ToListAsync();
             }
             catch
             {

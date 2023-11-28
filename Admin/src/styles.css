@@ -16,10 +16,14 @@ a {
     color: #4154f1;
 }
 
-a:active {
+/* .nav-item a:active {
     color: #717ff5;
     text-decoration: none;
-}
+} */
+/* .nav-link.active:active{
+    color: #717ff5;
+    text-decoration: none;
+} */
 
 /* li .nav-item a .nav-link.collapsed:active {
     color: red;
@@ -27,9 +31,9 @@ a:active {
 
 } */
 
-pagination-control{
+/* pagination-control{
     height: 40px;
-}
+} */
 
 h1,
 h2,
@@ -622,7 +626,8 @@ h6 {
 
 @media (max-width: 1199px) {
     .sidebar {
-        left: -300px;
+        /* left: -300px; */
+        margin-left: -300px;
     }
 }
 
@@ -646,7 +651,8 @@ h6 {
 
 @media (max-width: 1199px) {
     .toggle-sidebar .sidebar {
-        left: 0;
+        /* left: 0; */
+        margin-left: 0px;
     }
 }
 
@@ -659,6 +665,7 @@ h6 {
 
     .toggle-sidebar .sidebar {
         left: -300px;
+        margin-left: -300px;
     }
 }
 
@@ -1027,11 +1034,13 @@ h6 {
 # Footer
 --------------------------------------------------------------*/
 .footer {
+    position: relative;
     padding: 20px 0;
     font-size: 14px;
     transition: all 0.3s;
     border-top: 1px solid #cddfff;
     background-color: #0d6efd;
+    /* z-index: 1; */
     /* background-color: #3e4f6f; */
 }
 
@@ -1045,4 +1054,27 @@ h6 {
     text-align: center;
     font-size: 13px;
     color: whitesmoke;
+}
+
+/* .activeted:active{  
+    color: red;
+} */
+/* .activeted:active{
+    color: red;
+} */
+.addbtn {
+    color: whitesmoke;
+    background-color: blue;
+    padding: 5px 10px;
+    margin: 10px 10px;
+    border: 2px solid white;
+    border-radius: 6px;
+
+}
+
+.addbtn:hover {
+    background-color: whitesmoke;
+    color: blue;
+    transition: 0.3s;
+    border: 2px solid blue;
 }

@@ -82,17 +82,15 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="form-group mb-4">
                                                 <div class="row">
                                                     <label class="col-md-4">DOB :</label>
                                                     <div class="col-md-8">
-                                                        <input class="form-control" name="dateofbirth" type="text"
+                                                        <input class="form-control" name="dateofbirth" type="date"
                                                             formControlName="dateofbirth">
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="form-group mb-4">
                                                 <div class="row">
                                                     <label class="col-md-4">Address :</label>
@@ -102,10 +100,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="align-center">
-                                                <button type="button" class="btn btn-primary"
-                                                    (click)="Register()">Add +</button>
+                                                <button type="button" class="btn btn-primary" (click)="Register()">Add
+                                                    +</button>
                                             </div>
                                         </form>
                                     </div>
@@ -118,140 +115,3 @@
         </div>
     </div>
 </main>
-
-<!-- <div class="form-group mb-4">
-                                                <div class="row">
-                                                    <label class="col-md-4">Category :</label>
-                                                    <div class="col-md-8">
-                                                        <select class="form-control form-custom mb-4" name="category"
-                                                            formControlName="categoryId">
-                                                            <option value="">Select Category</option>
-
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group mb-4">
-                                                <div class="row">
-                                                    <label class="col-md-4">Brand :</label>
-                                                    <div class="col-md-8">
-                                                        <select class="form-control form-custom" name="brand"
-                                                            formControlName="brandId">
-                                                            <option value="">Select Brand</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group mb-4">
-                                                <div class="row">
-                                                    <label class="col-md-4">Color :</label>
-                                                    <div class="col-md-8">
-                                                        <select class="form-control form-custom" name="color"
-                                                            formControlName="color">
-                                                            <option value="">Select a Color</option>
-                                                            <option value="color1">Black</option>
-                                                            <option value="color2">White</option>
-                                                            <option value="color3">Blue</option>
-                                                            <option value="color4">Red</option>
-                                                            <option value="color5">Green</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group mb-4">
-                                                <div class="row">
-                                                    <label class="col-md-4">Measurment :</label>
-                                                    <div class="col-md-8">
-                                                        <select class="form-control form-custom" name="size"
-                                                            formControlName="measurment">
-                                                            <option value="">Select Size</option>
-                                                            <option value="size1">Size 1</option>
-                                                            <option value="size2">Size 2</option>
-                                                            <option value="size3">Size 3</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group mb-4">
-                                                <div class="row">
-                                                    <label class="col-md-4">Mesurment Value :</label>
-                                                    <div class="col-md-8">
-                                                        <input class="form-control" name="sku" type="text"
-                                                            formControlName="mesurmentValue">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-5 col-md-12">
-                            <div class="card card-default">
-                                <div class="card-heading">
-                                    <h2 class="card-title"><span>PRICING</span></h2>
-                                </div>
-                                <div class="card-body">
-                                    <form class="form-horizontal">
-                                        <div class="form-group mb-4">
-                                            <div class="row">
-                                                <label class="col-md-4">Price :</label>
-                                                <div class="col-md-8">
-                                                    <input class="form-control" name="price" type="text"
-                                                        formControlName="price">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group mb-4">
-                                            <div class="row">
-                                                <label class="col-md-4">Discount :</label>
-                                                <div class="col-md-8">
-                                                    <input class="form-control" name="discount" type="text"
-                                                        formControlName="discount">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <label class="col-md-12"><span>Image</span></label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <label class="col-md-4">Image :</label>
-                                                <div class="col-md-8">
-                                                    <div class="mb-3">
-                                                        <div class="custom-file">
-                                                            <input type="file" class="form-control-file"
-                                                                formControlName="img">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <label class="col-md-4">QTY :</label>
-                                                <div class="col-md-8">
-                                                    <input class="form-control" name="qty" type="text"
-                                                        formControlName="quantity">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="align-center">
-                                <button name="singlebutton" class="btn btn-primary">Add +</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</main> -->

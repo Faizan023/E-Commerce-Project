@@ -34,7 +34,7 @@ export class AddsaleComponent implements OnInit {
         if (res == "Added Successfully") {
           this.toastr.showSuccess('Success', 'Added Successfully');
           this.addsaleform.reset();
-          this.router.navigateByUrl('/sale/listsale');
+          this.router.navigateByUrl('/sale/list');
         }
       });
     }

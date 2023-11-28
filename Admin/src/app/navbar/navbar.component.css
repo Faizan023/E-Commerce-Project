@@ -60,11 +60,7 @@ a:hover {
   color: #4154f1;
 }
 
-.nav-tabs-bordered .nav-link.active {
-  background-color: #fff;
-  color: #4154f1;
-  border-bottom: 2px solid #4154f1;
-}
+
 
 /*--------------------------------------------------------------
   # Header
@@ -80,12 +76,12 @@ a:hover {
   }
 }
 
-
 .logo span {
-  font-size: 26px;
+  font-size: 30px;
   font-weight: 700;
   color: #012970;
   font-family: "Nunito", sans-serif;
+  padding-left: 5px;
 }
 
 .header {
@@ -100,8 +96,8 @@ a:hover {
 }
 
 .header .toggle-sidebar-btn {
-  font-size: 32px;
-  padding-left: 10px;
+  font-size: 45px;
+  padding: 5px 65px;
   cursor: pointer;
   color: #012970;
 }

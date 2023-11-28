@@ -9,6 +9,7 @@
             </ol>
         </nav>
     </div><!-- End Page Title -->
+    <button type="button" class="addbtn" routerLink="add"><i class='bx bx-purchase-tag' ></i> Add Brand</button>
 <form [formGroup]="ListBrand">
     <section class="section">
         <div class="row">
@@ -19,7 +20,7 @@
                         <!-- <h5 class="card-title">BrandList</h5> -->
                         <div class="input-group card-title" style="float: inline-end;">
                             <div class="form-outline"  >
-                              <input type="search" id="form1" class="form-control" placeholder="Search.." formControlName="search" />
+                              <input type="search" id="form1" class="form-control" placeholder="Search.." formControlName="search" autocomplete="off" />
                               <!-- <label class="form-label" for="form1">Search</label> -->
                             </div>
                             <button type="button" class="btn btn-primary" (change)="Search()">

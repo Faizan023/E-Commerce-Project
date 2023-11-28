@@ -1,41 +1,35 @@
 <main id="main" class="main">
-
     <div class="pagetitle">
         <h1>Category</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
-                <!-- <li class="breadcrumb-item">Tables</li> -->
                 <li class="breadcrumb-item active">Category</li>
             </ol>
         </nav>
-    </div><!-- End Page Title -->
+    </div>
+    <button type="button" class="addbtn" routerLink="add"><i class='bx bx-category'></i> Add Category</button>
     <form [formGroup]="ListCategory">
         <section class="section">
             <div class="row">
                 <div class="col-lg-12">
-
                     <div class="card">
                         <div class="card-body">
-                            <!-- <h5 class="card-title">CategoryList</h5> -->
                             <div class="input-group card-title" style="float: inline-end;">
                                 <div class="form-outline">
                                     <input type="search" id="form1" class="form-control" placeholder="Search.."
-                                        formControlName="search" />
-                                    <!-- <label class="form-label" for="form1">Search</label> -->
+                                        formControlName="search" autocomplete="off" />
                                 </div>
                                 <button type="button" class="btn btn-primary" (change)="Search()">
                                     <i class='bx bx-search'></i>
                                 </button>
                             </div>
-                            <!-- Table with stripped rows -->
                             <table class="table datatable">
                                 <thead>
                                     <tr>
                                         <td scope="col">Id</td>
                                         <td scope="col">Name</td>
                                         <td scope="col">Action</td>
-                                        <!-- <td scope="col">Action</td> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,7 +37,6 @@
                                         *ngFor="let category of FindCategory | paginate:{itemsPerPage:10, currentPage:p}">
                                         <td scope="row">{{category.id}}</td>
                                         <td scope="row">{{category.name}} </td>
-
                                         <td scope="row"><button type="button" class="btn btn-outline-secondary"
                                                 (click)="updatecategory(category.id)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -57,10 +50,6 @@
                                                 </svg>
                                                 <span class="visually-hidden">Button</span>
                                             </button>
-                                            <!-- <td scope="row"> <button type="button" class="btn btn-outline-warning"
-                                            (click)="updatecategory(category.id)">Update</button></td> -->
-                                            <!-- <td scope="row"> <button type="button" class="btn btn-outline-danger"
-                                            (click)="removecategory(category.id)">Delete</button></td> -->
                                             <button type="button" class="btn btn-outline-secondary"
                                                 (click)="removecategory(category.id)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"

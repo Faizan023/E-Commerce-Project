@@ -9,19 +9,18 @@
             </ol>
         </nav>
     </div><!-- End Page Title -->
+    <button type="button" class="addbtn" routerLink="add"><i class='bx bx-package'></i> Add Product</button>
     <form [formGroup]="ListProduct">
         <section class="section">
             <div class="row">
                 <div class="col-lg-12">
-
                     <div class="card">
                         <div class="card-body">
                             <!-- <h5 class="card-title">Products</h5> -->
-
                             <div class="input-group card-title" style="float: inline-end;">
                                 <div class="form-outline">
                                     <input type="search" id="form1" class="form-control" placeholder="Search.."
-                                        formControlName="search" />
+                                        formControlName="search" autocomplete="off"/>
                                     <!-- <label class="form-label" for="form1">Search</label> -->
                                 </div>
                                 <button type="button" class="btn btn-primary" (change)="Search()">

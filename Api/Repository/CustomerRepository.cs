@@ -39,7 +39,7 @@ namespace Repository
         {
             try
             {
-                return await context.Customers.ToListAsync();
+                return await context.Customers.OrderByDescending(t=> t.Id).ToListAsync();
             }
             catch
             {

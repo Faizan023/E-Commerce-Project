@@ -32,6 +32,9 @@ import { UpdatecustomerComponent } from './customer/updatecustomer/updatecustome
 import { AddcustomerComponent } from './customer/addcustomer/addcustomer.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FooterComponent } from './footer/footer.component';
+import { MatProgressBarModule } 
+    from '@angular/material/progress-bar';
+ 
 
 @NgModule({
   declarations: [
@@ -58,6 +61,7 @@ import { FooterComponent } from './footer/footer.component';
     MatToolbarModule,
     ToastrModule.forRoot(),
     NgxPaginationModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
