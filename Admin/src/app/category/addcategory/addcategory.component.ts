@@ -21,21 +21,20 @@ export class AddcategoryComponent implements OnInit {
   }
 
   addcategory() {
-
+    var date = new Date();
     if (this.addcategoryform.valid) {
-
       this.http.post('http://localhost:5209/api/Controller/InsertCategory', {
         name: this.addcategoryform.value.name,
-        createDateTime: '2023-11-11',
+        createDateTime: date,
         updateDateTime: null,
         createdBy: 1,
         updatedBy: null,
       }, { responseType: 'text' }).subscribe(res => {
-
         if (res == "Added Successfully") {
-          console.log("Added Successfully");
           this.tostr.showSuccess('Added Successfully', "Success");
           this.router.navigateByUrl('/category/list');
+        } else {
+          this.tostr.showError("Something went Wrong", "Error");
         }
       });
     }

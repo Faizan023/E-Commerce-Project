@@ -9,7 +9,7 @@
             </ol>
         </nav>
     </div><!-- End Page Title -->
-    <button type="button" class="addbtn" routerLink="add"><i class='bx bx-package'></i> Add Product</button>
+    <button type="button" class="addbtn" routerLink="/product/add"><i class='bx bx-package'></i> Add Product</button>
     <form [formGroup]="ListProduct">
         <section class="section">
             <div class="row">
@@ -17,15 +17,35 @@
                     <div class="card">
                         <div class="card-body">
                             <!-- <h5 class="card-title">Products</h5> -->
-                            <div class="input-group card-title" style="float: inline-end;">
+                            <!-- <div class="input-group card-title" style="float: inline-end;">
                                 <div class="form-outline">
                                     <input type="search" id="form1" class="form-control" placeholder="Search.."
-                                        formControlName="search" autocomplete="off"/>
-                                    <!-- <label class="form-label" for="form1">Search</label> -->
-                                </div>
+                                        formControlName="search" autocomplete="off"/> -->
+                            <!-- <label class="form-label" for="form1">Search</label> -->
+                            <!-- </div>
                                 <button type="button" class="btn btn-primary" (change)="Search()">
                                     <i class='bx bx-search'></i>
                                 </button>
+                            </div> -->
+                            <div class="datatable-top">
+                                <div class="datatable-dropdown">
+                                    <label>
+                                        <select class="datatable-selector">
+                                            <option value="5">5</option>
+                                            <option value="10" selected="">10</option>
+                                            <option value="15">15</option>
+                                            <option value="20">20</option>
+                                            <!-- <option value="25">25</option> -->
+                                        </select> Entries per page
+                                    </label>
+                                </div>
+                                <div class="form-outline">
+                                    <input type="search" id="form1" class="form-control datatable-input"
+                                        placeholder="Search.." formControlName="search" autocomplete="off" />
+                                    <!-- <button type="button" class="btn btn-primary" style="display: inline-block;" (change)="Search()">
+                                    <i class='bx bx-search'></i>
+                                </button> -->
+                                </div>
                             </div>
                             <!-- Table with stripped rows -->
                             <table class="table datatable">

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/notification.service';
 import { AuthService } from 'src/app/service/service.service';
 
@@ -14,7 +14,7 @@ export class AddcustomerComponent {
   registration!: FormGroup
   displaymsg: string = '';
   // addbrandform: any;
-  constructor(private user: FormBuilder, private http: HttpClient, private auth: AuthService, private toast: NotificationService) { }
+  constructor(private user: FormBuilder, private http: HttpClient, private auth: AuthService, private toast: NotificationService, private route: Router) { }
   ngOnInit(): void {
     this.registration = this.user.group({
       firstName: ['', Validators.required],
@@ -29,7 +29,7 @@ export class AddcustomerComponent {
   }
 
   Register() {
-
+    var date = new Date();
     if (this.registration.valid) {
       this.http.post("http://localhost:5209/api/Controller/InsertCustomer", {
         firstName: this.registration.value.firstName,
@@ -40,16 +40,17 @@ export class AddcustomerComponent {
         dateofbirth: this.registration.value.dateofbirth,
         gender: this.registration.value.gender,
         address: this.registration.value.address,
-        createdDateTime: "2023-11-21",
+        createdDateTime: date,
         createdBy: 1,
-        updatedDateTime: "2023-11-21",
+        updatedDateTime: null,
         updatedBy: null,
         active: true,
-        activationDate: "2023-11-21",
+        activationDate: date,
         activationKey: "Yes"
-      }).subscribe(res => {
+      }, { responseType: 'text' }).subscribe(res => {
         if (res == "Added Successfully") {
           this.toast.showSuccess("Customer Added", "Success");
+          this.route.navigateByUrl('customer/list')
         } else if (res == "Customer already exists") {
           this.toast.showError("This Email is Already Used", "Error");
         } else {

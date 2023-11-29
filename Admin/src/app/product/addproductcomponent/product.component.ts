@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../service/service.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/notification.service';
 
 @Component({
   selector: 'app-product',
@@ -11,7 +13,7 @@ export class ProductComponent implements OnInit {
   ProductForm!: FormGroup
   brandList: any = [];
   categoryList: any = [];
-  constructor(private product: FormBuilder, private Auth: AuthService, private http: HttpClient) { }
+  constructor(private product: FormBuilder, private Auth: AuthService, private http: HttpClient, private route: Router, private toastr: NotificationService) { }
   file: File | undefined;
   ngOnInit(): void {
     this.ProductForm = this.product.group({
@@ -32,27 +34,31 @@ export class ProductComponent implements OnInit {
   }
 
   AddProduct() {
-
+    var date = new Date();
     if (this.ProductForm.valid) {
-
-      this.Auth.insertproduct([
-        this.ProductForm.value.img,
-        this.ProductForm.value.name,
-        this.ProductForm.value.categoryId,
-        this.ProductForm.value.description,
-        this.ProductForm.value.price,
-        this.ProductForm.value.discount,
-        this.ProductForm.value.quantity,
-        this.ProductForm.value.color,
-        this.ProductForm.value.measurment,
-        this.ProductForm.value.mesurmentValue,
-        this.ProductForm.value.brandId,
-      ]).subscribe(res => {
-        console.log(res);
+      this.http.post("http://localhost:5209/api/Controller/InsertProduct", {
+        img: this.ProductForm.value.img,
+        name: this.ProductForm.value.name,
+        categoryId: this.ProductForm.value.categoryId,
+        description: this.ProductForm.value.description,
+        price: this.ProductForm.value.price,
+        discount: this.ProductForm.value.discount,
+        quantity: this.ProductForm.value.quantity,
+        color: this.ProductForm.value.color,
+        measurment: this.ProductForm.value.measurment,
+        mesurmentValue: this.ProductForm.value.mesurmentValue,
+        brandId: this.ProductForm.value.brandId,
+        createdDateTime: date,
+        updatedDateTime: null,
+        createdBy: 1,
+        updatedBy: null
+      }, { responseType: 'text' }).subscribe(res => {
         if (res == "Added Successfully") {
-          console.log("Added Successfully");
           this.ProductForm.reset();
+          this.route.navigateByUrl('product');
+          this.toastr.showSuccess("Added Successfully", "Success");
         } else {
+          this.toastr.showError("Something went Wrong", "Error");
           console.log("Something Went Wrong");
         }
       });
@@ -60,7 +66,7 @@ export class ProductComponent implements OnInit {
   }
 
   BrandList() {
-    this.Auth.BrandList().subscribe(res => {
+    this.http.get('http://localhost:5209/api/Controller/GetBrands').subscribe(res => {
       this.brandList = res;
     });
   }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { first } from 'rxjs';
 import { NotificationService } from 'src/app/notification.service';
 
@@ -14,7 +14,7 @@ export class UpdatecustomerComponent implements OnInit {
   UpdateDetail!: FormGroup;
   Id: number = 0;
   customerDetail: any = [];
-  constructor(private mid: ActivatedRoute, private http: HttpClient, private form: FormBuilder, private toast: NotificationService) { }
+  constructor(private mid: ActivatedRoute, private http: HttpClient, private form: FormBuilder, private toast: NotificationService, private route: Router) { }
 
   ngOnInit(): void {
     this.mid.params.subscribe(res => {
@@ -51,6 +51,7 @@ export class UpdatecustomerComponent implements OnInit {
   }
 
   UpdateForm() {
+    var date = new Date();
     this.http.put("http://localhost:5209/api/Controller/UpdateCustomer", {
       id: this.Id,
       firstName: this.UpdateDetail.value.firstName,
@@ -63,14 +64,15 @@ export class UpdatecustomerComponent implements OnInit {
       address: this.UpdateDetail.value.address,
       createdDateTime: this.customerDetail.createdDateTime,
       createdBy: 1,
-      updatedDateTime: "2023-11-21",
-      updatedBy: null,
+      updatedDateTime: date,
+      updatedBy: 1,
       active: true,
       activationDate: this.customerDetail.activationDate,
       activationKey: this.customerDetail.activationKey
-    }).subscribe(res => {
+    },{responseType:'text'}).subscribe(res => {
       if (res == "Updated Successfully") {
         this.toast.showSuccess("Updated Successfully", "Success");
+        this.route.navigateByUrl('customer/list');
       }
     });
   }

@@ -1,7 +1,8 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient, HttpResponse, HttpStatusCode } from '@angular/common/http';
+import { NotificationService } from 'src/app/notification.service';
 
 @Component({
   selector: 'app-updateorder',
@@ -12,7 +13,7 @@ export class UpdateorderComponent implements OnInit {
   Id: number = 0;
   UpdateOrder !: FormGroup;
   OrderValue: any = [];
-  constructor(private mid: ActivatedRoute, private updatedetails: FormBuilder, private http: HttpClient) { }
+  constructor(private mid: ActivatedRoute, private updatedetails: FormBuilder, private http: HttpClient, private toastr: NotificationService, private route: Router) { }
   ngOnInit(): void {
     this.mid.params.subscribe(res => {
       this.Id = +res['id'];
@@ -67,6 +68,7 @@ export class UpdateorderComponent implements OnInit {
   }
 
   UpdateOrders() {
+    var date = new Date();
     this.http.put('http://localhost:5209/api/Controller/UpdateOrder', {
       id: this.Id,
       customerId: this.OrderValue.customerId,
@@ -81,13 +83,16 @@ export class UpdateorderComponent implements OnInit {
       deliveryCharge: this.OrderValue.deliveryCharge,
       status: this.UpdateOrder.value.status,
       createdDateTime: this.OrderValue.createdDateTime,
-      updatedDateTime: '2023-11-20',
+      updatedDateTime: date,
       createdBy: this.OrderValue.createdBy,
       updatedBy: 1,
-      statusDateTime: '2023-11-20',
-    },).subscribe(res => {
-      if(res == "Updated Successfully"){
-      console.log(res);
+      statusDateTime: date
+    }, { responseType: 'text' }).subscribe((res) => {
+      if (res == "Updated Successfully") {
+        this.toastr.showSuccess("Updated Successfully", "Successs");
+        this.route.navigateByUrl('order')
+      } else {
+        this.toastr.showError("Something went Wrong", "Error");
       }
     });
   }

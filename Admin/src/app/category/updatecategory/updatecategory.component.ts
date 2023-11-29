@@ -10,7 +10,7 @@ import { NotificationService } from 'src/app/notification.service';
   styleUrls: ['./updatecategory.component.css']
 })
 export class UpdatecategoryComponent implements OnInit {
-  updatecategoryform!: FormGroup
+  updatecategoryform!: FormGroup;
   categoryId: number = 0;
   categorydetail: any = [];
   constructor(private route: ActivatedRoute, private fb: FormBuilder, private http: HttpClient, private toastr: NotificationService, private router: Router) { }
@@ -19,7 +19,7 @@ export class UpdatecategoryComponent implements OnInit {
 
     this.route.params.subscribe(res => {
       this.categoryId = +res['id'];
-    })
+    });
 
     this.http.get('http://localhost:5209/api/Controller/GetCategoryBy/' + this.categoryId).subscribe(res => {
       this.categorydetail = res
@@ -31,23 +31,26 @@ export class UpdatecategoryComponent implements OnInit {
     this.updatecategoryform = this.fb.group({
       name: ['', Validators.required]
     });
-
   }
+
   updatecategory() {
+    var date = new Date();
     if (this.updatecategoryform.valid) {
       this.http.put('http://localhost:5209/api/Controller/UpdateCategory/' + this.categoryId, {
         id: this.categoryId,
         name: this.updatecategoryform.value.name,
-        createDateTime: '2023-11-11',
-        updateDateTime: new Date(),
-        createdBy: 1,
+        createDateTime: this.categorydetail.createDateTime,
+        updateDateTime: date,
+        createdBy: this.categorydetail.createdBy,
         updatedBy: 1
-      }).subscribe(res => {
+      }, { responseType: 'text' }).subscribe(res => {
         if (res == "Updated Successfully") {
           this.toastr.showSuccess('Success', 'Updated Successfully');
-          this.router.navigateByUrl('./category/updatecategory');
+          this.router.navigateByUrl('category');
+        } else {
+          this.toastr.showError("Something Went Wrong", "Error");
         }
-      })
+      });
     }
   }
 }

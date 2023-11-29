@@ -42,17 +42,17 @@ export class UpdatesaleComponent implements OnInit {
         name: this.saleupdateform.value.name,
         startDate: this.saleupdateform.value.startDate,
         endDate: this.saleupdateform.value.endDate,
-        createDateTime: '2023-11-11',
+        createDateTime: this.saledetail.createDateTime,
         updateDateTime: '2023-11-11',
-        createdBy: 1,
+        createdBy: this.saledetail.createdBy,
         updatedBy: 1
-      }).subscribe(res => {
-        if(res == "Updated Successfully"){
+      }, { responseType: 'text' }).subscribe(res => {
+        if (res == "Updated Successfully") {
           this.toastr.showSuccess('Success', 'updated Successfully');
           this.router.navigateByUrl('/sale/list');
+        } else {
+          this.toastr.showError("Something went Wrong", "Error");
         }
-          
-
       });
     }
   }

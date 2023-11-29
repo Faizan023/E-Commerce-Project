@@ -15,26 +15,25 @@ export class ListcategoryComponent implements OnInit {
   p: number = 1;
   constructor(private http: HttpClient, private toastr: NotificationService, private router: Router, private form: FormBuilder) { }
   ngOnInit(): void {
-    this.http.get('http://localhost:5209/api/Controller/GetCategories').subscribe(res => {
-      this.CategoryList = res
-    });
-
+    this.LoadCategory();
     this.ListCategory = this.form.group({
       search: [''],
     });
   }
 
   removecategory(id: number) {
-    this.http.delete('http://localhost:5209/api/Controller/DeleteCategory/' + id).subscribe(res => {
+    this.http.delete('http://localhost:5209/api/Controller/DeleteCategory/' + id, { responseType: 'json' }).subscribe(res => {
       if (res == "Deleted Successfully") {
-        this.toastr.showWarning('Deleted', "YOur Category Is Deleted");
+        this.toastr.showSuccess("Deleted Successfully", "Success");
+        this.LoadCategory();
+      } else {
+        this.toastr.showError("Something went Wrong", "Error");
       }
     });
   }
   updatecategory(id: number) {
     this.router.navigate(['category/update/' + id]);
   }
-
 
   Search() {
     this.FindCategory;
@@ -51,5 +50,10 @@ export class ListcategoryComponent implements OnInit {
         );
       });
     }
+  }
+  LoadCategory() {
+    this.http.get('http://localhost:5209/api/Controller/GetCategories').subscribe(res => {
+      this.CategoryList = res
+    });
   }
 }

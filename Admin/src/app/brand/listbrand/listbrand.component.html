@@ -9,83 +9,104 @@
             </ol>
         </nav>
     </div><!-- End Page Title -->
-    <button type="button" class="addbtn" routerLink="add"><i class='bx bx-purchase-tag' ></i> Add Brand</button>
-<form [formGroup]="ListBrand">
-    <section class="section">
-        <div class="row">
-            <div class="col-lg-12">
+    <button type="button" class="addbtn" routerLink="/brand/add"><i class='bx bx-purchase-tag'></i> Add Brand</button>
+    <form [formGroup]="ListBrand">
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
 
-                <div class="card">
-                    <div class="card-body">
-                        <!-- <h5 class="card-title">BrandList</h5> -->
-                        <div class="input-group card-title" style="float: inline-end;">
-                            <div class="form-outline"  >
-                              <input type="search" id="form1" class="form-control" placeholder="Search.." formControlName="search" autocomplete="off" />
-                              <!-- <label class="form-label" for="form1">Search</label> -->
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- <h5 class="card-title">BrandList</h5> -->
+                            <!-- <div class="input-group card-title" style="float: inline-end;">
+                                <div class="form-outline">
+                                    <input type="search" id="form1" class="form-control" placeholder="Search.."
+                                        formControlName="search" autocomplete="off" /> -->
+                                    <!-- <label class="form-label" for="form1">Search</label> -->
+                                <!-- </div>
+                                <button type="button" class="btn btn-primary" (change)="Search()">
+                                    <i class='bx bx-search'></i>
+                                </button>
+                            </div> -->
+                            <div class="datatable-top">
+                                <div class="datatable-dropdown">
+                                    <label>
+                                        <select class="datatable-selector">
+                                            <option value="5">5</option>
+                                            <option value="10" selected="">10</option>
+                                            <option value="15">15</option>
+                                            <option value="20">20</option>
+                                            <!-- <option value="25">25</option> -->
+                                        </select> Entries per page
+                                    </label>
+                                </div>
+                                <div class="form-outline">
+                                    <input type="search" id="form1" class="form-control datatable-input"
+                                        placeholder="Search.." formControlName="search" autocomplete="off" />
+                                    <!-- <button type="button" class="btn btn-primary" style="display: inline-block;" (change)="Search()">
+                                    <i class='bx bx-search'></i>
+                                </button> -->
+                                </div>
                             </div>
-                            <button type="button" class="btn btn-primary" (change)="Search()">
-                                <i class='bx bx-search'></i>
-                            </button>
-                          </div> 
-                        <!-- Table with stripped rows -->
-                        <table class="table datatable">
-                            <thead>
-                                <tr>
-                                    <td scope="col">Id</td>
-                                    <td scope="col">Name</td>
-                                    <td scope="col">Action</td>
-                                    <!-- <td scope="col">Action</td> -->
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let brand of FindBrand | paginate:{itemsPerPage:10, currentPage: p}">
-                                    <td>{{brand.id}}</td>
-                                    <td>{{brand.name}} </td>
-                                    <!-- <td><button type="button">Update</button></td> -->
+                            <!-- Table with stripped rows -->
+                            <table class="table datatable">
+                                <thead>
+                                    <tr>
+                                        <td scope="col">Id</td>
+                                        <td scope="col">Name</td>
+                                        <td scope="col">Action</td>
+                                        <!-- <td scope="col">Action</td> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let brand of FindBrand | paginate:{itemsPerPage:10, currentPage: p}">
+                                        <td>{{brand.id}}</td>
+                                        <td>{{brand.name}} </td>
+                                        <!-- <td><button type="button">Update</button></td> -->
 
-                                    <td scope="row"><button type="button" class="btn btn-outline-secondary"
-                                            (click)="updatebrand(brand.id)">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z">
-                                                </path>
-                                                <path fill-rule="evenodd"
-                                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z">
-                                                </path>
-                                            </svg>
-                                            <span class="visually-hidden">Button</span>
-                                        </button>
-                                        <!-- <td><button type="button" class="btn btn-outline-warning"
+                                        <td scope="row"><button type="button" class="btn btn-outline-secondary"
+                                                (click)="updatebrand(brand.id)">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z">
+                                                    </path>
+                                                    <path fill-rule="evenodd"
+                                                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z">
+                                                    </path>
+                                                </svg>
+                                                <span class="visually-hidden">Button</span>
+                                            </button>
+                                            <!-- <td><button type="button" class="btn btn-outline-warning"
                                             (click)="updatebrand(brand.id)">Update</button></td> -->
-                                        <!-- <td><button type="button" (click)="removebrand(brand.id)">Remove</button></td> -->
-                                        <!-- <td> <button type="button" class="btn btn-outline-danger"
+                                            <!-- <td><button type="button" (click)="removebrand(brand.id)">Remove</button></td> -->
+                                            <!-- <td> <button type="button" class="btn btn-outline-danger"
                                             (click)="removebrand(brand.id)">Delete</button></td> -->
-                                        <button type="button" class="btn btn-outline-secondary"
-                                            (click)="removebrand(brand.id)">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z">
-                                                </path>
-                                                <path
-                                                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z">
-                                                </path>
-                                            </svg>
-                                            <span class="visually-hidden">Button</span>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        End Table with stripped rows
+                                            <button type="button" class="btn btn-outline-secondary"
+                                                (click)="removebrand(brand.id)">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z">
+                                                    </path>
+                                                    <path
+                                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z">
+                                                    </path>
+                                                </svg>
+                                                <span class="visually-hidden">Button</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            End Table with stripped rows
+                        </div>
+                    </div>
+                    <div style="float: inline-end; text-decoration: none;">
+                        <pagination-controls (pageChange)="p=$event"></pagination-controls>
                     </div>
                 </div>
-                <div style="float: inline-end; text-decoration: none;">
-                    <pagination-controls (pageChange)="p=$event"></pagination-controls>
-                </div>
             </div>
-        </div>
-    </section>
-</form>
+        </section>
+    </form>
 </main>

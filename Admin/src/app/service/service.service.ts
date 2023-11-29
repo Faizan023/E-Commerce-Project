@@ -28,68 +28,70 @@ export class AuthService {
     }, { responseType: 'text' })
   }
 
-  insertproduct(product: any) {
-    return this.http.post("http://localhost:5209/api/Controller/InsertProduct", {
-      img: product[0],
-      name: product[1],
-      categoryId: product[2],
-      description: product[3],
-      price: product[4],
-      discount: product[5],
-      quantity: product[6],
-      color: product[7],
-      measurment: product[8],
-      mesurmentValue: product[9],
-      brandId: product[10],
-      createdDateTime: '2023-09-02',
-      updatedDateTime: null,
-      createdBy: 1,
-      updatedBy: null,
-    }, { responseType: 'text' })
-  }
+  // insertproduct(product: any) {
+  //   var date = new Date();
+  //   return this.http.post("http://localhost:5209/api/Controller/InsertProduct", {
+  //     img: product[0],
+  //     name: product[1],
+  //     categoryId: product[2],
+  //     description: product[3],
+  //     price: product[4],
+  //     discount: product[5],
+  //     quantity: product[6],
+  //     color: product[7],
+  //     measurment: product[8],
+  //     mesurmentValue: product[9],
+  //     brandId: product[10],
+  //     createdDateTime: date,
+  //     updatedDateTime: null,
+  //     createdBy: 1,
+  //     updatedBy: null,
+  //   }, { responseType: 'text' })
+  // }
 
-  UpdateProduct(product: any) {
-    return this.http.put('http://localhost:5209/api/Controller/UpdateProduct', {
-      id: product[0],
-      img: product[1],
-      name: product[2],
-      categoryId: product[3],
-      description: product[4],
-      price: product[5],
-      discount: product[6],
-      quantity: product[7],
-      color: product[8],
-      measurment: product[9],
-      mesurmentValue: product[10],
-      brandId: product[11],
-      createdDateTime: '2023-10-19',
-      updatedDateTime: null,
-      createdBy: 1,
-      updatedBy: null
-    }, { responseType: 'text' })
-  }
+  // UpdateProduct(product: any) {
+  //   var date = new Date();
+  //   return this.http.put('http://localhost:5209/api/Controller/UpdateProduct', {
+  //     id: product[0],
+  //     img: product[1],
+  //     name: product[2],
+  //     categoryId: product[3],
+  //     description: product[4],
+  //     price: product[5],
+  //     discount: product[6],
+  //     quantity: product[7],
+  //     color: product[8],
+  //     measurment: product[9],
+  //     mesurmentValue: product[10],
+  //     brandId: product[11],
+  //     createdDateTime: product[12],
+  //     updatedDateTime: date,
+  //     createdBy: 1,
+  //     updatedBy: 1
+  //   }, { responseType: 'text' })
+  // }
 
-  BrandList() {
-    return this.http.get('http://localhost:5209/api/Controller/GetBrands');
-  }
+  // BrandList() {
+  //   return this.http.get('http://localhost:5209/api/Controller/GetBrands');
+  // }
 
-  AddCustomer(customer: any) {
-    return this.http.post("http://localhost:5209/api/Controller/InsertCustomer", {
-      firstName: customer[0],
-      lastName: customer[1],
-      email: customer[2],
-      phoneNumber: customer[3],
-      password: customer[4],
-      dateofbirth: customer[5],
-      gender: customer[6],
-      address: customer[7],
-      createdDateTime: "2023-11-21",
-      createdBy: null,
-      updatedDateTime: "2023-11-21",
-      updatedBy: null,
-      active: true,
-      activationDate: "2023-11-21",
-      activationKey: "Yes"
-    }, { responseType: 'text' })
-  }
+  // AddCustomer(customer: any) {
+  //   return this.http.post("http://localhost:5209/api/Controller/InsertCustomer", {
+  //     firstName: customer[0],
+  //     lastName: customer[1],
+  //     email: customer[2],
+  //     phoneNumber: customer[3],
+  //     password: customer[4],
+  //     dateofbirth: customer[5],
+  //     gender: customer[6],
+  //     address: customer[7],
+  //     createdDateTime: "2023-11-21",
+  //     createdBy: null,
+  //     updatedDateTime: "2023-11-21",
+  //     updatedBy: null,
+  //     active: true,
+  //     activationDate: "2023-11-21",
+  //     activationKey: "Yes"
+  //   }, { responseType: 'text' })
+  // }
 }

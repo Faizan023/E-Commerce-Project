@@ -1,7 +1,6 @@
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/service/service.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from 'src/app/notification.service';
 
@@ -17,10 +16,7 @@ export class ListproductComponent implements OnInit {
   p: number = 1;
 
   ngOnInit(): void {
-    this.http.get<any>('http://localhost:5209/api/Controller/GetProduct').subscribe(res => {
-      this.product = res
-    }
-    );
+    this.LoadProduct();
     this.ListProduct = this.form.group({
       search: [''],
     });
@@ -28,8 +24,14 @@ export class ListproductComponent implements OnInit {
 
   Delete(id: number) {
     // alert("Are you sure want to delete" + id + "product");
-    this.http.delete('http://localhost:5209/api/Controller/DeleteProduct' + '/' + id).subscribe(res => {
+    this.http.delete('http://localhost:5209/api/Controller/DeleteProduct' + '/' + id, { responseType: 'json' }).subscribe(res => {
       console.log(res);
+      if (res == "Deleted Successfully") {
+        this.toastr.showSuccess("Deleted Successfully", "Success");
+        this.LoadProduct();
+      } else {
+        this.toastr.showError("Something went Wrong", "Error");
+      }
     });
   }
 
@@ -54,5 +56,10 @@ export class ListproductComponent implements OnInit {
         );
       });
     }
+  }
+  LoadProduct() {
+    this.http.get<any>('http://localhost:5209/api/Controller/GetProduct').subscribe(res => {
+      this.product = res
+    });
   }
 }

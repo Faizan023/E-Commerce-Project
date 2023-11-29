@@ -9,7 +9,7 @@
             </ol>
         </nav>
     </div><!-- End Page Title -->
-    <button type="button" class="addbtn" routerLink="add"><i class='bx bx-user'></i> Add customer</button>
+    <button type="button" class="addbtn" routerLink="/customer/add"><i class='bx bx-user'></i> Add customer</button>
     <form [formGroup]="customerData">
         <section class="section">
             <div class="row">
@@ -17,14 +17,34 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="input-group card-title" style="float: inline-end;">
+                                <!-- <div class="input-group card-title " style="float: inline-end;">
                                     <div class="form-outline">
-                                        <input type="search" id="form1" class="form-control" placeholder="Search.."
+                                        <input type="search" id="form1" class="form-control datatable-input" placeholder="Search.."
                                             formControlName="search" autocomplete="off" />
                                     </div>
-                                    <button type="button" class="btn btn-primary" (change)="Search()">
+                                    <button type="button" class="btn btn-primary datatable-input" (change)="Search()">
                                         <i class='bx bx-search'></i>
                                     </button>
+                                </div> -->
+                                <div class="datatable-top">
+                                    <div class="datatable-dropdown">
+                                        <label>
+                                            <select class="datatable-selector">
+                                                <option value="5">5</option>
+                                                <option value="10" selected="">10</option>
+                                                <option value="15">15</option>
+                                                <option value="20">20</option>
+                                                <!-- <option value="25">25</option> -->
+                                            </select> Entries per page
+                                        </label>
+                                    </div>
+                                    <div class="form-outline">
+                                        <input type="search" id="form1" class="form-control datatable-input"
+                                            placeholder="Search.." formControlName="search" autocomplete="off" />
+                                        <!-- <button type="button" class="btn btn-primary" style="display: inline-block;" (change)="Search()">
+                                        <i class='bx bx-search'></i>
+                                    </button> -->
+                                    </div>
                                 </div>
                                 <table class="table datatable">
                                     <thead>
@@ -40,7 +60,7 @@
                                     </thead>
                                     <tbody>
                                         <tr
-                                            *ngFor="let customer of FindUser | paginate : {itemsPerPage:10, currentPage: p,   } ">
+                                            *ngFor="let customer of FindUser | paginate : {itemsPerPage:enteries, currentPage: p,   } ">
                                             <!-- <td>{{customer.dateOfBirth | date}}</td> -->
                                             <td>{{customer.id}}</td>
                                             <td>{{customer.firstName + customer.lastName}}</td>
@@ -48,7 +68,6 @@
                                             <td>{{customer.phoneNumber}}</td>
                                             <td>{{customer.address}}</td>
                                             <td>{{customer.active}}</td>
-
                                             <td>
                                                 <button type="button" class="btn btn-outline-secondary"
                                                     (click)="Update(customer.id)"> <svg

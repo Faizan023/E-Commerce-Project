@@ -16,18 +16,20 @@ export class ListsaleComponent implements OnInit {
   constructor(private http: HttpClient, private toastr: NotificationService, private router: Router, private form: FormBuilder) { }
   p: number = 1;
   ngOnInit(): void {
-    this.http.get('http://localhost:5209/api/Controller/GetSales').subscribe(res => {
-      this.SaleList = res;
-    });
+    this.LoadSale();
     this.ListSale = this.form.group({
       search: [''],
     });
   }
 
   removesale(id: number) {
-    this.http.delete('http://localhost:5209/api/Controller/DeleteSale/' + id).subscribe(res => {
+    window.alert("Are Sure Want Delete"); 
+    this.http.delete('http://localhost:5209/api/Controller/DeleteSale/' + id, { responseType: 'json' }).subscribe(res => {
       if (res == "Deleted Successfully") {
-        this.toastr.showWarning('Deleted', 'Successfully Deleted');
+        this.toastr.showSuccess('Successfully Deleted', "Success");
+        this.LoadSale();
+      } else {
+        this.toastr.showError("Something went Wrong", "Error");
       }
     });
   }
@@ -51,5 +53,10 @@ export class ListsaleComponent implements OnInit {
         );
       });
     }
+  }
+  LoadSale() {
+    this.http.get('http://localhost:5209/api/Controller/GetSales').subscribe(res => {
+      this.SaleList = res;
+    });
   }
 }

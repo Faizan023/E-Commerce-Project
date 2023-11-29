@@ -15,8 +15,15 @@ export class CustomerlistComponent implements OnInit {
   constructor(private http: HttpClient, private route: Router, private form: FormBuilder) { }
   customerList: any = [];
   p: number = 1;
+  // select:number = 0;
+  // select:number = 5;
+  enteries: number = 10;
   ngOnInit(): void {
     this.InitDetails();
+    // this.customerData = this.form.group({
+    //   select: [''],
+    // });
+
   }
 
   remove(id: number) {
@@ -51,7 +58,7 @@ export class CustomerlistComponent implements OnInit {
     }
   }
 
-  InitDetails(){
+  InitDetails() {
     this.http.get('http://localhost:5209/api/Controller/GetCustomer').subscribe(res => {
       this.customerList = res;
     });
@@ -59,5 +66,4 @@ export class CustomerlistComponent implements OnInit {
       search: ['', Validators.required],
     });
   }
-
 }

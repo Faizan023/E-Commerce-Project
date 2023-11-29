@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { NotificationService } from 'src/app/notification.service';
 
 @Component({
   selector: 'app-updatebrand',
@@ -14,7 +15,7 @@ export class UpdatebrandComponent implements OnInit {
   brandId: number = 0;
   branddetail: any = [];
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private http: HttpClient, private toastr: NotificationService, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(res => {
@@ -34,16 +35,22 @@ export class UpdatebrandComponent implements OnInit {
   }
 
   updatebrand() {
+    var date = new Date();
     if (this.updatebrandform.valid) {
       this.http.put('http://localhost:5209/api/Controller/UpdateBrand/' + this.brandId, {
         id: this.brandId,
         name: this.updatebrandform.value.name,
-        createDateTime: "2023-10-11",
-        updateDateTime: "2023-10-11",
-        createdby: 1,
+        createDateTime: this.branddetail.createDateTime,
+        updateDateTime: date,
+        createdby: this.branddetail.createdby,
         updatedBy: 1
-      }).subscribe(res => {
-        
+      }, { responseType: 'text' }).subscribe(res => {
+        if (res == "Updated Successfully") {
+          this.toastr.showSuccess("Updated Successfully", "Success");
+          this.router.navigateByUrl('brand');
+        } else {
+          this.toastr.showError("Something went Wrong", "Error");
+        }
       });
     }
   }

@@ -64,25 +64,30 @@ export class UpdateComponent implements OnInit {
   }
 
   UpdatePropduct() {
-    this.service.UpdateProduct([
-      this.productId,
-      this.UpdateForm.value.img,
-      this.UpdateForm.value.name,
-      this.UpdateForm.value.categoryId,
-      this.UpdateForm.value.description,
-      this.UpdateForm.value.price,
-      this.UpdateForm.value.discount,
-      this.UpdateForm.value.quantity,
-      this.UpdateForm.value.color,
-      this.UpdateForm.value.measurment,
-      this.UpdateForm.value.mesurmentValue,
-      this.UpdateForm.value.brandId,
-    ]).subscribe(res => {
+    var date = new Date();
+    this.http.put('http://localhost:5209/api/Controller/UpdateProduct', {
+      id: this.productId,
+      img: this.UpdateForm.value.img,
+      name: this.UpdateForm.value.name,
+      categoryId: this.UpdateForm.value.categoryId,
+      description: this.UpdateForm.value.description,
+      price: this.UpdateForm.value.price,
+      discount: this.UpdateForm.value.discount,
+      quantity: this.UpdateForm.value.quantity,
+      color: this.UpdateForm.value.color,
+      measurment: this.UpdateForm.value.measurment,
+      mesurmentValue: this.UpdateForm.value.mesurmentValue,
+      brandId: this.UpdateForm.value.brandId,
+      createdDateTime: this.update.createdDateTime,
+      updatedDateTime: date,
+      createdBy: this.update.createdBy,
+      updatedBy: 1
+    }, { responseType: 'text' }).subscribe(res => {
       if (res == "Updated Successfully") {
+        this.toaster.showSuccess("Updated Successfully", "Success");
         this.route.navigateByUrl('/product');
       }
     });
-    this.toaster.showSuccess('Success', 'Updated Successfully');
   }
 
   LoadCategory() {

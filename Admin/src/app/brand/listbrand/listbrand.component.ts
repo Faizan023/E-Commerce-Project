@@ -18,18 +18,20 @@ export class ListbrandComponent implements OnInit {
   constructor(private http: HttpClient, private toastr: NotificationService, private router: Router, private form: FormBuilder) { }
 
   ngOnInit(): void {
-
-    this.http.get<any>('http://localhost:5209/api/Controller/GetBrands').subscribe(res => {
-      this.BrandList = res;
-    });
+    this.LoadBrand();
     this.ListBrand = this.form.group({
       search: [''],
-    })
+    });
   }
 
   removebrand(id: number) {
-    this.http.delete('http://localhost:5209/api/Controller/DeleteBrand/' + id).subscribe(res => {
-      console.log(res);
+    this.http.delete('http://localhost:5209/api/Controller/DeleteBrand/' + id, { responseType: 'json' }).subscribe(res => {
+      if (res == "Deleted Successfully") {
+        this.toastr.showSuccess("Deleted Successfully", "Success");
+        this.LoadBrand();
+      } else {
+        this.toastr.showError("Somethin went Wrong", "Error");
+      }
     });
   }
 
@@ -52,5 +54,10 @@ export class ListbrandComponent implements OnInit {
         );
       });
     }
+  }
+  LoadBrand() {
+    this.http.get<any>('http://localhost:5209/api/Controller/GetBrands').subscribe(res => {
+      this.BrandList = res;
+    });
   }
 }
