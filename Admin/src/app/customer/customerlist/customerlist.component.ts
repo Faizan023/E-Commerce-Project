@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NotificationService } from 'src/app/notification.service';
 
 @Component({
   selector: 'app-customerlist',
@@ -12,12 +13,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CustomerlistComponent implements OnInit {
   customerData!: FormGroup;
-  constructor(private http: HttpClient, private route: Router, private form: FormBuilder) { }
+  constructor(private http: HttpClient, private route: Router, private form: FormBuilder, private toastr: NotificationService) { }
   customerList: any = [];
   p: number = 1;
   // select:number = 0;
   // select:number = 5;
   enteries: number = 10;
+  // popOverTitle:string = "Do you really want to delete?";
+  popOverMsg: string = "Do you really want to delete?";
+  cancelClicked: boolean = false;
   ngOnInit(): void {
     this.InitDetails();
     // this.customerData = this.form.group({
@@ -29,11 +33,13 @@ export class CustomerlistComponent implements OnInit {
   remove(id: number) {
     this.http.delete('http://localhost:5209/api/Controller/DeleteCustomer/' + id).subscribe(res => {
       if (res == "Deleted Successfully") {
-        console.log("Customer Remove Successfully");
+        // console.log("Customer Remove Successfully");
+        this.toastr.showSuccess("Deleted Successfully", "Success");
         this.InitDetails();
       }
     });
   }
+
   Update(id: number) {
     this.route.navigateByUrl('/customer/update/' + id)
   }
@@ -62,8 +68,10 @@ export class CustomerlistComponent implements OnInit {
     this.http.get('http://localhost:5209/api/Controller/GetCustomer').subscribe(res => {
       this.customerList = res;
     });
+
     this.customerData = this.form.group({
       search: ['', Validators.required],
     });
   }
+
 }

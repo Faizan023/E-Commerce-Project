@@ -14,12 +14,12 @@ export class LoginComponent implements OnInit {
 
   AdminLogin!: FormGroup
   constructor(private form: FormBuilder, private auth: AuthService, private route: Router, private toastr: NotificationService) { }
-
+  seePassword: boolean = false;
   ngOnInit(): void {
     this.AdminLogin = this.form.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
-    })
+    });
   }
 
   OnLogin() {
@@ -36,6 +36,15 @@ export class LoginComponent implements OnInit {
           this.toastr.showSuccess('Success', "Login Successfully");
         }
       });
+    }
+  }
+  SeePassword() {
+    // var password = this.AdminLogin.controls['password'].value;
+    if (this.seePassword == true) {
+      this.seePassword = false;
+      
+    } else {
+      this.seePassword = true;
     }
   }
 }

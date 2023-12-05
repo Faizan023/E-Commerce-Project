@@ -14,7 +14,8 @@ export class ListbrandComponent implements OnInit {
   ListBrand!: FormGroup;
   BrandList: Array<{ id: number, name: string }> = [];
   p: number = 1;
-
+  popOverMsg:string = "Do you really want to delete?";
+  cancelClicked:boolean = false;
   constructor(private http: HttpClient, private toastr: NotificationService, private router: Router, private form: FormBuilder) { }
 
   ngOnInit(): void {

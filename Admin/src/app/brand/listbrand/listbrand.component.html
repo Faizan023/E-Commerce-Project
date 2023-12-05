@@ -22,8 +22,8 @@
                                 <div class="form-outline">
                                     <input type="search" id="form1" class="form-control" placeholder="Search.."
                                         formControlName="search" autocomplete="off" /> -->
-                                    <!-- <label class="form-label" for="form1">Search</label> -->
-                                <!-- </div>
+                            <!-- <label class="form-label" for="form1">Search</label> -->
+                            <!-- </div>
                                 <button type="button" class="btn btn-primary" (change)="Search()">
                                     <i class='bx bx-search'></i>
                                 </button>
@@ -83,7 +83,8 @@
                                             <!-- <td> <button type="button" class="btn btn-outline-danger"
                                             (click)="removebrand(brand.id)">Delete</button></td> -->
                                             <button type="button" class="btn btn-outline-secondary"
-                                                (click)="removebrand(brand.id)">
+                                                mwlConfirmationPopover [popoverMessage]="popOverMsg" placement="left"
+                                                (confirm)="removebrand(brand.id)" (cancel)="cancelClicked = true">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                                     <path
@@ -99,7 +100,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            End Table with stripped rows
                         </div>
                     </div>
                     <div style="float: inline-end; text-decoration: none;">

@@ -13,6 +13,8 @@ export class ListcategoryComponent implements OnInit {
   ListCategory !: FormGroup
   CategoryList: any = [];
   p: number = 1;
+  popOverMsg:string = "Do you really want to delete?";
+  cancelClicked:boolean = false;
   constructor(private http: HttpClient, private toastr: NotificationService, private router: Router, private form: FormBuilder) { }
   ngOnInit(): void {
     this.LoadCategory();

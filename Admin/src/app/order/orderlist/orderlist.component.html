@@ -71,7 +71,16 @@
                     <td scope="row">₹ {{order.amount}} </td>
                     <td scope="row">{{order.quantity}}</td>
                     <td scope="row"> ₹ {{order.amount * order.quantity}}</td>
-                    <td scope="row"> {{order.status}}</td>
+                    <td scope="row">
+                      <span class="badge bg-success" *ngIf="order.status == 'Completed'"><i
+                          class="bi bi-check-circle me-1"></i> {{order.status}}</span>
+                      <span class="badge bg-danger" *ngIf="order.status == 'Not Delivered'"><i
+                          class="bi bi-exclamation-octagon me-1"></i>
+                        {{order.status}}
+                      </span>
+                      <span class="badge bg-warning text-dark" *ngIf="order.status == 'On Way'"><i
+                          class="bi bi-exclamation-triangle me-1"></i> {{order.status}}</span>
+                    </td>
                     <td scope="row"><button type="button" class="btn btn-outline-secondary"
                         (click)="UpdateOrder(order.id)">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

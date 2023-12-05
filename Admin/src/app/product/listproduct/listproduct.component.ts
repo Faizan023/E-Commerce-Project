@@ -14,7 +14,8 @@ export class ListproductComponent implements OnInit {
   constructor(private http: HttpClient, private route: Router, private form: FormBuilder, private toastr: NotificationService) { }
   ListProduct!: FormGroup
   p: number = 1;
-
+  popOverMsg: string = "Do you really want to delete?";
+  cancelClicked: boolean = false;
   ngOnInit(): void {
     this.LoadProduct();
     this.ListProduct = this.form.group({

@@ -29,17 +29,19 @@ namespace Repository
     public class CustomerRepository : ICustomerRepository
     {
         private readonly Context context;
+        private readonly IOrderRepository orderRepository;
 
-        public CustomerRepository(Context _Context)
+        public CustomerRepository(Context _Context, IOrderRepository _orderRepository)
         {
             context = _Context;
+            orderRepository = _orderRepository;
         }
 
         public async Task<IEnumerable<Customer>> GetCustomer()
         {
             try
             {
-                return await context.Customers.OrderByDescending(t=> t.Id).ToListAsync();
+                return await context.Customers.OrderByDescending(t => t.Id).ToListAsync();
             }
             catch
             {
@@ -110,12 +112,19 @@ namespace Repository
 
         public bool DeleteCustomer(int Id)
         {
+            // IOrderRepository orderRepository = new IOre();
             var result = false;
             try
             {
                 var find = context.Customers.Find(Id);
                 if (find != null)
                 {
+                    var isAnyOrder = context.Orders.Where(t => t.CustomerId == find.Id);
+                    if (isAnyOrder.Any())
+                    {
+                        orderRepository.DeleteOrder(10);
+                    }
+
                     context.Remove(find).State = EntityState.Deleted;
                     context.SaveChanges();
                     result = true;

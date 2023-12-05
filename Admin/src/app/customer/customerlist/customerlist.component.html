@@ -9,6 +9,7 @@
             </ol>
         </nav>
     </div><!-- End Page Title -->
+
     <button type="button" class="addbtn" routerLink="/customer/add"><i class='bx bx-user'></i> Add customer</button>
     <form [formGroup]="customerData">
         <section class="section">
@@ -33,7 +34,7 @@
                                                 <option value="5">5</option>
                                                 <option value="10" selected="">10</option>
                                                 <option value="15">15</option>
-                                                <option value="20">20</option>
+                                                <option value="20">2 0</option>
                                                 <!-- <option value="25">25</option> -->
                                             </select> Entries per page
                                         </label>
@@ -56,6 +57,9 @@
                                             <th scope="col">Location</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
+                                            <th scope="col">
+
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -67,7 +71,12 @@
                                             <td>{{customer.email}}</td>
                                             <td>{{customer.phoneNumber}}</td>
                                             <td>{{customer.address}}</td>
-                                            <td>{{customer.active}}</td>
+                                            <td>
+                                                <span class="badge bg-success" *ngIf="customer.active == true"><i
+                                                        class="bi bi-check-circle me-1"></i> Active</span>
+                                                <span class="badge bg-danger" *ngIf="customer.active == false"><i
+                                                        class="bi bi-exclamation-octagon me-1"></i>Not Active</span>
+                                            </td>
                                             <td>
                                                 <button type="button" class="btn btn-outline-secondary"
                                                     (click)="Update(customer.id)"> <svg
@@ -84,7 +93,9 @@
                                                     <span class="visually-hidden">Button</span>
                                                 </button>
                                                 <button type="button" class="btn btn-outline-secondary"
-                                                    (click)="remove(customer.id)">
+                                                    mwlConfirmationPopover [popoverMessage]="popOverMsg"
+                                                    placement="left" (confirm)="remove(customer.id)"
+                                                    (cancel)="cancelClicked = true">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                         fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                                         <path
@@ -105,6 +116,7 @@
                         <div style="float: inline-end;text-decoration: none;">
                             <pagination-controls (pageChange)="p=$event"></pagination-controls>
                         </div>
+                        <!-- <app-popup *ngIf="customer === customer" (confirmDelete)="remove(customer.id)"></app-popup> -->
                     </div>
                 </form>
             </div>

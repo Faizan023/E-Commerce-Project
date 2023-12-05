@@ -185,7 +185,16 @@
                                 <!-- <td class="fw-bold"></td>  -->
                                 <td>{{order.name}}</td>
                                 <td>{{order.amount}}</td>
-                                <td>{{order.status}}</td>
+                                <td scope="row">
+                                    <span class="badge bg-success" *ngIf="order.status == 'Completed'"><i
+                                        class="bi bi-check-circle me-1"></i> {{order.status}}</span>
+                                    <span class="badge bg-danger" *ngIf="order.status == 'Not Delivered'"><i
+                                        class="bi bi-exclamation-octagon me-1"></i>
+                                      {{order.status}}
+                                    </span>
+                                    <span class="badge bg-warning text-dark" *ngIf="order.status == 'On Way'"><i
+                                        class="bi bi-exclamation-triangle me-1"></i> {{order.status}}</span>
+                                  </td> 
                             </tr>
                         </tbody>
                     </table>

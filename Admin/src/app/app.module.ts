@@ -34,6 +34,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FooterComponent } from './footer/footer.component';
 import { MatProgressBarModule } 
     from '@angular/material/progress-bar';
+import { PopupComponent } from './popup/popup.component';
+import { ConfirmationPopoverDirective, ConfirmationPopoverModule } from 'angular-confirmation-popover';
  
 
 @NgModule({
@@ -49,7 +51,7 @@ import { MatProgressBarModule }
     SidebarComponent, ProductComponent,
     ListproductComponent, UpdateComponent,
     DashboardComponent, UpdateorderComponent,
-    UpdatecustomerComponent, AddcustomerComponent, FooterComponent
+    UpdatecustomerComponent, AddcustomerComponent, FooterComponent, PopupComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,10 @@ import { MatProgressBarModule }
     MatToolbarModule,
     ToastrModule.forRoot(),
     NgxPaginationModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType:'danger'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

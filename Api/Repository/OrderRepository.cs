@@ -25,7 +25,6 @@ namespace Repository
         Task<IEnumerable<vOrder>> TodayOrderList();
         Task<IEnumerable<vOrder>> MonthOrderList();
         Task<IEnumerable<vOrder>> YearOrderList();
-        
     }
 
     public class OrderRepository : IOrderRepository

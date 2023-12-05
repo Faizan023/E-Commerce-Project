@@ -1,4 +1,3 @@
-
 <main>
     <div class="container">
 
@@ -6,41 +5,65 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
-
                         <div class="d-flex justify-content-center py-4">
                             <!-- <a href="index.html" class="logo d-flex align-items-center w-auto"> -->
                             <!-- <img src="assets/img/logo.png" alt=""> -->
-                            <span class="d-none d-lg-block">NiceAdmin</span>
+                            <i class=' bx bxs-shopping-bags '
+                                style="color: blue; font-size: 30px; padding-right: 4px; text-align: center;  padding-top: 5px;"></i>
+                            <span class="d-none d-lg-block" style="color: blue; font-size: 25px;"> NiceAdmin</span>
                             <!-- </a> -->
                         </div><!-- End Logo -->
 
                         <div class="card mb-3">
-
                             <div class="card-body">
-
                                 <div class="pt-4 pb-2">
                                     <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                                    <p class="text-center small">Enter your username & password </p>
+                                    <p class="text-center small">Enter your Email & password </p>
                                 </div>
 
                                 <form class="row g-3 needs-validation" [formGroup]="AdminLogin">
 
                                     <div class="col-12">
-                                        <label for="yourUsername" class="form-label">Username</label>
+                                        <label for="yourUsername" class="form-label">Email</label>
                                         <div class="input-group has-validation">
 
                                             <input type="text" name="username" class="form-control"
                                                 formControlName="email">
-                                            <div class="invalid-feedback">Please enter your username.</div>
+                                            <div class="invalid-feedback">Please enter your Email.</div>
                                         </div>
                                     </div>
 
-                                    <div class="col-12">
-                                        <label for="yourPassword" class="form-label">Password</label>
-                                        <input type="password" name="password" class="form-control"
-                                            formControlName="password">
+                                    <!-- <div class="col-12">
+                                        <label for="Password" class="form-label">Password</label>
+
+                                        <input name="password" autocomplete="off" class="form-control"
+                                            formControlName="password" [type]="seePassword == true? 'text':'password'">
+                                        <i style="font-size: 20px;"
+                                            [ngClass]="seePassword == false ?'bx bxs-hide': 'bx bxs-show'"
+                                            (click)="SeePassword()"></i>
                                         <div class="invalid-feedback">Please enter your password!</div>
+                                    </div> -->
+
+
+                                    <label for="basic-url">Password</label>
+                                    <div class="input-group mb-3">
+
+                                        <input name="password" autocomplete="off" class="form-control"
+                                            formControlName="password" [type]="seePassword == true? 'text':'password'">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon3"
+                                                style="font-size: 25px; margin-left: -5px; background-color: whitesmoke;font-variant: normal;">
+                                                <i [ngClass]="seePassword == false ? 'bx bx-show':'bx bx-hide' "
+                                                    (click)="SeePassword()"></i></span>
+                                        </div>
                                     </div>
+                                    <!-- <div class="input-group mb-3">
+                                        <label for="Password" class="form-label">Password</label><br>
+                                        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                          <button class="btn btn-outline-secondary" type="button">Button</button>
+                                        </div>
+                                      </div>    -->
 
                                     <div class="col-12">
                                         <div class="form-check">
@@ -59,15 +82,11 @@
                                                 an account</a></p>
                                     </div> -->
                                 </form>
-
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-
         </section>
-
     </div>
 </main><!-- End #main -->

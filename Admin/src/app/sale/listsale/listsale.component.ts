@@ -15,6 +15,9 @@ export class ListsaleComponent implements OnInit {
   SaleList: any = [];
   constructor(private http: HttpClient, private toastr: NotificationService, private router: Router, private form: FormBuilder) { }
   p: number = 1;
+  popOverMsg: string = "Do you really want to delete?";
+  cancelClicked: boolean = false;
+
   ngOnInit(): void {
     this.LoadSale();
     this.ListSale = this.form.group({
@@ -23,7 +26,6 @@ export class ListsaleComponent implements OnInit {
   }
 
   removesale(id: number) {
-    window.alert("Are Sure Want Delete"); 
     this.http.delete('http://localhost:5209/api/Controller/DeleteSale/' + id, { responseType: 'json' }).subscribe(res => {
       if (res == "Deleted Successfully") {
         this.toastr.showSuccess('Successfully Deleted', "Success");

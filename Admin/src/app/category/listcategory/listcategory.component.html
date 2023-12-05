@@ -71,7 +71,8 @@
                                                 <span class="visually-hidden">Button</span>
                                             </button>
                                             <button type="button" class="btn btn-outline-secondary"
-                                                (click)="removecategory(category.id)">
+                                                mwlConfirmationPopover [popoverMessage]="popOverMsg" placement="left"
+                                                (confirm)="removecategory(category.id)" (cancel)="cancelClicked = true">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                                     <path
