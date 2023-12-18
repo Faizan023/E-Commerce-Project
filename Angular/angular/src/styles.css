@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+
+.list-item{
+    color: black;
+    background-color: whitesmoke;
+}
+.item-hover:hover{
+background-color: black;
+}
+.color{
+    background-color:#0d6efd ;
+}
+.dropdown-navlist-item{
+    color: white;
+}
+.function-btn:hover{
+    background-color: gray;
+    color: white;
+    transition: 0.3s;
+}

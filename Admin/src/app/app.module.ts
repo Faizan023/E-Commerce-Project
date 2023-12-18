@@ -35,7 +35,7 @@ import { FooterComponent } from './footer/footer.component';
 import { MatProgressBarModule } 
     from '@angular/material/progress-bar';
 import { PopupComponent } from './popup/popup.component';
-import { ConfirmationPopoverDirective, ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import {  ConfirmationPopoverModule } from 'angular-confirmation-popover';
  
 
 @NgModule({

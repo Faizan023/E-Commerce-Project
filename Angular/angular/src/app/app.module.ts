@@ -6,17 +6,23 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './registrationcomponent/registration.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login.component/login.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
-    AppComponent, RegisterComponent, LoginComponent,
+    AppComponent, RegisterComponent, LoginComponent, HomeComponent, HeaderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent,],
