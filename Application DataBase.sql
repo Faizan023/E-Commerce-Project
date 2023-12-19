@@ -21,7 +21,7 @@ ActivationKey Varchar(5) Not Null,
 
 Constraint PK_CId Primary Key (Id)
 );
-
+-
 Create Table Products(
 Id Int Identity(1,1) Not Null,
 Img VarBinary(max) Not Null,

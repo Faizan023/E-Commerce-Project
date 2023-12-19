@@ -31,7 +31,8 @@ namespace Controllers
             if (result != null)
             {
                 var token = Tokens(result);
-                return Ok(token);
+                return Ok(result);
+                // return Ok(token);
             }
             return Ok("Check Email or Password");
         }

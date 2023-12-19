@@ -10,10 +10,11 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
-    AppComponent, RegisterComponent, LoginComponent, HomeComponent, HeaderComponent,
+    AppComponent, RegisterComponent, LoginComponent, HomeComponent, HeaderComponent, ProfileComponent,
   ],
   imports: [
     BrowserModule,

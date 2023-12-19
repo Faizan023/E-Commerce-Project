@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../service/auth.service";
 import { Router } from "@angular/router";
 import { NotificationService } from "../notification.service";
+import { CustomerService } from "../customer.service";
 
 @Component({
     selector: 'login-component',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
     Login!: FormGroup
     Loginmsg = '';
     seePassword: boolean = false;
-    constructor(private validation: FormBuilder, private Auth: AuthService, private route: Router, private toastr: NotificationService) { }
+    constructor(private validation: FormBuilder, private Auth: AuthService, private route: Router, private toastr: NotificationService, private customerService: CustomerService) { }
 
     ngOnInit(): void {
         this.Login = this.validation.group({
@@ -32,12 +33,12 @@ export class LoginComponent implements OnInit {
                 localStorage.setItem('token', res);
                 this.toastr.showSuccess("Success", "Login Successfully");
                 this.route.navigateByUrl('/home');
+                localStorage.setItem('details', res);
                 // this.Login.reset();
             }
         });
     }
     PasswordType() {
-        console.log("clk");
         if (this.seePassword == true) {
             this.seePassword = false;
         } else {

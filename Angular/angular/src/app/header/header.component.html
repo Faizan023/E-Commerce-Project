@@ -15,11 +15,11 @@
                 <!-- Left elements -->
 
                 <!-- Center elements -->
-                <div class="order-lg-last col-lg-5 col-sm-8 col-8">
+                <div class="order-lg-last col-lg-5 col-sm-8 col-8 font">
                     <div class="d-flex float-end ">
                         <a class="me-1 border rounded
                              clasunded py-1 px-3 nav-link d-flex align-items-center rounded function-btn">
-                            <i class='bx bx-purchase-tag' style="font-size: 28px;"></i>
+                            <i class='bx bx-purchase-tag ' style="font-size: 28px;"></i>
                             <p class="d-none d-md-block mb-0" style="font-weight: 100;">Orders</p>
                         </a>
                         <!-- <sup>
@@ -45,14 +45,13 @@
                         <!-- <button type="button" class="btn btn-primary shadow-0">
                 <i class="fas fa-search"></i>
               </button> -->
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3 " style="border: 3px solid blue; border-radius: 7px 8px 8px 7px;">
                             <div class="input-group-prepend">
                                 <!-- <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button> -->
-                                <select class="btn btn-outline-secondary dropdown-toggle item-hover"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                <select class="btn-click btn "  aria-expanded="false"
                                     style="border-radius: 5px 0px 0px 5px;">
                                     <option class="list-item">All</option>
-                                    <option class="list-item" value="">c</option>
+                                    <option class="list-item" value="">category</option>
                                     <option class="list-item" value="">c</option>
                                     <option class="list-item" value="">z</option>
                                     <option class="list-item" value="">x</option>
@@ -78,14 +77,15 @@
         <!-- Container wrapper -->
         <div class="container justify-content-center justify-content-md-between nav-color">
             <!-- Toggle button -->
-           
+
 
             <!-- Collapsible wrapper -->
-            <div class="collapse navbar-collapse">
+            <div class="collapse navbar-collapse nav-hover">
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#" style="color: whitesmoke;">Home</a>
+                        <a class="nav-link" aria-current="page" style="color: whitesmoke;"
+                            routerLink="/home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" style="color: whitesmoke;">Categories</a>
@@ -103,16 +103,19 @@
                         <a class="nav-link" href="#" style="color: whitesmoke;">Menu item</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: whitesmoke;">Menu name</a>
+                        <a class="nav-link"  style="color: whitesmoke;" routerLink="/profile">Profile</a>
+                    </li>
+                    <li>
+                       <button type="button" (click)="logout()">Logout </button>
                     </li>
                     <!-- Navbar dropdown -->
                     <!-- <li class="nav-item dropdown"> -->
-                        <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-mdb-toggle="dropdown" aria-expanded="false">
                             Others
                         </a> -->
-                        <!-- Dropdown menu -->
-                        <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <!-- Dropdown menu -->
+                    <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li>
                                 <a class="dropdown-item" href="#">Action</a>
                             </li>
