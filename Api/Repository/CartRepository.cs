@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 using Models;
 
@@ -9,6 +10,9 @@ namespace Repository
         Task<Cart> GetCartById(int Id);
         Task<Cart> AddToCart(Cart cart);
         bool RemoveCart(int id);
+        Task<IEnumerable<Cart>> GetCustomerCart(int Id);
+        Task<int> CartCount(int Id);
+        Task<int> OrderCount(int Id);
     }
 
     public class CartRepository : ICartRepository
@@ -88,6 +92,52 @@ namespace Repository
                 throw;
             }
             return result;
+        }
+
+        public async Task<IEnumerable<Cart>> GetCustomerCart(int Id)
+        {
+            try
+            {
+                var items = context.Carts.Where(t => t.CustomerId == Id).ToList();
+                if (items.Count() > 0)
+                {
+                    return items;
+                }
+                else
+                {
+                    throw new ArgumentNullException();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<int> CartCount(int Id)
+        {
+            try
+            {
+                var count = context.Carts.Where(t => t.CustomerId == Id).Count();
+                return count;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<int> OrderCount(int Id)
+        {
+            try
+            {
+                var count = context.Orders.Where(t => t.CustomerId == Id).Count();
+                return count;
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

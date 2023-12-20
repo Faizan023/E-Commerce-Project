@@ -26,7 +26,7 @@ namespace Repository
         {
             try
             {
-                return await context.Products.OrderByDescending(t => t.Id).ToListAsync();
+                return await context.vProducts.OrderByDescending(t => t.Id).ToListAsync();
             }
             catch
             {
@@ -38,7 +38,7 @@ namespace Repository
         {
             try
             {
-                var find = await context.Products.FindAsync(Id);
+                var find = await context.vProducts.FindAsync(Id);
                 if (find != null)
                 {
                     return find;

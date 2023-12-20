@@ -1,7 +1,7 @@
 Create DataBase OnlineShop;
 use OnlineShop;
 
-Create Table Customers(
+Create Table Customers(	
 Id Int Identity(1,1) Not Null,
 FirstName Varchar(15) Not Null,
 LastName Varchar(15) Not Null,
@@ -100,7 +100,7 @@ Constraint Pk_CartId Primary Key (Id),
 Constraint Fk_CustomerCart Foreign Key (CustomerId) References Customers (Id),
 Constraint Fk_ProductCart Foreign Key (ProductId) References Products (Id)
 );
-
+select * from cart
 Create Table ProductCategories(
 Id Int Identity(1,1) Not Null,
 Name Varchar(20) Not Null,
@@ -201,3 +201,16 @@ from Orders as o
 join Customers as c  on c.Id = o.CustomerId join Products as p on p.Id = o.ProductId
 
 select * from vOrder
+
+create view vProduct as 
+select p.* ,
+b.Name as BrandName,
+c.Name as CategoryName
+from Products as p
+join Brands as b on b.Id = p.BrandId join ProductCategories as c on c.Id = p.CategoryId
+select * from vProduct
+
+
+select * from Cart where CustomerId = 1037
+
+select * from Customers

@@ -15,6 +15,7 @@ public class Context : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Cart> Carts { get; set; }
     public DbSet<vOrder> vOrders { get; set; }
+    public DbSet<vProduct> vProducts { get; set; }
 
     internal object Find(int id)
     {

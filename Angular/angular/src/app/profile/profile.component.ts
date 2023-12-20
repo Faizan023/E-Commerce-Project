@@ -5,6 +5,7 @@ import { CustomerService } from '../customer.service';
 import { HttpClient } from '@angular/common/http';
 import { reduce } from 'rxjs';
 import { NotificationService } from '../notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -13,8 +14,9 @@ import { NotificationService } from '../notification.service';
 })
 export class ProfileComponent implements OnInit {
   profile!: FormGroup
-  constructor(private form: FormBuilder, private customerService: CustomerService, private http: HttpClient, private toast: NotificationService) { }
+  constructor(private form: FormBuilder, private customerService: CustomerService, private http: HttpClient, private toast: NotificationService, private route: Router) { }
   details: any = [];
+  joined: string = '';
   // patchDetails: any = [];
   ngOnInit(): void {
     this.profile = this.form.group({
@@ -41,6 +43,7 @@ export class ProfileComponent implements OnInit {
         address: this.details.address
       });
     }
+    this.joined = this.details.createdDateTime;
   }
 
   SaveChanges() {
@@ -71,5 +74,8 @@ export class ProfileComponent implements OnInit {
         }
       });
     }
+  }
+  GetProduct(id: number) {
+    this.route.navigate(["/profile/" + id]);
   }
 }

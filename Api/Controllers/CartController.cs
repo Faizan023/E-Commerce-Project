@@ -9,10 +9,12 @@ namespace Controllers
     public class CartController : ControllerBase
     {
         private readonly ICartRepository cartRepository;
+        private readonly Context context;
 
-        public CartController(ICartRepository _cartRepository)
+        public CartController(ICartRepository _cartRepository, Context _context)
         {
             cartRepository = _cartRepository;
+            context = _context;
         }
 
         [HttpGet]
@@ -38,11 +40,25 @@ namespace Controllers
         }
 
         [HttpDelete]
-        [Route("RemoveCart")]
+        [Route("RemoveCart/{Id}")]
         public JsonResult Delete(int Id)
         {
             cartRepository.RemoveCart(Id);
             return new JsonResult("Deleted Successfully");
+        }
+
+        [HttpGet]
+        [Route("getcartbycustomer/{Id}")]
+        public async Task<IActionResult> GetCustomerCart(int Id)
+        {
+            return Ok(await cartRepository.GetCustomerCart(Id));
+        }
+
+        [HttpGet]
+        [Route("GetCartCount/{Id}")]
+        public async Task<IActionResult> GetCount(int Id)
+        {
+            return Ok(cartRepository.CartCount(Id));
         }
     }
 }

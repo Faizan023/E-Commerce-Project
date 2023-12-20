@@ -23,6 +23,7 @@ export class ListbrandComponent implements OnInit {
     this.ListBrand = this.form.group({
       search: [''],
     });
+    // this.LoadBrand();
   }
 
   removebrand(id: number) {

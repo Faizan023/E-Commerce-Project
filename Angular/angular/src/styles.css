@@ -14,7 +14,7 @@ background-color: black;
 }
 .function-btn:hover{
     color: white;
-    background-color: #0d6efd;
+    background-color: #999999;
     transition: 0.3s;
 }
 .font a:hover{
