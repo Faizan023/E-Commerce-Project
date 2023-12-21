@@ -210,7 +210,21 @@ from Products as p
 join Brands as b on b.Id = p.BrandId join ProductCategories as c on c.Id = p.CategoryId
 select * from vProduct
 
-
 select * from Cart where CustomerId = 1037
 
 select * from Customers
+
+create view vCart as 
+select 
+c.* ,
+p.Img,
+p.Name,
+p.Price,
+p.Measurment,
+p.MesurmentValue,
+p.Color
+from Cart as c join Products as p on p.Id = c.ProductId
+select * from vCart
+
+
+delete from Cart where Id > 1007

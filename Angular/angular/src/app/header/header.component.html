@@ -20,16 +20,17 @@
                         <a class="me-1 border rounded
                              clasunded py-1 px-3 nav-link d-flex align-items-center rounded function-btn">
                             <i class='bx bx-purchase-tag ' style="font-size: 28px;"></i>
-                            <p class="d-none d-md-block mb-0" style="font-weight: 100;">Orders</p>
+                            <p class="d-none d-md-block mb-0" style="font-weight: 100;"> {{orderCount}} Orders</p>
                         </a>
                         <!-- <sup>
                             <i class='bx bx-cart  me-1 py-1 px-3 nav-link d-flex align-items-center'
                                 style="font-size: 35px;"><span style="font-size: 20px;">order</span></i>
                         </sup> -->
 
-                        <a class="border rounded py-1 px-3 nav-link d-flex align-items-center function-btn" routerLink="/cart">
+                        <a class="border rounded py-1 px-3 nav-link d-flex align-items-center function-btn"
+                            routerLink="/cart">
                             <i class='bx bx-cart' style="font-size: 30px;"></i>
-                            <p class="d-none d-md-block mb-0" style="font-weight: 100;">Cart</p>
+                            <p class="d-none d-md-block mb-0" style="font-weight: 100;">{{ cartCount }}Cart</p>
                         </a>
                     </div>
                 </div>
@@ -48,14 +49,10 @@
                         <div class="input-group mb-3 " style="border: 3px solid blue; border-radius: 7px 8px 8px 7px;">
                             <div class="input-group-prepend">
                                 <!-- <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button> -->
-                                <select class="btn-click btn "  aria-expanded="false"
-                                    style="border-radius: 5px 0px 0px 5px;">
+                                <select class="btn-click btn " aria-expanded="false"
+                                    style="border-radius: 5px 0px 0px 5px;" >
                                     <option class="list-item">All</option>
-                                    <option class="list-item" value="">category</option>
-                                    <option class="list-item" value="">c</option>
-                                    <option class="list-item" value="">z</option>
-                                    <option class="list-item" value="">x</option>
-                                    <option class="list-item" value="">z</option>
+                                    <option  *ngFor="let item of category " value="{{item.name}}"> {{item.name}}</option>
                                 </select>
                             </div>
                             <input type="text" class="form-control" aria-label="Text input with dropdown button">
@@ -75,7 +72,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-ligh" style="background-color: darkcyan; ">
         <!-- Container wrapper -->
-        <div class="container justify-content-center justify-content-md-between nav-color">
+        <div class=" justify-content-center justify-content-md-between nav-color">
             <!-- Toggle button -->
 
 
@@ -83,9 +80,8 @@
             <div class="collapse navbar-collapse nav-hover">
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" style="color: whitesmoke;"
-                            routerLink="/home">Home</a>
+                    <li class="nav-item" style="margin-left: 40px;">
+                        <a class="nav-link" aria-current="page" style="color: whitesmoke;" routerLink="/home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" style="color: whitesmoke;">Categories</a>
@@ -102,11 +98,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#" style="color: whitesmoke;">Menu item</a>
                     </li>
+                    <div style="margin-left: 830px;">
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: whitesmoke;" routerLink="/profile">
+                                <i class='bx bxs-user-circle' style="font-size: 32px;"></i></a>
+                        </li>
+                    </div>
                     <li class="nav-item">
-                        <a class="nav-link"  style="color: whitesmoke;" routerLink="/profile">Profile</a>
-                    </li>
-                    <li>
-                       <button type="button" (click)="logout()">Logout </button>
+
+                        <a class="nav-link" style="color: whitesmoke;" (click)="logout()"><i
+                                class='bx bx-log-out-circle' style="font-size: 30px; margin-top: 2px;"></i></a>
                     </li>
                     <!-- Navbar dropdown -->
                     <!-- <li class="nav-item dropdown"> -->

@@ -77,8 +77,8 @@ namespace Repository
             {
                 var find = context.Carts.Find(Id);
                 if (find != null)
-                {
-                    context.Remove(find).State = EntityState.Deleted;
+                {   
+                    context.Carts.Remove(find);
                     context.SaveChanges();
                     result = true;
                 }
@@ -98,7 +98,7 @@ namespace Repository
         {
             try
             {
-                var items = context.Carts.Where(t => t.CustomerId == Id).ToList();
+                var items = context.vCarts.Where(t => t.CustomerId == Id).ToList();
                 if (items.Count() > 0)
                 {
                     return items;

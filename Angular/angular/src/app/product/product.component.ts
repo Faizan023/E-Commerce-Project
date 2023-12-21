@@ -10,11 +10,12 @@ import { NotificationService } from '../notification.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  quantity: number = 1;
+  // quantity: number = 1;
   productPage!: FormGroup
   productId: number = 0;
   product: any = [];
   customer: any = [];
+  defaultValue:number = 1;
   constructor(private route: Router, private router: ActivatedRoute, private http: HttpClient, private form: FormBuilder, private toast: NotificationService) { }
 
   ngOnInit(): void {
@@ -51,6 +52,7 @@ export class ProductComponent implements OnInit {
       updatedBy: null
     }, { responseType: 'text' }).subscribe(res => {
       if (res == "Addedd Successfully") {
+
         this.toast.showSuccess("Success", "Addedd Successfully");
       } else {
         this.toast.showError("Error", "Something went wrong");

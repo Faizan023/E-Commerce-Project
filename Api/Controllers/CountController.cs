@@ -15,7 +15,7 @@ namespace Controllers
         }
 
         [HttpGet]
-        [Route("GetCount")]
+        [Route("GetCount/{Id}")]
         public async Task<IActionResult> Count(int Id)
         {
             count.CartCount = await cartRepository.CartCount(Id);

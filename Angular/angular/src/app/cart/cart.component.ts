@@ -39,6 +39,6 @@ export class CartComponent implements OnInit {
         console.log("Deleted Successfully");
         this.LoadCart();
       }
-    })
+    });
   }
 }

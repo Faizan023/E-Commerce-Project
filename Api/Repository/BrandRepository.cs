@@ -87,6 +87,9 @@ namespace Repository
             var result = false;
             try
             {
+                var child = context.Products.Where(t => t.BrandId == Id);
+                context.Products.RemoveRange(child);
+                context.SaveChanges();
                 var find = context.Brands.Find(Id);
                 if (find != null)
                 {

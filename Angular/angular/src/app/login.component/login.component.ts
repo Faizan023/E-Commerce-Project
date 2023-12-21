@@ -32,8 +32,8 @@ export class LoginComponent implements OnInit {
             } else {
                 localStorage.setItem('token', res);
                 this.toastr.showSuccess("Success", "Login Successfully");
-                this.route.navigateByUrl('/home');
                 localStorage.setItem('details', res);
+                this.route.navigateByUrl('/home');
                 // this.Login.reset();
             }
         });
