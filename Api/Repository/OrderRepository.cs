@@ -25,6 +25,8 @@ namespace Repository
         Task<IEnumerable<vOrder>> TodayOrderList();
         Task<IEnumerable<vOrder>> MonthOrderList();
         Task<IEnumerable<vOrder>> YearOrderList();
+        Task RemoveOrderByProductId(int productId);
+
     }
 
     public class OrderRepository : IOrderRepository
@@ -34,6 +36,13 @@ namespace Repository
         public OrderRepository(Context _context)
         {
             context = _context;
+        }
+
+        public async Task RemoveOrderByProductId(int productId)
+        {
+            var orders = context.Orders.Where(order => order.ProductId== productId);
+            context.Orders.RemoveRange(orders);
+            await context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<vOrder>> GetOrders()

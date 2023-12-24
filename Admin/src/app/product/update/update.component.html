@@ -20,6 +20,7 @@
                                 <div class="card-heading">
                                     <h2 class="card-title"><span>GENERAL</span></h2>
                                 </div>
+                                
                                 <div class="card-body">
                                     <div class="card-body">
                                         <form class="form-horizontal">
@@ -159,7 +160,7 @@
                                                     <div class="mb-3">
                                                         <div class="custom-file">
                                                             <input type="file" class="form-control-file"
-                                                                formControlName="img">
+                                                                formControlName="img" (change)="SelectFile($event)">
                                                         </div>
                                                     </div>
                                                 </div>

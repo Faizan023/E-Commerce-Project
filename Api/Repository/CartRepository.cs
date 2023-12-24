@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 using Models;
+using MOdels;
 
 namespace Repository
 {
@@ -10,9 +11,10 @@ namespace Repository
         Task<Cart> GetCartById(int Id);
         Task<Cart> AddToCart(Cart cart);
         bool RemoveCart(int id);
-        Task<IEnumerable<Cart>> GetCustomerCart(int Id);
+        Task<IEnumerable<vCart>> GetCustomerCart(int Id);
         Task<int> CartCount(int Id);
         Task<int> OrderCount(int Id);
+        Task RemoveCartByProductId(int productId);
     }
 
     public class CartRepository : ICartRepository
@@ -36,6 +38,22 @@ namespace Repository
             }
         }
 
+        public async Task RemoveCartByProductId(int productId)
+        {
+            try
+            {
+                var carts = context.Carts.Where(cart=>cart.ProductId == productId).ToList();
+                
+                 context.Carts.RemoveRange(carts);
+                 await context.SaveChangesAsync();
+
+            }
+            catch (System.Exception)
+            {
+                
+                throw;
+            }
+        }
         public async Task<Cart> GetCartById(int Id)
         {
             try
@@ -75,10 +93,11 @@ namespace Repository
             var result = false;
             try
             {
-                var find = context.Carts.Find(Id);
-                if (find != null)
+                var cart = context.Carts.Find(Id);
+                if (cart != null)
                 {   
-                    context.Carts.Remove(find);
+                    context.Carts.Attach(cart);
+                    context.Carts.Remove(cart);
                     context.SaveChanges();
                     result = true;
                 }
@@ -94,7 +113,7 @@ namespace Repository
             return result;
         }
 
-        public async Task<IEnumerable<Cart>> GetCustomerCart(int Id)
+        public async Task<IEnumerable<vCart>> GetCustomerCart(int Id)
         {
             try
             {

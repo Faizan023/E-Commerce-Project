@@ -25,7 +25,7 @@ export class ListproductComponent implements OnInit {
 
   Delete(id: number) {
     // alert("Are you sure want to delete" + id + "product");
-    this.http.delete('http://localhost:5209/api/Controller/DeleteProduct' + '/' + id, { responseType: 'json' }).subscribe(res => {
+    this.http.delete('http://localhost:5209/api/Controller/DeleteProduct' + '/' + id, { responseType: 'text' }).subscribe(res => {
       console.log(res);
       if (res == "Deleted Successfully") {
         this.toastr.showSuccess("Deleted Successfully", "Success");

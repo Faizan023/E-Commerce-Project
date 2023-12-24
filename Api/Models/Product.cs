@@ -8,7 +8,7 @@ namespace Models
     {
         [Key]
         public int Id { get; set; }
-        public byte[] Img { get; set; }
+        public byte[]? Img { get; set; }
         public string? Name { get; set; }
         public int CategoryId { get; set; }
         public string? Description { get; set; }
@@ -23,6 +23,5 @@ namespace Models
         public DateTimeOffset? UpdatedDateTime { get; set; }
         public int CreatedBy { get; set; }
         public int? UpdatedBy { get; set; }
-        public Brand brand{get;set;}
     }
 }

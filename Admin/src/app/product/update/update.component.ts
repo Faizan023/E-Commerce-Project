@@ -1,7 +1,9 @@
+// import { HttpClient } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+import { Binary } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, convertToParamMap } from '@angular/router';
 import { NotificationService } from 'src/app/notification.service';
 import { AuthService } from 'src/app/service/service.service';
 
@@ -15,6 +17,8 @@ export class UpdateComponent implements OnInit {
   update: any = [];
   categoryList: any = [];
   brandList: any = [];
+  Image: any = [];
+  // selectFile: File | null = null;
   // update: Array<{ id: number, img: any, name: string, categoryId: number, description: string, price: number, discount: number, quantity: number, color: string, measurment: string, mesurmentValue: string, brandId: number }> = [];
   constructor(private UpdateDetails: FormBuilder, private http: HttpClient, private mid: ActivatedRoute, private route: Router, private service:
     AuthService, private toaster: NotificationService) { }
@@ -63,31 +67,35 @@ export class UpdateComponent implements OnInit {
     });
   }
 
+
   UpdatePropduct() {
-    var date = new Date();
-    this.http.put('http://localhost:5209/api/Controller/UpdateProduct', {
-      id: this.productId,
-      img: this.UpdateForm.value.img,
-      name: this.UpdateForm.value.name,
-      categoryId: this.UpdateForm.value.categoryId,
-      description: this.UpdateForm.value.description,
-      price: this.UpdateForm.value.price,
-      discount: this.UpdateForm.value.discount,
-      quantity: this.UpdateForm.value.quantity,
-      color: this.UpdateForm.value.color,
-      measurment: this.UpdateForm.value.measurment,
-      mesurmentValue: this.UpdateForm.value.mesurmentValue,
-      brandId: this.UpdateForm.value.brandId,
-      createdDateTime: this.update.createdDateTime,
-      updatedDateTime: date,
-      createdBy: this.update.createdBy,
-      updatedBy: 1
-    }, { responseType: 'text' }).subscribe(res => {
-      if (res == "Updated Successfully") {
-        this.toaster.showSuccess("Updated Successfully", "Success");
-        this.route.navigateByUrl('/product');
-      }
-    });
+    if (this.UpdateForm.valid) {
+      var date = new Date();
+      this.http.put('http://localhost:5209/api/Controller/UpdateProduct', {
+        id: this.productId,
+        img: this.Image.split(',')[1],
+        name: this.UpdateForm.value.name,
+        categoryId: this.UpdateForm.value.categoryId,
+        description: this.UpdateForm.value.description,
+        price: this.UpdateForm.value.price,
+        discount: this.UpdateForm.value.discount,
+        quantity: this.UpdateForm.value.quantity,
+        color: this.UpdateForm.value.color,
+        measurment: this.UpdateForm.value.measurment,
+        mesurmentValue: this.UpdateForm.value.mesurmentValue,
+        brandId: this.UpdateForm.value.brandId,
+        createdDateTime: this.update.createdDateTime,
+        updatedDateTime: date,
+        createdBy: this.update.createdBy,
+        updatedBy: 1
+      }, { responseType: 'text' }).subscribe(res => {
+        if (res == "Updated Successfully") {
+          this.toaster.showSuccess("Updated Successfully", "Success");
+          this.route.navigateByUrl('/product');
+        }
+      });
+      // console.log(this.UpdateForm.value.brandId)
+    }
   }
 
   LoadCategory() {
@@ -101,7 +109,15 @@ export class UpdateComponent implements OnInit {
       this.brandList = res;
     });
   }
+  SelectFile(event: any) {
+    var file: File = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      // Convert the image to Base64 and store it in this.image
+      this.Image = reader.result as string;
+      console.log(this.Image);
+    };
+    reader.readAsDataURL(file);
+  }
 }
-
-
 

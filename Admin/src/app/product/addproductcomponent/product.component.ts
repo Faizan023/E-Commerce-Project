@@ -4,6 +4,7 @@ import { AuthService } from '../../service/service.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/notification.service';
+import { PathLocationStrategy } from '@angular/common';
 
 @Component({
   selector: 'app-product',
@@ -13,8 +14,10 @@ export class ProductComponent implements OnInit {
   ProductForm!: FormGroup
   brandList: any = [];
   categoryList: any = [];
+  image: any = [];
+  // files: File = this.image;
   constructor(private product: FormBuilder, private Auth: AuthService, private http: HttpClient, private route: Router, private toastr: NotificationService) { }
-  file: File | undefined;
+
   ngOnInit(): void {
     this.ProductForm = this.product.group({
       img: ['',],
@@ -37,7 +40,7 @@ export class ProductComponent implements OnInit {
     var date = new Date();
     if (this.ProductForm.valid) {
       this.http.post("http://localhost:5209/api/Controller/InsertProduct", {
-        img: this.ProductForm.value.img,
+        img: this.image.split(',')[1],
         name: this.ProductForm.value.name,
         categoryId: this.ProductForm.value.categoryId,
         description: this.ProductForm.value.description,
@@ -78,4 +81,14 @@ export class ProductComponent implements OnInit {
     });
   }
 
+  selectFile(event: any):void {
+    var file: File = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      // Convert the image to Base64 and store it in this.image
+      this.image = reader.result as string;
+      console.log(this.image);
+    };
+    reader.readAsDataURL(file);
+  }
 }

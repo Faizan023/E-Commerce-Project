@@ -20,17 +20,6 @@ public class Context : DbContext
     public DbSet<vProduct> vProducts { get; set; }
     public DbSet<vCart> vCarts { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder
-            .Entity<Brand>()
-            .HasMany(p => p.products)
-            .WithOne(c => c.brand)
-            .HasForeignKey(c => c.BrandId)
-            .OnDelete(DeleteBehavior.Cascade);
-            base.OnModelCreating(modelBuilder);
-    }
-
     internal object Find(int id)
     {
         throw new NotImplementedException();

@@ -62,7 +62,10 @@
                                 <tbody>
                                     <tr *ngFor="let pro of FindProduct | paginate: {itemsPerPage:10, currentPage:p}">
                                         <td scope="row">{{pro.id}}</td>
-                                        <td scope="row"> {{pro.name}}</td>
+                                        <td scope="row"> <img
+                                            [src]="'data:image/png;base64,'+pro.img"
+                                            class="img-fluid rounded-3" alt="Cotton T-shirt" style="height: 50px;">
+                                        </td>
                                         <td scope="row">{{pro.quantity}}</td>
                                         <td scope="row"> {{ "₹"+pro.price}}</td>
                                         <td scope="row"><button type="button" class="btn btn-outline-secondary"

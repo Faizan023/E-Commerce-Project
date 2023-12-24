@@ -11,6 +11,6 @@ namespace Models
         public DateTimeOffset? UpdateDateTime { get; set; }
         public int Createdby { get; set; }
         public int? UpdatedBy { get; set; }
-        public ICollection<Product> products {get;set;}
+       
     }
 }

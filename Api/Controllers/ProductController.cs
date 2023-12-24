@@ -10,9 +10,14 @@ namespace Controllers
     {
         private readonly IProductRepository _ProductRepository;
 
-        public ProductController(IProductRepository productRepository)
+        private readonly IOrderRepository _OrderRepository;
+        private readonly ICartRepository _CartRepository;
+        public ProductController(IProductRepository productRepository, IOrderRepository orderRepository, ICartRepository cartRepository)
         {
             _ProductRepository = productRepository;
+            _OrderRepository = orderRepository;
+            _CartRepository = cartRepository;
+
         }
 
         [HttpGet]
@@ -52,10 +57,21 @@ namespace Controllers
 
         [HttpDelete]
         [Route("DeleteProduct/{Id}")]
-        public JsonResult Delete(int Id)
+        public async Task<IActionResult> Delete(int Id)
         {
-            _ProductRepository.DeleteProduct(Id);
-            return new JsonResult("Deleted Successfully");
+            var product = await _ProductRepository.GetProductById(Id);
+            
+            if(product == null)
+            {
+                return BadRequest("Product not found");
+            }
+
+            //cart delete
+            await _CartRepository.RemoveCartByProductId(Id);
+            await _OrderRepository.RemoveOrderByProductId(Id);
+            // order delete
+            await _ProductRepository.DeleteProduct(Id);
+            return Ok("Deleted Successfully");
         }
 
         //     public async Task<IActionResult> Uploadimage(IFormFile file, Product product){

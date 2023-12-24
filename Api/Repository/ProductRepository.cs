@@ -1,16 +1,17 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Models;
 
 namespace Repository
 {
     public interface IProductRepository
     {
-        Task<IEnumerable<Product>> GetProducts();
-        Task<Product> GetProductById(int id);
+        Task<IEnumerable<vProduct>> GetProducts();
+        Task<vProduct> GetProductById(int id);
         Task<Product> InsertProduct(Product product);
         Task<Product> UpdateProduct(Product product);
-        bool DeleteProduct(int Id);
+        Task DeleteProduct(int Id);
     }
 
     public class ProductRepository : IProductRepository
@@ -22,7 +23,7 @@ namespace Repository
             context = _context;
         }
 
-        public async Task<IEnumerable<Product>> GetProducts()
+        public async Task<IEnumerable<vProduct>> GetProducts()
         {
             try
             {
@@ -34,7 +35,7 @@ namespace Repository
             }
         }
 
-        public async Task<Product> GetProductById(int Id)
+        public async Task<vProduct> GetProductById(int Id)
         {
             try
             {
@@ -72,38 +73,32 @@ namespace Repository
         {
             try
             {
+                // Convert.FromBase64String(product.Img);
                 context.Entry(product).State = EntityState.Modified;
                 await context.SaveChangesAsync();
             }
             catch
             {
                 throw;
-            }
+            }           
             return product;
         }
 
-        public bool DeleteProduct(int Id)
+        public async Task DeleteProduct(int Id)
         {
-            var result = false;
             try
             {
-                var find = context.Products.Find(Id);
-                if (find != null)
+                var product = context.Products.Find(Id);
+                if (product != null)
                 {
-                    context.Remove(find).State = EntityState.Deleted;
-                    context.SaveChanges();
-                    result = true;
-                }
-                else
-                {
-                    result = false;
+                    context.Products.Remove(product);
+                    await context.SaveChangesAsync();
                 }
             }
-            catch
+            catch (Exception e)
             {
-                throw;
+                Console.WriteLine(e.Message);
             }
-            return result;
         }
     }
 }
