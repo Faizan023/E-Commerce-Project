@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 
 @Component({
@@ -13,7 +14,7 @@ export class CartComponent implements OnInit {
   cartItem: any = [];
   product: any = [];
   // productId: number = 4;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private route: Router) { }
   ngOnInit(): void {
    
     var getDetails = localStorage.getItem('details');
@@ -41,5 +42,8 @@ export class CartComponent implements OnInit {
         this.LoadCart();
       }
     });
+  }
+  GetProduct(id:number){
+    this.route.navigateByUrl('/product/' + id)
   }
 }

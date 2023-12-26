@@ -1,3 +1,4 @@
+import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -12,10 +13,12 @@ import { NotificationService } from '../notification.service';
 export class ProductComponent implements OnInit {
   // quantity: number = 1;
   productPage!: FormGroup
+  BillingForm!: FormGroup;
   productId: number = 0;
   product: any = [];
   customer: any = [];
-  defaultValue:number = 1;
+  defaultValue: number = 1;
+  billingFormIsOpen: boolean = false;
   constructor(private route: Router, private router: ActivatedRoute, private http: HttpClient, private form: FormBuilder, private toast: NotificationService) { }
 
   ngOnInit(): void {
@@ -30,22 +33,28 @@ export class ProductComponent implements OnInit {
     this.productPage = this.form.group({
       quantity: ['', Validators.required]
     });
+
+    this.BillingForm = this.form.group({
+      paymentMethod: ['', Validators.required],
+      address: ['', Validators.required],
+      address2: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      zip: ['', Validators.required],
+    })
+
     const getCustomerDetails = localStorage.getItem('details');
     if (getCustomerDetails) {
       this.customer = JSON.parse(getCustomerDetails);
     }
   }
-  // IncreaseValue() {
-  //   this.quantity++;
-  //   console.log(this.quantity)
-  // }
 
   AddtoCart() {
     var date = new Date().getDate;
     this.http.post('http://localhost:5209/api/Controller/AddToCart', {
       customerId: this.customer.id,
       productId: this.productId,
-      quantity:this.productPage.value.quantity,
+      quantity: this.productPage.value.quantity,
       createDateTime: date,
       updateDateTime: null,
       createdBy: this.customer.id,
@@ -58,6 +67,34 @@ export class ProductComponent implements OnInit {
         this.toast.showError("Error", "Something went wrong");
       }
     });
-    console.log(this.customer.id);
   }
+
+  ConfirmOrder() {
+    if (this.BillingForm.valid) {
+      // var newDate = new Date();
+      var date = new Date().getUTCDate;
+      // var addDate = newDate.setDate(7)
+      this.http.post('http://localhost:5209/api/Controller/AddOrder', {
+        customerId: this.customer.id,
+        quantity: this.productPage.value.quantity,
+        amount: this.product.price,
+        productId: this.productId,
+        paymentMethod: this.BillingForm.value.paymentMethod,
+        orderDate: date,
+        deliveryAddress: this.BillingForm.value.address + this.BillingForm.value.address2 + this.BillingForm.value.city + this.BillingForm.value.state + this.BillingForm.value.zip,
+        billingAddress: 'Bapunagar',
+        deliveryDate: date,
+        deliveryCharge: 50,
+        status: "Not Delivered",
+        createdDateTime: date,
+        updatedDateTime: null,
+        createdBy: 1,
+        updatedBy: null,
+        statusDateTime: null
+      },{responseType:'text'}).subscribe(res => {
+        console.log(res);
+      });
+    }
+  }
+  
 }

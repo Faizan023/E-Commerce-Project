@@ -26,7 +26,7 @@ namespace Repository
         Task<IEnumerable<vOrder>> MonthOrderList();
         Task<IEnumerable<vOrder>> YearOrderList();
         Task RemoveOrderByProductId(int productId);
-
+        Task<IEnumerable<vOrder>> GetCustomerOrder(int id);
     }
 
     public class OrderRepository : IOrderRepository
@@ -40,7 +40,7 @@ namespace Repository
 
         public async Task RemoveOrderByProductId(int productId)
         {
-            var orders = context.Orders.Where(order => order.ProductId== productId);
+            var orders = context.Orders.Where(order => order.ProductId == productId);
             context.Orders.RemoveRange(orders);
             await context.SaveChangesAsync();
         }
@@ -189,21 +189,6 @@ namespace Repository
                 .Sum(t => t.Amount * t.Quantity);
         }
 
-        // public Task<IEnumerable<Product>> TopSelling()
-        // {
-        //     var topSelling = context.Orders
-        //         .GroupBy(t => t.ProductId)
-        //         .Select(g => new { Id = g.Key, TotalQuantitySold = g.Sum(p => p.Quantity) })
-        //         .OrderByDescending(o => o.TotalQuantitySold)
-        //         .Take(5)
-        //         .Join(
-        //             context.Products,
-        //             p => p.Id,
-        //             pr => pr.Id,
-        //             (p, pr) => new { product = pr, QuantitySold = p.TotalQuantitySold, }
-        //         );
-        //     return topSelling.ToList();
-        // }
         public async Task<IEnumerable<vOrder>> TodayOrderList()
         {
             try
@@ -235,6 +220,26 @@ namespace Repository
             {
                 var datetime = DateTime.Now.Year;
                 return context.vOrders.Where(t => t.OrderDate.Year == datetime).ToList();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<vOrder>> GetCustomerOrder(int Id)
+        {
+            try
+            {
+                var getorder = context.vOrders.Where(t => t.CustomerId == Id).ToList();
+                if (getorder.Count() > 0)
+                {
+                    return getorder;
+                }
+                else
+                {
+                    throw new ArgumentNullException();
+                }
             }
             catch
             {

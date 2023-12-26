@@ -30,7 +30,13 @@ namespace Controllers
             return Ok(await _orderRepository.GetOrderById(Id));
         }
 
-        // [HttpPost]
+        [HttpPost]
+        [Route("AddOrder")]
+        public async Task<IActionResult> Post(Order order)
+        {
+            await _orderRepository.AddOrder(order);
+            return Ok("Added Successfully");
+        }
 
         [HttpPut]
         [Route("UpdateOrder")]
@@ -48,25 +54,11 @@ namespace Controllers
             return new JsonResult("Deleted Successfully");
         }
 
-        // [HttpGet]
-        // [Route("GetTopProduct")]
-        // public async Task<IActionResult> Top()
-        // {
-        //     await _orderRepository.TopSelling();
-        //     return Ok("Top Product");
-        // }
-
-        // [HttpGet]
-        // [Route("TodayOrder")]
-        // public async Task<IActionResult> Today()
-        // {
-
-        // }
-
-        // [HttpPatch]
-        // [Route("PatchOrder/{Id}")]
-        // public async Task<IActionResult> Patch(int id, JsonPatchDocument order){
-        //     await _orderRepository
-        // }
+        [HttpGet]
+        [Route("getOrderbyCustomer/{Id}")]
+        public async Task<IActionResult> GetCustomerOrder(int Id)
+        {
+            return Ok(await _orderRepository.GetCustomerOrder(Id));
+        }
     }
 }

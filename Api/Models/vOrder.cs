@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Models
 {
     [Table("vOrder")]
-    public class vOrder 
+    public class vOrder
     {
         [Key]
         public int Id { get; set; }
@@ -26,5 +26,6 @@ namespace Models
         public DateTimeOffset? StatusDateTime { get; set; }
         public string? CustomerName { get; set; }
         public string? Name { get; set; } //Product Name
+        public byte[]? Img { get; set; }
     }
 }

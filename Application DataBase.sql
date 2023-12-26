@@ -196,11 +196,12 @@ create view vOrder as
 select 
 o.*, 
 c.FirstName +' '+C.LastName as CustomerName,
-p.Name as ProductName
+p.Name as ProductName,
+p.Img as Img
 from Orders as o 
 join Customers as c  on c.Id = o.CustomerId join Products as p on p.Id = o.ProductId
 
-select * from vOrder
+	
 
 create view vProduct as 
 select p.* ,

@@ -67,7 +67,8 @@
                     <td scope="row">{{order.orderDate | date}}</td>
                     <td scope="row">{{order.id}}</td>
                     <td scope="row">{{order.customerName}}</td>
-                    <td scope="row">{{order.name}}</td>
+                    <td scope="row"><img [src]="'data:image/png;base64,' + order.img" class="img-fluid rounded-3"
+                        alt="Cotton T-shirt" style="height: 50px;"></td>
                     <td scope="row">₹ {{order.amount}} </td>
                     <td scope="row">{{order.quantity}}</td>
                     <td scope="row"> ₹ {{order.amount * order.quantity}}</td>

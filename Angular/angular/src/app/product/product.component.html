@@ -6,10 +6,9 @@
         <aside class="col-lg-6">
           <div class="border rounded-4 mb-3 d-flex justify-content-center">
             <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
-            href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big.webp"
-            >
-              <img *ngIf="product.img" style="max-width: 100%; max-height: 100vh; margin: auto; height: 400px;" class="rounded-4 fit"
-              [src]="'data:image/png;base64,'+product.img"/>
+              href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big.webp">
+              <img *ngIf="product.img" style="max-width: 100%; max-height: 100vh; margin: auto; height: 400px;"
+                class="rounded-4 fit" [src]="'data:image/png;base64,'+product.img" />
               <!-- src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big.webp"  -->
             </a>
           </div>
@@ -122,9 +121,11 @@
                 </div>
               </div>
             </div>
-            <a class="btn btn-warning shadow-0"> Buy now </a>
-            <a class="btn btn-primary shadow-0" (click)="AddtoCart()" style="margin-left: 10px;"> <i class="me-1 fa fa-shopping-basket"></i> Add to
+            <a class="btn btn-warning shadow-0" (click)="billingFormIsOpen = true"> Buy now </a>
+            <a class="btn btn-primary shadow-0" (click)="AddtoCart()" style="margin-left: 10px;"> <i
+                class="me-1 fa fa-shopping-basket"></i> Add to
               cart </a>
+              <!-- <button type="button" class="btn btn-secondary" (click)="date()" style="margin-left: 5px;">Cancel</button> -->
             <!-- <a class="btn btn-light border border-secondary py-2 icon-hover px-3"> <i
                 class="me-1 fa fa-heart fa-lg"></i> Save </a> -->
           </div>
@@ -136,3 +137,66 @@
 
 </form>
 <!-- Footer -->
+<section style="margin: 25px 25px;" *ngIf="billingFormIsOpen==true">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Billing Form</h5>
+
+      <!-- Multi Columns Form -->
+      <form class="row g-3" [formGroup]="BillingForm">
+
+        <div class="col-12">
+          <label for="inputAddress5" class="form-label">Address</label>
+          <input type="text" class="form-control" placeholder="1234 Main St" formControlName="address">
+        </div>
+        <div class="col-12">
+          <label for="inputAddress2" class="form-label">Address 2</label>
+          <input type="text" class="form-control" formControlName="address2" placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="col-md-6">
+          <label for="inputCity" class="form-label">City</label>
+          <input type="text" class="form-control" formControlName="city">
+        </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">State</label>
+          <input type="text" class="form-control" formControlName="state">
+        </div>
+        <div class="col-md-2">
+          <label for="inputZip" class="form-label">Zip</label>
+          <input type="text" class="form-control" formControlName="zip">
+        </div>
+        <h5 class="card-title" style="background-color: blue; color: white;">Payment</h5>
+        <div class="col-12">
+          <div class="col">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="paymentMethod" value="COD" formControlName="paymentMethod">
+              <label class="form-check-label" for="cod">COD</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="paymentMethod" value="Creditcard"
+                formControlName="paymentMethod">
+              <label class="form-check-label" for="Creditcard">Credit card</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="paymentMethod" value="UpiApps"
+                formControlName="paymentMethod">
+              <label class="form-check-label" for="UpiApps">Upi Apps</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="paymentMethod" value="NetBanking"
+                formControlName="paymentMethod">
+              <label class="form-check-label" for="NetBanking">Net Banking</label>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="text-center">
+          <button type="button" class="btn btn-primary" (click)="ConfirmOrder()">Confirm</button>
+          <button type="button" class="btn btn-secondary" (click)="billingFormIsOpen = false" style="margin-left: 5px;">Cancel</button>
+          <!-- <button type="button" class="btn btn-secondary" (click)="date()" style="margin-left: 5px;">Date</button> -->
+        </div>
+      </form><!-- End Multi Columns Form -->
+    </div>
+  </div>
+</section>

@@ -14,10 +14,11 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 import { FooterComponent } from './footer/footer.component';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
-    AppComponent, RegisterComponent, LoginComponent, HomeComponent, HeaderComponent, ProfileComponent, ProductComponent, CartComponent, FooterComponent,
+    AppComponent, RegisterComponent, LoginComponent, HomeComponent, HeaderComponent, ProfileComponent, ProductComponent, CartComponent, FooterComponent, OrderComponent,
   ],
   imports: [
     BrowserModule,
