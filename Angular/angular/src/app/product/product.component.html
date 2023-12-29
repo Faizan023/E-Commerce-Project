@@ -1,51 +1,14 @@
-<!-- content -->
 <form [formGroup]="productPage">
   <section class="py-5">
     <div class="container">
       <div class="row gx-5">
         <aside class="col-lg-6">
           <div class="border rounded-4 mb-3 d-flex justify-content-center">
-            <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
-              href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big.webp">
-              <img *ngIf="product.img" style="max-width: 100%; max-height: 100vh; margin: auto; height: 400px;"
-                class="rounded-4 fit" [src]="'data:image/png;base64,'+product.img" />
-              <!-- src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big.webp"  -->
-            </a>
+            <img *ngIf="product.img" style="max-width: 100%; max-height: 100vh; margin: auto; height: 400px;"
+              class="rounded-4 fit" [src]="'data:image/png;base64,'+product.img" />
           </div>
           <div class="d-flex justify-content-center mb-3">
-            <!-- <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image"
-              href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big1.webp"
-              class="item-thumb">
-              <img width="60" height="60" class="rounded-2"
-                src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big1.webp" />
-            </a> -->
-            <!-- <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image"
-              href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big2.webp"
-              class="item-thumb">
-              <img width="60" height="60" class="rounded-2"
-                src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big2.webp" />
-            </a> -->
-            <!-- <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image"
-              href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big3.webp"
-              class="item-thumb">
-              <img width="60" height="60" class="rounded-2"
-                src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big3.webp" />
-            </a> -->
-            <!-- <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image"
-              href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big4.webp"
-              class="item-thumb">
-              <img width="60" height="60" class="rounded-2"
-                src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big4.webp" />
-            </a> -->
-            <!-- <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image"
-              href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big.webp"
-              class="item-thumb">
-              <img width="60" height="60" class="rounded-2"
-                src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big.webp" />
-            </a> -->
           </div>
-          <!-- thumbs-wrap.// -->
-          <!-- gallery-wrap .end// -->
         </aside>
         <main class="col-lg-6">
           <div class="ps-lg-3">
@@ -67,57 +30,52 @@
                 orders</span>
               <span class="text-success ms-2">In stock</span>
             </div>
-
             <div class="mb-3">
               <span class="h5">₹{{product.price}}</span>
               <span class="text-muted">/per item</span>
             </div>
-
             <p>
               {{product.description}}
             </p>
-
             <div class="row">
               <dt class="col-3">{{product.measurment}}</dt>
               <dd class="col-9">{{product.mesurmentValue}}</dd>
-
               <dt class="col-3">Color</dt>
               <dd class="col-9">{{product.color}}</dd>
-
-              <!-- <dt class="col-3">Material</dt>
-            <dd class="col-9">Cotton, Jeans</dd> -->
-
               <dt class="col-3">Brand</dt>
               <dd class="col-9">{{product.brandName}}</dd>
             </div>
-
             <hr />
-
             <div class="row mb-4">
-              <div class="col-md-4 col-6">
-                <label class="mb-2">Size</label>
-                <select class="form-select border border-secondary" style="height: 35px;">
-                  <option>Small</option>
-                  <option>Medium</option>
-                  <option>Large</option>
-                </select>
-              </div>
-              <!-- col.// -->
+                <!-- <div class="col-md-4 col-6">
+                  <label class="mb-2">Size</label>
+                  <select class="form-select border border-secondary" style="height: 35px;">
+                    <option>Small</option>
+                    <option>Medium</option>
+                    <option>Large</option>
+                  </select>
+                </div> -->
               <div class="col-md-4 col-6 mb-3">
-                <label class="mb-2 d-block">Quantity</label>
-                <div class="input-group mb-3" style="width: 170px;">
-                  <button class="btn btn-white border border-secondary px-3" type="button" id="button-addon1"
-                    data-mdb-ripple-color="dark">
-                    <!-- <i class="fas fa-minus"></i> -->
-                    <i class='bx bx-minus'></i>
-                  </button>
-                  <input type="number" class="form-control text-center border border-secondary"
+                <label class="mb-2 d-block">Qty:</label>
+                <div class="input-group mb-3" style="width: 50px;">
+
+                  <!-- <input type="number" class="form-control text-center border border-secondary"
                     aria-label="Example text with button addon" aria-describedby="button-addon1" min="1" max="10"
-                    formControlName="quantity">
-                  <button class="btn btn-white border border-secondary px-3" type="button" id="button-addon2"
-                    data-mdb-ripple-color="dark">
-                    <i class='bx bx-plus'></i>
-                  </button>
+                    formControlName="quantity"> -->
+
+                  <select class="form-control text-center" formControlName="quantity">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5"> 5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  </select>
+
                 </div>
               </div>
             </div>
@@ -125,24 +83,18 @@
             <a class="btn btn-primary shadow-0" (click)="AddtoCart()" style="margin-left: 10px;"> <i
                 class="me-1 fa fa-shopping-basket"></i> Add to
               cart </a>
-              <!-- <button type="button" class="btn btn-secondary" (click)="date()" style="margin-left: 5px;">Cancel</button> -->
-            <!-- <a class="btn btn-light border border-secondary py-2 icon-hover px-3"> <i
-                class="me-1 fa fa-heart fa-lg"></i> Save </a> -->
           </div>
         </main>
       </div>
     </div>
   </section>
-  <!-- content -->
 
+  <!-- Billing Form -->
 </form>
-<!-- Footer -->
 <section style="margin: 25px 25px;" *ngIf="billingFormIsOpen==true">
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">Billing Form</h5>
-
-      <!-- Multi Columns Form -->
       <form class="row g-3" [formGroup]="BillingForm">
 
         <div class="col-12">
@@ -169,7 +121,8 @@
         <div class="col-12">
           <div class="col">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="paymentMethod" value="COD" formControlName="paymentMethod">
+              <input class="form-check-input" type="radio" name="paymentMethod" value="COD"
+                formControlName="paymentMethod">
               <label class="form-check-label" for="cod">COD</label>
             </div>
             <div class="form-check form-check-inline">
@@ -186,17 +139,15 @@
               <input class="form-check-input" type="radio" name="paymentMethod" value="NetBanking"
                 formControlName="paymentMethod">
               <label class="form-check-label" for="NetBanking">Net Banking</label>
-
             </div>
-
           </div>
         </div>
         <div class="text-center">
           <button type="button" class="btn btn-primary" (click)="ConfirmOrder()">Confirm</button>
-          <button type="button" class="btn btn-secondary" (click)="billingFormIsOpen = false" style="margin-left: 5px;">Cancel</button>
-          <!-- <button type="button" class="btn btn-secondary" (click)="date()" style="margin-left: 5px;">Date</button> -->
+          <button type="button" class="btn btn-secondary" (click)="billingFormIsOpen = false"
+            style="margin-left: 5px;">Cancel</button>
         </div>
-      </form><!-- End Multi Columns Form -->
+      </form>
     </div>
   </div>
 </section>

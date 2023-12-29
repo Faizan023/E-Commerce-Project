@@ -11,10 +11,15 @@ namespace Controllers
     public class BrandController : ControllerBase
     {
         private readonly IBrandRepository brandRepository;
+        private readonly IProductRepository productRepository;
 
-        public BrandController(IBrandRepository _brandrepository)
+        public BrandController(
+            IBrandRepository _brandrepository,
+            IProductRepository _productRepository
+        )
         {
             brandRepository = _brandrepository;
+            productRepository = _productRepository;
         }
 
         [HttpGet]
@@ -65,9 +70,9 @@ namespace Controllers
 
         [HttpDelete]
         [Route("DeleteBrand/{Id}")]
-        public JsonResult Delete(int Id)
+        public async Task<IActionResult> Delete(int Id)
         {
-            brandRepository.DeleteBrand(Id);
+             brandRepository.DeleteBrand(Id);
             return new JsonResult("Deleted Successfully");
         }
     }

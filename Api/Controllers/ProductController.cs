@@ -74,19 +74,6 @@ namespace Controllers
             return Ok("Deleted Successfully");
         }
 
-        //     public async Task<IActionResult> Uploadimage(IFormFile file, Product product){
-        //         if(file == null || file.Length == 0){
-        //             return BadRequest("Invalid Image");
-        //         }
-        //           using (var memoryStream = new MemoryStream())
-        //     {
-        //         await file.CopyToAsync(memoryStream);
-        //         var image = new Image
-        //         {
-        //             product.Name = file.Name
-        //         };
-        //         return Ok(" ");
-        //     }
-        // }
+
     }
 }

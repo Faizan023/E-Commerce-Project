@@ -15,10 +15,12 @@ import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 import { FooterComponent } from './footer/footer.component';
 import { OrderComponent } from './order/order.component';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
-    AppComponent, RegisterComponent, LoginComponent, HomeComponent, HeaderComponent, ProfileComponent, ProductComponent, CartComponent, FooterComponent, OrderComponent,
+    AppComponent, RegisterComponent, LoginComponent, HomeComponent, HeaderComponent, ProfileComponent, ProductComponent, CartComponent, FooterComponent, OrderComponent, ContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,9 @@ import { OrderComponent } from './order/order.component';
     FormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent,],

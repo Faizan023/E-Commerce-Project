@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
+import { NotificationService } from '../notification.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,20 +14,17 @@ export class CartComponent implements OnInit {
   customerId: number = 0;
   cartItem: any = [];
   product: any = [];
+  popOverMessage: string = "Confirm to remove from cart?";
+  cancelClicked: boolean = false;
   // productId: number = 4;
-  constructor(private http: HttpClient, private route: Router) { }
+  constructor(private http: HttpClient, private route: Router, private toast: NotificationService) { }
   ngOnInit(): void {
-   
+
     var getDetails = localStorage.getItem('details');
     if (getDetails) {
       this.customer = JSON.parse(getDetails);
-      // this.customerId = this.customer.id;
     }
     this.LoadCart();
-
-    // this.http.get('http://localhost:5209/api/Controller/GetProductBy/' + this.productId).subscribe(res => {
-    //   this.product = res;
-    // });
   }
 
   LoadCart() {
@@ -39,11 +37,12 @@ export class CartComponent implements OnInit {
     this.http.delete('http://localhost:5209/api/Controller/RemoveCart/' + id).subscribe(res => {
       if (res == "Deleted Successfully") {
         console.log("Deleted Successfully");
+        this.toast.showSuccess("success", "You'r item has been removed")
         this.LoadCart();
       }
     });
   }
-  GetProduct(id:number){
+  GetProduct(id: number) {
     this.route.navigateByUrl('/product/' + id)
   }
 }

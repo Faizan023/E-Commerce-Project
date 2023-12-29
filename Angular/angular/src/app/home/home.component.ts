@@ -12,10 +12,9 @@ export class HomeComponent implements OnInit {
   constructor(private http: HttpClient, private route: Router) { }
   ngOnInit(): void {
     this.http.get('http://localhost:5209/api/Controller/GetProduct',).subscribe((res: any) => {
-      // const base64Image = btoa(new Uint8Array(res).reduce((res, byte) => res + String.fromCharCode(byte), ''));
-      // this.products = 'data:image/jpeg;base64,' + base64Image
       this.products = res;
     });
+
   }
   GetProduct(id: number) {
     this.route.navigate(["/product/" + id]);

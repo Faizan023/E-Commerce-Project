@@ -7,6 +7,12 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnChanges {
+  cartCount: number = 0;
+  orderCount: number = 0;
+  customerDetails: any = [];
+  category: any;
+  popOverMessage:string = "Confirm to logout?";
+  cancleClicked:boolean = false;
   constructor(private http: HttpClient) { }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -15,10 +21,7 @@ export class HeaderComponent implements OnInit, OnChanges {
       this.orderCount = Number(res["orderCount"]);
     });
   }
-  cartCount: number = 0;
-  orderCount: number = 0;
-  customerDetails: any = [];
-  category: any;
+  
   ngOnInit(): void {
 
     var getItem = localStorage.getItem("details");

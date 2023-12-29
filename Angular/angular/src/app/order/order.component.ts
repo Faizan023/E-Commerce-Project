@@ -10,6 +10,8 @@ import { NotificationService } from '../notification.service';
 export class OrderComponent implements OnInit {
   customerOrder: any = [];
   customer: any = [];
+  popOverMeasage:string = "Confirm to delete";
+  cancelClicked:boolean = false;
   constructor(private http: HttpClient, private toast: NotificationService) { }
 
   ngOnInit(): void {

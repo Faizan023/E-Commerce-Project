@@ -12,14 +12,14 @@ background-color: black;
 .dropdown-navlist-item{
     color: white;
 }
-.function-btn:hover{
+/* .function-btn:hover{
     color: white;
     background-color: #999999;
     transition: 0.3s;
-}
-.font a:hover{
+} */
+/* .font a:hover{
     color: white;
-} 
+}  */
 .register-btn{
     background-color: #0d6efd;
 }

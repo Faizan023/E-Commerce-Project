@@ -91,10 +91,14 @@ export class ProductComponent implements OnInit {
         createdBy: 1,
         updatedBy: null,
         statusDateTime: null
-      },{responseType:'text'}).subscribe(res => {
-        console.log(res);
+      }, { responseType: 'text' }).subscribe(res => {
+        if (res == "Added Successfully") {
+          this.toast.showSuccess("Success", "You'r order has been confirmed");
+        } else {
+          this.toast.showError("Error", "Something went wrong");
+        }
       });
     }
   }
-  
+
 }

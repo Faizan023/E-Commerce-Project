@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -80,7 +81,7 @@ namespace Repository
             catch
             {
                 throw;
-            }           
+            }
             return product;
         }
 

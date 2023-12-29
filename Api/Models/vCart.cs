@@ -5,7 +5,7 @@ using Models;
 namespace MOdels
 {
     [Table("vCart")]
-    public class vCart 
+    public class vCart
     {
         [Key]
         public int Id { get; set; }
@@ -21,5 +21,6 @@ namespace MOdels
         public int Price { get; set; }
         public string? Measurment { get; set; }
         public string? MesurmentValue { get; set; }
+        public string? Color { get; set; }
     }
 }
