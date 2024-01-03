@@ -19,7 +19,7 @@
                   class="form-control form-control-sm" readonly style="text-align: center;" />
               </div>
               <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                <h5 class="mb-0">₹{{cart.price}}</h5>
+                <h5 class="mb-0">₹{{cart.price | number}}</h5>
               </div>
               <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                 <i class='bx bx-trash text-danger' mwlConfirmationPopover [popoverMessage]="popOverMessage"
@@ -30,6 +30,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>

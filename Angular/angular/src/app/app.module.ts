@@ -17,10 +17,11 @@ import { FooterComponent } from './footer/footer.component';
 import { OrderComponent } from './order/order.component';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { ContactComponent } from './contact/contact.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
-    AppComponent, RegisterComponent, LoginComponent, HomeComponent, HeaderComponent, ProfileComponent, ProductComponent, CartComponent, FooterComponent, OrderComponent, ContactComponent,
+    AppComponent, RegisterComponent, LoginComponent, HomeComponent, HeaderComponent, ProfileComponent, ProductComponent, CartComponent, FooterComponent, OrderComponent, ContactComponent, ErrorComponent,
   ],
   imports: [
     BrowserModule,

@@ -30,41 +30,71 @@
                 orders</span>
               <span class="text-success ms-2">In stock</span>
             </div>
+            <hr>
             <div class="mb-3">
-              <span class="h5">₹{{product.price}}</span>
-              <span class="text-muted">/per item</span>
+              <h4 style="color: red;font-weight: 300;font-size: 20px;" *ngIf="product.discount > 0">
+                -{{product.discount}}% Off</h4>
+              <span class="h5" style="color: gray;"> ₹{{product.price -
+                product.price/100 * product.discount | number}}</span>
+
+              <p style="color: gray; font-size: 13px;" *ngIf="product.discount > 0">M.R.P.:<span
+                  style="text-decoration: line-through;">₹{{product.price | number}}</span>
+              </p>
+              Inclusive of all taxes
             </div>
+            <!-- sales service -->
+            <div style="display: inline-block;">
+              <div class="service-card">
+                <li class="service-list"> <img
+                    src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/trust_icon_free_shipping_81px._CB630870460_.png"
+                    class="service-icon">
+                </li>
+                <li class="service-list"> <span class="service-font">Free
+                    Delivery</span></li>
+              </div>
+              <div class="service-card">
+                <li class="service-list"> <img
+                    src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-cod._CB485937110_.png"
+                    class="service-icon"> </li>
+                <li class="service-list"> <span class="service-font">Cash on Delivery</span></li>
+              </div>
+              <div class="service-card">
+                <li class="service-list"> <img
+                    src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-returns._CB484059092_.png"
+                    class="service-icon" alt="7 days Replacement">
+                </li>
+                <li class="service-list"> <span class="service-font">Replacement</span></li>
+              </div>
+              <div class="service-card">
+                <li class="service-list"> <img
+                    src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-warranty._CB485935626_.png"
+                    class="service-icon" alt="7 days Replacement">
+                </li>
+                <li class="service-list"> <span class="service-font">Warranty</span></li>
+              </div>
+            </div>
+            <!-- sales service End-->
+            <hr>
+            <div class="row">
+              <dt class="col-3">Brand</dt>
+              <dd class="col-9">{{product.brandName}}</dd>
+              <dt class="col-3">Color</dt>
+              <dd class="col-9">{{product.color}}</dd>
+              <dt class="col-3">{{product.measurment}}</dt>
+              <dd class="col-9">{{product.mesurmentValue}}</dd>
+            </div>
+            <hr>
+            <h6><b>About this item:</b></h6>
             <p>
               {{product.description}}
             </p>
-            <div class="row">
-              <dt class="col-3">{{product.measurment}}</dt>
-              <dd class="col-9">{{product.mesurmentValue}}</dd>
-              <dt class="col-3">Color</dt>
-              <dd class="col-9">{{product.color}}</dd>
-              <dt class="col-3">Brand</dt>
-              <dd class="col-9">{{product.brandName}}</dd>
-            </div>
-            <hr />
             <div class="row mb-4">
-                <!-- <div class="col-md-4 col-6">
-                  <label class="mb-2">Size</label>
-                  <select class="form-select border border-secondary" style="height: 35px;">
-                    <option>Small</option>
-                    <option>Medium</option>
-                    <option>Large</option>
-                  </select>
-                </div> -->
               <div class="col-md-4 col-6 mb-3">
                 <label class="mb-2 d-block">Qty:</label>
+
                 <div class="input-group mb-3" style="width: 50px;">
-
-                  <!-- <input type="number" class="form-control text-center border border-secondary"
-                    aria-label="Example text with button addon" aria-describedby="button-addon1" min="1" max="10"
-                    formControlName="quantity"> -->
-
                   <select class="form-control text-center" formControlName="quantity">
-                    <option value="1">1</option>
+                    <option value="1" selected>1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
@@ -75,7 +105,6 @@
                     <option value="9">9</option>
                     <option value="10">10</option>
                   </select>
-
                 </div>
               </div>
             </div>
@@ -88,13 +117,12 @@
       </div>
     </div>
   </section>
-
   <!-- Billing Form -->
 </form>
 <section style="margin: 25px 25px;" *ngIf="billingFormIsOpen==true">
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title">Billing Form</h5>
+      <h5 class="card-title" style="background-color: blue; color: white; padding-left: 5px;">Billing Form</h5>
       <form class="row g-3" [formGroup]="BillingForm">
 
         <div class="col-12">
@@ -117,6 +145,16 @@
           <label for="inputZip" class="form-label">Zip</label>
           <input type="text" class="form-control" formControlName="zip">
         </div>
+        <!-- <h5 class="card-title" style="background-color: blue; color: white;">Total</h5>
+        <p>
+          itemPrice: {{product.price | number}}<br>
+          <span *ngIf="product.deliveryCharge > 0">
+          +  DeliveryCharge: {{product.deliveryCharge}}
+          </span><br>
+          <span>
+          - Discount: {{product.discount}}%
+          </span>
+        </p><hr>Total: {{product.price - product.price/100 * product.discount}}  -->
         <h5 class="card-title" style="background-color: blue; color: white;">Payment</h5>
         <div class="col-12">
           <div class="col">

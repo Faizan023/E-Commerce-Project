@@ -15,7 +15,7 @@
                                     </span>{{order.quantity}} item</p>
                             </div>
                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                <h5 class="mb-0">₹{{order.amount}}</h5><small style="font-weight: 
+                                <h5 class="mb-0">₹{{order.amount | number}}</h5><small style="font-weight: 
                                 20px;color: gray;">Via ({{order.paymentMethod}})</small>
                             </div>
                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
@@ -64,22 +64,14 @@
                                             class="fw-bold text-body">{{order.orderDate | date}}</span> </p>
                                 </div>
                                 <div>
-                                    <h6 class="mb-0">
-                                        <p class="text-muted mb-2">ItemPrice :<span class="fw-bold text-body"
-                                                style="float: right;">₹{{order.amount}}</span> </p>
-                                        <p class="text-muted mb-2">DeliveryCost :<span class="fw-bold text-body"
-                                                style="float: right;">₹{{order.deliveryCharge}}</span> </p>
-                                        <hr>
-                                        <p class="text-muted mb-2"> Total: <span class="fw-bold text-body;"
-                                                style="float: right;">₹{{order.quantity * order.amount +
-                                                order.deliveryCharge }}</span>
-                                    </h6>
+
+                                    <p class="text-muted mb-2"> Total: <span class="fw-bold text-body;"
+                                            style="float: right;">₹{{order.amount | number}}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

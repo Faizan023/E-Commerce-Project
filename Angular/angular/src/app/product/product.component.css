@@ -1,9 +1,32 @@
 .icon-hover:hover {
-    border-color: #3b71ca !important;
-    background-color: white !important;
-    color: #3b71ca !important;
-  }
-  
-  .icon-hover:hover i {
-    color: #3b71ca !important;
-  }
+  border-color: #3b71ca !important;
+  background-color: white !important;
+  color: #3b71ca !important;
+}
+
+.icon-hover:hover i {
+  color: #3b71ca !important;
+}
+
+.service-card {
+  display: inline-block;
+}
+
+.service-font {
+  font-size: 12px;
+  color: #0071D8;
+  font-weight: 440;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.service-icon {
+  height: 35px;
+  width: 35px;
+  margin-left: 20px;
+}
+
+.service-list {
+  list-style-type: none;
+  /* display: inline; */
+}

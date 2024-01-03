@@ -27,20 +27,36 @@
             </button>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 d-flex" *ngFor="let product of products">
+            <div class="col-lg-3 col-md-6 col-sm-6 d-flex" *ngFor="let product of products" style=" padding: 10px;">
                 <a (click)="GetProduct(product.id)">
-                    <div class="card w-100 my-2 shadow-2-strong" style="width: 300px;">
+                    <div class="card w-100 my-2 shadow-2-strong" style="height: 500px;width: 300px;">
                         <!-- <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/1.webp"
                         class="card-img-top" style="aspect-ratio: 1 / 1" /> -->
-                        <img [src]="'data:image/png;base64,'+product.img" class="card-img-top"
-                            style="aspect-ratio: 1 / 1; " />
+                        <img [src]="'data:image/png;base64,'+product.img" class="card-img-top" style="aspect-ratio: 1 / 1; ;
+                             object-fit: contain; background-color: whitesmoke;color: whitesmoke;" />
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title" style="overflow: hidden; ">{{product.name}}</h5>
-                            <p class="card-text">₹{{product.price}}</p>
-                            <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
-                                <a class="btn btn-primary shadow-0 me-1">Add to cart</a>
-                                <a class="btn btn-primary border px-2 pt-2 icon-hover">Buy Now</a>
+                            <h5 class="card-title" style="overflow: hidden;">{{product.name}}</h5>
+                            <div class="text-warning mb-1 me-2">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="ms-1">
+                                    4.5
+                                </span>
                             </div>
+                            <div class="mb-3">
+                                <h4 style="color: red;font-weight: 300;font-size: 20px; " *ngIf="product.discount > 0">
+                                    -{{product.discount}}% Off</h4>
+                                <span class="h5" style="color: gray;"> ₹{{product.price -
+                                    product.price/100 * product.discount | number}}</span>
+
+                                <div style="color: gray; font-size: 13px;" *ngIf="product.discount > 0">M.R.P.:<span
+                                        style="text-decoration: line-through;">₹{{product.price | number}}</span>
+                                </div>
+                            </div>
+                            <!-- <p class="card-text">₹{{product.price}}</p> -->
                         </div>
                     </div>
                 </a>
@@ -61,7 +77,8 @@
                     </span>
                     <figcaption class="info">
                         <h6 class="title">Reasonable prices</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmor</p>
+                        <p>Discover a world of quality without the premium price tag. At ShopCart.in, our commitment is
+                            simple: delivering top-notch products at prices that make sense for you.</p>
                     </figcaption>
                 </figure>
             </div>
@@ -72,7 +89,8 @@
                     </span>
                     <figcaption class="info">
                         <h6 class="title">Best quality</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmor</p>
+                        <p> we ensure that every product embodies the pinnacle of craftsmanship and durability, setting
+                            a standard of unparalleled quality at ShopCart.in.</p>
                     </figcaption>
                 </figure>
             </div>
@@ -83,7 +101,7 @@
                     </span>
                     <figcaption class="info">
                         <h6 class="title">Worldwide shipping</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmor</p>
+                        <p>At ShopCart.in, we break boundaries with worldwide shipping.</p>
                     </figcaption>
                 </figure>
             </div>
@@ -94,7 +112,8 @@
                     </span>
                     <figcaption class="info">
                         <h6 class="title">Customer satisfaction</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmor</p>
+                        <p>customer satisfaction is our compass. We're committed to going the extra mile, listening to
+                            your needs.</p>
                     </figcaption>
                 </figure>
             </div>

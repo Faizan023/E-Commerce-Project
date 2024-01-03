@@ -8,6 +8,7 @@ import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 import { OrderComponent } from './order/order.component';
 import { ContactComponent } from './contact/contact.component';
+import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent
+  },
+  {
+    path: 'error',
+    component: ErrorComponent
   },
   {
     path: '',

@@ -25,7 +25,7 @@ Constraint PK_CId Primary Key (Id)
 Create Table Products(
 Id Int Identity(1,1) Not Null,
 Img VarBinary(max) Not Null,
-Name Varchar(30) Not Null,
+Name Varchar(1000) Not Null,
 CategoryId Int Not Null,
 Description Varchar(1000) Not Null,
 Price Int Not Null,

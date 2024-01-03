@@ -31,6 +31,7 @@ export class ProductComponent implements OnInit {
       measurment: ['', Validators.required],
       mesurmentValue: ['', Validators.required],
       brandId: ['', Validators.required],
+      deliveryCharge: ['', Validators.required]
     });
     this.BrandList();
     this.CategoryList();
@@ -51,6 +52,7 @@ export class ProductComponent implements OnInit {
         measurment: this.ProductForm.value.measurment,
         mesurmentValue: this.ProductForm.value.mesurmentValue,
         brandId: this.ProductForm.value.brandId,
+        deliveryCharge: this.ProductForm.value.deliveryCharge,
         createdDateTime: date,
         updatedDateTime: null,
         createdBy: 1,
@@ -81,7 +83,7 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  selectFile(event: any):void {
+  selectFile(event: any): void {
     var file: File = event.target.files[0];
     const reader = new FileReader();
     reader.onload = () => {

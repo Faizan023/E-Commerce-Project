@@ -24,7 +24,6 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.router.params.subscribe(res => {
       this.productId = +res['id'];
-      console.log(this.productId);
     });
     this.http.get('http://localhost:5209/api/Controller/GetProductBy/' + this.productId).subscribe(res => {
       this.product = res;
@@ -71,13 +70,14 @@ export class ProductComponent implements OnInit {
 
   ConfirmOrder() {
     if (this.BillingForm.valid) {
+      var totalAmount = this.product.price - this.product.price / 100 * this.product.discount
       // var newDate = new Date();
-      var date = new Date().getUTCDate;
+      var date = new Date();
       // var addDate = newDate.setDate(7)
       this.http.post('http://localhost:5209/api/Controller/AddOrder', {
         customerId: this.customer.id,
         quantity: this.productPage.value.quantity,
-        amount: this.product.price,
+        amount: Math.trunc(totalAmount * this.productPage.value.quantity),
         productId: this.productId,
         paymentMethod: this.BillingForm.value.paymentMethod,
         orderDate: date,
@@ -100,5 +100,4 @@ export class ProductComponent implements OnInit {
       });
     }
   }
-
 }

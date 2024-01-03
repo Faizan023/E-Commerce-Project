@@ -71,7 +71,7 @@
                         alt="Cotton T-shirt" style="height: 50px;"></td>
                     <td scope="row">₹ {{order.amount}} </td>
                     <td scope="row">{{order.quantity}}</td>
-                    <td scope="row"> ₹ {{order.amount * order.quantity}}</td>
+                    <td scope="row"> ₹ {{order.amount}}</td>
                     <td scope="row">
                       <span class="badge bg-success" *ngIf="order.status == 'Completed'"><i
                           class="bi bi-check-circle me-1"></i> {{order.status}}</span>
