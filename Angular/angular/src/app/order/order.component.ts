@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from '../notification.service';
+import { BehaviorSubject } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-order',
@@ -10,15 +12,17 @@ import { NotificationService } from '../notification.service';
 export class OrderComponent implements OnInit {
   customerOrder: any = [];
   customer: any = [];
-  popOverMeasage:string = "Confirm to delete";
-  cancelClicked:boolean = false;
+  popOverMeasage: string = "Confirm to delete";
+  cancelClicked: boolean = false;
   constructor(private http: HttpClient, private toast: NotificationService) { }
 
-  ngOnInit(): void {
+  currentUser: BehaviorSubject<any> = new BehaviorSubject(null);
+  jwtHelperService = new JwtHelperService();
 
-    var getDetails = localStorage.getItem('details');
+  ngOnInit(): void {
+    var getDetails = localStorage.getItem('token');
     if (getDetails) {
-      this.customer = JSON.parse(getDetails);
+      this.customer = this.jwtHelperService.decodeToken(getDetails);
     }
     this.GetOrders();
   }

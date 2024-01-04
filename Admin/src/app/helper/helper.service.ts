@@ -15,5 +15,4 @@ export class HelperService {
             return false
         }
     }
-
 }

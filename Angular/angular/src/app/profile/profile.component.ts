@@ -3,9 +3,10 @@ import { FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../customer.service';
 import { HttpClient } from '@angular/common/http';
-import { reduce } from 'rxjs';
+import { BehaviorSubject, reduce } from 'rxjs';
 import { NotificationService } from '../notification.service';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +18,10 @@ export class ProfileComponent implements OnInit {
   constructor(private form: FormBuilder, private customerService: CustomerService, private http: HttpClient, private toast: NotificationService, private route: Router) { }
   details: any = [];
   joined: string = '';
+  Id: any = [];
   // patchDetails: any = [];
+  currentUser: BehaviorSubject<any> = new BehaviorSubject(null);
+  jwtHelperService = new JwtHelperService();
   ngOnInit(): void {
     this.profile = this.form.group({
       firstName: ['', Validators.required],
@@ -29,21 +33,27 @@ export class ProfileComponent implements OnInit {
       address: ['', Validators.required]
     });
 
-    const getCustomerDetails = localStorage.getItem('details');
+    const getCustomerDetails = localStorage.getItem('token');
     if (getCustomerDetails) {
-      this.details = JSON.parse(getCustomerDetails);
+      this.Id = this.jwtHelperService.decodeToken(getCustomerDetails);
+
+      this.http.get("http://localhost:5209/api/Controller/GetCustomerBy/" + this.Id.id).subscribe(res => {
+        this.details = res
+        this.profile.patchValue({
+          firstName: this.details.firstName,
+          lastName: this.details.lastName,
+          email: this.details.email,
+          gender: this.details.gender,
+          phoneNumber: this.details.phoneNumber,
+          dateOfBirth: this.details.dateOfBirth,
+          address: this.details.address,
+        });
+        this.joined = this.details.createdDateTime;
+      })
       // console.log(this.details.id);
-      this.profile.patchValue({
-        firstName: this.details.firstName,
-        lastName: this.details.lastName,
-        email: this.details.email,
-        gender: this.details.gender,
-        phoneNumber: this.details.phoneNumber,
-        dateOfBirth: this.details.dateOfBirth,
-        address: this.details.address
-      });
+
     }
-    this.joined = this.details.createdDateTime;
+
   }
 
   SaveChanges() {

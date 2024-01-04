@@ -30,9 +30,9 @@ export class LoginComponent implements OnInit {
                 this.Loginmsg = "Please Check Your Email or Password";
                 this.toastr.showWarning("Warning", "Invalid Email or password");
             } else {
-                localStorage.setItem('token', res);
                 this.toastr.showSuccess("Success", "Login Successfully");
-                localStorage.setItem('details', res);
+                this.Auth.setToken(res);
+                // localStorage.setItem('details', res);
                 this.route.navigateByUrl('/home');
                 // this.Login.reset();
             }

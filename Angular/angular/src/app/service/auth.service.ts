@@ -3,6 +3,7 @@ import { createInjectableType } from "@angular/compiler";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +12,11 @@ export class AuthService {
 
     constructor(private http: HttpClient, private router: Router) { }
 
+    currentUser: BehaviorSubject<any> = new BehaviorSubject(null);
+    jwtHelperService = new JwtHelperService();
+
     RegisterUser(user: Array<string>) {
+        var date = new Date();
         return this.http.post("http://localhost:5209/api/Controller/InsertCustomer", {
             firstName: user[0],
             lastName: user[1],
@@ -21,12 +26,12 @@ export class AuthService {
             dateOfBirth: user[5],
             gender: user[6],
             address: user[7],
-            createdDateTime: '2024-09-12',
+            createdDateTime: date,
             createdBy: 0,
-            updatedDateTime: null,
+            updatedDateTime:null,
             updatedBy: null,
             active: true,
-            activationDate: '2024-09-19',
+            activationDate: date,
             activationKey: 'yes',
         }, { responseType: 'text' })
     }
@@ -36,6 +41,19 @@ export class AuthService {
             email,
             password
         }, { responseType: 'text' });
+    }
+
+    setToken(token: string) {
+        localStorage.setItem('token', token);
+        this.LoadCurrentUser();
+    }
+
+    LoadCurrentUser() {
+        const currentToken = localStorage.getItem('token');
+        if (currentToken) {
+            const userInfo = this.jwtHelperService.decodeToken(currentToken);
+            console.log(userInfo);
+        }
     }
 
 }

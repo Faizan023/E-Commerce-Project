@@ -31,7 +31,7 @@ namespace Controllers
             if (result != null)
             {
                 var token = Tokens(result);
-                return Ok(result);
+                return Ok(token);
                 // return Ok(token);
             }
             return Ok("Check Email or Password");
@@ -44,8 +44,22 @@ namespace Controllers
                 new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                new Claim("Email", customer.Email),
-                new Claim("password", customer.Password)
+                new Claim("id", customer.Id.ToString()),
+                new Claim("email", customer.Email),
+                new Claim("firstName", customer.FirstName),
+                new Claim("lastName", customer.LastName),
+                new Claim("gender", customer.Gender),
+                new Claim("phoneNumber", customer.PhoneNumber),
+                new Claim("dateOfBirth", customer.DateOfBirth.ToString()),
+                new Claim("address", customer.Address),
+                new Claim("createdDateTime", customer.CreatedDateTime.ToString()),
+                new Claim("Password", customer.Password),
+                new Claim("createdBy", customer.CreatedBy.ToString()),
+                new Claim("updatedDateTime", customer.UpdatedDateTime.ToString()),
+                new Claim("updatedBy", customer.UpdatedBy.ToString()),
+                new Claim("active", customer.Active.ToString()),
+                new Claim("activationDate", customer.ActivationDate.ToString()),
+                new Claim("activationKey", customer.ActivationKey)
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

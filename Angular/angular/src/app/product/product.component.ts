@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationService } from '../notification.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-product',
@@ -20,7 +22,8 @@ export class ProductComponent implements OnInit {
   defaultValue: number = 1;
   billingFormIsOpen: boolean = false;
   constructor(private route: Router, private router: ActivatedRoute, private http: HttpClient, private form: FormBuilder, private toast: NotificationService) { }
-
+  currentUser: BehaviorSubject<any> = new BehaviorSubject(null);
+  jwtHelperService = new JwtHelperService();
   ngOnInit(): void {
     this.router.params.subscribe(res => {
       this.productId = +res['id'];
@@ -42,14 +45,14 @@ export class ProductComponent implements OnInit {
       zip: ['', Validators.required],
     })
 
-    const getCustomerDetails = localStorage.getItem('details');
+    const getCustomerDetails = localStorage.getItem('token');
     if (getCustomerDetails) {
-      this.customer = JSON.parse(getCustomerDetails);
+      this.customer = this.jwtHelperService.decodeToken(getCustomerDetails);
     }
   }
 
   AddtoCart() {
-    var date = new Date().getDate;
+    var date = new Date();
     this.http.post('http://localhost:5209/api/Controller/AddToCart', {
       customerId: this.customer.id,
       productId: this.productId,
