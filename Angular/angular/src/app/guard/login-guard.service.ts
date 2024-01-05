@@ -1,0 +1,23 @@
+import { CanActivateFn, Route, Router } from '@angular/router';
+import { Injectable, inject } from '@angular/core';
+import { AuthService } from '../service/auth.service';
+
+@Injectable({ providedIn: 'root' })
+export class LoginGuardService {
+  constructor(private auth: AuthService, private route: Router) { }
+
+  CanActivate() {
+    var token = this.auth.getToken();
+    var isExpired = token ? !this.auth.isTokenExpired(token) : this.route.navigateByUrl("/login");
+    if (isExpired) {
+      return true
+    } else {
+      this.route.navigateByUrl("/login");
+      return false
+    }
+  }
+}
+
+export const tokenService: CanActivateFn = (route, state) => {
+  return inject(LoginGuardService).CanActivate();
+}

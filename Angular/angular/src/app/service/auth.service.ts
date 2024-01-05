@@ -28,7 +28,7 @@ export class AuthService {
             address: user[7],
             createdDateTime: date,
             createdBy: 0,
-            updatedDateTime:null,
+            updatedDateTime: null,
             updatedBy: null,
             active: true,
             activationDate: date,
@@ -52,8 +52,18 @@ export class AuthService {
         const currentToken = localStorage.getItem('token');
         if (currentToken) {
             const userInfo = this.jwtHelperService.decodeToken(currentToken);
-            console.log(userInfo);
         }
     }
 
+    getToken():string {
+      return  String(localStorage.getItem('token'));
+    }
+
+    isTokenExpired(token: string) {
+        const userInfo = this.jwtHelperService.decodeToken(token);
+        const expDate = userInfo.exp * 1000;
+        const currentDate = new Date().getTime();
+        return currentDate > expDate;
+
+    }
 }

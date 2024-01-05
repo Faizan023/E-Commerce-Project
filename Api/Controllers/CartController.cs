@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using Repository;
@@ -33,6 +34,7 @@ namespace Controllers
 
         [HttpPost]
         [Route("AddToCart")]
+        [Authorize]
         public async Task<IActionResult> Post(Cart cart)
         {
             await cartRepository.AddToCart(cart);
@@ -49,6 +51,7 @@ namespace Controllers
 
         [HttpGet]
         [Route("getcartbycustomer/{Id}")]
+        [Authorize]
         public async Task<IActionResult> GetCustomerCart(int Id)
         {
             return Ok(await cartRepository.GetCustomerCart(Id));

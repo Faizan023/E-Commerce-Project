@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from '../notification.service';
 import { BehaviorSubject } from 'rxjs';
@@ -28,7 +28,11 @@ export class OrderComponent implements OnInit {
   }
 
   GetOrders() {
-    this.http.get('http://localhost:5209/api/Controller/getOrderbyCustomer/' + this.customer.id).subscribe(res => {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    });
+
+    this.http.get('http://localhost:5209/api/Controller/getOrderbyCustomer/' + this.customer.id, { headers }).subscribe(res => {
       this.customerOrder = res;
     });
   }

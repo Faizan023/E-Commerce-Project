@@ -1,5 +1,5 @@
 import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,6 +24,7 @@ export class ProductComponent implements OnInit {
   constructor(private route: Router, private router: ActivatedRoute, private http: HttpClient, private form: FormBuilder, private toast: NotificationService) { }
   currentUser: BehaviorSubject<any> = new BehaviorSubject(null);
   jwtHelperService = new JwtHelperService();
+
   ngOnInit(): void {
     this.router.params.subscribe(res => {
       this.productId = +res['id'];
@@ -52,6 +53,9 @@ export class ProductComponent implements OnInit {
   }
 
   AddtoCart() {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    });
     var date = new Date();
     this.http.post('http://localhost:5209/api/Controller/AddToCart', {
       customerId: this.customer.id,
@@ -61,7 +65,7 @@ export class ProductComponent implements OnInit {
       updateDateTime: null,
       createdBy: this.customer.id,
       updatedBy: null
-    }, { responseType: 'text' }).subscribe(res => {
+    }, { responseType: 'text', headers }).subscribe(res => {
       if (res == "Addedd Successfully") {
 
         this.toast.showSuccess("Success", "Addedd Successfully");
@@ -73,6 +77,9 @@ export class ProductComponent implements OnInit {
 
   ConfirmOrder() {
     if (this.BillingForm.valid) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      });
       var totalAmount = this.product.price - this.product.price / 100 * this.product.discount
       // var newDate = new Date();
       var date = new Date();
@@ -94,7 +101,7 @@ export class ProductComponent implements OnInit {
         createdBy: 1,
         updatedBy: null,
         statusDateTime: null
-      }, { responseType: 'text' }).subscribe(res => {
+      }, { responseType: 'text', headers }).subscribe(res => {
         if (res == "Added Successfully") {
           this.toast.showSuccess("Success", "You'r order has been confirmed");
         } else {

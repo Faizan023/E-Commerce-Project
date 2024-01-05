@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { Route, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   products: any = [];
-  constructor(private http: HttpClient, private route: Router) { }
+  constructor(private http: HttpClient, private route: Router, private auth: AuthService) { }
   ngOnInit(): void {
     this.http.get('http://localhost:5209/api/Controller/GetProduct',).subscribe((res: any) => {
       this.products = res;

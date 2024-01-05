@@ -1,4 +1,5 @@
 using Azure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using Repository;
@@ -7,6 +8,7 @@ namespace Controllers
 {
     [Route("api/Controller")]
     [ApiController]
+    
     public class OrderController : ControllerBase
     {
         private readonly IOrderRepository _orderRepository;
@@ -32,6 +34,7 @@ namespace Controllers
 
         [HttpPost]
         [Route("AddOrder")]
+        [Authorize]
         public async Task<IActionResult> Post(Order order)
         {
             await _orderRepository.AddOrder(order);
@@ -56,6 +59,7 @@ namespace Controllers
 
         [HttpGet]
         [Route("getOrderbyCustomer/{Id}")]
+        [Authorize]
         public async Task<IActionResult> GetCustomerOrder(int Id)
         {
             return Ok(await _orderRepository.GetCustomerOrder(Id));

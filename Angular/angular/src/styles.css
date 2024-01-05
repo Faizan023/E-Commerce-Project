@@ -26,8 +26,16 @@ background-color: black;
 .nav-hover ul:hover{
     color: #0d6efd;
 }
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
 
+}
 
+::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 5px;
+}
 
 
 

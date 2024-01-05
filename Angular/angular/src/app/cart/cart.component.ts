@@ -1,10 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { NotificationService } from '../notification.service';
 import { BehaviorSubject } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-cart',
@@ -21,8 +22,8 @@ export class CartComponent implements OnInit {
   currentUser: BehaviorSubject<any> = new BehaviorSubject(null);
   jwtHelperService = new JwtHelperService();
   // productId: number = 4;
-  constructor(private http: HttpClient, private route: Router, private toast: NotificationService) { }
-  
+  constructor(private http: HttpClient, private route: Router, private toast: NotificationService, private auth: AuthService) { }
+
   ngOnInit(): void {
     var getDetails = localStorage.getItem('token');
     if (getDetails) {
@@ -32,7 +33,11 @@ export class CartComponent implements OnInit {
   }
 
   LoadCart() {
-    this.http.get('http://localhost:5209/api/Controller/getcartbycustomer/' + this.customer.id).subscribe(res => {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    });
+
+    this.http.get('http://localhost:5209/api/Controller/getcartbycustomer/' + this.customer.id, { headers }).subscribe(res => {
       this.cartItem = res;
     });
   }

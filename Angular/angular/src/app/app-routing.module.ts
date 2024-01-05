@@ -9,6 +9,7 @@ import { CartComponent } from './cart/cart.component';
 import { OrderComponent } from './order/order.component';
 import { ContactComponent } from './contact/contact.component';
 import { ErrorComponent } from './error/error.component';
+import {  tokenService } from './guard/login-guard.service';
 
 const routes: Routes = [
   {
@@ -21,31 +22,38 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate:[tokenService]
   },
   {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate:[tokenService]
   },
   {
     path: 'product/:id',
-    component: ProductComponent
+    component: ProductComponent,
+    canActivate:[tokenService]
   },
   {
     path: 'cart',
-    component: CartComponent
+    component: CartComponent,
+    canActivate:[tokenService]
   },
   {
     path: 'order',
-    component: OrderComponent
+    component: OrderComponent,
+    canActivate:[tokenService]
   },
   {
     path: 'contact',
-    component: ContactComponent
+    component: ContactComponent,
+    canActivate:[tokenService]
   },
   {
     path: 'error',
-    component: ErrorComponent
+    component: ErrorComponent,
+    canActivate:[tokenService]
   },
   {
     path: '',
