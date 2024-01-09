@@ -1,4 +1,4 @@
-import { Route } from '@angular/router';
+import { Route, Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular';
+  constructor(private route: Router) { }
+
+  isLoggingPage(): boolean {
+    return this.route.url === "/login";
+  }
+  isRegisterPage(): boolean {
+    return this.route.url === "/register";
+  }
 }

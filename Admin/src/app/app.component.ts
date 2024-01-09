@@ -1,3 +1,4 @@
+import { Route, Router } from '@angular/router';
 import { HelperService } from './helper/helper.service';
 import { Component, ViewChild } from '@angular/core';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -11,9 +12,11 @@ export class AppComponent {
   title = 'Admin';
 
 
-  constructor(private helperService: HelperService) {
+  constructor(private helperService: HelperService, private route: Router) {
   }
   // @ViewChild('sidebar') sidebar !: SidebarComponent;
 
-
+  isLoginPage(): boolean {
+    return this.route.url === "/login";
+  }
 }

@@ -21,6 +21,7 @@ export class ProductComponent implements OnInit {
   customer: any = [];
   defaultValue: number = 1;
   billingFormIsOpen: boolean = false;
+  similarProduct: any = [];
   constructor(private route: Router, private router: ActivatedRoute, private http: HttpClient, private form: FormBuilder, private toast: NotificationService) { }
   currentUser: BehaviorSubject<any> = new BehaviorSubject(null);
   jwtHelperService = new JwtHelperService();
@@ -31,6 +32,7 @@ export class ProductComponent implements OnInit {
     });
     this.http.get('http://localhost:5209/api/Controller/GetProductBy/' + this.productId).subscribe(res => {
       this.product = res;
+      this.SimilarProduct();
     });
 
     this.productPage = this.form.group({
@@ -50,6 +52,7 @@ export class ProductComponent implements OnInit {
     if (getCustomerDetails) {
       this.customer = this.jwtHelperService.decodeToken(getCustomerDetails);
     }
+    // this.SimilarProduct()
   }
 
   AddtoCart() {
@@ -109,5 +112,14 @@ export class ProductComponent implements OnInit {
         }
       });
     }
+  }
+  SimilarProduct() {
+    this.http.post('http://localhost:5209/api/Controller/SimilarProduct', {
+      productName: this.product.name,
+      categoryId: this.product.categoryId
+    }).subscribe(res => { this.similarProduct = res });
+  }
+  getProduct(id: number) {
+    this.route.navigateByUrl("/product/" + id);
   }
 }

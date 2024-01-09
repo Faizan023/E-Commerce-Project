@@ -1,7 +1,7 @@
 import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from '../customer.service';
+// import { CustomerService } from '../customer.service';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, reduce } from 'rxjs';
 import { NotificationService } from '../notification.service';
@@ -15,7 +15,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class ProfileComponent implements OnInit {
   profile!: FormGroup
-  constructor(private form: FormBuilder, private customerService: CustomerService, private http: HttpClient, private toast: NotificationService, private route: Router) { }
+  constructor(private form: FormBuilder, private http: HttpClient, private toast: NotificationService, private route: Router) { }
   details: any = [];
   joined: string = '';
   Id: any = [];

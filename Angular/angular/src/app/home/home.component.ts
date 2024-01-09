@@ -14,8 +14,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.http.get('http://localhost:5209/api/Controller/GetProduct',).subscribe((res: any) => {
       this.products = res;
+      // window.location.reload();
     });
-
+    
   }
   GetProduct(id: number) {
     this.route.navigate(["/product/" + id]);

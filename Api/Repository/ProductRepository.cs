@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -10,6 +11,7 @@ namespace Repository
     {
         Task<IEnumerable<vProduct>> GetProducts();
         Task<vProduct> GetProductById(int id);
+        Task<IEnumerable<vProduct>> SimilarProduct(SimilarProduct product);
         Task<Product> InsertProduct(Product product);
         Task<Product> UpdateProduct(Product product);
         Task DeleteProduct(int Id);
@@ -49,6 +51,20 @@ namespace Repository
                 {
                     throw new ArgumentNullException();
                 }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<vProduct>> SimilarProduct(SimilarProduct product)
+        {
+            try
+            {
+                return context.vProducts
+                    .Where(t => t.Name.ToLower() == product.productName.ToLower() && t.CategoryId == product.CategoryId)
+                    .ToList().Take(10);
             }
             catch
             {

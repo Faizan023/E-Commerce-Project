@@ -12,12 +12,16 @@ namespace Controllers
 
         private readonly IOrderRepository _OrderRepository;
         private readonly ICartRepository _CartRepository;
-        public ProductController(IProductRepository productRepository, IOrderRepository orderRepository, ICartRepository cartRepository)
+
+        public ProductController(
+            IProductRepository productRepository,
+            IOrderRepository orderRepository,
+            ICartRepository cartRepository
+        )
         {
             _ProductRepository = productRepository;
             _OrderRepository = orderRepository;
             _CartRepository = cartRepository;
-
         }
 
         [HttpGet]
@@ -32,6 +36,13 @@ namespace Controllers
         public async Task<IActionResult> GetById(int Id)
         {
             return Ok(await _ProductRepository.GetProductById(Id));
+        }
+
+        [HttpPost]
+        [Route("SimilarProduct")]
+        public async Task<IActionResult> GetSimilarProduct(SimilarProduct product)
+        {
+            return Ok(await _ProductRepository.SimilarProduct(product));
         }
 
         [HttpPost]
@@ -53,15 +64,15 @@ namespace Controllers
         {
             await _ProductRepository.UpdateProduct(product);
             return Ok("Updated Successfully");
-        }   
+        }
 
         [HttpDelete]
         [Route("DeleteProduct/{Id}")]
         public async Task<IActionResult> Delete(int Id)
         {
             var product = await _ProductRepository.GetProductById(Id);
-            
-            if(product == null)
+
+            if (product == null)
             {
                 return BadRequest("Product not found");
             }
@@ -73,7 +84,5 @@ namespace Controllers
             await _ProductRepository.DeleteProduct(Id);
             return Ok("Deleted Successfully");
         }
-
-
     }
 }

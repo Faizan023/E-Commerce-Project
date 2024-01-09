@@ -117,8 +117,31 @@
       </div>
     </div>
   </section>
-  <!-- Billing Form -->
 </form>
+<!-- similarProduct -->
+<section>
+  <div class="row" style="padding: 20px;" *ngFor="let product of similarProduct">
+    <div class=" col-md-6 col-sm-6 d-flex" *ngIf="productId != product.id" style=" height: 500px; width: 20%;">
+      <a style="height: 360px;" (click)="getProduct(product.id)">
+        <div class="card w-100 my-2 shadow-2-strong" style="height: 450px;width: 300px; padding: 10px;">
+          <img [src]="'data:image/png;base64,'+product.img" class="card-img-top" style="aspect-ratio: 1 / 1; ;
+                     object-fit: contain; background-color: whitesmoke;color: whitesmoke; height: 240px;" />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title" style="overflow: hidden;">{{product.name}}</h5>
+            <h4 style="color: red;font-weight: 300;font-size: 20px; " *ngIf="product.discount > 0">
+              -{{product.discount}}% Off</h4>
+            <span class="h5" style="color: gray;"> ₹{{product.price -
+              product.price/100 * product.discount | number}}</span>
+            <p style="color: gray; font-size: 13px;" *ngIf="product.discount > 0">M.R.P.:<span
+                style="text-decoration: line-through;">₹{{product.price | number}}</span>
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section><!--- end similarProduct-->
+<!-- Billing Form -->
 <section style="margin: 25px 25px;" *ngIf="billingFormIsOpen==true">
   <div class="card">
     <div class="card-body">

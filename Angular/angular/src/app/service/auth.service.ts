@@ -50,9 +50,6 @@ export class AuthService {
 
     LoadCurrentUser() {
         const currentToken = localStorage.getItem('token');
-        if (currentToken) {
-            const userInfo = this.jwtHelperService.decodeToken(currentToken);
-        }
     }
 
     getToken():string {

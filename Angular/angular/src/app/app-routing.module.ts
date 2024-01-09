@@ -18,51 +18,52 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    // canActivate:[loggedinService]
   },
   {
     path: 'home',
     component: HomeComponent,
-    canActivate:[tokenService]
+    canActivate: [tokenService]
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate:[tokenService]
+    canActivate: [tokenService]
   },
   {
     path: 'product/:id',
     component: ProductComponent,
-    canActivate:[tokenService]
+    canActivate: [tokenService]
   },
   {
     path: 'cart',
     component: CartComponent,
-    canActivate:[tokenService]
+    canActivate: [tokenService]
   },
   {
     path: 'order',
     component: OrderComponent,
-    canActivate:[tokenService]
+    canActivate: [tokenService]
   },
   {
     path: 'contact',
     component: ContactComponent,
-    canActivate:[tokenService]
+    canActivate: [tokenService]
   },
   {
     path: 'error',
     component: ErrorComponent,
-    canActivate:[tokenService]
+    canActivate: [tokenService]
   },
   {
     path: '',
-    component: LoginComponent,
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {
     path: '**',
-    component: LoginComponent,
+    component: ErrorComponent,
     pathMatch: 'full'
   },
 

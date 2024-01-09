@@ -1,5 +1,5 @@
-<app-navbar></app-navbar>
-<app-sidebar></app-sidebar>
+<app-navbar *ngIf="!isLoginPage()"></app-navbar>
+<app-sidebar *ngIf="!isLoginPage()"></app-sidebar>
 <router-outlet> </router-outlet>
-<app-footer></app-footer>
+<app-footer *ngIf="!isLoginPage()"></app-footer>
 <!-- <mat-progress-bar mode="indeterminate" value="40"></mat-progress-bar> -->
