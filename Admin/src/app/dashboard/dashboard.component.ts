@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
       this.orderYear = Number(res["salesCountYear"]);
       this.revenueMonth = Number(res["revenueCountMonth"]);
       this.revenueYear = Number(res["revenueCountYear"]);
-      console.log(res);
+      // console.log(res);
       this.FilterOrder('Today');
       this.FilterCustomer('Today');
       this.FilterRevenue('Today');
@@ -111,5 +111,4 @@ export class DashboardComponent implements OnInit {
       this.displayOrderListtext = filter;
     }
   }
-
 }

@@ -1,145 +1,337 @@
-<section>
-    <div class="container my-5">
+<div id="carouselExampleIndicators" class="carousel slide">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner" style="height: 540px;">
+        <div class="carousel-item active">
+            <img src="../../assets/banner.avif" class="d-block w-100" style="height: 540px;">
+        </div>
+        <div class="carousel-item">
+            <img src="../../assets/banner2.avif" class="d-block w-100" style="height: 540px;">
+        </div>
+        <div class="carousel-item">
+            <img src="../../assets/banner3.jpg" class="d-block w-100" style="height: 540px;">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
 
-        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel"
-            style=" width: 1300px; height: 350px;">
-            <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="10000">
-                    <img src="../../assets/banner3.jpg" class="d-block w-100" alt="..." height="350px" width="200px">
-                </div>
-                <div class="carousel-item" data-bs-interval="2000">
-                    <img src="../../assets/banner2.avif" class="d-block w-100" alt="..." height="350px" width="1200px">
-                </div>
-                <div class="carousel-item">
-                    <img src="../../assets/banner.avif" class="d-block w-100" alt="..." height="350px">
+<section class="tp-product-category pt-60 pb-15">
+    <div class="container" style="margin-top: 25px;">
+        <div class="row row-cols-xl-5 row-colss-lg-5 row-cols-md-4">
+            <div class="col ng-star-inserted">
+                <div class="tp-product-category-item text-center mb-40">
+                    <div class="tp-product-category-thumb fix "><a href="/shop?category=headphones"><img
+                                alt="product-category" src="https://i.ibb.co/sVxYFDY/product-cat-1.png"
+                                class="zoomimg"></a></div>
+                    <div class="tp-product-category-content">
+                        <h3 class="tp-product-category-title"><a href="/shop?category=headphones"> Headphones </a></h3>
+                        <!-- <p>3 Product</p> -->
+                    </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-                <span class="visually-hidden" style="color: black; background-color: black;">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-        <header class="mb-4" style="background-color: blue; padding: 5px; margin-top: 10px; color: white;">
-            <h3>New products</h3>
-        </header>
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 d-flex" *ngFor="let product of products">
-                <a (click)="GetProduct(product.id)">
-                    <div class="card w-100 my-2 shadow-2-strong" style="height: 500px;width: 300px;">
-                        <!-- <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/1.webp"
-                        class="card-img-top" style="aspect-ratio: 1 / 1" /> -->
-                        <img [src]="'data:image/png;base64,'+product.img" class="card-img-top" style="aspect-ratio: 1 / 1; ;
-                             object-fit: contain; background-color: whitesmoke;color: whitesmoke;" />
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title" style="overflow: hidden;">{{product.name}}</h5>
-                            <div class="text-warning mb-1 me-2">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span class="ms-1">
-                                    4.5
-                                </span>
-                            </div>
-                            <div class="mb-3">
-                                <h4 style="color: red;font-weight: 300;font-size: 20px; " *ngIf="product.discount > 0">
-                                    -{{product.discount}}% Off</h4>
-                                <span class="h5" style="color: gray;"> ₹{{product.price -
-                                    product.price/100 * product.discount | number}}</span>
-
-                                <div style="color: gray; font-size: 13px;" *ngIf="product.discount > 0">M.R.P.:<span
-                                        style="text-decoration: line-through;">₹{{product.price | number}}</span>
-                                </div>
-                            </div>
-                            <!-- <p class="card-text">₹{{product.price}}</p> -->
-                        </div>
+            <div class="col ng-star-inserted">
+                <div class="tp-product-category-item text-center mb-40">
+                    <div class="tp-product-category-thumb fix"><a href="/shop?category=mobile-tablets"><img
+                                alt="product-category" src="https://i.ibb.co/xHFpQTV/product-cat-2.png"
+                                class="zoomimg"></a></div>
+                    <div class="tp-product-category-content">
+                        <h3 class="tp-product-category-title"><a href="/shop?category=mobile-tablets"> Mobile Tablets
+                            </a>
+                        </h3>
+                        <!-- <p>3 Product</p> -->
                     </div>
-                </a>
+                </div>
+            </div>
+            <div class="col ng-star-inserted">
+                <div class="tp-product-category-item text-center mb-40">
+                    <div class="tp-product-category-thumb fix"><a href="/shop?category=cpu-heat-pipes"><img
+                                alt="product-category" src="https://i.ibb.co/S0GjZdp/product-cat-3.png"
+                                class="zoomimg"></a></div>
+                    <div class="tp-product-category-content">
+                        <h3 class="tp-product-category-title"><a href="/shop?category=cpu-heat-pipes"> CPU Heat Pipes
+                            </a>
+                        </h3>
+                        <!-- <p>2 Product</p> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col ng-star-inserted">
+                <div class="tp-product-category-item text-center mb-40">
+                    <div class="tp-product-category-thumb fix"><a href="/shop?category=smart-watch"><img
+                                alt="product-category" src="https://i.ibb.co/g3YK8H2/product-cat-4.png"
+                                class="zoomimg"></a></div>
+                    <div class="tp-product-category-content">
+                        <h3 class="tp-product-category-title"><a href="/shop?category=smart-watch"> Smart Watch </a>
+                        </h3>
+                        <!-- <p>3 Product</p> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col ng-star-inserted">
+                <div class="tp-product-category-item text-center mb-40">
+                    <div class="tp-product-category-thumb fix"><a href="/shop?category=bluetooth"><img
+                                alt="product-category" src="https://i.ibb.co/D9qfYWX/product-cat-5.png"
+                                class="zoomimg"></a></div>
+                    <div class="tp-product-category-content">
+                        <h3 class="tp-product-category-title"><a href="/shop?category=bluetooth"> Bluetooth </a></h3>
+                        <!-- <p>2 Product</p> -->
+                    </div>
+                </div>
+            </div><!---->
+        </div>
+    </div>
+</section>
+
+<section class="tp-feature-area tp-feature-border-radius pb-70" style="margin-top: 20px;">
+    <div class="container">
+        <div class="row gx-1 gy-1 gy-xl-0">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 ng-star-inserted">
+                <div class="tp-feature-item d-flex align-items-start">
+                    <div class="tp-feature-icon mr-15"><span><svg width="33" height="27" viewBox="0 0 33 27" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" style="color: #fd4b6b;">
+                                <path d="M10.7222 1H31.5555V19.0556H10.7222V1Z" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round "></path>
+                                <path d="M10.7222 7.94446H5.16667L1.00001 12.1111V19.0556H10.7222V7.94446Z"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M25.3055 26C23.3879 26 21.8333 24.4454 21.8333 22.5278C21.8333 20.6101 23.3879 19.0555 25.3055 19.0555C27.2232 19.0555 28.7778 20.6101 28.7778 22.5278C28.7778 24.4454 27.2232 26 25.3055 26Z"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M7.25001 26C5.33235 26 3.77778 24.4454 3.77778 22.5278C3.77778 20.6101 5.33235 19.0555 7.25001 19.0555C9.16766 19.0555 10.7222 20.6101 10.7222 22.5278C10.7222 24.4454 9.16766 26 7.25001 26Z"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg></span></div>
+                    <div class="tp-feature-content">
+                        <h3 class="tp-feature-title">Free Delivery</h3>
+                        <p>Orders from all item</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 ng-star-inserted">
+                <div class="tp-feature-item d-flex align-items-start">
+                    <div class="tp-feature-icon mr-15"><span><svg width="21" height="35" viewBox="0 0 21 35" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" style="color: #fd4b6b;">
+                                <path d="M10.3636 1V34" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M17.8636 7H6.61365C5.22126 7 3.8859 7.55312 2.90134 8.53769C1.91677 9.52226 1.36365 10.8576 1.36365 12.25C1.36365 13.6424 1.91677 14.9777 2.90134 15.9623C3.8859 16.9469 5.22126 17.5 6.61365 17.5H14.1136C15.506 17.5 16.8414 18.0531 17.826 19.0377C18.8105 20.0223 19.3636 21.3576 19.3636 22.75C19.3636 24.1424 18.8105 25.4777 17.826 26.4623C16.8414 27.4469 15.506 28 14.1136 28H1.36365"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg></span></div>
+                    <div class="tp-feature-content">
+                        <h3 class="tp-feature-title">Return &amp; Refund</h3>
+                        <p>Money back guarantee</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 ng-star-inserted">
+                <div class="tp-feature-item d-flex align-items-start">
+                    <div class="tp-feature-icon mr-15"><span><svg width="31" height="30" viewBox="0 0 31 30" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" style="color: #fd4b6b;">
+                                <mask id="mask0_1211_583" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                    width="31" height="30">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H30.0024V29.9998H0V0Z"
+                                        fill="white"></path>
+                                </mask>
+                                <g mask="url(#mask0_1211_583)">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M13.4168 27.1116C14.3017 27.9756 15.7266 27.9651 16.6056 27.0816L17.6885 26.0017C18.5285 25.1632 19.6894 24.6848 20.8728 24.6848H22.4178C23.6687 24.6848 24.6856 23.6678 24.6856 22.4184V20.875C24.6856 19.6736 25.1506 18.5441 25.9995 17.6937L27.0795 16.6122C27.519 16.1713 27.7544 15.5998 27.7529 14.9938C27.7514 14.3894 27.513 13.8209 27.0825 13.3919L26.001 12.309C25.1506 11.4525 24.6856 10.3246 24.6856 9.12318V7.58277C24.6856 6.33184 23.6687 5.3149 22.4178 5.3149H20.8758C19.6744 5.3149 18.545 4.84842 17.6945 4.00397L16.6116 2.91954C15.7101 2.02709 14.2717 2.03159 13.3913 2.91804L12.3128 3.99947C11.4519 4.84992 10.3225 5.3149 9.12553 5.3149H7.58212C6.33269 5.3164 5.31575 6.33334 5.31575 7.58277V9.12018C5.31575 10.3216 4.84927 11.451 4.00332 12.303L2.93839 13.3694C2.92789 13.3814 2.91739 13.3904 2.90689 13.4009C2.02644 14.2874 2.03094 15.7258 2.91739 16.6062L4.00032 17.6892C4.84927 18.5411 5.31575 19.6706 5.31575 20.872V22.4184C5.31575 23.6678 6.33119 24.6848 7.58212 24.6848H9.12253C10.3255 24.6863 11.4549 25.1527 12.3053 26.0002L13.3868 27.0786C13.3958 27.0891 13.4063 27.0996 13.4168 27.1116ZM14.9972 30.0002C13.8468 30.0002 12.6963 29.5652 11.8159 28.6923C11.8039 28.6803 11.7919 28.6683 11.7799 28.6548L10.715 27.5914C10.2905 27.1699 9.72352 26.9359 9.12055 26.9344H7.58164C5.09029 26.9344 3.06541 24.908 3.06541 22.4182V20.8717C3.06541 20.2688 2.82992 19.7033 2.40694 19.2773L1.32851 18.2004C-0.423392 16.4575 -0.444391 13.6197 1.27601 11.8498C1.28951 11.8363 1.30301 11.8228 1.31651 11.8093L2.40844 10.7143C2.82992 10.2899 3.06541 9.72139 3.06541 9.11993V7.58252C3.06541 5.09266 5.09029 3.06628 7.58014 3.06478H9.12505C9.72652 3.06478 10.2935 2.82929 10.724 2.40482L11.7964 1.32938C13.5498 -0.436017 16.4161 -0.445016 18.1845 1.31288L19.281 2.40932C19.7054 2.83079 20.2724 3.06478 20.8754 3.06478H22.4173C24.9086 3.06478 26.935 5.09116 26.935 7.58252V9.12293C26.935 9.72439 27.169 10.2929 27.5935 10.7203L28.6704 11.7988C29.5239 12.6462 29.9978 13.7787 30.0023 14.9861C30.0068 16.1935 29.5404 17.329 28.6899 18.1854L27.5905 19.2818C27.169 19.7063 26.935 20.2718 26.935 20.8747V22.4182C26.935 24.908 24.9086 26.9344 22.4188 26.9344H20.8724C20.2784 26.9344 19.6979 27.1744 19.2765 27.5929L18.1995 28.6698C17.3191 29.5562 16.1581 30.0002 14.9972 30.0002Z"
+                                        fill="currentColor"></path>
+                                </g>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M11.145 19.9811C10.857 19.9811 10.569 19.8716 10.3501 19.6511C9.91058 19.2116 9.91058 18.5006 10.3501 18.0612L18.0596 10.3501C18.4991 9.91064 19.2115 9.91064 19.651 10.3501C20.0905 10.7896 20.0905 11.502 19.651 11.9415L11.94 19.6511C11.721 19.8716 11.433 19.9811 11.145 19.9811Z"
+                                    fill="currentColor"></path>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M18.7544 20.2476C17.925 20.2476 17.247 19.5772 17.247 18.7477C17.247 17.9183 17.9115 17.2478 18.7409 17.2478H18.7544C19.5839 17.2478 20.2543 17.9183 20.2543 18.7477C20.2543 19.5772 19.5839 20.2476 18.7544 20.2476Z"
+                                    fill="currentColor"></path>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M11.2548 12.748C10.4254 12.748 9.74744 12.0775 9.74744 11.2481C9.74744 10.4186 10.4119 9.74817 11.2413 9.74817H11.2548C12.0843 9.74817 12.7548 10.4186 12.7548 11.2481C12.7548 12.0775 12.0843 12.748 11.2548 12.748Z"
+                                    fill="currentColor"></path>
+                            </svg> </span></div>
+                    <div class="tp-feature-content">
+                        <h3 class="tp-feature-title">Member Discount</h3>
+                        <p>Onevery order over $140.00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 ng-star-inserted">
+                <div class="tp-feature-item d-flex align-items-start">
+                    <div class="tp-feature-icon mr-15"><span><svg width="31" height="30" viewBox="0 0 31 30" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" style="color: #fd4b6b;">
+                                <path
+                                    d="M1.5 24.3333V15C1.5 11.287 2.975 7.72602 5.60051 5.10051C8.22602 2.475 11.787 1 15.5 1C19.213 1 22.774 2.475 25.3995 5.10051C28.025 7.72602 29.5 11.287 29.5 15V24.3333"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M29.5 25.8889C29.5 26.714 29.1722 27.5053 28.5888 28.0888C28.0053 28.6722 27.214 29 26.3889 29H24.8333C24.0082 29 23.2169 28.6722 22.6335 28.0888C22.05 27.5053 21.7222 26.714 21.7222 25.8889V21.2222C21.7222 20.3971 22.05 19.6058 22.6335 19.0223C23.2169 18.4389 24.0082 18.1111 24.8333 18.1111H29.5V25.8889ZM1.5 25.8889C1.5 26.714 1.82778 27.5053 2.41122 28.0888C2.99467 28.6722 3.78599 29 4.61111 29H6.16667C6.99179 29 7.78311 28.6722 8.36656 28.0888C8.95 27.5053 9.27778 26.714 9.27778 25.8889V21.2222C9.27778 20.3971 8.95 19.6058 8.36656 19.0223C7.78311 18.4389 6.99179 18.1111 6.16667 18.1111H1.5V25.8889Z"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg></span></div>
+                    <div class="tp-feature-content">
+                        <h3 class="tp-feature-title">Support 24/7</h3>
+                        <p>Contact us 24 hours a day</p>
+                    </div>
+                </div>
+            </div><!---->
+        </div>
+    </div>
+</section>
+<section class="fashion-sections">
+    <h3 class="fashion-h3">
+        Fashion </h3>
+</section>
+<section class="fashion-sections">
+    <div class="row-fashion">
+        <div class="col-12 col-md-6" *ngFor="let fashion of fashion" style="width: 20%; padding-bottom: 20px;">
+            <div class="card shadow zoomimg product-content" style="width: 230px;">
+                <!-- <div class="card " style="height: 250px;width: 230px;"> -->
+                <img [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
+                        object-fit: contain; height: 300px; " class="card-img-top">
+                <div class="product-content-list">
+
+                    <li style="padding-bottom: 2px;"><button><i class="bx bx-cart icons-list-icon"></i></button>
+                    </li>
+                    <li style="padding-bottom: 2px;"><button><i class='bx bx-heart icons-list-icon'></i></button>
+                    </li>
+                    <li style="padding-bottom: 2px;"><button><i class="bx bx-show icons-list-icon"></i></button>
+                    </li>
+                </div>
+                <!-- </div> -->
+                <div class="card-footer bg-gray-200 border-top border-gray-300 p-4">
+                    <a href="#" class="h5">{{fashion.name}}</a>
+                    <div class="mt-2">₹{{fashion.price | number}}</div>
+                </div>
             </div>
         </div>
     </div>
 </section>
-<section class="mt-5" style="background-color: #f5f5f5; border: 2px solid blue;">
-    <div class="container text-dark pt-3">
-        <header class="pt-4 pb-3">
-            <h3>Why choose us</h3>
-        </header>
-        <div class="row mb-4">
-            <div class="col-lg-4 col-md-6">
-                <figure class="d-flex align-items-center mb-4">
-                    <span class="rounded-circle bg-white p-3 d-flex me-2 mb-2">
-                        <i class="fas fa-camera-retro fa-2x fa-fw text-primary floating"></i>
-                    </span>
-                    <figcaption class="info">
-                        <h6 class="title">Reasonable prices</h6>
-                        <p>Discover a world of quality without the premium price tag. At ShopCart.in, our commitment is
-                            simple: delivering top-notch products at prices that make sense for you.</p>
-                    </figcaption>
-                </figure>
+
+<section style="margin-top: 20px;" class="fashion-sections">
+    <div style="height: 500px; width: 500px; display: inline;  text-align: center; position: relative;">
+        <img src="../../assets/smartwatch_banner_desktop_1920x1080.jpg"
+            style="height: 260px; width: 870px; border-radius: 10px;">
+        <div class="text-center-img" style="text-align: left; margin-left: 25px;">
+            <span style="font-size: 13px; display: inline-block; font-family: var(--tp-ff-roboto);color: white">Sale
+                20%
+                off</span>
+            <h3
+                style="font-weight: 500; font-size: 22px; line-height: 1.20; margin-bottom: 22px; font-family: var(--tp-ff-roboto);color: white;">
+                <a
+                    style="outline: none; border: none; background: transparent; margin-bottom: 22px; text-align: left; color: inherit;">
+                    SmartWatch <br> BLU G91 Pro 2024</a>
+            </h3>
+            <a style="color: white; font-size: 15px;" routerLink="/error" class="shopNow"> Shop
+                Now
+            </a>
+        </div>
+        <img src="../../assets/banner2.avif"
+            style="width: 451px; height: 260px;margin-left: 50px; border-radius: 10px;">
+        <div class="text-left-img">
+            <h3
+                style="font-weight: 500; font-size: 22px; line-height: 1.20; margin-bottom: 22px; font-family: var(--tp-ff-roboto);color: var(--tp-heading-primary);">
+                <a
+                    style="outline: none; border: none; background: transparent; margin-bottom: 22px; text-align: left; color: inherit;">Sale
+                    35%
+                    off</a>
+            </h3>
+            <p style="margin-top: 65px;">
+                <a style=" color: var(--tp-heading-primary); font-size: 15px;margin-top: 40px;" class="shopNow"
+                    routerLink="/error"> Shop Now
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+<!-- <section style="background-color: antiquewhite; height: 100px;"></section> -->
+<section class="tp-product-category" style="background-color: antiquewhite; height: 100px;"></section>
+<section class="fashion-sections">
+    <h3 class="fashion-h3">
+        Fashion </h3>
+</section>
+<section class="fashion-sections">
+    <div class="row-fashion">
+        <div class="col-12 col-md-6" *ngFor="let fashion of fashion" style="width: 20%; padding-bottom: 20px;">
+            <div class="card shadow zoomimg product-content" style="width: 230px;">
+                <!-- <div class="card " style="height: 250px;width: 230px;"> -->
+                <img [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
+                        object-fit: contain; height: 300px; " class="card-img-top">
+                <div class="product-content-list">
+
+                    <li style="padding-bottom: 2px;"><button><i class="bx bx-cart icons-list-icon"></i></button>
+                    </li>
+                    <li style="padding-bottom: 2px;"><button><i class='bx bx-heart icons-list-icon'></i></button>
+                    </li>
+                    <li style="padding-bottom: 2px;"><button><i class="bx bx-show icons-list-icon"></i></button>
+                    </li>
+                </div>
+                <div class="card-footer bg-gray-200 border-top border-gray-300 p-4">
+                    <a href="#" class="h5">{{fashion.name}}</a>
+                    <div class="mt-2">₹{{fashion.price | number}}</div>
+                </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <figure class="d-flex align-items-center mb-4">
-                    <span class="rounded-circle bg-white p-3 d-flex me-2 mb-2">
-                        <i class="fas fa-star fa-2x fa-fw text-primary floating"></i>
-                    </span>
-                    <figcaption class="info">
-                        <h6 class="title">Best quality</h6>
-                        <p> we ensure that every product embodies the pinnacle of craftsmanship and durability, setting
-                            a standard of unparalleled quality at ShopCart.in.</p>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <figure class="d-flex align-items-center mb-4">
-                    <span class="rounded-circle bg-white p-3 d-flex me-2 mb-2">
-                        <i class="fas fa-plane fa-2x fa-fw text-primary floating"></i>
-                    </span>
-                    <figcaption class="info">
-                        <h6 class="title">Worldwide shipping</h6>
-                        <p>At ShopCart.in, we break boundaries with worldwide shipping.</p>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <figure class="d-flex align-items-center mb-4">
-                    <span class="rounded-circle bg-white p-3 d-flex me-2 mb-2">
-                        <i class="fas fa-users fa-2x fa-fw text-primary floating"></i>
-                    </span>
-                    <figcaption class="info">
-                        <h6 class="title">Customer satisfaction</h6>
-                        <p>customer satisfaction is our compass. We're committed to going the extra mile, listening to
-                            your needs.</p>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <figure class="d-flex align-items-center mb-4">
-                    <span class="rounded-circle bg-white p-3 d-flex me-2 mb-2">
-                        <i class="fas fa-thumbs-up fa-2x fa-fw text-primary floating"></i>
-                    </span>
-                    <figcaption class="info">
-                        <h6 class="title">Happy customers</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmor</p>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <figure class="d-flex align-items-center mb-4">
-                    <span class="rounded-circle bg-white p-3 d-flex me-2 mb-2">
-                        <i class="fas fa-box fa-2x fa-fw text-primary floating"></i>
-                    </span>
-                    <figcaption class="info">
-                        <h6 class="title">Thousand items</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmor</p>
-                    </figcaption>
-                </figure>
+        </div>
+    </div>
+</section>
+<section style="margin-top: 20px;" class="fashion-sections">
+    <div style="height: 500px; width: 500px; display: inline;  text-align: center; position: relative;">
+        <img src="../../assets/smartwatch_banner_desktop_1920x1080.jpg" style="height: 400px; width: 1320px; border-radius: 10px;">
+        <div class="text-center-img" style="text-align: left; margin-left: 25px;">
+            <span
+                style="font-size: 13px; display: inline-block; font-family: var(--tp-ff-roboto);color: var(--tp-heading-primary);">Sale
+                20%
+                off</span>
+            <h3
+                style="font-weight: 500; font-size: 22px; line-height: 1.20; margin-bottom: 22px; font-family: var(--tp-ff-roboto);color: var(--tp-heading-primary);">
+                <a
+                    style="outline: none; border: none; background: transparent; margin-bottom: 22px; text-align: left; color: inherit;">
+                    SmartWatch <br> BLU G91 Pro 2024</a>
+            </h3>
+            <a style="color: var(--tp-heading-primary); font-size: 15px;" routerLink="/error" class="shopNow"> Shop
+                Now
+            </a>
+        </div>
+    </div>
+</section>
+<section class="fashion-sections">
+    <div class="row-fashion ">
+        <div class="col-12 col-md-6 " *ngFor="let fashion of fashion" style="width: 20%; padding-bottom: 20px;">
+            <div class="card shadow zoomimg product-content" style="width: 230px;">
+                <!-- <div class="card " style="height: 250px;width: 230px;"> -->
+                <img [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
+                        object-fit: contain; height: 300px; " class="card-img-top">
+                <div class="product-content-list">
+
+                    <li style="padding-bottom: 2px;"><button><i class="bx bx-cart icons-list-icon"></i></button>
+                    </li>
+                    <li style="padding-bottom: 2px;"><button><i class='bx bx-heart icons-list-icon'></i></button>
+
+                    </li>
+                    <li style="padding-bottom: 2px;"><button><i class="bx bx-show icons-list-icon "></i>
+                        </button>
+                    </li>
+                </div>
+                <!-- </div> -->
+                <div class="card-footer bg-gray-200 border-top border-gray-300 p-4">
+                    <a href="#" class="h5">{{fashion.name}}</a>
+                    <div class="mt-2">₹{{fashion.price | number}}</div>
+                </div>
             </div>
         </div>
     </div>

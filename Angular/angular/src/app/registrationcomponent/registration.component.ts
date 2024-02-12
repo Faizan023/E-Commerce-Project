@@ -1,6 +1,8 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../service/auth.service';
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { NotificationService } from '../notification.service';
 
 @Component({
     selector: 'register',
@@ -10,7 +12,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 export class RegisterComponent implements OnInit {
     registration!: FormGroup
     displaymsg = 'hey';
-    constructor(private user: FormBuilder, private auth: AuthService) { }
+    constructor(private user: FormBuilder, private auth: AuthService, private route: Router, private toastr: NotificationService) { }
     ngOnInit(): void {
         this.registration = this.user.group({
             firstName: ['', Validators.required],
@@ -37,13 +39,14 @@ export class RegisterComponent implements OnInit {
                 this.registration.value.address,
             ]).subscribe(t => {
                 if (t == "Added Successfully") {
-                    this.displaymsg = "Account Created"
+                    this.route.navigateByUrl('/login');
+                    this.toastr.showSuccess("Welcome to ShopCart.In", "Success");
                 } else {
+                    this.toastr.showError("This Email Already Exit", "Error");
                     this.displaymsg = "use Another Email Account"
                 }
             }
             );
         }
     }
-
 }

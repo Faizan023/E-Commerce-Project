@@ -1,12 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   constructor(private http: HttpClient) { }
-
+  currentUser: BehaviorSubject<any> = new BehaviorSubject(null);
+  jwtHelperService = new JwtHelperService();
   register(user: Array<string>) {
     return this.http.post("http://localhost:5209/api/Controller/InsertUser", {
       firstName: user[0],
@@ -28,6 +31,16 @@ export class AuthService {
     }, { responseType: 'text' })
   }
 
+  getToken(): string {
+    return String(localStorage.getItem('token'));
+  }
+
+  IsTokenExpired(token: string) {
+    const userInfo = this.jwtHelperService.decodeToken(token);
+    const expDate = userInfo.exp * 1000;
+    const currentDate = new Date().getTime();
+    return currentDate > expDate;
+  }
   // insertproduct(product: any) {
   //   var date = new Date();
   //   return this.http.post("http://localhost:5209/api/Controller/InsertProduct", {

@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Repository;
+
 // using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,7 @@ builder.Services.AddTransient<ISaleRepository, SaleRepository>();
 builder.Services.AddTransient<IBrandRepository, BrandRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<ICartRepository, CartRepository>();
+builder.Services.AddTransient<IhomepageRepository, HomepageRepository>();
 
 // Add services to the container.
 
@@ -30,7 +32,10 @@ builder.Services.AddCors(options =>
         name: "AllowOrigin",
         builder =>
         {
-            builder.WithOrigins("http://localhost:4200", "http://localhost:64483").AllowAnyHeader().AllowAnyMethod();
+            builder
+                .WithOrigins("http://localhost:4200", "http://localhost:58928")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
         }
     );
 });

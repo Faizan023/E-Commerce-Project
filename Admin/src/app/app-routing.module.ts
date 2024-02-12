@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './registercomponent/register.component';
 import { LoginComponent } from './login/login.component';
-import { CustomerlistComponent } from './customer/customerlist/customerlist.component';
+// import { CustomerlistComponent } from './customer/customerlist/customerlist.component';
 import { OrderlistComponent } from './order/orderlist/orderlist.component';
-import { AuthGuardFunction } from './guard/login-guard';
+// import { AuthGuardFunction } from './guard/login-guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UpdateorderComponent } from './order/updateorder/updateorder.component';
+import { tokenService } from './guard/login-guard';
 
 
 const routes: Routes = [
@@ -17,7 +18,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuardFunction]
+    canActivate: [tokenService]
   },
   {
     path: 'register',
@@ -26,41 +27,41 @@ const routes: Routes = [
   {
     path: 'customer',
     loadChildren: () => import('./customer/customer-routing.module').then(m => m.CustomerRoutingModule),
-    canActivate: [AuthGuardFunction]
+    canActivate: [tokenService]
   },
   {
     path: 'order',
     component: OrderlistComponent,
-    canActivate: [AuthGuardFunction]
+    canActivate: [tokenService]
   },
   {
     path: 'updateorder/:id',
     component: UpdateorderComponent,
-    canActivate: [AuthGuardFunction]
+    canActivate: [tokenService]
   },
   {
     path: 'product',
     loadChildren: () => import('./product/product.module').then(m => m.ProductModule),
-    canActivate: [AuthGuardFunction]
+    canActivate: [tokenService]
   },
   {
     path: 'brand',
     loadChildren: () => import('./brand/brand.module').then(b => b.BrandModule),
-    canActivate: [AuthGuardFunction]
+    canActivate: [tokenService]
   },
   {
     path: 'category',
     loadChildren: () => import('./category/category.module').then(c => c.CategoryModule),
-    canActivate: [AuthGuardFunction]
+    canActivate: [tokenService]
   },
   {
     path: 'sale',
     loadChildren: () => import('./sale/sale-routing.module').then(s => s.SaleRoutingModule),
-    canActivate: [AuthGuardFunction]
+    canActivate: [tokenService]
   },
   {
     path: '',
-    redirectTo:'/login',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {

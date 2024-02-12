@@ -57,6 +57,7 @@
                           <div class="col-md-8">
                             <select class="form-control form-custom" name="brand" formControlName="brandId">
                               <option value="">Select Brand</option>
+                              <option *ngFor="let brand of brandList" value="{{brand.id}}">{{brand.name}}</option>
                             </select>
                           </div>
                         </div>
@@ -82,12 +83,12 @@
                         <div class="row">
                           <label class="col-md-4">Measurment :</label>
                           <div class="col-md-8">
-                            <select class="form-control form-custom" name="size" formControlName="measurment">
-                              <option value="">Select Size</option>
+                            <input class="form-control form-custom" name="size" formControlName="measurment">
+                              <!-- <option value="">Select Size</option>
                               <option value="size1">Size 1</option>
                               <option value="size2">Size 2</option>
                               <option value="size3">Size 3</option>
-                            </select>
+                            </select> -->
                           </div>
                         </div>
                       </div>

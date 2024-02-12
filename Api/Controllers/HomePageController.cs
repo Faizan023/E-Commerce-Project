@@ -1,0 +1,24 @@
+using Microsoft.AspNetCore.Mvc;
+using Repository;
+
+namespace Controllers
+{
+    [Route("api/Controller")]
+    [ApiController]
+    public class HomepageController : ControllerBase
+    {
+        private readonly IhomepageRepository ihomepageRepository;
+
+        public HomepageController(IhomepageRepository _ihomepageRepository)
+        {
+            ihomepageRepository = _ihomepageRepository;
+        }
+
+        [HttpGet]
+        [Route("GetFashionProduct")]
+        public async Task<IActionResult> GetFashionProduct()
+        {
+            return Ok(await ihomepageRepository.GetFashion());
+        }
+    }
+}

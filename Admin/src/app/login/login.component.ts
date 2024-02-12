@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
           console.log("Check Email or Password");
           this.toastr.showError('Error', 'Check Email or Password');
         } else {
-          localStorage.setItem(StorageKey.IsLoggedIn, "true");
+          // localStorage.setItem(StorageKey.IsLoggedIn, "true");
           localStorage.setItem('token', res);
           // console.log("Login Successfully");
           this.route.navigateByUrl('/dashboard');
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     // var password = this.AdminLogin.controls['password'].value;
     if (this.seePassword == true) {
       this.seePassword = false;
-      
+
     } else {
       this.seePassword = true;
     }
