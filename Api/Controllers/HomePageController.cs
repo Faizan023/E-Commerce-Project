@@ -20,5 +20,12 @@ namespace Controllers
         {
             return Ok(await ihomepageRepository.GetFashion());
         }
+
+        [HttpGet]
+        [Route("GetMobiles")]
+        public async Task<IActionResult> GetMobileProduct()
+        {
+            return Ok(await ihomepageRepository.GetMobiles());
+        }
     }
 }

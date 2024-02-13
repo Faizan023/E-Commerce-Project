@@ -199,24 +199,44 @@
 </section>
 <section class="fashion-sections">
     <div class="row-fashion">
-        <div class="col-12 col-md-6" *ngFor="let fashion of fashion" style="width: 20%; padding-bottom: 20px;">
+        <div class="col-12 col-md-6" *ngFor="let fashion of mobileProduct" style="width: 20%; padding-bottom: 20px;">
             <div class="card shadow zoomimg product-content" style="width: 230px;">
                 <!-- <div class="card " style="height: 250px;width: 230px;"> -->
                 <img [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
                         object-fit: contain; height: 300px; " class="card-img-top">
                 <div class="product-content-list">
+                    <li class="buynow">
+                        <button><i class="bx bx-cart icons-list-icon" style=" margin-left: 0px;"></i></button>
+                        <div class="tooltipdiv"><span>Buy Now</span></div>
+                    </li>
 
-                    <li style="padding-bottom: 2px;"><button><i class="bx bx-cart icons-list-icon"></i></button>
+                    <li class="buynow"><button><i class='bx bx-heart icons-list-icon-cart icons-list-icon'></i></button>
+                        <div class="tooltipdiv"><span>Add to Cart</span></div>
                     </li>
-                    <li style="padding-bottom: 2px;"><button><i class='bx bx-heart icons-list-icon'></i></button>
-                    </li>
-                    <li style="padding-bottom: 2px;"><button><i class="bx bx-show icons-list-icon"></i></button>
+                    <li class="buynow"><button><i class="bx bx-show icons-list-icon "></i>
+                        </button>
+                        <div class="tooltipdiv"><span>View</span></div>
                     </li>
                 </div>
                 <!-- </div> -->
                 <div class="card-footer bg-gray-200 border-top border-gray-300 p-4">
-                    <a href="#" class="h5">{{fashion.name}}</a>
-                    <div class="mt-2">₹{{fashion.price | number}}</div>
+                    <a href="#" class="h5" style="width: 300px;">{{fashion.name}}</a>
+                    <div class="text-warning mb-1 me-2" style="font-size: 12px;">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span class="ms-1">
+                            4.5
+                        </span>
+                    </div>
+                    <!-- <div class="mt-2">₹{{fashion.price | number}}</div> -->
+                    <div style="color: gray; font-size: 13px; display: inline;" *ngIf="fashion.discount > 0"><span
+                            style="text-decoration: line-through;">₹{{fashion.price | number}}</span>
+                    </div>
+                    <div class="mt-2" style="display: inline;"> ₹{{fashion.price -
+                        fashion.price/100 * fashion.discount | number}}</div>
                 </div>
             </div>
         </div>
@@ -273,17 +293,37 @@
                 <img [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
                         object-fit: contain; height: 300px; " class="card-img-top">
                 <div class="product-content-list">
+                    <li class="buynow">
+                        <button><i class="bx bx-cart icons-list-icon" style=" margin-left: 0px;"></i></button>
+                        <div class="tooltipdiv"><span>Buy Now</span></div>
+                    </li>
 
-                    <li style="padding-bottom: 2px;"><button><i class="bx bx-cart icons-list-icon"></i></button>
+                    <li class="buynow"><button><i class='bx bx-heart icons-list-icon-cart icons-list-icon'></i></button>
+                        <div class="tooltipdiv"><span>Add to Cart</span></div>
                     </li>
-                    <li style="padding-bottom: 2px;"><button><i class='bx bx-heart icons-list-icon'></i></button>
-                    </li>
-                    <li style="padding-bottom: 2px;"><button><i class="bx bx-show icons-list-icon"></i></button>
+                    <li class="buynow"><button><i class="bx bx-show icons-list-icon "></i>
+                        </button>
+                        <div class="tooltipdiv"><span>View</span></div>
                     </li>
                 </div>
                 <div class="card-footer bg-gray-200 border-top border-gray-300 p-4">
                     <a href="#" class="h5">{{fashion.name}}</a>
-                    <div class="mt-2">₹{{fashion.price | number}}</div>
+                    <div class="text-warning mb-1 me-2" style="font-size: 12px;">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span class="ms-1">
+                            4.5
+                        </span>
+                    </div>
+                    <!-- <div class="mt-2">₹{{fashion.price | number}}</div> -->
+                    <div style="color: gray; font-size: 13px; display: inline;" *ngIf="fashion.discount > 0"><span
+                            style="text-decoration: line-through;">₹{{fashion.price | number}}</span>
+                    </div>
+                    <div class="mt-2" style="display: inline;"> ₹{{fashion.price -
+                        fashion.price/100 * fashion.discount | number}}</div>
                 </div>
             </div>
         </div>
@@ -291,7 +331,8 @@
 </section>
 <section style="margin-top: 20px;" class="fashion-sections">
     <div style="height: 500px; width: 500px; display: inline;  text-align: center; position: relative;">
-        <img src="../../assets/smartwatch_banner_desktop_1920x1080.jpg" style="height: 400px; width: 1320px; border-radius: 10px;">
+        <img src="../../assets/smartwatch_banner_desktop_1920x1080.jpg"
+            style="height: 400px; width: 1320px; border-radius: 10px;">
         <div class="text-center-img" style="text-align: left; margin-left: 25px;">
             <span
                 style="font-size: 13px; display: inline-block; font-family: var(--tp-ff-roboto);color: var(--tp-heading-primary);">Sale
@@ -313,24 +354,42 @@
     <div class="row-fashion ">
         <div class="col-12 col-md-6 " *ngFor="let fashion of fashion" style="width: 20%; padding-bottom: 20px;">
             <div class="card shadow zoomimg product-content" style="width: 230px;">
-                <!-- <div class="card " style="height: 250px;width: 230px;"> -->
+
                 <img [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
                         object-fit: contain; height: 300px; " class="card-img-top">
+
                 <div class="product-content-list">
-
-                    <li style="padding-bottom: 2px;"><button><i class="bx bx-cart icons-list-icon"></i></button>
+                    <li class="buynow">
+                        <button><i class="bx bx-cart icons-list-icon" style=" margin-left: 0px;"></i></button>
+                        <div class="tooltipdiv"><span>Buy Now</span></div>
                     </li>
-                    <li style="padding-bottom: 2px;"><button><i class='bx bx-heart icons-list-icon'></i></button>
 
+                    <li class="buynow"><button><i class='bx bx-heart icons-list-icon-cart icons-list-icon'></i></button>
+                        <div class="tooltipdiv"><span>Add to Cart</span></div>
                     </li>
-                    <li style="padding-bottom: 2px;"><button><i class="bx bx-show icons-list-icon "></i>
+                    <li class="buynow"><button><i class="bx bx-show icons-list-icon "></i>
                         </button>
+                        <div class="tooltipdiv"><span>View</span></div>
                     </li>
                 </div>
-                <!-- </div> -->
+
                 <div class="card-footer bg-gray-200 border-top border-gray-300 p-4">
-                    <a href="#" class="h5">{{fashion.name}}</a>
-                    <div class="mt-2">₹{{fashion.price | number}}</div>
+                    <a class="h5">{{fashion.name}}</a>
+                    <div class="text-warning mb-1 me-2" style="font-size: 12px;">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span class="ms-1">
+                            4.5
+                        </span>
+                    </div>
+                    <div style="color: gray; font-size: 13px; display: inline;" *ngIf="fashion.discount > 0"><span
+                            style="text-decoration: line-through;">₹{{fashion.price | number}}</span>
+                    </div>
+                    <div class="mt-2" style="display: inline;"> ₹{{fashion.price -
+                        fashion.price/100 * fashion.discount | number}}</div>
                 </div>
             </div>
         </div>

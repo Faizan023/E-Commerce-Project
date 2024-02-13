@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,6 +12,7 @@ import { AuthService } from '../service/auth.service';
 export class HomeComponent implements OnInit {
   products: any = [];
   fashion: any = [];
+  mobileProduct: any = [];
   constructor(private http: HttpClient, private route: Router, private auth: AuthService) { }
   ngOnInit(): void {
     this.http.get('http://localhost:5209/api/Controller/GetProduct',).subscribe((res: any) => {
@@ -18,6 +20,7 @@ export class HomeComponent implements OnInit {
       // window.location.reload();
     });
     this.FashionProduct();
+    this.GetMobiles();
   }
   GetProduct(id: number) {
     this.route.navigate(["/product/" + id]);
@@ -27,6 +30,11 @@ export class HomeComponent implements OnInit {
   FashionProduct() {
     this.http.get('http://localhost:5209/api/Controller/GetFashionProduct').subscribe(res => {
       this.fashion = res;
+    });
+  }
+  GetMobiles() {
+    this.http.get('http://localhost:5209/api/Controller/GetMobiles').subscribe(res => {
+      this.mobileProduct = res;
     });
   }
 }

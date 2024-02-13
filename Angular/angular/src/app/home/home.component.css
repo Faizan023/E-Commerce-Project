@@ -382,27 +382,32 @@ p {
     /* overflow: hidden;  */
 }
 
-.product-content i {
+.product-content .icons-list-icon {
     /* display: none; */
-    display: none;
-    margin-left: 20px;
-    transition: transform all .3s 0s ease-in-out;
+    /* display: none; */
+    visibility: hidden;
+    /* margin-left: 20px; */
+
 }
 
 .product-content:hover i {
-    display: block;
+    /* display: block; */
+    visibility: visible;
     /* position: absolute; */
     /* transition: 1.3s; */
-    transform: scale(1);
+    /* transform: scale(1); */
+    transition: .3s ease-in-out;
 }
 
 .product-content-list {
     list-style: none;
     text-align: right;
     position: absolute;
-    top: 180px;
-    right: 10px;
-    transition: all 1.3s 0s ease-in-out;
+    top: 150px;
+    right: 5px;
+    transition: .3s ease-in-out;
+    margin: 0px;
+    padding: 0px;
 }
 
 .display-icons {
@@ -422,11 +427,48 @@ p {
     font-size: 30px;
     font-weight: 500;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 3px;
     box-shadow: 2px 2px 5px gray;
+
 }
 
 .icons-list-icon:hover {
     background-color: #0d6efd;
     color: white;
+    visibility: visible;
+    transition: .3s ease-in-out;
+}
+
+.tooltipdiv {
+    visibility: hidden;
+    display: inline;
+    background-color: black;
+    color: white;
+    width: 70px;
+    padding: 3px;
+    border-radius: 3px;
+    font-size: 12px;
+    right: 40px;
+    position: absolute;
+    margin-top: 5px;
+    scale: (1);
+    text-align: center;
+}
+
+.buynow {
+    padding-bottom: 2px;
+    padding-left: 0px;
+    height: 35px;
+}
+
+.buynow:hover .tooltipdiv {
+    visibility: visible;
+    transition: .3s ease-in-out;
+}
+
+.icons-list-icon-cart:hover {
+    background-color: rgb(231, 54, 54);
+    color: white;
+    visibility: visible;
+    transition: .3s ease-in-out;
 }

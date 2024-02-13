@@ -6,6 +6,7 @@ namespace Repository
     public interface IhomepageRepository
     {
         Task<IEnumerable<vProduct>> GetFashion();
+        Task<IEnumerable<vProduct>> GetMobiles();
     }
 
     public class HomepageRepository : IhomepageRepository
@@ -22,6 +23,21 @@ namespace Repository
             try
             {
                 return context.vProducts.Where(t => t.CategoryName == "Shoes").ToList().Take(10);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<vProduct>> GetMobiles()
+        {
+            try
+            {
+                return context.vProducts
+                    .Where(t => t.CategoryName == "Mobiles and tablets")
+                    .ToList()
+                    .Take(10);
             }
             catch
             {
