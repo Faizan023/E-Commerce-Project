@@ -70,7 +70,6 @@ export class ProductComponent implements OnInit {
       updatedBy: null
     }, { responseType: 'text', headers }).subscribe(res => {
       if (res == "Addedd Successfully") {
-
         this.toast.showSuccess("Success", "Addedd Successfully");
       } else {
         this.toast.showError("Error", "Something went wrong");

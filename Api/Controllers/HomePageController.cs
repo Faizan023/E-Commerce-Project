@@ -27,5 +27,12 @@ namespace Controllers
         {
             return Ok(await ihomepageRepository.GetMobiles());
         }
+
+        [HttpGet]
+        [Route("GetLaptop")]
+        public async Task<IActionResult> GetLaptopProduct()
+        {
+            return Ok( await ihomepageRepository.GetLaptop());
+        }
     }
 }

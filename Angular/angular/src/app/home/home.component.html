@@ -29,7 +29,7 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
-
+<!-- category section -->
 <section class="tp-product-category pt-60 pb-15">
     <div class="container" style="margin-top: 25px;">
         <div class="row row-cols-xl-5 row-colss-lg-5 row-cols-md-4">
@@ -96,7 +96,9 @@
         </div>
     </div>
 </section>
+<!-- end category section -->
 
+<!-- about us  -->
 <section class="tp-feature-area tp-feature-border-radius pb-70" style="margin-top: 20px;">
     <div class="container">
         <div class="row gx-1 gy-1 gy-xl-0">
@@ -193,6 +195,9 @@
         </div>
     </div>
 </section>
+<!-- end about us -->
+
+<!-- mobile product -->
 <section class="fashion-sections">
     <h3 class="fashion-h3">
         Fashion </h3>
@@ -200,10 +205,11 @@
 <section class="fashion-sections">
     <div class="row-fashion">
         <div class="col-12 col-md-6" *ngFor="let fashion of mobileProduct" style="width: 20%; padding-bottom: 20px;">
-            <div class="card shadow zoomimg product-content" style="width: 230px;">
+            <div class="card shadow zoomimg product-content" style="width: 230px; height: 420px;">
                 <!-- <div class="card " style="height: 250px;width: 230px;"> -->
                 <img [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
-                        object-fit: contain; height: 300px; " class="card-img-top">
+                        object-fit: contain; height: 300px;  mix-blend-mode: multiply; padding: 10px;"
+                    class="card-img-top">
                 <div class="product-content-list">
                     <li class="buynow">
                         <button><i class="bx bx-cart icons-list-icon" style=" margin-left: 0px;"></i></button>
@@ -213,14 +219,16 @@
                     <li class="buynow"><button><i class='bx bx-heart icons-list-icon-cart icons-list-icon'></i></button>
                         <div class="tooltipdiv"><span>Add to Cart</span></div>
                     </li>
-                    <li class="buynow"><button><i class="bx bx-show icons-list-icon "></i>
+                    <li class="buynow"><button (click)="GetProduct(fashion.id)"><i
+                                class="bx bx-show icons-list-icon "></i>
                         </button>
                         <div class="tooltipdiv"><span>View</span></div>
                     </li>
                 </div>
                 <!-- </div> -->
                 <div class="card-footer bg-gray-200 border-top border-gray-300 p-4">
-                    <a href="#" class="h5" style="width: 300px;">{{fashion.name}}</a>
+                    <a (click)="GetProduct(fashion.id)" class="h5"
+                        style="width: 300px; height: 100px;font-family: var(--tp-ff-roboto); font-size: medium; cursor: pointer;">{{fashion.name}}</a>
                     <div class="text-warning mb-1 me-2" style="font-size: 12px;">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -233,36 +241,41 @@
                     </div>
                     <!-- <div class="mt-2">₹{{fashion.price | number}}</div> -->
                     <div style="color: gray; font-size: 13px; display: inline;" *ngIf="fashion.discount > 0"><span
-                            style="text-decoration: line-through;">₹{{fashion.price | number}}</span>
+                            style="text-decoration: line-through; font-family: var(--tp-ff-roboto);font-size: medium;">₹{{fashion.price
+                            |
+                            number}}</span>
                     </div>
-                    <div class="mt-2" style="display: inline;"> ₹{{fashion.price -
+                    <div class="mt-2" style="display: inline;font-family: var(--tp-ff-roboto);font-size: medium;">
+                        ₹{{fashion.price -
                         fashion.price/100 * fashion.discount | number}}</div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<!-- end mobile product -->
 
-<section style="margin-top: 20px;" class="fashion-sections">
+<!-- sale section -->
+<section style="margin-top: 20px; padding-bottom: 70px;" class="fashion-sections">
     <div style="height: 500px; width: 500px; display: inline;  text-align: center; position: relative;">
-        <img src="../../assets/smartwatch_banner_desktop_1920x1080.jpg"
-            style="height: 260px; width: 870px; border-radius: 10px;">
+        <img src="../../assets/Untitled design.png" style="height: 260px; width: 870px; border-radius: 10px;">
         <div class="text-center-img" style="text-align: left; margin-left: 25px;">
-            <span style="font-size: 13px; display: inline-block; font-family: var(--tp-ff-roboto);color: white">Sale
+            <span
+                style="font-size: 13px; display: inline-block; font-family: var(--tp-ff-roboto);color: var(--tp-heading-primary);">Sale
                 20%
                 off</span>
             <h3
-                style="font-weight: 500; font-size: 22px; line-height: 1.20; margin-bottom: 22px; font-family: var(--tp-ff-roboto);color: white;">
+                style="font-weight: 500; font-size: 22px; line-height: 1.20; margin-bottom: 22px; font-family: var(--tp-ff-roboto);color: var(--tp-heading-primary);">
                 <a
                     style="outline: none; border: none; background: transparent; margin-bottom: 22px; text-align: left; color: inherit;">
                     SmartWatch <br> BLU G91 Pro 2024</a>
             </h3>
-            <a style="color: white; font-size: 15px;" routerLink="/error" class="shopNow"> Shop
+            <a style="color: var(--tp-heading-primary); font-size: 15px;" routerLink="/error" class="shopNow"> Shop
                 Now
             </a>
         </div>
-        <img src="../../assets/banner2.avif"
-            style="width: 451px; height: 260px;margin-left: 50px; border-radius: 10px;">
+        <img src="../../assets/Untitled design2.jpg"
+            style="width: 490px; height: 260px;margin-left: 25px; border-radius: 10px;">
         <div class="text-left-img">
             <h3
                 style="font-weight: 500; font-size: 22px; line-height: 1.20; margin-bottom: 22px; font-family: var(--tp-ff-roboto);color: var(--tp-heading-primary);">
@@ -279,8 +292,81 @@
         </div>
     </div>
 </section>
-<!-- <section style="background-color: antiquewhite; height: 100px;"></section> -->
-<section class="tp-product-category" style="background-color: antiquewhite; height: 100px;"></section>
+<!-- end sale section -->
+
+<!-- deal section -->
+<section class="tp-product-category" style="background-color: antiquewhite; height: 620px;">
+    <section class="fashion-sections">
+        <h3 class="fashion-h3">
+            50% off On Laptop </h3>
+    </section>
+    <section class="fashion-sections">
+        <div class="row-fashion">
+            <div class="col-12 col-md-6" *ngFor="let fashion of laptop"
+                style="width: 24%; padding-bottom: 20px;margin-left: 105px;">
+                <div class="card shadow zoomimg product-content" style="width: 340px; ">
+                    <!-- <div class="card " style="height: 250px;width: 230px;"> -->
+                    <img [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
+                            object-fit: contain; height: 300px;" class="card-img-top">
+                    <div class="product-content-list">
+                        <li class="buynow">
+                            <button><i class="bx bx-cart icons-list-icon" style=" margin-left: 0px;"></i></button>
+                            <div class="tooltipdiv"><span>Buy Now</span></div>
+                        </li>
+
+                        <li class="buynow"><button><i
+                                    class='bx bx-heart icons-list-icon-cart icons-list-icon'></i></button>
+                            <div class="tooltipdiv"><span>Add to Cart</span></div>
+                        </li>
+                        <li class="buynow"><button (click)="GetProduct(fashion.id)"><i
+                                    class="bx bx-show icons-list-icon "></i>
+                            </button>
+                            <div class="tooltipdiv"><span>View</span></div>
+                        </li>
+                    </div>
+                    <div class="card-footer bg-gray-200 border-top border-gray-300 p-4">
+                        <a (click)="GetProduct(fashion.id)" class="h5"
+                            style="font-size: medium;font-family: var(--tp-ff-roboto); cursor: pointer;">{{fashion.name}}</a>
+                        <div class="text-warning mb-1 me-2" style="font-size: 12px;">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ms-1">
+                                4.5
+                            </span>
+                        </div>
+                        <!-- <div class="mt-2">₹{{fashion.price | number}}</div> -->
+                        <div style="color: gray; font-size: 13px; display: inline;" *ngIf="fashion.discount > 0"><span
+                                style="text-decoration: line-through;font-family: var(--tp-ff-roboto);font-size: medium;">₹{{fashion.price
+                                |
+                                number}}</span>
+                        </div>
+                        <div class="mt-2" style="display: inline; font-family: var(--tp-ff-roboto); font-size: medium;">
+                            ₹{{fashion.price -
+                            fashion.price/100 * fashion.discount | number}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center;" class="container">
+            <h6>Countdown Timer</h6>
+            <div style="margin-left: 420px;">
+                <div id="countdown" style="text-align: center;">
+                    <div class="countdown-item"><span id="days">00</span>Days</div>
+                    <div class="countdown-item"><span id="hours">00</span>Hours</div>
+                    <div class="countdown-item"><span id="minutes">00</span>Minutes</div>
+                    <div class="countdown-item"><span id="seconds">00</span>Seconds</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</section>
+<!-- end deal section -->
+
+<!-- fashion products -->
 <section class="fashion-sections">
     <h3 class="fashion-h3">
         Fashion </h3>
@@ -291,7 +377,7 @@
             <div class="card shadow zoomimg product-content" style="width: 230px;">
                 <!-- <div class="card " style="height: 250px;width: 230px;"> -->
                 <img [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
-                        object-fit: contain; height: 300px; " class="card-img-top">
+                        object-fit: contain; height: 300px;" class="card-img-top">
                 <div class="product-content-list">
                     <li class="buynow">
                         <button><i class="bx bx-cart icons-list-icon" style=" margin-left: 0px;"></i></button>
@@ -301,13 +387,15 @@
                     <li class="buynow"><button><i class='bx bx-heart icons-list-icon-cart icons-list-icon'></i></button>
                         <div class="tooltipdiv"><span>Add to Cart</span></div>
                     </li>
-                    <li class="buynow"><button><i class="bx bx-show icons-list-icon "></i>
+                    <li class="buynow"><button (click)="GetProduct(fashion.id)"><i
+                                class="bx bx-show icons-list-icon "></i>
                         </button>
                         <div class="tooltipdiv"><span>View</span></div>
                     </li>
                 </div>
                 <div class="card-footer bg-gray-200 border-top border-gray-300 p-4">
-                    <a href="#" class="h5">{{fashion.name}}</a>
+                    <a (click)="GetProduct(fashion.id)" class="h5"
+                        style="font-size: medium;font-family: var(--tp-ff-roboto); cursor: pointer;">{{fashion.name}}</a>
                     <div class="text-warning mb-1 me-2" style="font-size: 12px;">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -320,19 +408,24 @@
                     </div>
                     <!-- <div class="mt-2">₹{{fashion.price | number}}</div> -->
                     <div style="color: gray; font-size: 13px; display: inline;" *ngIf="fashion.discount > 0"><span
-                            style="text-decoration: line-through;">₹{{fashion.price | number}}</span>
+                            style="text-decoration: line-through;font-family: var(--tp-ff-roboto);font-size: medium;">₹{{fashion.price
+                            |
+                            number}}</span>
                     </div>
-                    <div class="mt-2" style="display: inline;"> ₹{{fashion.price -
+                    <div class="mt-2" style="display: inline; font-family: var(--tp-ff-roboto); font-size: medium;">
+                        ₹{{fashion.price -
                         fashion.price/100 * fashion.discount | number}}</div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<!-- end fashion products -->
+
+<!-- smart-watch sale  -->
 <section style="margin-top: 20px;" class="fashion-sections">
     <div style="height: 500px; width: 500px; display: inline;  text-align: center; position: relative;">
-        <img src="../../assets/smartwatch_banner_desktop_1920x1080.jpg"
-            style="height: 400px; width: 1320px; border-radius: 10px;">
+        <img src="../../assets/Untitled design.png" style="height: 400px; width: 1320px; border-radius: 10px;">
         <div class="text-center-img" style="text-align: left; margin-left: 25px;">
             <span
                 style="font-size: 13px; display: inline-block; font-family: var(--tp-ff-roboto);color: var(--tp-heading-primary);">Sale
@@ -350,10 +443,13 @@
         </div>
     </div>
 </section>
+<!-- end smart-watch sale -->
+
+<!-- fashion product section  -->
 <section class="fashion-sections">
     <div class="row-fashion ">
         <div class="col-12 col-md-6 " *ngFor="let fashion of fashion" style="width: 20%; padding-bottom: 20px;">
-            <div class="card shadow zoomimg product-content" style="width: 230px;">
+            <div class="card shadow zoomimg product-content" style="width: 230px; padding: 5px;">
 
                 <img [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
                         object-fit: contain; height: 300px; " class="card-img-top">
@@ -367,14 +463,16 @@
                     <li class="buynow"><button><i class='bx bx-heart icons-list-icon-cart icons-list-icon'></i></button>
                         <div class="tooltipdiv"><span>Add to Cart</span></div>
                     </li>
-                    <li class="buynow"><button><i class="bx bx-show icons-list-icon "></i>
+                    <li class="buynow"><button (click)="GetProduct(fashion.id)"><i
+                                class="bx bx-show icons-list-icon "></i>
                         </button>
                         <div class="tooltipdiv"><span>View</span></div>
                     </li>
                 </div>
 
                 <div class="card-footer bg-gray-200 border-top border-gray-300 p-4">
-                    <a class="h5">{{fashion.name}}</a>
+                    <a (click)="GetProduct(fashion.id)" class="h5"
+                        style="font-size: medium; font-family: var(--tp-ff-roboto);cursor: pointer;">{{fashion.name}}</a>
                     <div class="text-warning mb-1 me-2" style="font-size: 12px;">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -386,12 +484,16 @@
                         </span>
                     </div>
                     <div style="color: gray; font-size: 13px; display: inline;" *ngIf="fashion.discount > 0"><span
-                            style="text-decoration: line-through;">₹{{fashion.price | number}}</span>
+                            style="text-decoration: line-through;font-family: var(--tp-ff-roboto); font-size: medium;">₹{{fashion.price
+                            |
+                            number}}</span>
                     </div>
-                    <div class="mt-2" style="display: inline;"> ₹{{fashion.price -
+                    <div class="mt-2" style="display: inline;font-family: var(--tp-ff-roboto);font-size: medium;">
+                        ₹{{fashion.price -
                         fashion.price/100 * fashion.discount | number}}</div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<!-- end fashion product  -->

@@ -81,17 +81,6 @@ section {
     }
 }
 
-/* @media (min-width: 1200px) {
-
-    .container-xl,
-    .container-lg,
-    .container-md,
-    .container-sm,
-    .container {
-        max-width: 1140px
-    }
-} */
-
 @media (min-width: 1400px) {
 
     .container-xxl,
@@ -352,7 +341,7 @@ p {
 .text-left-img {
     position: absolute;
     top: -25px;
-    right: 316px;
+    right: 340px;
     text-align: left;
 }
 
@@ -471,4 +460,28 @@ p {
     color: white;
     visibility: visible;
     transition: .3s ease-in-out;
+}
+
+#countdown {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.countdown-item {
+    text-align: center;
+    margin: 0 10px;
+    background-color: black;
+    color: white;
+    width: 90px;
+    border-radius: 5px;
+}
+
+.countdown-item span {
+    font-size: 1.5em;
+    display: block;
+    margin-bottom: 5px;
+    background-color: #0d6efd;
+    color: white;
+    margin-bottom: 3px;
+    border-radius: 5px;
 }

@@ -119,7 +119,7 @@
   </section>
 </form>
 <!-- similarProduct -->
-<section>
+<!-- <section>
   <div class="row" style="padding: 20px;" *ngFor="let product of similarProduct">
     <div class=" col-md-6 col-sm-6 d-flex" *ngIf="productId != product.id" style=" height: 500px; width: 20%;">
       <a style="height: 360px;" (click)="getProduct(product.id)">
@@ -140,7 +140,58 @@
       </a>
     </div>
   </div>
-</section><!--- end similarProduct-->
+</section> -->
+
+<section class="fashion-sections">
+  <div class="row-fashion" *ngFor="let fashion of similarProduct">
+    <div class="col-12 col-md-6" style="width: 20%; padding-bottom: 20px;" *ngIf="productId != fashion.id">
+      <div class="card shadow zoomimg product-content" style="width: 230px;">
+        <!-- <div class="card " style="height: 250px;width: 230px;"> -->
+        <img [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
+                      object-fit: contain; height: 300px;" class="card-img-top">
+        <div class="product-content-list">
+          <li class="buynow">
+            <button class="button-icons"><i class="bx bx-cart icons-list-icon" style=" margin-left: 0px;"></i></button>
+            <div class="tooltipdiv"><span>Buy Now</span></div>
+          </li>
+
+          <li class="buynow"><button class="button-icons"><i class='bx bx-heart icons-list-icon-cart icons-list-icon'></i></button>
+            <div class="tooltipdiv"><span>Add to Cart</span></div>
+          </li>
+          <li class="buynow"><button (click)="getProduct(fashion.id)" class="button-icons"><i class="bx bx-show icons-list-icon "></i>
+            </button>
+            <div class="tooltipdiv"><span>View</span></div>
+          </li>
+        </div>
+        <div class="card-footer bg-gray-200 border-top border-gray-300 p-4">
+          <a (click)="getProduct(fashion.id)" class="h5 a"
+            style="font-size: medium;font-family: var(--tp-ff-roboto); cursor: pointer;">{{fashion.name}}</a>
+          <div class="text-warning mb-1 me-2" style="font-size: 12px;">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <span class="ms-1">
+              4.5
+            </span>
+          </div>
+          <!-- <div class="mt-2">₹{{fashion.price | number}}</div> -->
+          <div style="color: gray; font-size: 13px; display: inline;" *ngIf="fashion.discount > 0"><span
+              style="text-decoration: line-through;font-family: var(--tp-ff-roboto);font-size: medium;">₹{{fashion.price
+              |
+              number}}</span>
+          </div>
+          <div class="mt-2" style="display: inline; font-family: var(--tp-ff-roboto); font-size: medium;">
+            ₹{{fashion.price -
+            fashion.price/100 * fashion.discount | number}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--- end similarProduct-->
 <!-- Billing Form -->
 <section style="margin: 25px 25px;" *ngIf="billingFormIsOpen==true">
   <div class="card">

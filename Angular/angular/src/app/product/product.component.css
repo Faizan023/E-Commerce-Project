@@ -30,3 +30,163 @@
   list-style-type: none;
   /* display: inline; */
 }
+
+.product-row {
+  flex-shrink: 0;
+  width: 20%;
+  /* max-width: 100%; */
+  padding-right: calc(var(--bs-gutter-x) * .5);
+  padding-left: calc(var(--bs-gutter-x) * .5);
+  margin-top: var(--bs-gutter-y);
+}
+
+.text-center-img {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  /* z-index: 1; */
+  width: 200px;
+  height: 70px;
+  margin-top: -50px;
+}
+
+.text-left-img {
+  position: absolute;
+  top: -25px;
+  right: 340px;
+  text-align: left;
+}
+
+.shopNow:hover {
+  text-decoration: underline;
+}
+
+.row-fashion {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: inline-block;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  /* margin-right: calc(-.5 * var(--bs-gutter-x)); */
+  margin-left: calc(1.5 * var(--bs-gutter-x))
+}
+
+.zoomimg {
+  transform: scale(1);
+  transition: transform .3s ease-in-out;
+  overflow: hidden;
+}
+
+.zoomimg:hover {
+  transform: scale(1.05);
+  /* transform-origin: 20%; */
+  /* overflow: hidden;  */
+}
+
+.product-content .icons-list-icon {
+  /* display: none; */
+  /* display: none; */
+  visibility: hidden;
+  /* margin-left: 20px; */
+
+}
+
+.product-content:hover i {
+  /* display: block; */
+  visibility: visible;
+  /* position: absolute; */
+  /* transition: 1.3s; */
+  /* transform: scale(1); */
+  transition: .3s ease-in-out;
+}
+
+.product-content-list {
+  list-style: none;
+  text-align: right;
+  position: absolute;
+  top: 150px;
+  right: 5px;
+  transition: .3s ease-in-out;
+  margin: 0px;
+  padding: 0px;
+}
+
+.display-icons {
+  top: -25px;
+  right: 316px;
+  text-align: right;
+  /* position: absolute; */
+
+}
+
+.icons-list {
+  /* padding-bottom: 10px; */
+  border: 2px solid black;
+}
+
+.icons-list-icon {
+  font-size: 30px;
+  font-weight: 500;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 2px 2px 5px gray;
+
+}
+
+.icons-list-icon:hover {
+  background-color: #0d6efd;
+  color: white;
+  visibility: visible;
+  transition: .3s ease-in-out;
+}
+
+.tooltipdiv {
+  visibility: hidden;
+  display: inline;
+  background-color: black;
+  color: white;
+  width: 70px;
+  padding: 3px;
+  border-radius: 3px;
+  font-size: 12px;
+  right: 40px;
+  position: absolute;
+  margin-top: 5px;
+  scale: (1);
+  text-align: center;
+}
+
+.buynow {
+  padding-bottom: 2px;
+  padding-left: 0px;
+  height: 35px;
+}
+
+.buynow:hover .tooltipdiv {
+  visibility: visible;
+  transition: .3s ease-in-out;
+}
+
+.icons-list-icon-cart:hover {
+  background-color: rgb(231, 54, 54);
+  color: white;
+  visibility: visible;
+  transition: .3s ease-in-out;
+}
+
+
+.button-icons {
+  /* color: inherit; */
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+.a {
+  text-decoration: none;
+  font: 20px Roboto, sans-serif;
+}
+.fashion-sections {
+  margin-left: 25px;
+  padding-bottom: 20px;
+}

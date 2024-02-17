@@ -7,6 +7,7 @@ namespace Repository
     {
         Task<IEnumerable<vProduct>> GetFashion();
         Task<IEnumerable<vProduct>> GetMobiles();
+        Task<IEnumerable<vProduct>> GetLaptop();
     }
 
     public class HomepageRepository : IhomepageRepository
@@ -38,6 +39,21 @@ namespace Repository
                     .Where(t => t.CategoryName == "Mobiles and tablets")
                     .ToList()
                     .Take(10);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<vProduct>> GetLaptop()
+        {
+            try
+            {
+                return context.vProducts
+                    .Where(t => t.CategoryName == "Computer&Laptop" && t.Discount == 50)
+                    .Take(3)
+                    .ToList();
             }
             catch
             {
