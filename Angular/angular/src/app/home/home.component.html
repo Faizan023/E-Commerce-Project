@@ -197,14 +197,14 @@
 </section>
 <!-- end about us -->
 
-<!-- mobile product -->
+<!-- clothes product -->
 <section class="fashion-sections">
     <h3 class="fashion-h3">
         Fashion </h3>
 </section>
 <section class="fashion-sections">
     <div class="row-fashion">
-        <div class="col-12 col-md-6" *ngFor="let fashion of mobileProduct" style="width: 20%; padding-bottom: 20px;">
+        <div class="col-12 col-md-6" *ngFor="let fashion of clothes" style="width: 20%; padding-bottom: 20px;">
             <div class="card shadow zoomimg product-content" style="width: 230px; height: 420px;">
                 <!-- <div class="card " style="height: 250px;width: 230px;"> -->
                 <img [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
@@ -253,7 +253,7 @@
         </div>
     </div>
 </section>
-<!-- end mobile product -->
+<!-- end clothes product -->
 
 <!-- sale section -->
 <section style="margin-top: 20px; padding-bottom: 70px;" class="fashion-sections">
@@ -295,7 +295,8 @@
 <!-- end sale section -->
 
 <!-- deal section -->
-<section class="tp-product-category" style="background-color: antiquewhite; height: 620px;">
+<section class="tp-product-category"
+    style="background-color: antiquewhite; height: 620px; margin-top: 20px; margin-bottom: 70px;">
     <section class="fashion-sections">
         <h3 class="fashion-h3">
             50% off On Laptop </h3>
@@ -350,7 +351,7 @@
                 </div>
             </div>
         </div>
-        <div style="text-align: center;" class="container">
+        <!-- <div style="text-align: center;" class="container">
             <h6>Countdown Timer</h6>
             <div style="margin-left: 420px;">
                 <div id="countdown" style="text-align: center;">
@@ -360,7 +361,7 @@
                     <div class="countdown-item"><span id="seconds">00</span>Seconds</div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
 
 </section>
@@ -373,7 +374,7 @@
 </section>
 <section class="fashion-sections">
     <div class="row-fashion">
-        <div class="col-12 col-md-6" *ngFor="let fashion of fashion" style="width: 20%; padding-bottom: 20px;">
+        <div class="col-12 col-md-6" *ngFor="let fashion of mobileProduct" style="width: 20%; padding-bottom: 20px;">
             <div class="card shadow zoomimg product-content" style="width: 230px;">
                 <!-- <div class="card " style="height: 250px;width: 230px;"> -->
                 <img [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
@@ -423,7 +424,7 @@
 <!-- end fashion products -->
 
 <!-- smart-watch sale  -->
-<section style="margin-top: 20px;" class="fashion-sections">
+<section style="margin-top: 20px; margin-bottom: 70px;" class="fashion-sections">
     <div style="height: 500px; width: 500px; display: inline;  text-align: center; position: relative;">
         <img src="../../assets/Untitled design.png" style="height: 400px; width: 1320px; border-radius: 10px;">
         <div class="text-center-img" style="text-align: left; margin-left: 25px;">

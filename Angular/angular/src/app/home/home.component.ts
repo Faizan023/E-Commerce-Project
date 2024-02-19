@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   fashion: any = [];
   mobileProduct: any = [];
   laptop: any = [];
+  clothes: any = [];
   constructor(private http: HttpClient, private route: Router, private auth: AuthService) { }
   ngOnInit(): void {
     this.http.get('http://localhost:5209/api/Controller/GetProduct',).subscribe((res: any) => {
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
     this.FashionProduct();
     this.GetMobiles();
     this.GetLaptop();
+    this.GetClothes();
   }
   GetProduct(id: number) {
     this.route.navigate(["/product/" + id]);
@@ -42,6 +44,11 @@ export class HomeComponent implements OnInit {
   GetLaptop() {
     this.http.get('http://localhost:5209/api/Controller/GetLaptop').subscribe(res => {
       this.laptop = res;
+    });
+  }
+  GetClothes() {
+    this.http.get('http://localhost:5209/api/Controller/GetClothes').subscribe(res => {
+      this.clothes = res;
     });
   }
 }

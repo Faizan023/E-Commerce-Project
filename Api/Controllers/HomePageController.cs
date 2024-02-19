@@ -32,7 +32,14 @@ namespace Controllers
         [Route("GetLaptop")]
         public async Task<IActionResult> GetLaptopProduct()
         {
-            return Ok( await ihomepageRepository.GetLaptop());
+            return Ok(await ihomepageRepository.GetLaptop());
+        }
+
+        [HttpGet]
+        [Route("GetClothes")]
+        public async Task<IActionResult> GetClothesProduct()
+        {
+            return Ok(await ihomepageRepository.GetClothes());
         }
     }
 }
