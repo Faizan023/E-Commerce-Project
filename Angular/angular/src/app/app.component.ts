@@ -16,7 +16,4 @@ export class AppComponent {
   isRegisterPage(): boolean {
     return this.route.url === "/register";
   }
-  onSearchTextChange(searchText: string) {
-
-  }
 }
