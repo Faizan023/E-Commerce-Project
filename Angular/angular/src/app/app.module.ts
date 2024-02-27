@@ -1,4 +1,4 @@
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,10 +22,18 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { SearchpageComponent } from './searchpage/searchpage.component';
 import { NgOptimizedImage } from '@angular/common';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent, RegisterComponent, LoginComponent, HomeComponent, HeaderComponent, ProfileComponent, ProductComponent, CartComponent, FooterComponent, OrderComponent, ContactComponent, ErrorComponent, WishlistComponent, SearchpageComponent,
+    AppComponent, RegisterComponent,
+    LoginComponent, HomeComponent,
+    HeaderComponent, ProfileComponent,
+    ProductComponent, CartComponent,
+    FooterComponent, OrderComponent,
+    ContactComponent, ErrorComponent,
+    WishlistComponent, SearchpageComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +44,13 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     NgOptimizedImage,
-    // NgxSkeletonLoaderModule,
+    NgxSkeletonLoaderModule.forRoot({
+      animation:'progress-dark',
+      theme: {
+        
+        height: '30px'
+      }
+    }),
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger'
     }),

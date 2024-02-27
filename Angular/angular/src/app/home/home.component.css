@@ -529,3 +529,8 @@ p {
     color: white;
     transition: .3s ease-in-out;
 }
+.loader {
+    height: 365px;
+    width: 230px;
+    border: 1px solid;
+}

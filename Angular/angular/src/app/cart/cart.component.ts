@@ -25,6 +25,8 @@ export class CartComponent implements OnInit {
   billingFormIsOpen: boolean = false;
   CartBillingForm!: FormGroup;
   orderTotal: number = 0
+  loading: boolean = true;
+  skeleton = new Array(10);
   // productId: number = 4;
   constructor(private http: HttpClient, private route: Router, private toast: NotificationService, private auth: AuthService, private form: FormBuilder) { }
 
@@ -53,6 +55,7 @@ export class CartComponent implements OnInit {
     });
     this.http.get('http://localhost:5209/api/Controller/getcartbycustomer/' + this.customer.id, { headers }).subscribe(res => {
       this.cartItem = res;
+      this.loading = false
     });
   }
 

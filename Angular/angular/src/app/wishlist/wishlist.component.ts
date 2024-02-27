@@ -14,6 +14,8 @@ export class WishlistComponent implements OnInit {
   customer: any = [];
   popOverMessage: string = "Confirm to remove from whishlist?";
   cancelClicked: boolean = false;
+  loading: boolean = true;
+  skeleton = new Array(10);
   JwtHelperService = new JwtHelperService();
   ngOnInit(): void {
     var getCustomer = localStorage.getItem('token');
@@ -24,12 +26,13 @@ export class WishlistComponent implements OnInit {
   }
 
   LoadList() {
-    this.http.get('http://localhost:5209/api/Controller/GetCustomerWishlist/' + this.customer.id).subscribe(res => {
+    this.http.get('http://localhost:5209/api/Controller/GetCustomerWishlist/' + this.customer.id).subscribe((res: any) => {
       this.whishlistItem = res;
+      this.loading = false;
     });
   }
   Delete(Id: number) {
-    this.http.delete('http://localhost:5209/api/Controller/DeleteWishlist/' + Id).subscribe(res => {
+    this.http.delete('http://localhost:5209/api/Controller/DeleteWishlist/' + Id).subscribe((res: any) => {
       if ("Deleted Successfully") {
         this.toast.showSuccess("success", "item has been removed");
         this.LoadList();
@@ -49,7 +52,7 @@ export class WishlistComponent implements OnInit {
       updateDateTime: null,
       createdBy: this.customer.id,
       updatedBy: null
-    }, { responseType: 'text', headers }).subscribe(res => {
+    }, { responseType: 'text', headers }).subscribe((res: any) => {
       if (res == "Addedd Successfully") {
         this.toast.showSuccess("Success", "Added to cart");
       } else {

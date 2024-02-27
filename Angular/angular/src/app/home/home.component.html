@@ -9,7 +9,7 @@
     </div>
     <div class="carousel-inner" style="height: 510px;">
         <div class="carousel-item">
-            <img  loading="eager" src="../../assets/smart band.png" class="d-block w-100" style="height: 510px;">
+            <img loading="eager" src="../../assets/smart band.png" class="d-block w-100" style="height: 510px;">
             <div class="text-center-img-crausal" style="text-align: left; margin-left: 25px;">
                 <span
                     style="font-size: 16px; display: inline-block; font-family: var(--tp-ff-roboto);color: white; font-weight: 700;">
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <img  loading="eager" src="../../assets/tablet.png" class="d-block w-100" style="height: 510px;">
+            <img loading="eager" src="../../assets/tablet.png" class="d-block w-100" style="height: 510px;">
             <div class="text-center-img-crausal" style="text-align: left; margin-left: 25px;">
                 <span
                     style="font-size: 16px; display: inline-block; font-family: var(--tp-ff-roboto);color: white; font-weight: 700;">
@@ -45,7 +45,8 @@
             </div>
         </div>
         <div class="carousel-item active">
-            <img  loading="eager" src="../../assets/Untitled design (2).png" class="d-block w-100" style="height: 510px;">
+            <img loading="eager" src="../../assets/Untitled design (2).png" class="d-block w-100"
+                style="height: 510px;">
             <div class="text-center-img-crausal" style="text-align: left; margin-left: 25px;">
                 <span
                     style="font-size: 16px; display: inline-block; font-family: var(--tp-ff-roboto);    color: var(--tp-heading-secondary); font-weight: 700;">
@@ -80,7 +81,7 @@
         <div class="row row-cols-xl-5 row-colss-lg-5 row-cols-md-4">
             <div class="col ng-star-inserted">
                 <div class="tp-product-category-item text-center mb-40">
-                    <div class="tp-product-category-thumb fix "><a href="/shop?category=headphones"><img  loading="eager"
+                    <div class="tp-product-category-thumb fix "><a href="/shop?category=headphones"><img loading="eager"
                                 alt="product-category" src="https://i.ibb.co/sVxYFDY/product-cat-1.png"
                                 class="zoomimg"></a></div>
                     <div class="tp-product-category-content">
@@ -91,8 +92,8 @@
             </div>
             <div class="col ng-star-inserted">
                 <div class="tp-product-category-item text-center mb-40">
-                    <div class="tp-product-category-thumb fix"><a href="/shop?category=mobile-tablets"><img  loading="eager"
-                                alt="product-category" src="https://i.ibb.co/xHFpQTV/product-cat-2.png"
+                    <div class="tp-product-category-thumb fix"><a href="/shop?category=mobile-tablets"><img
+                                loading="eager" alt="product-category" src="https://i.ibb.co/xHFpQTV/product-cat-2.png"
                                 class="zoomimg"></a></div>
                     <div class="tp-product-category-content">
                         <h3 class="tp-product-category-title"><a href="/shop?category=mobile-tablets"> Mobile Tablets
@@ -104,8 +105,8 @@
             </div>
             <div class="col ng-star-inserted">
                 <div class="tp-product-category-item text-center mb-40">
-                    <div class="tp-product-category-thumb fix"><a href="/shop?category=cpu-heat-pipes"><img  loading="eager"
-                                alt="product-category" src="https://i.ibb.co/S0GjZdp/product-cat-3.png"
+                    <div class="tp-product-category-thumb fix"><a href="/shop?category=cpu-heat-pipes"><img
+                                loading="eager" alt="product-category" src="https://i.ibb.co/S0GjZdp/product-cat-3.png"
                                 class="zoomimg"></a></div>
                     <div class="tp-product-category-content">
                         <h3 class="tp-product-category-title"><a href="/shop?category=cpu-heat-pipes"> CPU Heat Pipes
@@ -117,7 +118,7 @@
             </div>
             <div class="col ng-star-inserted">
                 <div class="tp-product-category-item text-center mb-40">
-                    <div class="tp-product-category-thumb fix"><a href="/shop?category=smart-watch"><img  loading="eager"
+                    <div class="tp-product-category-thumb fix"><a href="/shop?category=smart-watch"><img loading="eager"
                                 alt="product-category" src="https://i.ibb.co/g3YK8H2/product-cat-4.png"
                                 class="zoomimg"></a></div>
                     <div class="tp-product-category-content">
@@ -129,7 +130,7 @@
             </div>
             <div class="col ng-star-inserted">
                 <div class="tp-product-category-item text-center mb-40">
-                    <div class="tp-product-category-thumb fix"><a href="/shop?category=bluetooth"><img  loading="eager"
+                    <div class="tp-product-category-thumb fix"><a href="/shop?category=bluetooth"><img loading="eager"
                                 alt="product-category" src="https://i.ibb.co/D9qfYWX/product-cat-5.png"
                                 class="zoomimg"></a></div>
                     <div class="tp-product-category-content">
@@ -247,13 +248,17 @@
     <h3 class="fashion-h3">
         Women's Clothing </h3>
 </section>
-<section class="fashion-sections">
+<div style="margin-left: 50px; display: flex; flex-wrap: wrap;" *ngIf="clothesLoading == true">
+    <ngx-skeleton-loader appearance="circle" *ngFor="let _ of skeleton"
+        [theme]="{height:'365px', width:'230px','border-radius': '8px', 'margin-left':'55px'}"></ngx-skeleton-loader>
+</div>
+<section class="fashion-sections" *ngIf="clothesLoading == false">
     <div class="row-fashion">
         <div class="col-12 col-md-6" *ngFor="let fashion of clothes" style="width: 20%; padding-bottom: 20px;">
             <div class=" zoomimg product-content"
                 style="width: 230px; height: 420px; border: 1px solid #d7cccc; border-radius: 8px;">
                 <!-- <div class="card " style="height: 250px;width: 230px;"> -->
-                <img  loading="eager" [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
+                <img loading="eager" [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
                         object-fit: contain; height: 300px;  mix-blend-mode: multiply; padding: 10px;"
                     class="card-img-top">
                 <div class="product-content-list">
@@ -306,7 +311,8 @@
 <!-- sale section -->
 <section style="margin-top: 20px; padding-bottom: 70px;" class="fashion-sections">
     <div style="height: 500px; width: 500px; display: inline;  text-align: center; position: relative;">
-        <img  loading="eager" src="../../assets/smrat phone.png" style="height: 260px; width: 870px; border-radius: 10px;">
+        <img loading="eager" src="../../assets/smrat phone.png"
+            style="height: 260px; width: 870px; border-radius: 10px;">
         <div class="text-center-img" style="text-align: left; margin-left: 25px;">
             <span
                 style="font-size: 13px; display: inline-block; font-family: var(--tp-ff-roboto);color: var(--tp-heading-primary);">Sale
@@ -322,7 +328,7 @@
                 Now
             </a>
         </div>
-        <img  loading="eager" src="../../assets/headphone.png"
+        <img loading="eager" src="../../assets/headphone.png"
             style="width: 490px; height: 260px;margin-left: 25px; border-radius: 10px;">
         <div class="text-left-img">
             <h3
@@ -350,14 +356,19 @@
         <h3 class="fashion-h3">
             Deal of The Day </h3>
     </section>
-    <section class="fashion-sections">
+    <div style="margin-left: 50px; display: flex; flex-wrap: wrap;" *ngIf="laptopLoading==true">
+        <ngx-skeleton-loader appearance="circle"
+            [theme]="{height:'365px', width:'340px','border-radius': '8px', 'margin-left':'105px'}"
+            *ngFor="let _ of laptopSkeleton"></ngx-skeleton-loader>
+    </div>
+    <section class="fashion-sections" *ngIf="laptopLoading == false">
         <div class="row-fashion">
             <div class="col-12 col-md-6" *ngFor="let fashion of laptop"
                 style="width: 24%; padding-bottom: 20px;margin-left: 105px;">
                 <div class="zoomimg product-content"
                     style="width: 340px; border: 1px solid #d7cccc; border-radius: 8px;background-color: white;">
                     <!-- <div class="card " style="height: 250px;width: 230px;"> -->
-                    <img  loading="eager" [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
+                    <img loading="eager" [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
                             object-fit: contain; height: 300px;" class="card-img-top">
                     <div class="product-content-list">
                         <li class="buynow">
@@ -417,18 +428,21 @@
 
 </section>
 <!-- end deal section -->
-
 <!-- fashion products -->
 <section class="fashion-sections">
     <h3 class="fashion-h3">
         Mobile </h3>
 </section>
-<section class="fashion-sections">
+<div style="margin-left: 50px; display: flex; flex-wrap: wrap;" *ngIf="mobileLoading == true">
+    <ngx-skeleton-loader appearance="circle" *ngFor="let _ of skeleton"
+        [theme]="{height:'365px', width:'230px','border-radius': '8px', 'margin-left':'55px'}"></ngx-skeleton-loader>
+</div>
+<section class="fashion-sections" *ngIf="mobileLoading == false">
     <div class="row-fashion">
         <div class="col-12 col-md-6" *ngFor="let fashion of mobileProduct" style="width: 20%; padding-bottom: 20px;">
             <div class="zoomimg product-content" style="width: 230px;border: 1px solid #d7cccc; border-radius: 8px;">
                 <!-- <div class="card " style="height: 250px;width: 230px;"> -->
-                <img  loading="eager" [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
+                <img loading="eager" [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
                         object-fit: contain; height: 300px;" class="card-img-top">
                 <div class="product-content-list">
                     <li class="buynow">
@@ -479,7 +493,7 @@
 <!-- smart-watch sale  -->
 <section style="margin-top: 20px; margin-bottom: 70px;" class="fashion-sections">
     <div style="height: 500px; width: 500px; display: inline;  text-align: center; position: relative;">
-        <img  loading="eager" src="../../assets/bag.png" style="height: 400px; width: 1320px; border-radius: 10px;">
+        <img loading="eager" src="../../assets/bag.png" style="height: 400px; width: 1320px; border-radius: 10px;">
         <div class="text-center-img-crausal" style="text-align: left; margin-left: 25px;margin-top: -310px;">
             <span
                 style="font-size: 16px; display: inline-block; font-family: var(--tp-ff-roboto);color: white; font-weight: 700;">
@@ -504,13 +518,17 @@
     <h3 class="fashion-h3">
         Foot wear </h3>
 </section>
-<section class="fashion-sections">
+<div style="margin-left: 50px; display: flex; flex-wrap: wrap;" *ngIf="fashionLoading == true">
+    <ngx-skeleton-loader appearance="circle" *ngFor="let _ of skeleton"
+        [theme]="{height:'365px', width:'230px','border-radius': '8px', 'margin-left':'55px'}"></ngx-skeleton-loader>
+</div>
+<section class="fashion-sections" *ngIf="fashionLoading == false">
     <div class="row-fashion ">
         <div class="col-12 col-md-6 " *ngFor="let fashion of fashion" style="width: 20%; padding-bottom: 20px;">
             <div class="zoomimg product-content"
                 style="width: 230px; padding: 5px; border: 1px solid #d7cccc; border-radius: 8px;">
 
-                <img  loading="eager" [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
+                <img loading="eager" [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
                         object-fit: contain; height: 300px; " class="card-img-top">
 
                 <div class="product-content-list">
@@ -557,4 +575,6 @@
         </div>
     </div>
 </section>
+
+
 <!-- end fashion product  -->

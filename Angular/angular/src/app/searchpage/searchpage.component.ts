@@ -14,6 +14,8 @@ export class SearchpageComponent implements OnInit {
   SearchProduct: any = [];
   customerId: number = 0
   JwtHelperService = new JwtHelperService();
+  loading: boolean = true;
+  skeleton = new Array(10);
   constructor(private router: ActivatedRoute, private http: HttpClient, private route: Router, private toast: NotificationService) { }
 
   ngOnInit(): void {
@@ -25,6 +27,7 @@ export class SearchpageComponent implements OnInit {
         itemName: this.itemName
       }).subscribe(res => {
         this.SearchProduct = res;
+        this.loading = false
       });
     });
     var customer = localStorage.getItem('token');

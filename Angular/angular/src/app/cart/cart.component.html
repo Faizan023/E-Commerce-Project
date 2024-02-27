@@ -1,19 +1,25 @@
-<section class="h-100" style="background-color:white;" *ngIf="cartItem.length > 0">
+<section class="h-100" style="background-color:white;">
   <div class="container h-100 py-5">
-
+    <div style="margin-left: 620px; margin-top: 200px; margin-bottom: 200px;" *ngIf="loading == true">
+      <div class="spinner-grow text-info" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-10">
-        <span>Product</span>
-        <span style="margin-left: 210px;">Name</span>
-        <span style="margin-left: 250px;">Qty</span>
-        <span style="margin-left: 210px;">Price</span>
-        <hr>
+        <div *ngIf="cartItem.length > 0 && loading == false">
+          <span>Product</span>
+          <span style="margin-left: 210px;">Name</span>
+          <span style="margin-left: 250px;">Qty</span>
+          <span style="margin-left: 210px;">Price</span>
+        </div>
+        <hr *ngIf="cartItem.length > 0 && loading == false">
         <div class="card rounded-3 mb-4" *ngFor="let cart of cartItem;">
           <div class="card-body p-4">
             <div class="row d-flex justify-content-between align-items-center">
               <div class="col-md-2 col-lg-2 col-xl-2">
-                <img  loading="eager" [src]="'data:image/png;base64,'+cart.img" class="img-fluid rounded-3" alt="Cotton T-shirt"
-                  style="height: 50px;" (click)="GetProduct(cart.productId)">
+                <img loading="eager" [src]="'data:image/png;base64,'+cart.img" class="img-fluid rounded-3"
+                  alt="Cotton T-shirt" style="height: 50px;" (click)="GetProduct(cart.productId)">
               </div>
               <div class="col-md-3 col-lg-3 col-xl-3">
                 <p class="lead fw-normal mb-2">{{cart.name}}</p>
@@ -36,7 +42,7 @@
             </div>
           </div>
         </div>
-        <hr>
+        <hr *ngIf="cartItem.length > 0 && loading == false">
         <div class="card rounded-3 mb-4" *ngIf="cartItem.length > 0">
           <div class="card-body p-4">
             <div class="row d-flex justify-content-between align-items-center">
@@ -131,12 +137,14 @@
     </div>
   </div>
 </section>
-<section class="py-6 py-lg-8 py-xxl-16" *ngIf="cartItem.length == 0" style="margin-top: 40px; margin-bottom: 40px;">
+<section class="py-6 py-lg-8 py-xxl-16" *ngIf="cartItem.length == 0 && loading== false"
+  style="margin-top: 40px; margin-bottom: 40px;">
   <div class="container">
     <div class="row">
       <div class="offset-lg-3 col-lg-6 col-md-12 col-12 text-center">
         <!-- image -->
-        <img  loading="eager" src="../../assets/download (2).png" alt="bag" class="img-fluid mb-4" style="height: 200px;">
+        <img loading="eager" src="../../assets/download (2).png" alt="bag" class="img-fluid mb-4"
+          style="height: 200px;">
         <!-- content -->
         <h2>Your shopping cart is empty</h2>
         <p class="mb-4">

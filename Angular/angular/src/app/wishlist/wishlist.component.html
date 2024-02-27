@@ -1,12 +1,18 @@
-<div class="cart-wrap" *ngIf="whishlistItem.length > 0">
+<div class="cart-wrap">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="main-heading mb-10">My wishlist</div>
+                <div class="main-heading mb-10" *ngIf="whishlistItem.length != 0">My wishlist</div>
                 <div class="table-wishlist">
                     <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                        <thead>
-                            <tr>
+                        <div style="margin-left: 620px; margin-top: 200px; margin-bottom: 200px;"
+                            *ngIf="loading == true">
+                            <div class="spinner-grow text-info" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                              </div>
+                        </div>
+                        <thead *ngIf="loading == false">
+                            <tr *ngIf="whishlistItem.length != 0">
                                 <th width="45%">Product Name</th>
                                 <th width="15%">Unit Price</th>
                                 <th width="15%">Stock Status</th>
@@ -19,7 +25,7 @@
                                 <td width="45%">
                                     <div class="display-flex align-center">
                                         <div class="img-product">
-                                            <img  loading="eager" [src]="'data:image/png;base64,'+ list.img" alt=""
+                                            <img loading="eager" [src]="'data:image/png;base64,'+ list.img" alt=""
                                                 class="mCS_img_loaded">
                                         </div>
                                         <div class="name-product">
@@ -42,13 +48,14 @@
         </div>
     </div>
 </div>
-<section class="py-6 py-lg-8 py-xxl-16" *ngIf="whishlistItem.length == 0"
+<section class="py-6 py-lg-8 py-xxl-16" *ngIf="whishlistItem.length == 0 && loading == false"
     style="margin-top: 40px; margin-bottom: 40px;">
     <div class="container">
         <div class="row">
             <div class="offset-lg-3 col-lg-6 col-md-12 col-12 text-center">
                 <!-- image -->
-                <img  loading="eager" src="../../assets/wishlist bag.png" alt="bag" class="img-fluid mb-4" style="height: 200px;">
+                <img loading="eager" src="../../assets/wishlist bag.png" alt="bag" class="img-fluid mb-4"
+                    style="height: 200px;">
                 <!-- content -->
                 <h2>Your wishlist is empty</h2>
                 <p class="mb-4">

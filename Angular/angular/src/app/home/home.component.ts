@@ -22,9 +22,15 @@ export class HomeComponent implements OnInit {
   customer: any = [];
   currentUser: BehaviorSubject<any> = new BehaviorSubject(null);
   jwtHelperService = new JwtHelperService();
+  mobileLoading: boolean = true;
+  laptopLoading: boolean = true;
+  clothesLoading: boolean = true;
+  fashionLoading : boolean = true;
+  laptopSkeleton = new Array(3);
+  skeleton = new Array(10);
   constructor(private http: HttpClient, private route: Router, private auth: AuthService, private toast: NotificationService) { }
   ngOnInit(): void {
-    this.http.get('http://localhost:5209/api/Controller/GetProduct',).subscribe((res: any) => {
+    this.http.get('http://localhost:5209/api/Controller/GetProduct').subscribe((res: any) => {
       this.products = res;
       // window.location.reload();
     });
@@ -47,21 +53,25 @@ export class HomeComponent implements OnInit {
   FashionProduct() {
     this.http.get('http://localhost:5209/api/Controller/GetFashionProduct').subscribe(res => {
       this.fashion = res;
+      this.fashionLoading = false;
     });
   }
   GetMobiles() {
     this.http.get('http://localhost:5209/api/Controller/GetMobiles').subscribe(res => {
       this.mobileProduct = res;
+      this.mobileLoading = false;
     });
   }
   GetLaptop() {
     this.http.get('http://localhost:5209/api/Controller/GetLaptop').subscribe(res => {
       this.laptop = res;
+      this.laptopLoading = false;
     });
   }
   GetClothes() {
     this.http.get('http://localhost:5209/api/Controller/GetClothes').subscribe(res => {
       this.clothes = res;
+      this.clothesLoading = false;
     });
   }
 

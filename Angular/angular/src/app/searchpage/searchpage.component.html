@@ -1,4 +1,4 @@
-<section style="margin-top: 20px; margin-left: 20px;" *ngIf="SearchProduct.length > 0">
+<section style="margin-top: 20px; margin-left: 20px;">
     <!-- <label for=" category">Category</label> -->
     <div class="input-group-prepend" style="display: inline-block;margin-left: 100px;">
         <select class="btn-click btn " aria-expanded="false"
@@ -32,8 +32,12 @@
         </option> -->
         </select>
     </div>
-
 </section>
+<div style="margin-top: 40px; margin-left: 120px; margin-right: 100px; display: flex; flex-wrap: wrap;"
+    *ngIf="loading == true">
+    <ngx-skeleton-loader appearance="circle" *ngFor="let _ of skeleton"
+        [theme]="{height:'350px', width:'1305px','border-radius': '8px',}"></ngx-skeleton-loader>
+</div>
 <div class="card shadow p-4" style="margin-top: 40px; margin-left: 120px; margin-right: 100px;"
     *ngFor="let product of SearchProduct">
     <div class="row align-items-center">
@@ -79,7 +83,7 @@
         </div>
     </div>
 </div>
-<section class="py-6 py-lg-8 py-xxl-16" *ngIf="SearchProduct.length == 0"
+<section class="py-6 py-lg-8 py-xxl-16" *ngIf="SearchProduct.length == 0 && loading == false"
     style="margin-top: 40px; margin-bottom: 40px;">
     <div class="container">
         <div class="row">
