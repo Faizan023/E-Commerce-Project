@@ -52,15 +52,17 @@ export class AuthService {
         const currentToken = localStorage.getItem('token');
     }
 
-    getToken():string {
-      return  String(localStorage.getItem('token'));
+    getToken(): string {
+        return String(localStorage.getItem('token'));
     }
 
     isTokenExpired(token: string) {
         const userInfo = this.jwtHelperService.decodeToken(token);
         const expDate = userInfo.exp * 1000;
         const currentDate = new Date().getTime();
+        if (currentDate > expDate) {
+            localStorage.removeItem("token");
+        }
         return currentDate > expDate;
-
     }
 }

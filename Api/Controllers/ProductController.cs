@@ -84,5 +84,12 @@ namespace Controllers
             await _ProductRepository.DeleteProduct(Id);
             return Ok("Deleted Successfully");
         }
+
+        [HttpPost]
+        [Route("SearchProduct")]
+        public async Task<IActionResult> GetSearchProduct(Search search)
+        {
+            return Ok(await _ProductRepository.GetSearchProduct(search));
+        }
     }
 }

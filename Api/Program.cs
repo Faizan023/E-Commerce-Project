@@ -22,6 +22,7 @@ builder.Services.AddTransient<IBrandRepository, BrandRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<ICartRepository, CartRepository>();
 builder.Services.AddTransient<IhomepageRepository, HomepageRepository>();
+builder.Services.AddTransient<IWishlistRepository, WishlistRepository>();
 
 // Add services to the container.
 
@@ -33,7 +34,7 @@ builder.Services.AddCors(options =>
         builder =>
         {
             builder
-                .WithOrigins("http://localhost:4200", "http://localhost:60799")
+                .WithOrigins("http://localhost:4200", "http://localhost:64313")
                 .AllowAnyHeader()
                 .AllowAnyMethod();
         }

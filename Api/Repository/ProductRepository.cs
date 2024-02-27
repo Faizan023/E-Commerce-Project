@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Models;
@@ -15,6 +16,7 @@ namespace Repository
         Task<Product> InsertProduct(Product product);
         Task<Product> UpdateProduct(Product product);
         Task DeleteProduct(int Id);
+        Task<IEnumerable<vProduct>> GetSearchProduct(Search search);
     }
 
     public class ProductRepository : IProductRepository
@@ -63,8 +65,13 @@ namespace Repository
             try
             {
                 return context.vProducts
-                    .Where(t => t.Name.ToLower() == product.productName.ToLower() && t.CategoryId == product.CategoryId)
-                    .ToList().Take(10);
+                    .Where(
+                        t =>
+                            t.Name.ToLower() == product.productName.ToLower()
+                            && t.CategoryId == product.CategoryId
+                    )
+                    .ToList()
+                    .Take(10);
             }
             catch
             {
@@ -115,6 +122,22 @@ namespace Repository
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+            }
+        }
+
+        public async Task<IEnumerable<vProduct>> GetSearchProduct(Search search)
+        {
+            try
+            {
+                var categoryId = new SqlParameter("@categoryId", search.categoryId);
+                var ItemName = new SqlParameter("@itemName", search.ItemName);
+                return await context.vProducts
+                    .FromSqlRaw("EXEC SearchProducts @categoryId, @itemName", categoryId, ItemName)
+                    .ToListAsync();
+            }
+            catch
+            {
+                throw;
             }
         }
     }

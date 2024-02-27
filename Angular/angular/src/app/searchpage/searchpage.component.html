@@ -1,0 +1,99 @@
+<section style="margin-top: 20px; margin-left: 20px;" *ngIf="SearchProduct.length > 0">
+    <!-- <label for=" category">Category</label> -->
+    <div class="input-group-prepend" style="display: inline-block;margin-left: 100px;">
+        <select class="btn-click btn " aria-expanded="false"
+            style="border-radius: 0px;border: 1px solid black; width: 200px;" name="category">
+            <option class="list-item">All</option>
+            <!-- <option *ngFor="let item of category" style="text-align: left;"> {{item.name}}
+        </option> -->
+        </select>
+    </div>
+    <div class="input-group-prepend" style="display: inline-block; margin-left: 170px;">
+        <select class="btn-click btn " aria-expanded="false"
+            style="border-radius: 0px; border: 1px solid black; width: 200px;">
+            <option class="list-item">All</option>
+            <!-- <option *ngFor="let item of category" style="text-align: left;"> {{item.name}}
+        </option> -->
+        </select>
+    </div>
+    <div class="input-group-prepend" style="display: inline-block;margin-left: 170px;">
+        <select class="btn-click btn " aria-expanded="false"
+            style="border-radius: 0px;border: 1px solid black; width: 200px;">
+            <option class="list-item">All</option>
+            <!-- <option *ngFor="let item of category" style="text-align: left;"> {{item.name}}
+        </option> -->
+        </select>
+    </div>
+    <div class="input-group-prepend" style="display: inline-block;margin-left: 170px;">
+        <select class="btn-click btn " aria-expanded="false"
+            style="border-radius: 0px; width: 120px;border: 1px solid black; width: 200px;">
+            <option class="list-item">All</option>
+            <!-- <option *ngFor="let item of category" style="text-align: left;"> {{item.name}}
+        </option> -->
+        </select>
+    </div>
+
+</section>
+<div class="card shadow p-4" style="margin-top: 40px; margin-left: 120px; margin-right: 100px;"
+    *ngFor="let product of SearchProduct">
+    <div class="row align-items-center">
+        <aside class="col-md-3">
+            <img loading="eager" [src]="'data:image/png;base64,'+product.img" alt="premium watch" style="background-color: white;aspect-ratio: 1 / 1; 
+            object-fit: contain; height: 300px;">
+        </aside> <!-- col.// -->
+        <div class="col-md-6">
+            <div class="info-main">
+                <a (click)="GetProduct(product.id)" class="h5 title" style="cursor: pointer;"> {{product.name}}</a>
+                <div class="d-flex my-3">
+                    <span class="star fas fa-star text-warning me-1"></span>
+                    <span class="star fas fa-star text-warning me-1"></span>
+                    <span class="star fas fa-star text-warning me-1"></span>
+                    <span class="star fas fa-star text-warning me-1"></span>
+                    <span class="star fas fa-star text-warning"></span>
+                    <span class="badge badge-pill badge-gray ms-2">4.7</span>
+                    <span class="small text-success ms-3"><span
+                            class="fas fa-shopping-cart me-1"></span>{{product.quantity}}
+                        orders</span>
+                </div>
+                <p>{{product.description}}</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="d-flex align-items-center">
+                <span class="h5 mb-0 text-gray text-through me-2" style="text-decoration: line-through;">
+                    ₹{{product.price}} </span>
+                <span class="h6 mb-0 text-danger">₹{{product.price -
+                    product.price/100 * product.discount | number}}</span>
+            </div> <!-- info-price-detail // -->
+            <span class="text-success small"><span class="fas fa-shipping-fast me-1"></span>Free shipping</span>
+            <div class="d-grid gap-2 mt-4">
+                <a class="btn btn-tertiary btn-sm" style="background-color: black;color: wheat;"
+                    (click)="GetProduct(product.id)">
+                    Details
+                </a>
+                <a class="btn btn-tertiary btn-sm" style="background-color: black;color: wheat;"
+                    (click)="AddtoWhishlist(product.id)"><span class="fa fa-heart me-1"></span>
+                    Wishlist
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="py-6 py-lg-8 py-xxl-16" *ngIf="SearchProduct.length == 0"
+    style="margin-top: 40px; margin-bottom: 40px;">
+    <div class="container">
+        <div class="row">
+            <div class="offset-lg-3 col-lg-6 col-md-12 col-12 text-center">
+                <!-- image -->
+                <img loading="eager" src="../../assets/box icon.png" alt="bag" class="img-fluid mb-4"
+                    style="height: 200px;">
+                <!-- content -->
+                <h2>No result for {{itemName}}</h2>
+                <p class="mb-4">
+                    Try checking your spelling or use more general terms
+                </p>
+                <a routerLink="/home" class="btn btn-primary">Explore Products</a>
+            </div>
+        </div>
+    </div>
+</section>

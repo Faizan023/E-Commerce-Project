@@ -16,9 +16,11 @@ public class Context : DbContext
     public DbSet<Brand> Brands { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Cart> Carts { get; set; }
+    public DbSet<Wishlist> Wishlists { get; set; }
     public DbSet<vOrder> vOrders { get; set; }
     public DbSet<vProduct> vProducts { get; set; }
     public DbSet<vCart> vCarts { get; set; }
+    public DbSet<vWishlist> vWishlists { get; set; }
 
     internal object Find(int id)
     {

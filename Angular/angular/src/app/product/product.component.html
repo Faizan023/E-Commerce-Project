@@ -4,7 +4,7 @@
       <div class="row gx-5">
         <aside class="col-lg-6">
           <div class="border rounded-4 mb-3 d-flex justify-content-center">
-            <img *ngIf="product.img" style="max-width: 100%; max-height: 100vh; margin: auto; height: 400px;"
+            <img  loading="eager" *ngIf="product.img" style="max-width: 100%; max-height: 100vh; margin: auto; height: 400px;"
               class="rounded-4 fit" [src]="'data:image/png;base64,'+product.img" />
           </div>
           <div class="d-flex justify-content-center mb-3">
@@ -45,7 +45,7 @@
             <!-- sales service -->
             <div style="display: inline-block;">
               <div class="service-card">
-                <li class="service-list"> <img
+                <li class="service-list"> <img  loading="eager"
                     src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/trust_icon_free_shipping_81px._CB630870460_.png"
                     class="service-icon">
                 </li>
@@ -53,20 +53,20 @@
                     Delivery</span></li>
               </div>
               <div class="service-card">
-                <li class="service-list"> <img
+                <li class="service-list"> <img  loading="eager"
                     src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-cod._CB485937110_.png"
                     class="service-icon"> </li>
                 <li class="service-list"> <span class="service-font">Cash on Delivery</span></li>
               </div>
               <div class="service-card">
-                <li class="service-list"> <img
+                <li class="service-list"> <img  loading="eager"
                     src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-returns._CB484059092_.png"
                     class="service-icon" alt="7 days Replacement">
                 </li>
                 <li class="service-list"> <span class="service-font">Replacement</span></li>
               </div>
               <div class="service-card">
-                <li class="service-list"> <img
+                <li class="service-list"> <img  loading="eager"
                     src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-warranty._CB485935626_.png"
                     class="service-icon" alt="7 days Replacement">
                 </li>
@@ -124,7 +124,7 @@
     <div class=" col-md-6 col-sm-6 d-flex" *ngIf="productId != product.id" style=" height: 500px; width: 20%;">
       <a style="height: 360px;" (click)="getProduct(product.id)">
         <div class="card w-100 my-2 shadow-2-strong" style="height: 450px;width: 300px; padding: 10px;">
-          <img [src]="'data:image/png;base64,'+product.img" class="card-img-top" style="aspect-ratio: 1 / 1; ;
+          <img  loading="eager" [src]="'data:image/png;base64,'+product.img" class="card-img-top" style="aspect-ratio: 1 / 1; ;
                      object-fit: contain; background-color: whitesmoke;color: whitesmoke; height: 240px;" />
           <div class="card-body d-flex flex-column">
             <h5 class="card-title" style="overflow: hidden;">{{product.name}}</h5>
@@ -147,18 +147,20 @@
     <div class="col-12 col-md-6" style="width: 20%; padding-bottom: 20px;" *ngIf="productId != fashion.id">
       <div class="card shadow zoomimg product-content" style="width: 230px;">
         <!-- <div class="card " style="height: 250px;width: 230px;"> -->
-        <img [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
+        <img  loading="eager" [src]="'data:image/png;base64,'+fashion.img" alt="apple watch" style="background-color: white;aspect-ratio: 1 / 1; 
                       object-fit: contain; height: 300px;" class="card-img-top">
         <div class="product-content-list">
           <li class="buynow">
             <button class="button-icons"><i class="bx bx-cart icons-list-icon" style=" margin-left: 0px;"></i></button>
-            <div class="tooltipdiv"><span>Buy Now</span></div>
+            <div class="tooltipdiv"><span>Add to cart</span></div>
           </li>
 
-          <li class="buynow"><button class="button-icons"><i class='bx bx-heart icons-list-icon-cart icons-list-icon'></i></button>
-            <div class="tooltipdiv"><span>Add to Cart</span></div>
+          <li class="buynow"><button class="button-icons" (click)="AddtoWhishlist(fashion.id)"><i
+                class='bx bx-heart icons-list-icon-cart icons-list-icon'></i></button>
+            <div class="tooltipdiv"><span>Add to wishlist</span></div>
           </li>
-          <li class="buynow"><button (click)="getProduct(fashion.id)" class="button-icons"><i class="bx bx-show icons-list-icon "></i>
+          <li class="buynow"><button (click)="getProduct(fashion.id)" class="button-icons"><i
+                class="bx bx-show icons-list-icon "></i>
             </button>
             <div class="tooltipdiv"><span>View</span></div>
           </li>
@@ -219,16 +221,6 @@
           <label for="inputZip" class="form-label">Zip</label>
           <input type="text" class="form-control" formControlName="zip">
         </div>
-        <!-- <h5 class="card-title" style="background-color: blue; color: white;">Total</h5>
-        <p>
-          itemPrice: {{product.price | number}}<br>
-          <span *ngIf="product.deliveryCharge > 0">
-          +  DeliveryCharge: {{product.deliveryCharge}}
-          </span><br>
-          <span>
-          - Discount: {{product.discount}}%
-          </span>
-        </p><hr>Total: {{product.price - product.price/100 * product.discount}}  -->
         <h5 class="card-title" style="background-color: blue; color: white;">Payment</h5>
         <div class="col-12">
           <div class="col">

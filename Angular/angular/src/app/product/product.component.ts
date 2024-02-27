@@ -19,7 +19,6 @@ export class ProductComponent implements OnInit {
   productId: number = 0;
   product: any = [];
   customer: any = [];
-  defaultValue: number = 1;
   billingFormIsOpen: boolean = false;
   similarProduct: any = [];
   constructor(private route: Router, private router: ActivatedRoute, private http: HttpClient, private form: FormBuilder, private toast: NotificationService) { }
@@ -29,14 +28,18 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.router.params.subscribe(res => {
       this.productId = +res['id'];
+      this.InitData();
     });
+  }
+
+  InitData() {
     this.http.get('http://localhost:5209/api/Controller/GetProductBy/' + this.productId).subscribe(res => {
       this.product = res;
       this.SimilarProduct();
     });
 
     this.productPage = this.form.group({
-      quantity: ['', Validators.required]
+      quantity: [1, Validators.required]
     });
 
     this.BillingForm = this.form.group({
@@ -46,13 +49,13 @@ export class ProductComponent implements OnInit {
       city: ['', Validators.required],
       state: ['', Validators.required],
       zip: ['', Validators.required],
-    })
+    });
 
     const getCustomerDetails = localStorage.getItem('token');
     if (getCustomerDetails) {
       this.customer = this.jwtHelperService.decodeToken(getCustomerDetails);
     }
-    // this.SimilarProduct()
+
   }
 
   AddtoCart() {
@@ -82,14 +85,14 @@ export class ProductComponent implements OnInit {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
       });
-      var totalAmount = this.product.price - this.product.price / 100 * this.product.discount
+      var totalAmount = this.productPage.value.quantity * this.product.price - (this.productPage.value.quantity * this.product.price / 100 * this.product.discount)
       // var newDate = new Date();
       var date = new Date();
       // var addDate = newDate.setDate(7)
       this.http.post('http://localhost:5209/api/Controller/AddOrder', {
         customerId: this.customer.id,
         quantity: this.productPage.value.quantity,
-        amount: Math.trunc(totalAmount * this.productPage.value.quantity),
+        amount: Math.round(totalAmount),
         productId: this.productId,
         paymentMethod: this.BillingForm.value.paymentMethod,
         orderDate: date,
@@ -120,5 +123,22 @@ export class ProductComponent implements OnInit {
   }
   getProduct(id: number) {
     this.route.navigateByUrl("/product/" + id);
+  }
+  AddtoWhishlist(productId: number) {
+    var date = new Date();
+    this.http.post('http://localhost:5209/api/Controller/InsertWishlist', {
+      customerId: this.customer.id,
+      productId: productId,
+      createDateTime: date,
+      updateDateTime: date,
+      createdBy: this.customer.id,
+      updatedBy: this.customer.id
+    }, { responseType: 'text' }).subscribe(res => {
+      if (res == "Added Successfully") {
+        this.toast.showSuccess("Success", "Added to whishlist");
+      } else {
+        this.toast.showError("Error", "Something went wrong");
+      }
+    });
   }
 }

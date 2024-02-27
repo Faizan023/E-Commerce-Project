@@ -18,10 +18,14 @@ import { OrderComponent } from './order/order.component';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { ContactComponent } from './contact/contact.component';
 import { ErrorComponent } from './error/error.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { SearchpageComponent } from './searchpage/searchpage.component';
+import { NgOptimizedImage } from '@angular/common';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
-    AppComponent, RegisterComponent, LoginComponent, HomeComponent, HeaderComponent, ProfileComponent, ProductComponent, CartComponent, FooterComponent, OrderComponent, ContactComponent, ErrorComponent,
+    AppComponent, RegisterComponent, LoginComponent, HomeComponent, HeaderComponent, ProfileComponent, ProductComponent, CartComponent, FooterComponent, OrderComponent, ContactComponent, ErrorComponent, WishlistComponent, SearchpageComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +35,8 @@ import { ErrorComponent } from './error/error.component';
     FormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
+    NgOptimizedImage,
+    // NgxSkeletonLoaderModule,
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger'
     }),

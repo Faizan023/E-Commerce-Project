@@ -22,5 +22,6 @@ namespace MOdels
         public string? Measurment { get; set; }
         public string? MesurmentValue { get; set; }
         public string? Color { get; set; }
+        public int Discount { get; set; }
     }
 }

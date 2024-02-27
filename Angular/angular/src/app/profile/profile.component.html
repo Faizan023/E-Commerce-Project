@@ -3,7 +3,7 @@
         <div class="row mb-3">
             <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
             <div class="col-md-8 col-lg-9">
-                <!-- <img src="assets/img/profile-img.jpg" alt="Profile"> -->
+                <!-- <img  loading="eager" src="assets/img/profile-img.jpg" alt="Profile"> -->
                 <i class='bx bx-user-circle' style="font-size: 50px;"></i>
                 <!-- <div class="pt-2"> -->
                 <!-- <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
@@ -118,7 +118,7 @@
         <!-- <p style="text-align: center; font-weight: 400; color: #999999;" class="  ">Date of join</p> -->
         <p style="text-align: center; font-weight: 400; color: #999999;">{{joined | date}} | Date Of Join</p>
         <div class="text-center">
-            <button type="button" class="btn btn-primary" (click)="SaveChanges()">Save Changes</button>
+            <button type="button" class="btn btn-primary" (click)="SaveChanges()">Update</button>
         </div>
     </form><!-- End Profile Edit Form -->
 </main>

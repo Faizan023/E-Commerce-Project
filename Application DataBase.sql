@@ -101,6 +101,22 @@ Constraint Fk_CustomerCart Foreign Key (CustomerId) References Customers (Id),
 Constraint Fk_ProductCart Foreign Key (ProductId) References Products (Id)
 );
 select * from cart
+
+Create Table Wishlist(
+Id int identity(1,1) Not Null,
+CustomerId Int Not Null,
+ProductId Int Not Null,
+CreateDateTime DateTimeOffset Null,
+UpdateDateTime DateTimeOffset Null,
+CreatedBy Int Not Null,
+UpdatedBy Int Null,
+
+Constraint Pk_WhishlistId Primary Key (Id),
+Constraint Fk_CustomerWl Foreign Key (CustomerId) References Customers(Id),
+Constraint Fk_productWl Foreign Key (ProductId) References Products(Id)
+);
+select * from Wishlist
+
 Create Table ProductCategories(
 Id Int Identity(1,1) Not Null,
 Name Varchar(20) Not Null,
@@ -223,9 +239,48 @@ p.Name,
 p.Price,
 p.Measurment,
 p.MesurmentValue,
-p.Color
+p.Color,
+p.Discount
 from Cart as c join Products as p on p.Id = c.ProductId
 select * from vCart
 
+create view vWishlist as 
+select 
+W.*,
+p.Img,
+p.Name,
+p.Price,
+p.Measurment,
+p.MesurmentValue,
+p.Color
+from Wishlist as W join Products as p on p.Id = W.ProductId
 
+select * from vWishlist
 delete from Cart where Id > 1007
+
+select * from Customers where FirstName Like '%Faizan%';
+
+select * from vProduct where Name LIKE '%lap%';
+
+select * from ProductCategories
+
+CREATE PROCEDURE SearchProducts 
+@categoryId int,
+@itemName NVARCHAR(100)
+as 
+begin 
+	set NOCOUNT on;
+	if @categoryId = 0
+
+begin 
+	select *from vProduct 
+	where Name LIKE '%' + @itemName + '%' 
+end
+else 
+	begin 
+		select * from vProduct as p 
+		where p.Name LIKE '%' + @itemName + '%' and p.CategoryId = @categoryId;
+	end
+end;
+
+Exec SearchProducts @categoryId = 0, @itemName = 'realme c15';

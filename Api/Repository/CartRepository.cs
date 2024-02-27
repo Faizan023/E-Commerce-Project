@@ -15,6 +15,7 @@ namespace Repository
         Task<int> CartCount(int Id);
         Task<int> OrderCount(int Id);
         Task RemoveCartByProductId(int productId);
+        Task<int> CartAmount(int Id);
     }
 
     public class CartRepository : ICartRepository
@@ -42,18 +43,17 @@ namespace Repository
         {
             try
             {
-                var carts = context.Carts.Where(cart=>cart.ProductId == productId).ToList();
-                
-                 context.Carts.RemoveRange(carts);
-                 await context.SaveChangesAsync();
+                var carts = context.Carts.Where(cart => cart.ProductId == productId).ToList();
 
+                context.Carts.RemoveRange(carts);
+                await context.SaveChangesAsync();
             }
             catch (System.Exception)
             {
-                
                 throw;
             }
         }
+
         public async Task<Cart> GetCartById(int Id)
         {
             try
@@ -95,7 +95,7 @@ namespace Repository
             {
                 var cart = context.Carts.Find(Id);
                 if (cart != null)
-                {   
+                {
                     context.Carts.Attach(cart);
                     context.Carts.Remove(cart);
                     context.SaveChanges();
@@ -152,6 +152,20 @@ namespace Repository
             {
                 var count = context.Orders.Where(t => t.CustomerId == Id).Count();
                 return count;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<int> CartAmount(int Id)
+        {
+            try
+            {
+                return context.vCarts
+                    .Where(t => t.CustomerId == Id)
+                    .Sum(t => t.Quantity * t.Price - (t.Quantity * t.Price / 100 * t.Discount));
             }
             catch
             {

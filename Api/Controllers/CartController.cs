@@ -61,7 +61,7 @@ namespace Controllers
         [Route("GetCartCount/{Id}")]
         public async Task<IActionResult> GetCount(int Id)
         {
-            return Ok(cartRepository.CartCount(Id));
+            return Ok(await cartRepository.CartCount(Id));
         }
     }
 }

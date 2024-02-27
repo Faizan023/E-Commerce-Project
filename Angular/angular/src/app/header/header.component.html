@@ -96,8 +96,8 @@
     </nav>
 </header> -->
 
-<header>
-    <div class="p-3 text-center  border-bottom" style="background-color: whitesmoke;">
+<!-- <header>
+    <div class="p-3 text-center  border-bottom" style="background-color: white;">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 d-flex justify-content-center justify-content-md-start mb-3 mb-md-0"
@@ -130,24 +130,24 @@
                 </div>
                 <div class="col-md-4 d-flex justify-content-center justify-content-md-end align-items-center">
                     <div class="d-flex">
-                        <a class="text-reset me-3" routerLink="/cart">
+                        <a class="text-reset me-3" routerLink="/whishlist">
                             <span><i class='bx bxs-heart' style="font-size: 20px;"></i></span>
-                            <span class="badge rounded-pill badge-notification bg-danger"> {{cartCount}}</span>
+                            <span class="badge rounded-pill badge-notification bg-danger"> {{whishlistCount}}</span>
                         </a>
-                        <a class="text-reset me-3" routerLink="/order">
+                        <a class="text-reset me-3" routerLink="/cart">
                             <span><i class="fas fa-shopping-cart" style="font-size: 20px;"></i></span>
-                            <span class="badge rounded-pill badge-notification bg-danger">{{orderCount}}</span>
+                            <span class="badge rounded-pill badge-notification bg-danger">{{cartCount}}</span>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<nav class="navbar navbar-expand-lg navbar-light " style="background-color: rgb(67, 60, 60);">
-<!-- Container wrapper -->
-<div class="container justify-content-center justify-content-md-between">
-<!-- Left links -->
-<ul class="navbar-nav flex-row ">
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: rgb(67, 60, 60);">
+        
+        <div class="container justify-content-center justify-content-md-between">
+            
+            <ul class="navbar-nav flex-row ">
                 <li class="nav-item me-2 me-lg-0 d-none d-md-inline-block ">
                     <a class="nav-link nav-color" routerLink="/home">Home</a>
                 </li>
@@ -169,9 +169,97 @@
             </div>
             <li class="nav-item nav-color" style="list-style: none;">
                 <i class='bx bx-log-out-circle nav-color' mwlConfirmationPopover [popoverMessage]="popOverMessage"
-                    placement="left" (confirm)="logout()" (cancel)="cancleClicked = true"
+                    placement="bottom" (confirm)="logout()" (cancel)="cancleClicked = true"
                     style="font-size: 30px; margin-top: 2px; "></i>
-</li>
+            </li>
         </div>
-    </nav>
-<!-- Navbar -->
+    </nav> -->
+<div>
+    <div class="top-nav">
+        <div class="top-nav-div">
+            <i class='bx bxs-truck top-nav-content' style="font-size: large; color: white; font-weight: 200;"></i>
+            <span class="top-nav-content"> Free Shipping</span>
+        </div>
+        <div style="display: inline-block; width: 600px;text-align: right;">
+            <a class="top-nav-content">
+                Setting
+            </a>
+        </div>
+    </div>
+    <div class="header-nav">
+        <div class="logo">
+            <i class='bx bxs-shopping-bags' style="font-size: 45px;"></i>
+            <span
+                style="position: relative;font-size: 30px;font-family: var(--tp-ff-roboto);font-weight: 700;top: 10px;">
+                ShopCart
+            </span>
+
+            <div class="search-bar">
+                <div>
+                    <div class="input-group mb-3 " style="border: 2px solid blue; border-radius: 3px;">
+                        <!-- <div class="input-group-prepend">
+                            <select class="btn-click btn " aria-expanded="false"
+                                style="border-radius: 5px 0px 0px 5px; width: 120px;">
+                                <option class="list-item">All</option>
+                                <option *ngFor="let item of category" style="text-align: left;"> {{item.name}}
+                                </option>
+                            </select>
+                        </div> -->
+
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button"
+                            #inputvalue placeholder="Search for products...">
+                        <button type="button" class="btn btn-primary shadow-0" style="border-radius: 0px;"
+                            (click)="onSearch(inputvalue.value)">
+                            <i class='bx bx-search'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-icons">
+                <a class="text-reset me-3" routerLink="/whishlist">
+                    <span><i class='bx bxs-heart' style="font-size: 30px;"></i></span>
+                    <span class="badge rounded-pill badge-notification bg-danger"> {{whishlistCount}}</span>
+                </a>
+                <a class="text-reset me-3" routerLink="/cart">
+                    <span><i class="fas fa-shopping-cart" style="font-size: 30px;"></i></span>
+                    <span class="badge rounded-pill badge-notification bg-danger">{{cartCount}}</span>
+                </a>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light "
+            style="background-color: white; border-top: 1px solid black;box-shadow: 0 2px 6px #010f1c29; z-index: 11;">
+
+            <div class="container justify-content-center justify-content-md-between">
+
+                <ul class="navbar-nav flex-row ">
+                    <li class="nav-item me-2 me-lg-0 d-none d-md-inline-block ">
+                        <a class="nav-link nav-color" routerLink="/home">Home</a>
+                    </li>
+                    <li class="nav-item me-2 me-lg-0 d-none d-md-inline-block">
+                        <a class="nav-link nav-color" href="#">Inspirations</a>
+                    </li>
+                    <li class="nav-item me-2 me-lg-0 d-none d-md-inline-block">
+                        <a class="nav-link nav-color" href="#">Blog</a>
+                    </li>
+                    <li class="nav-item me-2 me-lg-0 d-none d-md-inline-block">
+                        <a class="nav-link nav-color" routerLink="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item me-2 me-lg-0 d-none d-md-inline-block">
+                        <a class="nav-link nav-color" routerLink="/order">Myorder</a>
+                    </li>
+                </ul>
+                <div style="margin-left: 890px; list-style: none;">
+                    <li class="nav-item ">
+                        <a class="nav-link" style="color: black;" routerLink="/profile">
+                            <i class='bx bxs-user-circle nav-color' style="font-size: 32px;"></i></a>
+                    </li>
+                </div>
+                <li class="nav-item nav-color" style="list-style: none; margin-left: 30px;">
+                    <i class='bx bx-log-out-circle nav-color' mwlConfirmationPopover [popoverMessage]="popOverMessage"
+                        placement="bottom" (confirm)="logout()" (cancel)="cancleClicked = true"
+                        style="font-size: 30px; margin-top: 2px; "></i>
+                </li>
+            </div>
+        </nav>
+    </div>

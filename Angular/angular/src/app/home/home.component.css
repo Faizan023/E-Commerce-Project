@@ -485,3 +485,47 @@ p {
     margin-bottom: 3px;
     border-radius: 5px;
 }
+
+.text-center-img-crausal {
+    position: absolute;
+    top: 200px;
+    left: 140px;
+    /* z-index: 1; */
+    width: 600px;
+    height: 70px;
+    margin-top: -50px;
+}
+
+.crausal-btn {
+    color: var(--tp-heading-primary);
+    font-size: 15px;
+    margin-top: 20px;
+    background-color: white;
+    height: 40px;
+    width: 120px;
+    border-radius: 5px;
+}
+
+.crausal-btn:hover {
+    background-color: transparent;
+    border: 1px solid black;
+    color: white;
+    transition: .3s ease-in-out;
+}
+
+.crausal-btn-slide {
+    color: var(--tp-heading-primary);
+    font-size: 15px;
+    margin-top: 20px;
+    background-color: white;
+    height: 40px;
+    width: 120px;
+    border-radius: 5px;
+}
+
+.crausal-btn-slide:hover {
+    background-color: blue;
+    border: 1px solid navy;
+    color: white;
+    transition: .3s ease-in-out;
+}

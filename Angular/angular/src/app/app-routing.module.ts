@@ -9,7 +9,9 @@ import { CartComponent } from './cart/cart.component';
 import { OrderComponent } from './order/order.component';
 import { ContactComponent } from './contact/contact.component';
 import { ErrorComponent } from './error/error.component';
-import {  tokenService } from './guard/login-guard.service';
+import { tokenService } from './guard/login-guard.service';
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { SearchpageComponent } from './searchpage/searchpage.component';
 
 const routes: Routes = [
   {
@@ -42,8 +44,18 @@ const routes: Routes = [
     canActivate: [tokenService]
   },
   {
+    path: 'whishlist',
+    component: WishlistComponent,
+    canActivate: [tokenService]
+  },
+  {
     path: 'order',
     component: OrderComponent,
+    canActivate: [tokenService]
+  },
+  {
+    path: 'search/:name',
+    component: SearchpageComponent,
     canActivate: [tokenService]
   },
   {

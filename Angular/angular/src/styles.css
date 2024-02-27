@@ -339,9 +339,9 @@
 }
 
 .logo span {
-  font-size: 26px;
+  font-size: 13px;
   font-weight: 700;
-  color: #012970;
+  /* color: #012970; */
   font-family: "Nunito", sans-serif;
 }
 

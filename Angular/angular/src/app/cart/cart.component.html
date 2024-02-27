@@ -1,12 +1,18 @@
-<section class="h-100" style="background-color:white;">
+<section class="h-100" style="background-color:white;" *ngIf="cartItem.length > 0">
   <div class="container h-100 py-5">
+
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-10">
+        <span>Product</span>
+        <span style="margin-left: 210px;">Name</span>
+        <span style="margin-left: 250px;">Qty</span>
+        <span style="margin-left: 210px;">Price</span>
+        <hr>
         <div class="card rounded-3 mb-4" *ngFor="let cart of cartItem;">
           <div class="card-body p-4">
             <div class="row d-flex justify-content-between align-items-center">
               <div class="col-md-2 col-lg-2 col-xl-2">
-                <img [src]="'data:image/png;base64,'+cart.img" class="img-fluid rounded-3" alt="Cotton T-shirt"
+                <img  loading="eager" [src]="'data:image/png;base64,'+cart.img" class="img-fluid rounded-3" alt="Cotton T-shirt"
                   style="height: 50px;" (click)="GetProduct(cart.productId)">
               </div>
               <div class="col-md-3 col-lg-3 col-xl-3">
@@ -19,7 +25,7 @@
                   class="form-control form-control-sm" readonly style="text-align: center;" />
               </div>
               <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                <h5 class="mb-0">₹{{cart.price | number}}</h5>
+                <h5 class="mb-0">₹{{cart.price - cart.price/100 * cart.discount | number}}</h5>
               </div>
               <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                 <i class='bx bx-trash text-danger' mwlConfirmationPopover [popoverMessage]="popOverMessage"
@@ -30,7 +36,115 @@
             </div>
           </div>
         </div>
+        <hr>
+        <div class="card rounded-3 mb-4" *ngIf="cartItem.length > 0">
+          <div class="card-body p-4">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-md-2 col-lg-2 col-xl-2">
+                <!-- <img  loading="eager" [src]="'data:image/png;base64,'+cart.img" class="img-fluid rounded-3" alt="Cotton T-shirt"
+                  style="height: 50px;" (click)="GetProduct(cart.productId)"> -->
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <!-- <p class="lead fw-normal mb-2">Name</p> -->
+                <!-- <p><span class="text-muted">{{cart.measurment}} </span>{{cart.mesurmentValue}} 
+                  <span class="text-muted">
+                  </span>{{cart.color}}</p> -->
+              </div>
+              <!-- <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                <input id="form1" min="1" max="10" name="quantity" value="qty" type="number"
+                  class="form-control form-control-sm" readonly style="text-align: center;" />
+              </div> -->
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <h6 class="mb-0" style="color: gray; font-weight: 500;">Sub Total:<span
+                    style="margin-left: 10px;color: black;">₹{{orderTotal}}</span></h6>
+              </div>
 
+            </div>
+          </div>
+        </div>
+        <hr *ngIf="cartItem.length > 0">
+        <button (click)="billingFormIsOpen = true" *ngIf="cartItem.length > 0"
+          style="width: 1075px;border-radius: 5px; background-color: #ffc107; color: white;height: 40px;font-weight: 700;">Procced
+          to pay</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="margin: 25px 25px;" *ngIf="billingFormIsOpen==true">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title" style="background-color: blue; color: white; padding-left: 5px;">Billing Form</h5>
+      <form class="row g-3" [formGroup]="CartBillingForm">
+
+        <div class="col-12">
+          <label for="inputAddress5" class="form-label">Address</label>
+          <input type="text" class="form-control" placeholder="1234 Main St" formControlName="address">
+        </div>
+        <div class="col-12">
+          <label for="inputAddress2" class="form-label">Address 2</label>
+          <input type="text" class="form-control" formControlName="address2" placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="col-md-6">
+          <label for="inputCity" class="form-label">City</label>
+          <input type="text" class="form-control" formControlName="city">
+        </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">State</label>
+          <input type="text" class="form-control" formControlName="state">
+        </div>
+        <div class="col-md-2">
+          <label for="inputZip" class="form-label">Zip</label>
+          <input type="text" class="form-control" formControlName="zip">
+        </div>
+        <h5 class="card-title" style="background-color: blue; color: white;">Payment</h5>
+        <div class="col-12">
+          <div class="col">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="paymentMethod" value="COD"
+                formControlName="paymentMethod">
+              <label class="form-check-label" for="cod">COD</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="paymentMethod" value="Creditcard"
+                formControlName="paymentMethod">
+              <label class="form-check-label" for="Creditcard">Credit card</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="paymentMethod" value="UpiApps"
+                formControlName="paymentMethod">
+              <label class="form-check-label" for="UpiApps">Upi Apps</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="paymentMethod" value="NetBanking"
+                formControlName="paymentMethod">
+              <label class="form-check-label" for="NetBanking">Net Banking</label>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <button type="button" class="btn btn-primary" (click)="ConfirmOrder()">Confirm</button>
+          <button type="button" class="btn btn-secondary" (click)="billingFormIsOpen = false"
+            style="margin-left: 5px;">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="py-6 py-lg-8 py-xxl-16" *ngIf="cartItem.length == 0" style="margin-top: 40px; margin-bottom: 40px;">
+  <div class="container">
+    <div class="row">
+      <div class="offset-lg-3 col-lg-6 col-md-12 col-12 text-center">
+        <!-- image -->
+        <img  loading="eager" src="../../assets/download (2).png" alt="bag" class="img-fluid mb-4" style="height: 200px;">
+        <!-- content -->
+        <h2>Your shopping cart is empty</h2>
+        <p class="mb-4">
+          Return to the store to add items for your delivery slot. Before proceed to checkout you must add some products
+          to your shopping cart. You will find a lot of interesting products on our
+          shop page.
+        </p>
+        <a routerLink="/home" class="btn btn-primary">Explore Products</a>
       </div>
     </div>
   </div>
