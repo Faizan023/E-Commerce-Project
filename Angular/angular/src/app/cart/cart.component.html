@@ -42,7 +42,7 @@
             </div>
           </div>
         </div>
-        <hr *ngIf="cartItem.length > 0 && loading == false">
+        <!-- <hr *ngIf="cartItem.length > 0 && loading == false"> -->
         <div class="card rounded-3 mb-4" *ngIf="cartItem.length > 0">
           <div class="card-body p-4">
             <div class="row d-flex justify-content-between align-items-center">
@@ -68,7 +68,7 @@
             </div>
           </div>
         </div>
-        <hr *ngIf="cartItem.length > 0">
+        <!-- <hr *ngIf="cartItem.length > 0"> -->
         <button (click)="billingFormIsOpen = true" *ngIf="cartItem.length > 0"
           style="width: 1075px;border-radius: 5px; background-color: #ffc107; color: white;height: 40px;font-weight: 700;">Procced
           to pay</button>

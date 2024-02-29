@@ -12,6 +12,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class OrderComponent implements OnInit {
   customerOrder: any = [];
   customer: any = [];
+  loading: boolean = true;
   popOverMeasage: string = "Confirm to delete";
   cancelClicked: boolean = false;
   constructor(private http: HttpClient, private toast: NotificationService) { }
@@ -34,6 +35,10 @@ export class OrderComponent implements OnInit {
 
     this.http.get('http://localhost:5209/api/Controller/getOrderbyCustomer/' + this.customer.id, { headers }).subscribe(res => {
       this.customerOrder = res;
+      this.loading = false
+    }, (error) => {
+      console.error('Error fetching name', error);
+      this.loading = false;
     });
   }
 
@@ -45,6 +50,6 @@ export class OrderComponent implements OnInit {
       } else {
         this.toast.showWarning("Error", "Something went wrong");
       }
-    })
+    });
   }
 }

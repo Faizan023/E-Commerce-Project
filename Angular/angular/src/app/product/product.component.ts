@@ -58,7 +58,7 @@ export class ProductComponent implements OnInit {
 
   }
 
-  AddtoCart() {
+  AddtoCart(productId: number) {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${localStorage.getItem('token')}`,
     });

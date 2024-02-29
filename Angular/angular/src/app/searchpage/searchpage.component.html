@@ -1,20 +1,28 @@
 <section style="margin-top: 20px; margin-left: 20px;">
     <!-- <label for=" category">Category</label> -->
     <div class="input-group-prepend" style="display: inline-block;margin-left: 100px;">
-        <select class="btn-click btn " aria-expanded="false"
-            style="border-radius: 0px;border: 1px solid black; width: 200px;" name="category">
-            <option class="list-item">All</option>
+        <!-- <label for="category"> category </label> -->
+        <select name="category" class="btn-click btn " aria-expanded="false"
+            style="border-radius: 0px;border: 1px solid black; width: 200px;" name="category" [(ngModel)]="selectedId"
+            (change)="FilterCategory()">
+            <option class="list-item" value="0" style="text-align: left;">All</option>
+            <option style="text-align: left;" *ngFor="let category of categories" value="{{category.id}}">
+                {{category.name}}</option>
             <!-- <option *ngFor="let item of category" style="text-align: left;"> {{item.name}}
         </option> -->
         </select>
     </div>
-    <div class="input-group-prepend" style="display: inline-block; margin-left: 170px;">
-        <select class="btn-click btn " aria-expanded="false"
+    <div class="input-group-prepend"
+        style="display: inline-block; margin-left: 170px; border-left: 1px solid gray; border-right: 1px solid gray; padding: 5px;">
+        <!-- <select class="btn-click btn " aria-expanded="false"
             style="border-radius: 0px; border: 1px solid black; width: 200px;">
             <option class="list-item">All</option>
-            <!-- <option *ngFor="let item of category" style="text-align: left;"> {{item.name}}
-        </option> -->
-        </select>
+        </select> -->
+        <input type="number" style="width: 100px;border-radius: 3px;" placeholder="₹Min" [(ngModel)]="minPrice">
+        <input type="number" style="width: 100px;margin-left: 10px; border-radius: 3px;" placeholder="₹Max"
+            [(ngModel)]="maxPrice">
+        <button (click)="FilterPrice()"
+            style="margin-left: 10px; background-color: white; border-radius: 5px; border: 1px solid gray;">Go</button>
     </div>
     <div class="input-group-prepend" style="display: inline-block;margin-left: 170px;">
         <select class="btn-click btn " aria-expanded="false"
@@ -64,7 +72,8 @@
         </div>
         <div class="col-12 col-md-3">
             <div class="d-flex align-items-center">
-                <span class="h5 mb-0 text-gray text-through me-2" style="text-decoration: line-through;">
+                <span class="h5 mb-0 text-gray text-through me-2" style="text-decoration: line-through;"
+                    *ngIf="product.discount > 0">
                     ₹{{product.price}} </span>
                 <span class="h6 mb-0 text-danger">₹{{product.price -
                     product.price/100 * product.discount | number}}</span>

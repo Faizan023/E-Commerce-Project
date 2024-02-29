@@ -29,6 +29,9 @@ export class WishlistComponent implements OnInit {
     this.http.get('http://localhost:5209/api/Controller/GetCustomerWishlist/' + this.customer.id).subscribe((res: any) => {
       this.whishlistItem = res;
       this.loading = false;
+    }, (error) => {
+      console.error('Error fetching name', error);
+      this.loading = false
     });
   }
   Delete(Id: number) {

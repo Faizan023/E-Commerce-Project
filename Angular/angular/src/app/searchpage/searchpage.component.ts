@@ -14,8 +14,12 @@ export class SearchpageComponent implements OnInit {
   SearchProduct: any = [];
   customerId: number = 0
   JwtHelperService = new JwtHelperService();
+  categories: any = [];
   loading: boolean = true;
   skeleton = new Array(10);
+  selectedId: number = 0;
+  minPrice: number | null = null;
+  maxPrice: number | null = null;
   constructor(private router: ActivatedRoute, private http: HttpClient, private route: Router, private toast: NotificationService) { }
 
   ngOnInit(): void {
@@ -34,7 +38,7 @@ export class SearchpageComponent implements OnInit {
     if (customer) {
       this.customerId = this.JwtHelperService.decodeToken(customer).id;
     }
-    console.log(this.customerId);
+    this.GetCategory();
   }
 
   GetProduct(id: number) {
@@ -57,5 +61,36 @@ export class SearchpageComponent implements OnInit {
         this.toast.showError("Error", "Something went wrong");
       }
     });
+  }
+
+  GetCategory() {
+    this.http.get('http://localhost:5209/api/Controller/GetCategories').subscribe(res => {
+      this.categories = res;
+    });
+  }
+
+  FilterCategory() {
+    this.http.post('http://localhost:5209/api/Controller/SearchProduct', {
+      categoryId: this.selectedId,
+      itemName: this.itemName
+    }).subscribe(res => {
+      this.SearchProduct = res;
+    });
+  }
+  FilterPrice() {
+    if (this.minPrice != null && this.maxPrice != null) {
+      this.loading = true;
+      this.http.post('http://localhost:5209/api/Controller/SearchProduct', {
+        categoryId: this.selectedId,
+        itemName: this.itemName,
+      }).subscribe(res => {
+        this.SearchProduct = res;
+        this.loading = false
+        this.SearchProduct = this.SearchProduct.filter((product: any) => {
+          const price = product.price
+          return (this.minPrice === null || price >= this.minPrice) && (this.maxPrice === null || price <= this.maxPrice);
+        });
+      });
+    }
   }
 }

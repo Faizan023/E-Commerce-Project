@@ -56,6 +56,9 @@ export class CartComponent implements OnInit {
     this.http.get('http://localhost:5209/api/Controller/getcartbycustomer/' + this.customer.id, { headers }).subscribe(res => {
       this.cartItem = res;
       this.loading = false
+    }, (error) => {
+      console.error("Error fetching name", error);
+      this.loading = false;
     });
   }
 

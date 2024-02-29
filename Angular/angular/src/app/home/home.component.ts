@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   mobileLoading: boolean = true;
   laptopLoading: boolean = true;
   clothesLoading: boolean = true;
-  fashionLoading : boolean = true;
+  fashionLoading: boolean = true;
   laptopSkeleton = new Array(3);
   skeleton = new Array(10);
   constructor(private http: HttpClient, private route: Router, private auth: AuthService, private toast: NotificationService) { }
@@ -42,7 +42,6 @@ export class HomeComponent implements OnInit {
     const getCustomerdetails = localStorage.getItem('token');
     if (getCustomerdetails) {
       this.customer = this.jwtHelperService.decodeToken(getCustomerdetails);
-      console.log(this.jwtHelperService.decodeToken(getCustomerdetails))
     }
   }
   GetProduct(id: number) {
