@@ -10,7 +10,7 @@ namespace Repository
         Task<ProductCategory> InsertCategory(ProductCategory category);
         Task<ProductCategory> UpdateCategory(ProductCategory category);
         bool DeleteCategory(int Id);
-         List<string> validdation(ProductCategory category);
+        List<string> validdation(ProductCategory category);
     }
 
     public class CategoryRepository : ICategoryRepository
@@ -26,7 +26,7 @@ namespace Repository
         {
             try
             {
-                return await context.Categories.OrderByDescending(t=> t.Id).ToListAsync();
+                return await context.Categories.OrderBy(t => t.Name).ToListAsync();
             }
             catch
             {

@@ -103,7 +103,16 @@ export class CartComponent implements OnInit {
           updatedBy: null,
           statusDateTime: null
         }, { responseType: 'text', headers }).subscribe((apires: any) => {
-          console.log(apires);
+          if (apires == "Added Successfully") {
+            this.toast.showSuccess("Success", "Your order is confirmed");
+          } else {
+            this.toast.showError("Error", "Something went wrong");
+          }
+        }, (error) => {
+          if (error) {
+            console.error("Error fetching name", error);
+            this.toast.showError("Error", "Something went wrong");
+          }
         });
       });
     }

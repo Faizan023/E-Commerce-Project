@@ -62,7 +62,7 @@
               </div> -->
               <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                 <h6 class="mb-0" style="color: gray; font-weight: 500;">Sub Total:<span
-                    style="margin-left: 10px;color: black;">₹{{orderTotal}}</span></h6>
+                    style="margin-left: 10px;color: black;">₹{{orderTotal | number}}</span></h6>
               </div>
 
             </div>
@@ -70,7 +70,7 @@
         </div>
         <!-- <hr *ngIf="cartItem.length > 0"> -->
         <button (click)="billingFormIsOpen = true" *ngIf="cartItem.length > 0"
-          style="width: 1075px;border-radius: 5px; background-color: #ffc107; color: white;height: 40px;font-weight: 700;">Procced
+          style="width: 1075px;border-radius: 5px; background-color: #ffc107; color: white;height: 40px;font-weight: 700; border: none;">Procced
           to pay</button>
       </div>
     </div>

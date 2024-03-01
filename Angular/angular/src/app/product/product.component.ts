@@ -18,6 +18,7 @@ export class ProductComponent implements OnInit {
   BillingForm!: FormGroup;
   productId: number = 0;
   product: any = [];
+  loading: boolean = true;
   customer: any = [];
   billingFormIsOpen: boolean = false;
   similarProduct: any = [];
@@ -36,6 +37,7 @@ export class ProductComponent implements OnInit {
     this.http.get('http://localhost:5209/api/Controller/GetProductBy/' + this.productId).subscribe(res => {
       this.product = res;
       this.SimilarProduct();
+      this.loading = false;
     });
 
     this.productPage = this.form.group({
@@ -65,7 +67,7 @@ export class ProductComponent implements OnInit {
     var date = new Date();
     this.http.post('http://localhost:5209/api/Controller/AddToCart', {
       customerId: this.customer.id,
-      productId: this.productId,
+      productId: productId,
       quantity: this.productPage.value.quantity,
       createDateTime: date,
       updateDateTime: null,
