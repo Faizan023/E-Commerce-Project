@@ -5,7 +5,7 @@
         <select name="category" class="btn-click btn " aria-expanded="false"
             style="border-radius: 0px;border: 1px solid black; width: 200px;" name="category" [(ngModel)]="selectedId"
             (change)="FilterCategory()">
-            <option class="list-item" value="0" style="text-align: left;">All</option>
+            <option class="list-item" value="0" style="text-align: left;">All category</option>
             <option style="text-align: left;" *ngFor="let category of categories" value="{{category.id}}">
                 {{category.name}}</option>
             <!-- <option *ngFor="let item of category" style="text-align: left;"> {{item.name}}
