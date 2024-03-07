@@ -20,6 +20,8 @@ export class SearchpageComponent implements OnInit {
   selectedId: number = 0;
   minPrice: number | null = null;
   maxPrice: number | null = null;
+  p: number = 1;
+  itemsPerPage: number = 10;
   constructor(private router: ActivatedRoute, private http: HttpClient, private route: Router, private toast: NotificationService) { }
 
   ngOnInit(): void {

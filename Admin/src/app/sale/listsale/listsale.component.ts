@@ -17,7 +17,7 @@ export class ListsaleComponent implements OnInit {
   p: number = 1;
   popOverMsg: string = "Do you really want to delete?";
   cancelClicked: boolean = false;
-
+  itemsPerPage: number = 10;
   ngOnInit(): void {
     this.LoadSale();
     this.ListSale = this.form.group({

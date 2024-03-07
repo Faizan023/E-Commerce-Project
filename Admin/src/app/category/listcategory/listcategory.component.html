@@ -27,11 +27,11 @@
                             <div class="datatable-top">
                                 <div class="datatable-dropdown">
                                     <label>
-                                        <select class="datatable-selector">
-                                            <option value="5">5</option>
-                                            <option value="10" selected="">10</option>
-                                            <option value="15">15</option>
-                                            <option value="20">20</option>
+                                        <select class="datatable-selector" [(ngModel)]="itemPerPage" [ngModelOptions]="{standalone: true}">
+                                            <option [ngValue]="5">5</option>
+                                            <option [ngValue]="10">10</option>
+                                            <option [ngValue]="15">15</option>
+                                            <option [ngValue]="20">20</option>
                                             <!-- <option value="25">25</option> -->
                                         </select> Entries per page
                                     </label>
@@ -54,7 +54,7 @@
                                 </thead>
                                 <tbody>
                                     <tr
-                                        *ngFor="let category of FindCategory | paginate:{itemsPerPage:10, currentPage:p}">
+                                        *ngFor="let category of FindCategory | paginate:{itemsPerPage:itemPerPage, currentPage:p}">
                                         <td scope="row">{{category.id}}</td>
                                         <td scope="row">{{category.name}} </td>
                                         <td scope="row"><button type="button" class="btn btn-outline-secondary"
@@ -91,7 +91,8 @@
                         </div>
                     </div>
                     <div style="float: inline-end; text-decoration: none;">
-                        <pagination-controls (pageChange)="p=$event"></pagination-controls>
+                        <pagination-controls (pageChange)="p=$event" previousLabel=""
+                            nextLabel=""></pagination-controls>
                     </div>
                 </div>
             </div>

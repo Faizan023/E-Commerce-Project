@@ -79,7 +79,6 @@ export class ProductComponent implements OnInit {
   CategoryList() {
     this.http.get('http://localhost:5209/api/Controller/GetCategories').subscribe(res => {
       this.categoryList = res;
-      console.log(res);
     });
   }
 

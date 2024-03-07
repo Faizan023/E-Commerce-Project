@@ -12,6 +12,7 @@ export class OrderlistComponent implements OnInit {
   ListOrder !: FormGroup;
   orderList: any = [];
   p: number = 1;
+  itemsPerPage: number = 10;
   constructor(private http: HttpClient, private route: Router, private form: FormBuilder) { }
   ngOnInit(): void {
     this.http.get('http://localhost:5209/api/Controller/GetOrders').subscribe(res => {

@@ -26,11 +26,13 @@
     </div>
     <div class="input-group-prepend" style="display: inline-block;margin-left: 170px;">
         <select class="btn-click btn " aria-expanded="false"
-            style="border-radius: 0px;border: 1px solid black; width: 200px;">
-            <option class="list-item">All</option>
+            style="border-radius: 0px;border: 1px solid black; width: 65px;" [(ngModel)]="itemsPerPage">
+            <option class="list-item" [ngValue]="10" style="text-align: left;">10</option>
+            <option class="list-item" [ngValue]="20" style="text-align: left;">20</option>
+            <option class="list-item" [ngValue]="50" style="text-align: left;">50</option>
             <!-- <option *ngFor="let item of category" style="text-align: left;"> {{item.name}}
         </option> -->
-        </select>
+        </select> Item per page
     </div>
     <div class="input-group-prepend" style="display: inline-block;margin-left: 170px;">
         <select class="btn-click btn " aria-expanded="false"
@@ -47,7 +49,7 @@
         [theme]="{height:'350px', width:'1305px','border-radius': '8px',}"></ngx-skeleton-loader>
 </div>
 <div class="card shadow p-4" style="margin-top: 40px; margin-left: 120px; margin-right: 100px;"
-    *ngFor="let product of SearchProduct">
+    *ngFor="let product of SearchProduct | paginate:{itemsPerPage: itemsPerPage, currentPage:p}">
     <div class="row align-items-center">
         <aside class="col-md-3">
             <img loading="eager" [src]="'data:image/png;base64,'+product.img" alt="premium watch" style="background-color: white;aspect-ratio: 1 / 1; 
@@ -92,6 +94,8 @@
         </div>
     </div>
 </div>
+<pagination-controls (pageChange)="p=$event" previousLabel="" nextLabel=""
+    style="text-align: center;"></pagination-controls>
 <section class="py-6 py-lg-8 py-xxl-16" *ngIf="SearchProduct.length == 0 && loading == false"
     style="margin-top: 40px; margin-bottom: 40px;">
     <div class="container">

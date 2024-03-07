@@ -12,14 +12,11 @@ import { NotificationService } from 'src/app/notification.service';
   styleUrls: ['./customerlist.component.css']
 })
 export class CustomerlistComponent implements OnInit {
-  customerData!: FormGroup;
+  customerData !: FormGroup;
   constructor(private http: HttpClient, private route: Router, private form: FormBuilder, private toastr: NotificationService) { }
   customerList: any = [];
   p: number = 1;
-  // select:number = 0;
-  // select:number = 5;
   enteries: number = 10;
-  // popOverTitle:string = "Do you really want to delete?";
   popOverMsg: string = "Do you really want to delete?";
   cancelClicked: boolean = false;
   ngOnInit(): void {
@@ -27,7 +24,9 @@ export class CustomerlistComponent implements OnInit {
     // this.customerData = this.form.group({
     //   select: [''],
     // });
-
+    this.customerData = this.form.group({
+      search: ['', Validators.required],
+    });
   }
 
   remove(id: number) {
@@ -67,10 +66,6 @@ export class CustomerlistComponent implements OnInit {
   InitDetails() {
     this.http.get('http://localhost:5209/api/Controller/GetCustomer').subscribe(res => {
       this.customerList = res;
-    });
-
-    this.customerData = this.form.group({
-      search: ['', Validators.required],
     });
   }
 

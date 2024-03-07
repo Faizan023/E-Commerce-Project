@@ -163,7 +163,7 @@
                         </tbody>
                     </table>
                     <div *ngIf="displayOrderListToday.length >= 5" style="float: inline-end;">
-                        <pagination-controls (pageChange)="p=$event"></pagination-controls>
+                        <pagination-controls (pageChange)="p=$event" previousLabel="" nextLabel=""></pagination-controls>
                     </div>
                 </div>
             </div>

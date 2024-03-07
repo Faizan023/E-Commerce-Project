@@ -16,6 +16,7 @@ export class ListproductComponent implements OnInit {
   p: number = 1;
   popOverMsg: string = "Do you really want to delete?";
   cancelClicked: boolean = false;
+  itemsPerPage: number = 10;
   ngOnInit(): void {
     this.LoadProduct();
     this.ListProduct = this.form.group({
@@ -24,9 +25,7 @@ export class ListproductComponent implements OnInit {
   }
 
   Delete(id: number) {
-
     this.http.delete('http://localhost:5209/api/Controller/DeleteProduct' + '/' + id, { responseType: 'text' }).subscribe(res => {
-      console.log(res);
       if (res == "Deleted Successfully") {
         this.toastr.showSuccess("Deleted Successfully", "Success");
         this.LoadProduct();

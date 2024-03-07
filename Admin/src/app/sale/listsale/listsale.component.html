@@ -15,23 +15,15 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <!-- <div class="input-group card-title" style="float: inline-end;">
-                                <div class="form-outline">
-                                    <input type="search" id="form1" class="form-control" placeholder="Search.."
-                                        formControlName="search" autocomplete="off" />
-                                </div>
-                                <button type="button" class="btn btn-primary" (change)="Search()">
-                                    <i class='bx bx-search'></i>
-                                </button>
-                            </div> -->
                             <div class="datatable-top">
                                 <div class="datatable-dropdown">
                                     <label>
-                                        <select class="datatable-selector">
-                                            <option value="5">5</option>
-                                            <option value="10" selected="">10</option>
-                                            <option value="15">15</option>
-                                            <option value="20">20</option>
+                                        <select class="datatable-selector" [(ngModel)]="itemsPerPage"
+                                            [ngModelOptions]="{standalone: true}">
+                                            <option [ngValue]="5">5</option>
+                                            <option [ngValue]="10">10</option>
+                                            <option [ngValue]="15">15</option>
+                                            <option [ngValue]="20">20</option>
                                             <!-- <option value="25">25</option> -->
                                         </select> Entries per page
                                     </label>
@@ -55,7 +47,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let sale of  FindSale | paginate:{itemsPerPage:10, currentPage:p}">
+                                    <tr
+                                        *ngFor="let sale of  FindSale | paginate:{itemsPerPage:itemsPerPage, currentPage:p}">
                                         <td scope="row">{{sale.id}}</td>
                                         <td scope="row">{{sale.name}} </td>
                                         <td scope="row">{{sale.startDate | date:'dd-MM-yy'}}</td>
@@ -94,7 +87,8 @@
                         </div>
                     </div>
                     <div style="float: inline-end; text-decoration: none;">
-                        <pagination-controls (pageChange)="p=$event"></pagination-controls>
+                        <pagination-controls (pageChange)="p=$event" previousLabel=""
+                            nextLabel=""></pagination-controls>
                     </div>
                 </div>
             </div>

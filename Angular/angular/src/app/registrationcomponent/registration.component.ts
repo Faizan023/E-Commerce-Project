@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
             ]).subscribe(t => {
                 if (t == "Added Successfully") {
                     this.route.navigateByUrl('/login');
-                    this.toastr.showSuccess("Welcome to ShopCart.In", "Success");
+                    this.toastr.showSuccess("Welcome to Shofy.In", "Success");
                 } else {
                     this.toastr.showError("This Email Already Exit", "Error");
                     this.displaymsg = "use Another Email Account"

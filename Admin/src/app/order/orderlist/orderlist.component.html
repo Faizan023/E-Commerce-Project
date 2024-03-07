@@ -30,11 +30,11 @@
               <div class="datatable-top">
                 <div class="datatable-dropdown">
                   <label>
-                    <select class="datatable-selector">
-                      <option value="5">5</option>
-                      <option value="10" selected="">10</option>
-                      <option value="15">15</option>
-                      <option value="20">20</option>
+                    <select class="datatable-selector" [(ngModel)]="itemsPerPage" [ngModelOptions]="{standalone: true}">
+                      <option [ngValue]="5">5</option>
+                      <option [ngValue]="10">10</option>
+                      <option [ngValue]="15">15</option>
+                      <option [ngValue]="20">20</option>
                       <!-- <option value="25">25</option> -->
                     </select> Entries per page
                   </label>
@@ -63,7 +63,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let order of FindOrder | paginate:{itemsPerPage:10, currentPage:p}">
+                  <tr *ngFor="let order of FindOrder | paginate:{itemsPerPage:itemsPerPage, currentPage:p}">
                     <td scope="row">{{order.orderDate | date}}</td>
                     <td scope="row">{{order.id}}</td>
                     <td scope="row">{{order.customerName}}</td>
@@ -102,7 +102,7 @@
             </div>
           </div>
           <div style="float: inline-end; text-decoration: none;">
-            <pagination-controls (pageChange)="p=$event"></pagination-controls>
+            <pagination-controls (pageChange)="p=$event" previousLabel="" nextLabel=""></pagination-controls>
           </div>
         </div>
       </div>

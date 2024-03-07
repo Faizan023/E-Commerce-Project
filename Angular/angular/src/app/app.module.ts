@@ -24,6 +24,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -41,13 +42,14 @@ import { FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    NgxPaginationModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     NgOptimizedImage,
     NgxSkeletonLoaderModule.forRoot({
-      animation:'progress-dark',
+      animation: 'progress-dark',
       theme: {
-        
+
         height: '30px'
       }
     }),
