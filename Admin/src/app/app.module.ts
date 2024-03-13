@@ -36,6 +36,7 @@ import { MatProgressBarModule }
     from '@angular/material/progress-bar';
 import { PopupComponent } from './popup/popup.component';
 import {  ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
  
 
 @NgModule({
@@ -62,6 +63,7 @@ import {  ConfirmationPopoverModule } from 'angular-confirmation-popover';
     BrowserAnimationsModule,
     MatSidenavModule,
     MatToolbarModule,
+    NgxSkeletonLoaderModule,
     ToastrModule.forRoot(),
     NgxPaginationModule,
     MatProgressBarModule,

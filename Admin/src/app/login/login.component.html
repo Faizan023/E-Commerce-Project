@@ -8,7 +8,7 @@
                         <div class="d-flex justify-content-center py-4">
                             <i class=' bx bxs-shopping-bags '
                                 style="color: blue; font-size: 30px; padding-right: 4px; text-align: center;  padding-top: 5px;"></i>
-                            <span class="d-none d-lg-block" style="color: blue; font-size: 25px;"> NiceAdmin</span>
+                            <span class="d-none d-lg-block" style="color: blue; font-size: 25px;"> Shopy | Admin</span>
                         </div><!-- End Logo -->
                         <div class="card mb-3">
                             <div class="card-body">
@@ -18,10 +18,11 @@
                                 </div>
                                 <form class="row g-3 needs-validation" [formGroup]="AdminLogin">
                                     <div class="col-12">
-                                        <label for="yourUsername" class="form-label">Email</label>
+                                        <label for="email" class="form-label">Email</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" name="username" class="form-control"
+                                            <input type="email" name="email" class="form-control"
                                                 formControlName="email">
+                                            <!-- <small *ngIf="AdminLogin.controls['email'].errors?.['required']"></small> -->
                                             <div class="invalid-feedback">Please enter your Email.</div>
                                         </div>
                                     </div>
