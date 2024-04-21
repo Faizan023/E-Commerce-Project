@@ -13,10 +13,15 @@ export class OrderlistComponent implements OnInit {
   orderList: any = [];
   p: number = 1;
   itemsPerPage: number = 10;
+  skeletonLoader: boolean = true;
   constructor(private http: HttpClient, private route: Router, private form: FormBuilder) { }
   ngOnInit(): void {
     this.http.get('http://localhost:5209/api/Controller/GetOrders').subscribe(res => {
       this.orderList = res;
+      this.skeletonLoader = false
+    }, (error) => {
+      console.error("Error FetchingName", error);
+      this.skeletonLoader = false;
     });
 
     this.ListOrder = this.form.group({

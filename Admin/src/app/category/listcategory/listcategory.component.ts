@@ -16,6 +16,7 @@ export class ListcategoryComponent implements OnInit {
   popOverMsg: string = "Do you really want to delete?";
   cancelClicked: boolean = false;
   itemPerPage: number = 10;
+  skeletonLoader:boolean = true;
   constructor(private http: HttpClient, private toastr: NotificationService, private router: Router, private form: FormBuilder) { }
   ngOnInit(): void {
     this.LoadCategory();
@@ -56,7 +57,11 @@ export class ListcategoryComponent implements OnInit {
   }
   LoadCategory() {
     this.http.get('http://localhost:5209/api/Controller/GetCategories').subscribe(res => {
-      this.CategoryList = res
+      this.CategoryList = res;
+      this.skeletonLoader = false;
+    }, (error) => {
+      console.error("erroe fetching name", error);
+      this.skeletonLoader = false;
     });
   }
 

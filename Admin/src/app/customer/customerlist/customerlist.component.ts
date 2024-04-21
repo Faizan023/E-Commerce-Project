@@ -19,6 +19,7 @@ export class CustomerlistComponent implements OnInit {
   enteries: number = 10;
   popOverMsg: string = "Do you really want to delete?";
   cancelClicked: boolean = false;
+  skeletonLoader = true;
   ngOnInit(): void {
     this.InitDetails();
     // this.customerData = this.form.group({
@@ -66,7 +67,7 @@ export class CustomerlistComponent implements OnInit {
   InitDetails() {
     this.http.get('http://localhost:5209/api/Controller/GetCustomer').subscribe(res => {
       this.customerList = res;
+      this.skeletonLoader = false;
     });
   }
-
 }

@@ -17,6 +17,7 @@ export class ListbrandComponent implements OnInit {
   popOverMsg: string = "Do you really want to delete?";
   cancelClicked: boolean = false;
   itemPerPage: number = 10;
+  skeletonLoader: boolean = true;
   constructor(private http: HttpClient, private toastr: NotificationService, private router: Router, private form: FormBuilder) { }
 
   ngOnInit(): void {
@@ -61,6 +62,10 @@ export class ListbrandComponent implements OnInit {
   LoadBrand() {
     this.http.get<any>('http://localhost:5209/api/Controller/GetBrands').subscribe(res => {
       this.BrandList = res;
+      this.skeletonLoader = false;
+    }, (error) => {
+      console.error("erroe fetchinng name", error);
+      this.skeletonLoader = false;
     });
   }
 }

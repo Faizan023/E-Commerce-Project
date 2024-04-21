@@ -17,6 +17,7 @@ export class ListproductComponent implements OnInit {
   popOverMsg: string = "Do you really want to delete?";
   cancelClicked: boolean = false;
   itemsPerPage: number = 10;
+  skeletonLoader: boolean = true;
   ngOnInit(): void {
     this.LoadProduct();
     this.ListProduct = this.form.group({
@@ -59,7 +60,11 @@ export class ListproductComponent implements OnInit {
   }
   LoadProduct() {
     this.http.get<any>('http://localhost:5209/api/Controller/GetProduct').subscribe(res => {
-      this.product = res
+      this.product = res;
+      this.skeletonLoader = false;
+    }, (error) => {
+      console.error("erroe fetching name", error);
+      this.skeletonLoader = false;
     });
   }
 }

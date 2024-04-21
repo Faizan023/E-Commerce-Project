@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Admin:build:production"
+              "buildTarget": "Admin:build:production"
             },
             "development": {
-              "browserTarget": "Admin:build:development"
+              "buildTarget": "Admin:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Admin:build"
+            "buildTarget": "Admin:build"
           }
         },
         "test": {

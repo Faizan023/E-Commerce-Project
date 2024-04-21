@@ -14,7 +14,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-body">
+                        <div style="text-align: center; margin: 250px;" *ngIf="skeletonLoader == true">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="sr-only"></span>
+                            </div>
+                        </div>
+                        <div class="card-body" *ngIf="skeletonLoader == false">
                             <div class="datatable-top">
                                 <div class="datatable-dropdown">
                                     <label>

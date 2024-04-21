@@ -32,12 +32,12 @@ import { UpdatecustomerComponent } from './customer/updatecustomer/updatecustome
 import { AddcustomerComponent } from './customer/addcustomer/addcustomer.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FooterComponent } from './footer/footer.component';
-import { MatProgressBarModule } 
-    from '@angular/material/progress-bar';
+import { MatProgressBarModule }
+  from '@angular/material/progress-bar';
 import { PopupComponent } from './popup/popup.component';
-import {  ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
- 
+
 
 @NgModule({
   declarations: [
@@ -63,12 +63,17 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     BrowserAnimationsModule,
     MatSidenavModule,
     MatToolbarModule,
-    NgxSkeletonLoaderModule,
+    NgxSkeletonLoaderModule.forRoot({
+      animation: 'progress-dark',
+      theme: {
+        height: '30px'
+      }
+    }),
     ToastrModule.forRoot(),
     NgxPaginationModule,
     MatProgressBarModule,
     ConfirmationPopoverModule.forRoot({
-      confirmButtonType:'danger'
+      confirmButtonType: 'danger'
     }),
   ],
   providers: [],

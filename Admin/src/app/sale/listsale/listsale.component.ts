@@ -18,6 +18,7 @@ export class ListsaleComponent implements OnInit {
   popOverMsg: string = "Do you really want to delete?";
   cancelClicked: boolean = false;
   itemsPerPage: number = 10;
+  skeletonLoader: boolean = true;
   ngOnInit(): void {
     this.LoadSale();
     this.ListSale = this.form.group({
@@ -59,6 +60,10 @@ export class ListsaleComponent implements OnInit {
   LoadSale() {
     this.http.get('http://localhost:5209/api/Controller/GetSales').subscribe(res => {
       this.SaleList = res;
+      this.skeletonLoader = false;
+    }, (error) => {
+      console.error("erroe fetching name", error);
+      this.skeletonLoader = false;
     });
   }
 }

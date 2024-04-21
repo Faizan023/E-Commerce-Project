@@ -13,20 +13,13 @@
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
-
           <div class="card">
-            <div class="card-body">
-              <!-- <h5 class="card-title">Orders</h5> -->
-              <!-- <div class="input-group card-title" style="float: inline-end;">
-                <div class="form-outline">
-                  <input type="search" id="form1" class="form-control" placeholder="Search.." formControlName="search"
-                    autocomplete="off" /> -->
-              <!-- <label class="form-label" for="form1">Search</label> -->
-              <!-- </div>
-                <button type="button" class="btn btn-primary" (change)="Search()">
-                  <i class='bx bx-search'></i>
-                </button>
-              </div> -->
+            <div style="text-align: center; margin: 250px;" *ngIf="skeletonLoader == true">
+              <div class="spinner-border text-primary" role="status">
+                <span class="sr-only"></span>
+              </div>
+            </div>
+            <div class="card-body" *ngIf="skeletonLoader == false">
               <div class="datatable-top">
                 <div class="datatable-dropdown">
                   <label>
