@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
       email: ['', Validators.required],
       gender: ['', Validators.required],
       phoneNumber: ['', Validators.required],
-      dateOfBirth: ['', Validators.required],
+      dateOfBirth: ['', Validators.required].toString(),
       address: ['', Validators.required]
     });
 
